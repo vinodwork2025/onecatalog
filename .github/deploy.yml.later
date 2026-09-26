@@ -1,0 +1,53 @@
+name: Build and deploy catalogs
+
+on:
+  push:
+    branches: [main]
+  # Sheet-only edits (a price change, a new text row) never touch the repo,
+  # so nothing would rebuild. This picks them up four times a day.
+  schedule:
+    - cron: '17 */6 * * *'
+  # "Publish now" button in the Actions tab, and the URL you tap from your phone.
+  workflow_dispatch:
+    inputs:
+      client:
+        description: 'One client slug, or leave blank to build all'
+        required: false
+        default: ''
+
+concurrency:
+  group: catalog-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # Keeps processed images between runs so a rebuild does not re-crunch
+      # every photo for every client.
+      - name: Restore image cache
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: catalog-dist-${{ github.run_id }}
+          restore-keys: catalog-dist-
+
+      - name: Build
+        run: node scripts/build.js ${{ github.event.inputs.client }}
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CF_PAGES_PROJECT }} --branch=main

@@ -1,0 +1,7 @@
+id,category,name,slug,description,price,image_url,in_stock,sort_order,size,material,colour,brand,sku,show
+1,Floor Tiles,Vitrified Tile 600x600 Glossy,vitrified-tile-600-glossy,"Double charged vitrified floor tile with a glossy finish. Stocked in ivory, beige and light grey.",68,vitrified-tile-600.webp,yes,10,600x600 mm,Double charged vitrified,Ivory,Kajaria,HT-FL-600,yes
+2,Wall Tiles,Kitchen Wall Tile 300x600,wall-tile-kitchen-300x600,"Digital print wall tile for kitchen dados. Easy to wipe, does not stain from oil.",42,wall-tile-kitchen.webp,yes,20,300x600 mm,Ceramic,White,Somany,HT-WL-306,yes
+3,Sanitaryware,Wash Basin Oval Counter Top,wash-basin-oval,"Oval counter top basin in glossy white vitreous china. Fits a 550mm counter cut-out.",3400,wash-basin-oval.webp,yes,30,560x400 mm,Vitreous china,White,Cera,HT-SN-WB1,yes
+4,Sanitaryware,Wall Hung WC with Seat,wall-hung-wc,"Wall hung water closet with a soft close seat cover. Concealed cistern quoted separately.",9800,wall-hung-wc.webp,yes,40,540x360 mm,Vitreous china,White,Jaquar,HT-SN-WC1,yes
+5,CP Fittings,CP Tap Set 4 Piece,cp-tap-set-4-piece,"Chrome plated bathroom tap set. Includes basin mixer, bib cock, angle valve and health faucet.",5600,cp-tap-set.webp,yes,50,,Brass with chrome plating,Chrome,Jaquar,HT-CP-TS4,yes
+6,CP Fittings,Shower Panel with Overhead,shower-panel-overhead,"Stainless steel shower panel with overhead rain shower, hand shower and body jets. Fitted by our team.",,shower-panel.webp,yes,60,1350 mm,Stainless steel 304,Steel,Local,HT-CP-SP1,yes
