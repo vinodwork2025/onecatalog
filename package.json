@@ -1,0 +1,14 @@
+{
+  "name": "catalog-system",
+  "version": "1.0.0",
+  "description": "Multi-client WhatsApp catalog builder. One template, many clients, static output.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "photos": "node scripts/photos.js",
+    "serve": "node scripts/serve.js"
+  },
+  "dependencies": {
+    "sharp": "^0.35.4"
+  }
+}
