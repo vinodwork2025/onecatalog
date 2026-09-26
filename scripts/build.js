@@ -19,11 +19,13 @@ import { buildCss } from '../template/themes.js';
 import {
   renderIndex, renderCategory, renderProduct, renderAbout, slugify
 } from '../template/render.js';
+import { renderHome, renderLlmsTxt, checkHome } from '../site/render.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CLIENTS = path.join(ROOT, 'clients');
 const DIST = path.join(ROOT, 'dist');
 const CACHE = path.join(ROOT, '.cache');
+const SITE = path.join(ROOT, 'site');
 
 const args = process.argv.slice(2);
 const FLAGS = new Set(args.filter(a => a.startsWith('--')));
@@ -311,20 +313,63 @@ async function buildClient(slug, rawCss) {
   };
 }
 
+// ---------------------------------------------------------------- home page
+
+/* onecatalog.in itself. Copy lives in site/config.json, layout in
+ * site/render.js. Output goes to dist/_home, which the router serves on the
+ * bare platform domain. Built on full runs, or with: build.js _home */
+async function buildHome() {
+  const cfg = JSON.parse(await fsp.readFile(path.join(SITE, 'config.json'), 'utf8'));
+  const outDir = path.join(DIST, '_home');
+  await fsp.rm(outDir, { recursive: true, force: true });
+  await fsp.mkdir(outDir, { recursive: true });
+
+  const url = cfg.url.replace(/\/$/, '');
+  await fsp.writeFile(path.join(outDir, 'index.html'), renderHome(cfg));
+  await fsp.writeFile(path.join(outDir, 'llms.txt'), renderLlmsTxt(cfg));
+  await fsp.writeFile(path.join(outDir, 'robots.txt'),
+    `User-agent: *\nAllow: /\n\nSitemap: ${url}/sitemap.xml\n`);
+  await fsp.writeFile(path.join(outDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>${url}/</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod><priority>1.0</priority></url>
+</urlset>`);
+
+  const bytes = fs.statSync(path.join(outDir, 'index.html')).size;
+  log(`   index ${(bytes / 1024).toFixed(1)}KB, llms.txt, robots.txt, sitemap.xml`);
+  if (bytes > 40 * 1024) warn('home page is over 40KB');
+  const todo = checkHome(cfg);
+  if (todo.length) {
+    warn(`${todo.length} thing(s) to fill in site/config.json before launch (page is noindex until then):`);
+    todo.forEach(t => log('     - ' + t));
+  }
+  log(`   live at ${url}/`);
+}
+
 // ---------------------------------------------------------------- main
 
 async function main() {
   const rawCss = await fsp.readFile(path.join(ROOT, 'template', 'styles.css'), 'utf8');
 
+  const wantHome = !ONLY.length || ONLY.includes('_home');
   let slugs = ONLY.length
-    ? ONLY
+    ? ONLY.filter(s => s !== '_home')
     : (await fsp.readdir(CLIENTS, { withFileTypes: true }))
       .filter(d => d.isDirectory() && !d.name.startsWith('_') && !d.name.startsWith('.'))
       .map(d => d.name);
 
-  if (!slugs.length) { log('No clients found in clients/'); return; }
-
   const t0 = Date.now();
+  let homeFailed = false;
+  if (wantHome && fs.existsSync(path.join(SITE, 'config.json'))) {
+    log('\n>> home page (onecatalog.in)');
+    try { await buildHome(); } catch (e) { log(`   FAILED: ${e.message}`); homeFailed = true; process.exitCode = 1; }
+  }
+
+  if (!slugs.length) {
+    if (!wantHome) log('No clients found in clients/');
+    await writeRouter();
+    return;
+  }
+
   const results = [];
   for (const slug of slugs) {
     log(`\n>> ${slug}`);
@@ -344,6 +389,7 @@ async function main() {
   await writeRouter();
 
   log(`\n${'-'.repeat(52)}`);
+  if (homeFailed) log('Home page FAILED');
   log(`Built ${ok.length}/${results.length} catalogs in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
   if (bad.length) {
     log(`Failed: ${bad.map(b => b.slug).join(', ')}`);
@@ -370,6 +416,9 @@ async function writeRouter() {
     map[`${sub}.${platform}`] = { slug, canonical: cfg.customDomain || '' };
     if (cfg.customDomain) map[cfg.customDomain.toLowerCase()] = { slug, canonical: '' };
   }
+
+  // The bare platform domain serves the OneCatalog landing page.
+  if (fs.existsSync(path.join(DIST, '_home', 'index.html'))) map[platform] = { slug: '_home', canonical: '' };
 
   await fsp.mkdir(DIST, { recursive: true });
   await fsp.writeFile(path.join(DIST, '_headers'),

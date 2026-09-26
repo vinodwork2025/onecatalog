@@ -1,0 +1,132 @@
+{
+  "name": "OneCatalog",
+  "url": "https://onecatalog.in/",
+  "serviceArea": "India",
+  "serviceAreaPhrase": "anywhere in India",
+  "whatsapp": "919663088484",
+  "whatsappDisplay": "96630 88484",
+  "email": "hello@onecatalog.in",
+  "accent": "#1E4D7A",
+  "waMessage": "Hi OneCatalog, I want a catalog for my business.",
+
+  "title": "WhatsApp Product Catalog for Small Businesses | OneCatalog",
+  "metaDescription": "Share one link instead of forwarding the same photos all day. OneCatalog builds a mobile product catalog for your business in 48 hours. ₹3,999 a year.",
+
+  "hero": {
+    "headline": "Send one link instead of the same photos all day",
+    "subhead": "Every new enquiry means forwarding the same product photos again. OneCatalog puts all your products in one catalog link that you share in a second.",
+    "button": "Get my catalog on WhatsApp",
+    "note": "We reply within 2 hours, 9am to 7pm. We work with businesses anywhere in India."
+  },
+
+  "definition": {
+    "heading": "What is OneCatalog?",
+    "text": "OneCatalog builds mobile product catalog websites for small businesses across India. You send your product photos and prices on WhatsApp. We build a catalog with its own page for every product and a WhatsApp button on each one. It costs ₹3,999 a year."
+  },
+
+  "problem": {
+    "heading": "Does your day look like this?",
+    "lines": [
+      "A customer asks what designs you have. You forward 30 photos.",
+      "The next customer asks the same thing. You forward the same 30 photos again.",
+      "By evening you have spent hours forwarding, and still nobody has seen your full range."
+    ]
+  },
+
+  "steps": {
+    "heading": "How does it work?",
+    "intro": "It takes three steps, and all of them happen on WhatsApp. There is no meeting and no shop visit.",
+    "items": [
+      { "title": "You send photos on WhatsApp", "text": "Send your product photos, names and prices. Photos taken on your phone are fine." },
+      { "title": "We build it in 48 hours", "text": "We clean up the photos, make a page for every product and set up your catalog." },
+      { "title": "You share one link", "text": "Put the link in your WhatsApp profile, your status and your greeting message. Customers see everything and tap to enquire." }
+    ]
+  },
+
+  "samples": {
+    "heading": "See a sample catalog",
+    "intro": "These are sample catalogs we built to show how it works. Open one on your phone and tap around.",
+    "items": [
+      { "label": "Sample furniture shop catalog", "detail": "Steel almirahs, cots and office furniture. 14 products.", "url": "https://shreefurniture.onecatalog.in/" },
+      { "label": "Sample tiles and sanitaryware catalog", "detail": "Floor tiles, wall tiles, basins and taps. 6 products.", "url": "https://hosurtiles.onecatalog.in/" }
+    ]
+  },
+
+  "trades": {
+    "heading": "Who is OneCatalog for?",
+    "intro": "OneCatalog is for any business that sends product photos on WhatsApp all day. It works well for:",
+    "items": [
+      "Furniture shops",
+      "Tiles and sanitaryware dealers",
+      "Textile and garment wholesalers",
+      "Saree shops and boutiques",
+      "Jewellers",
+      "Interior designers",
+      "Printers and signage shops",
+      "Fabrication units",
+      "Equipment and machinery dealers",
+      "Hardware and electrical shops",
+      "Kitchen and appliance dealers",
+      "Home decor and furnishing stores"
+    ]
+  },
+
+  "compare": {
+    "heading": "Why not just use the free WhatsApp catalog?",
+    "intro": "Keep your WhatsApp catalog. OneCatalog does not replace it. It does the things a WhatsApp catalog cannot do.",
+    "points": [
+      { "title": "Google can find it", "text": "Google cannot see a WhatsApp catalog. It has no pages and no web addresses. OneCatalog gives every product its own page, so people searching for what you sell can find it." },
+      { "title": "It opens anywhere", "text": "It opens in any browser. Share it on Instagram, in an email or on a printed QR code, or open it on a computer. Customers do not need WhatsApp to see it." },
+      { "title": "Enquiries name the product", "text": "Every product has its own WhatsApp button. The message a customer sends you already names the product, so you know exactly what they want." },
+      { "title": "We keep it updated", "text": "Send new photos or price changes on WhatsApp and we update it. You never log in to anything or touch a website." }
+    ]
+  },
+
+  "pricing": {
+    "heading": "What does OneCatalog cost?",
+    "price": 3999,
+    "period": "year",
+    "lead": "OneCatalog costs ₹3,999 a year, everything included. One extra order can pay for the whole year.",
+    "includes": [
+      "A mobile catalog with its own page for every product",
+      "A WhatsApp enquiry button on every product",
+      "Your own web address on day one, like yourshop.onecatalog.in",
+      "A domain name bought in your business name",
+      "Photo clean-up: square crop and brightness fix",
+      "12 product updates during the year",
+      "Setup of your WhatsApp Business profile, greeting message and quick replies",
+      "Your catalog link added to your Google Business Profile"
+    ],
+    "booking": 999,
+    "riskReversal": "Pay ₹999 to start. Pay the balance only after you see your catalog live and approve it.",
+    "lite": "Smaller budget? The Lite plan costs ₹1,999 a year. Ask us on WhatsApp what it includes."
+  },
+
+  "faq": {
+    "heading": "Questions owners ask us",
+    "items": [
+      { "q": "I already have a WhatsApp catalog. Why should I pay for this?", "a": "Because Google and people outside WhatsApp cannot see your WhatsApp catalog. OneCatalog gives every product its own web page that opens in any browser. Keep your WhatsApp catalog too. The two work well together." },
+      { "q": "How long does it take to build my catalog?", "a": "It takes 48 hours from the day we get your photos, names and prices. If some photos are blurry, we ask you for new ones on WhatsApp." },
+      { "q": "What if I don't like my catalog?", "a": "You do not pay the balance until you approve it. You pay ₹999 to start, we show you the live catalog and we make your corrections. You pay the rest only when you are happy with it." },
+      { "q": "Do I need a website or a domain already?", "a": "No. Your catalog gets its own address like yourshop.onecatalog.in on day one. The annual plan also includes a domain name bought in your business name." },
+      { "q": "How do I add new products later?", "a": "Send the new photos and prices on WhatsApp and we add them. The annual plan includes 12 updates a year. Extra update batches cost ₹299 each." },
+      { "q": "Will my catalog show up on Google?", "a": "Yes, your catalog is findable on Google, which a WhatsApp catalog is not. Every product has its own page with its name, price and photo, so Google can read it. We do not promise a position in search results, and nobody honest can." },
+      { "q": "What happens after the first year?", "a": "From the second year, it costs ₹1,999 a year to keep your catalog and its link live. Your link stays the same every year, so the links you have already shared keep working." },
+      { "q": "Do you work outside my city?", "a": "Yes. We work with businesses anywhere in India. Everything happens on WhatsApp, so your location does not matter." },
+      { "q": "Do we need to meet in person?", "a": "No. You send photos and details on WhatsApp and we do the rest. At the end we do a 15-minute video call to add your new link to your WhatsApp Business profile." },
+      { "q": "What if I have 200 products?", "a": "200 products is fine. Every product gets its own page, and customers can search and filter by category. You can send the photos in batches if that is easier." }
+    ]
+  },
+
+  "finalCta": {
+    "heading": "Ready to stop forwarding the same photos?",
+    "text": "Send us a message on WhatsApp and tell us what you sell. We will reply with the next steps.",
+    "button": "Chat with OneCatalog on WhatsApp"
+  },
+
+  "footer": {
+    "line": "OneCatalog builds product catalogs for small businesses across India."
+  },
+
+  "stickyLabel": "WhatsApp us"
+}
