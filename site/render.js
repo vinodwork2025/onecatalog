@@ -39,13 +39,32 @@ export function checkHome(cfg) {
   if ((cfg.title || '').length >= 60) out.push(`title is ${cfg.title.length} characters, keep it under 60`);
   const d = (cfg.metaDescription || '').length;
   if (d < 150 || d > 160) out.push(`metaDescription is ${d} characters, keep it 150 to 160`);
-  // One price everywhere, or search engines stop trusting the entity.
-  const price = rupees(cfg.pricing.price);
-  for (const [k, v] of [['metaDescription', cfg.metaDescription], ['definition.text', cfg.definition.text], ['pricing.lead', cfg.pricing.lead]]) {
-    const found = String(v).match(/₹[\d,]+/g) || [];
-    if (!found.includes(price) || found.some(f => f !== price && k !== 'pricing.lead')) out.push(`${k} should state the price as ${price}`);
+  // Same prices everywhere, or search engines stop trusting the entity.
+  // The lead plan's price must appear in the summary text, and every rupee
+  // amount written anywhere in the copy must be one of the configured prices.
+  const P = cfg.pricing;
+  const lead = rupees(featured(cfg).price);
+  for (const [k, v] of [['metaDescription', cfg.metaDescription], ['definition.text', cfg.definition.text], ['pricing.lead', P.lead]]) {
+    if (!String(v).includes(lead)) out.push(`${k} should state the lead price ${lead}`);
   }
+  const known = new Set([...P.tiers.flatMap(t => [t.price, t.renewal]), P.booking, P.extraBatch].map(rupees));
+  const strings = [];
+  const collect = v => typeof v === 'string' ? strings.push(v) : v && typeof v === 'object' && Object.values(v).forEach(collect);
+  collect(cfg);
+  for (const amt of new Set(strings.flatMap(s => s.match(/₹\d{1,3}(?:,\d{2,3})*/g) || []))) {
+    if (!known.has(amt)) out.push(`${amt} appears in the copy but is not a configured price`);
+  }
+  // We serve all of India remotely. The page must never suggest a visit.
+  if (strings.some(s => /in person/i.test(s))) out.push('copy says "in person" somewhere, remove it');
   return out;
+}
+
+function featured(cfg) {
+  return cfg.pricing.tiers[cfg.pricing.featured ?? 0];
+}
+
+function tierText(t) {
+  return `${t.products}: ${rupees(t.price)} for the first year, then ${rupees(t.renewal)} a year to renew. ${t.domainNote}.`;
 }
 
 function schema(cfg) {
@@ -77,15 +96,19 @@ function schema(cfg) {
     areaServed: country,
     audience: { '@type': 'BusinessAudience', audienceType: 'Small and medium businesses' },
     category: cfg.trades.items,
-    offers: {
+    // One Offer per priced plan, lead plan first. Prices match the page table.
+    offers: [featured(cfg), ...cfg.pricing.tiers.filter(t => t !== featured(cfg))].map(t => ({
       '@type': 'Offer',
-      price: String(cfg.pricing.price),
+      name: t.label ? `${t.label}, ${t.products}` : t.products,
+      price: String(t.price),
       priceCurrency: 'INR',
-      description: `${cfg.pricing.lead} Includes: ${cfg.pricing.includes.join('. ')}.`,
+      description: `${tierText(t)} ${t === featured(cfg)
+        ? `Includes: ${cfg.pricing.includes.join('. ')}.`
+        : cfg.pricing.everyPlan}`,
       url,
       availability: 'https://schema.org/InStock',
       areaServed: country
-    }
+    }))
   };
 
   const faq = {
@@ -160,13 +183,23 @@ h3{font-size:18px;line-height:1.35;font-weight:700}
 .point p{margin-top:6px;color:var(--muted)}
 .price-card{margin-top:22px;background:var(--card);border:2px solid var(--accent);border-radius:16px;padding:22px 18px}
 .price{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
-.price small{display:block;margin-top:6px;font-size:17px;font-weight:600;color:var(--muted);letter-spacing:0}
+.price small{display:block;margin-top:8px;line-height:1.4;font-size:17px;font-weight:600;color:var(--muted);letter-spacing:0}
 .incl{list-style:none;margin-top:16px;display:grid;gap:10px}
 .incl li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:16px}
 .incl svg{width:22px;height:22px;fill:var(--wa);margin-top:2px}
 .risk{margin-top:18px;padding:14px 16px;border-radius:12px;background:var(--tint);font-weight:700}
 .price-card .btn{margin-top:18px}
-.lite{margin-top:16px;font-size:15.5px;color:var(--muted)}
+.plans{margin-top:30px}
+.plans h3{font-size:17px}
+.tiers{width:100%;margin-top:10px;border-collapse:collapse;font-size:15px;line-height:1.4}
+.tiers th,.tiers td{text-align:left;padding:10px 6px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tiers thead th{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.tiers td:not(:first-child),.tiers thead th:not(:first-child){text-align:right;white-space:nowrap;padding-right:0;padding-left:6px}
+.tiers tbody th{font-weight:600}
+.tiers tbody th small{display:block;font-size:13px;font-weight:400;color:var(--muted)}
+.tiers tr.is-lead th,.tiers tr.is-lead td{font-weight:800;color:var(--accent-dark)}
+.plans p{margin-top:12px;font-size:15.5px;color:var(--muted)}
+.plans p.plain{color:var(--text);font-weight:600}
 .faq{margin-top:20px;border-top:1px solid var(--line)}
 .faq-item{border-bottom:1px solid var(--line);padding:6px 0}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:52px;padding:10px 0;background:none;border:0;font:inherit;font-size:17.5px;font-weight:700;color:var(--text);text-align:left;cursor:pointer}
@@ -191,8 +224,11 @@ h3{font-size:18px;line-height:1.35;font-weight:700}
 export function renderHome(cfg) {
   const e = esc;
   const wa = waLink(cfg);
-  const priceStr = rupees(cfg.pricing.price);
-  const hasTodo = checkHome(cfg).some(p => p.includes('TODO') || p.startsWith('whatsapp'));
+  const P = cfg.pricing;
+  const lead = featured(cfg);
+  const tierRows = P.tiers.map(t => `<tr${t === lead ? ' class="is-lead"' : ''}><th scope="row">${e(t.products)}<small>${e(t.label ? `${t.label}. ${t.domainNote}` : t.domainNote)}</small></th><td>${e(rupees(t.price))}</td><td>${e(rupees(t.renewal))}</td></tr>`).join('')
+    + (P.overflow ? `<tr><th scope="row">${e(P.overflow.products)}</th><td colspan="2">${e(P.overflow.text)}</td></tr>` : '');
+  const hasTodo = checkHome(cfg).length > 0;
   const nameHtml = e(cfg.name).replace(/^One/, 'One<span>') + '</span>';
   const waBtn = (label, cls = '') =>
     `<a class="btn${cls}" href="${e(wa)}" rel="noopener">${WA_ICON}<span>${e(label)}</span></a>`;
@@ -271,15 +307,23 @@ ${waBtn(cfg.hero.button)}
 </div></section>
 
 <section class="alt" aria-labelledby="h-price"><div class="wrap">
-<h2 id="h-price">${e(cfg.pricing.heading)}</h2>
-<p class="lead">${e(cfg.pricing.lead)}</p>
+<h2 id="h-price">${e(P.heading)}</h2>
+<p class="lead">${e(P.lead)}</p>
 <div class="price-card">
-<p class="price">${e(priceStr)} <small>a ${e(cfg.pricing.period)}, everything included</small></p>
-<ul class="incl">${cfg.pricing.includes.map(i => `<li>${TICK}<span>${e(i)}</span></li>`).join('')}</ul>
-<p class="risk">${e(cfg.pricing.riskReversal)}</p>
+<p class="price">${e(rupees(lead.price))} <small>for the first year, then ${e(rupees(lead.renewal))} a year. ${e(lead.products)}.</small></p>
+<ul class="incl">${P.includes.map(i => `<li>${TICK}<span>${e(i)}</span></li>`).join('')}</ul>
+<p class="risk">${e(P.riskReversal)}</p>
 ${waBtn(cfg.hero.button)}
 </div>
-<p class="lite">${e(cfg.pricing.lite)}</p>
+<div class="plans">
+<h3>${e(P.tableHeading)}</h3>
+<table class="tiers">
+<thead><tr><th scope="col">Products</th><th scope="col">First year</th><th scope="col">Renewal</th></tr></thead>
+<tbody>${tierRows}</tbody>
+</table>
+<p class="plain">${e(P.tableNote)}</p>
+<p>${e(P.everyPlan)}</p>
+</div>
 </div></section>
 
 <section aria-labelledby="h-faq"><div class="wrap">
@@ -338,7 +382,16 @@ export function renderLlmsTxt(cfg) {
     '',
     '## Price',
     cfg.pricing.lead,
+    '',
+    `The ${rupees(featured(cfg).price)} plan includes:`,
     ...cfg.pricing.includes.map(i => `- ${i}`),
+    '',
+    'All plans:',
+    ...cfg.pricing.tiers.map(t => `- ${t.label ? t.label + ', ' : ''}${tierText(t)}`),
+    ...(cfg.pricing.overflow ? [`- ${cfg.pricing.overflow.products}: ${cfg.pricing.overflow.text}.`] : []),
+    '',
+    cfg.pricing.tableNote,
+    cfg.pricing.everyPlan,
     cfg.pricing.riskReversal,
     '',
     '## Sample catalogs',
