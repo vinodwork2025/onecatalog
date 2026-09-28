@@ -103,6 +103,22 @@ a { color: var(--accent-dark); text-decoration: none; }
 
 .head-call svg { width: 20px; height: 20px; fill: var(--accent-dark); }
 
+/* ---------- Announcement bar ---------- */
+
+.announce {
+  display: block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  padding: 11px 16px;
+  min-height: 42px;
+}
+
+a.announce { text-decoration: underline; text-underline-offset: 3px; color: #fff; }
+
 /* ---------- Categories ---------- */
 
 .cats {
@@ -341,6 +357,16 @@ a { color: var(--accent-dark); text-decoration: none; }
   border: 1px solid var(--line);
   margin-top: 10px;
 }
+
+/* Google review button. Only renders when reviewUrl is set in the config. */
+.btn-review {
+  background: #fff;
+  color: #1a73e8;
+  border: 1px solid #dadce0;
+  margin-top: 10px;
+}
+
+.btn-review svg { fill: #fbbc04; }
 
 /* ---------- Floating WhatsApp ---------- */
 

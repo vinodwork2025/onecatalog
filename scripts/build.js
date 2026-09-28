@@ -460,26 +460,21 @@ export default {
 
     // Bare platform domain: the OneCatalog landing page.
     if (host === PLATFORM) {
-      return (await asset('/_home')) || new Response('Not found', { status: 404 });
+      return (await asset('/_home')) || new Response('Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' } });
     }
 
-    // Unknown hostname. Usually the workers.dev preview URL, or DNS that has
-    // not propagated yet. Show what IS wired up rather than a bare 404, so the
-    // wildcard setup can be checked at a glance.
+    // Any other unmapped hostname: a typo'd subdomain, the workers.dev URL.
+    // Never list the client hostnames here: on a public domain that would
+    // publish the whole client list.
     if (!entry) {
-      const rows = Object.keys(MAP).sort()
-        .map(h => '<li><a href="https://' + h + '/">' + h + '</a></li>').join('');
       return new Response(
         '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-        + '<title>Catalogs</title><meta name="robots" content="noindex">'
-        + '<style>body{font:16px/1.6 system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 20px;color:#222}'
-        + 'h1{font-size:20px}code{background:#f2f2f2;padding:2px 5px;border-radius:4px}'
-        + 'li{margin:6px 0}a{color:#06c}</style>'
-        + '<h1>No catalog on ' + host.replace(/[<>&]/g, '') + '</h1>'
-        + '<p>This hostname is not mapped. ' + Object.keys(MAP).length + ' catalog(s) are live:</p>'
-        + '<ul>' + rows + '</ul>'
-        + '<p>If a link above does not load, the wildcard <code>CNAME *</code> record or the '
-        + '<code>*.' + PLATFORM + '</code> custom domain is missing in Cloudflare.</p>',
+        + '<title>Not found</title><meta name="robots" content="noindex">'
+        + '<style>body{font:16px/1.6 system-ui,sans-serif;max-width:560px;margin:60px auto;padding:0 20px;color:#222}'
+        + 'h1{font-size:20px;margin-bottom:10px}a{color:#06c}</style>'
+        + '<h1>No catalog here</h1>'
+        + '<p>Nothing is published at this address.</p>'
+        + '<p><a href="https://' + PLATFORM + '/">' + PLATFORM + '</a></p>',
         { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' } }
       );
     }
@@ -489,7 +484,7 @@ export default {
       return Response.redirect('https://' + entry.canonical + url.pathname + url.search, 301);
     }
 
-    return (await asset('/' + entry.slug)) || new Response('Not found', { status: 404 });
+    return (await asset('/' + entry.slug)) || new Response('Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' } });
   }
 };
 `);

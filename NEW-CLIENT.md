@@ -72,7 +72,8 @@ Required: `name`, `image_url`, and a `slug` you will never change.
 `image_url` must exactly match a file in `clients/<slug>/images/`, ending
 `.webp`. Several photos for one product: separate them with `|`.
 
-Blank `price` renders as "Price on request". That is fine.
+Blank `price` renders as "Price on request". That is fine. Text prices work
+too: `From 1500`, `50 per sq ft`, `Quote after site visit`.
 Categories must be spelled identically across every row.
 
 **Demo client: stop here, use the local CSV.**
@@ -86,6 +87,10 @@ Open `clients/<slug>/config.json` and fill in:
 `address`, `city`, `state`, `pincode`, `mapsUrl`, `hours`, `since`,
 `areasServed`, `about`, `logo` (the filename in `images/`), `accent`, `theme`,
 `subdomain`, `metaDescription`.
+
+Optional: `reviewUrl` (their Google review link) adds a "Rate us on Google"
+button. `announcement` shows a coloured bar at the top of every page, for an
+offer or a holiday closure, linked to `announcementUrl` if set.
 
 `theme` is `warm`, `cool`, `dark` or `sharp`. `layout` is `grid` or
 `grid-large`.
@@ -115,7 +120,8 @@ Node through Windows Firewall when asked. Check:
 - [ ] A product page opens
 - [ ] The WhatsApp button pre-fills the product name
 - [ ] The footer phone number dials
-- [ ] The Maps link opens the right place
+- [ ] "Get directions" opens the right place
+- [ ] "Rate us on Google" opens their review box, if `reviewUrl` is set
 
 ## Step 8: commit and push — this is the deploy
 

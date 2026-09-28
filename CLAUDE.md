@@ -77,7 +77,10 @@ sort_order, size, material, colour, brand, moq, warranty, sku, show`
 - `image_url` must exactly match a file in `clients/<slug>/images/`, ending `.webp`.
   Several photos: separate with `|`.
 - `slug` is the URL. Once a catalog link has been shared, never change it.
-- `price` is numbers only. Blank means "Price on request".
+- `price`: a number (`14500`) shows as ₹14,500. Text such as `From 1500`,
+  `50 per sq ft` or `Quote after site visit` shows as written, with ₹ added
+  before each number. Only a plain number goes into the product schema.
+  Blank means "Price on request".
 - `in_stock` = `no` shows an out-of-stock badge. `show` = `no` hides the row.
 - Categories must be spelled identically across rows. The build refuses
   "Almirah" and "almirah" in the same file.
@@ -88,6 +91,11 @@ sort_order, size, material, colour, brand, moq, warranty, sku, show`
 `address`, `city`, `hours`, `since`, `about`, `accent` (hex), `theme`
 (`warm` | `cool` | `dark` | `sharp`), `layout` (`grid` | `grid-large`),
 `subdomain`, `customDomain`, `sheetCsvUrl`.
+
+Optional: `mapsUrl` adds a "Get directions" button, `reviewUrl` (their Google
+review link) adds a "Rate us on Google" button, and `announcement` shows a bar
+in the client's accent colour at the top of every page, linked to
+`announcementUrl` if set. Leave any of them blank to hide it.
 
 `subdomain` becomes `<subdomain>.onecatalog.in`. Never change it after a link
 has been shared.
@@ -168,7 +176,8 @@ records. The subdomain then 301s to the domain. Steps in `NEW-CLIENT.md`.
 How requests are served: `worker/index.js` reads the hostname.
 `onecatalog.in` and `www.onecatalog.in` get `dist/_home/`. A client subdomain
 gets `dist/<slug>/`, or a 301 to the client's `customDomain` when one is set.
-Unknown hostnames get a "No catalog" page listing what is live. The router only
+Unknown hostnames get a plain "No catalog here" page. It never lists client
+addresses. The router only
 passes on 2xx/304 responses from the asset server, so internal paths like
 `/_home/` never leak.
 
