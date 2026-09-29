@@ -1,0 +1,106 @@
+{
+  "path": "/catalogue-maker/resellers",
+  "type": "industry",
+  "crumb": "Resellers",
+  "keyword": "reseller catalogue",
+  "updated": "2026-09-29",
+  "title": "Reseller Catalogue for WhatsApp Sellers | OneCatalog",
+  "description": "A reseller catalogue with your own prices and your own WhatsApp number. Share one link instead of forwarding supplier photos to every buyer.",
+  "h1": "A reseller catalogue with your prices, not your supplier's",
+  "answer": "A reseller catalogue is one link that shows the products you resell, at the price you set, with your WhatsApp number on every product. OneCatalog builds it from the supplier photos you choose. Your buyers see a clean catalogue under your name instead of a stream of forwarded photos.",
+  "waText": "Hi OneCatalog, I am a reseller and want a catalogue.",
+  "mockup": {
+    "label": "Sample reseller catalogue with the reseller's own prices, shown on a phone",
+    "shop": "Sample Trends, Surat",
+    "tag": "Example layout",
+    "items": [
+      { "name": "Printed rayon kurti", "price": "₹549" },
+      { "name": "Cotton bedsheet, double", "price": "₹799" },
+      { "name": "Kitchen storage set", "price": "₹699" },
+      { "name": "Kids cotton night suit", "price": "₹449" }
+    ]
+  },
+  "sections": [
+    {
+      "h2": "Why forwarding supplier photos stops working",
+      "blocks": [
+        { "p": "Take a home-based reseller in Surat. Her suppliers send 40 new product photos a day. She forwards the good ones to her buyer groups, edits the price in the caption, and answers the same questions all evening." },
+        { "pain": [
+          "Forwarded photos often carry the supplier's price or watermark, not yours.",
+          "Buyers see the same product from five resellers in the same group and pick the cheapest.",
+          "Nobody can scroll back and find the kurti from last Tuesday."
+        ] },
+        { "p": "If you resell on platforms like Meesho, you know this pattern well. A catalogue gives you a steady shop window of your own." }
+      ]
+    },
+    {
+      "h2": "How a reseller catalogue works",
+      "blocks": [
+        { "p": "You pick the products you want to sell and send us the photos with your selling price. We build a catalogue under your shop name, with your WhatsApp number on every Enquire button. Your margin is already in the price your buyer sees." },
+        { "p": "Your buyers open one link, browse by category and message you about what they want. You place the order with your supplier as you do today." }
+      ]
+    },
+    {
+      "h2": "Is a catalogue right for my reselling?",
+      "blocks": [
+        { "p": "Be honest about how fast your products change. Every plan includes 12 update requests a year, each for up to 10 products. Extra batches cost ₹299 for 10 products." },
+        { "table": {
+          "head": ["Your situation", "Fit"],
+          "rows": [
+            ["You sell a steady range of 20 to 50 favourites", "Good fit. Start on Lite or the 50 product plan"],
+            ["You add a few new products each month", "Good fit. Updates are included"],
+            ["You change your whole range every few days", "Poor fit. Extra batches will cost more than they earn"]
+          ]
+        } }
+      ]
+    },
+    {
+      "h2": "Example reseller catalogue layout",
+      "blocks": [
+        { "table": {
+          "head": ["Category", "Details shown"],
+          "rows": [
+            ["Women's wear", "Sizes, fabric, colours, your price"],
+            ["Home and kitchen", "Size, material, pack contents, your price"],
+            ["Kids wear", "Age range, fabric, your price"],
+            ["Beauty and personal care", "Brand, pack size, your price"]
+          ]
+        } },
+        { "p": "Ask your supplier for photos without their price or logo. Clean photos make your catalogue look like your own shop." }
+      ]
+    },
+    {
+      "h2": "Photo tips for resellers",
+      "blocks": [
+        { "ul": [
+          "Choose supplier photos on a plain background. Mixed backgrounds make the catalogue look messy.",
+          "Skip photos with text or prices printed on them.",
+          "Pick one main photo per product and one detail photo, not ten angles.",
+          "If you have the product at home, one real photo in daylight builds more trust than a studio image."
+        ] }
+      ]
+    },
+    {
+      "h2": "What it costs a reseller",
+      "blocks": [
+        { "p": "Resellers with a short list start on Lite, ₹1,999 a year for up to 20 products on a onecatalog.in link. With more products or your own domain, choose up to 50 products for ₹3,999 in the first year. See the [pricing page](/pricing) for every plan, and our [WhatsApp catalogue page](/whatsapp-catalogue) for how to share the link. If you resell clothing, the [garment catalogue page](/catalogue-maker/garments) has more ideas." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Reseller catalogue questions",
+    "items": [
+      { "q": "Can I set my own price with my margin?", "a": "Yes. You send us your selling price for each product and that is the only price your buyers see." },
+      { "q": "Will my supplier's name show anywhere?", "a": "No. The catalogue shows your shop name and your WhatsApp number. Use photos without the supplier's logo." },
+      { "q": "Can I share catalogue links in WhatsApp groups?", "a": "Yes. Share the main link or a single product link in any group, chat, status or broadcast list." },
+      { "q": "What happens when my supplier runs out of a product?", "a": "Tell us and we mark it out of stock. The product stays in your catalogue with a badge, so buyers know it is not available right now. When it is back, we remove the badge. Each change counts towards your included update requests." },
+      { "q": "Do I need a GST number to get a catalogue?", "a": "No. A catalogue is a website that shows your products. Whether you need GST for your reselling depends on your business, so check with your accountant." },
+      { "q": "Is this connected to Meesho?", "a": "No. OneCatalog is a separate service and is not linked to any reselling platform." }
+    ]
+  },
+  "cta": {
+    "heading": "Get a catalogue under your own name",
+    "text": "Tell us what you resell and how many products you want to show."
+  },
+  "note": "Meesho is a trademark of its owner. OneCatalog is not affiliated with Meesho."
+}

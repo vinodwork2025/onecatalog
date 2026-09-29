@@ -1,0 +1,94 @@
+{
+  "path": "/catalogue-maker/garments",
+  "type": "industry",
+  "crumb": "Garments and sarees",
+  "keyword": "garment catalogue maker",
+  "updated": "2026-09-29",
+  "title": "Garment Catalogue Maker for Saree Shops | OneCatalog",
+  "description": "A garment catalogue maker for saree, fabric and dress material shops. We build your catalogue from WhatsApp photos. One link for all your stock.",
+  "h1": "Garment catalogue maker for shops that get new stock every week",
+  "answer": "OneCatalog is a garment catalogue maker for saree shops, fabric sellers and dress material wholesalers. You send photos of your stock on WhatsApp, and we build a catalogue with sizes, colours, fabric and price for each piece. Your customers and retailers see the full range from one link.",
+  "waText": "Hi OneCatalog, I want a catalogue for my garment shop.",
+  "mockup": {
+    "label": "Sample garment catalogue for a saree shop, shown on a phone",
+    "shop": "Sample Silks, Salem",
+    "tag": "Example layout",
+    "items": [
+      { "name": "Soft silk saree, maroon", "price": "₹3,200" },
+      { "name": "Cotton dress material set", "price": "₹850" },
+      { "name": "Linen saree, mustard", "price": "₹1,650" },
+      { "name": "Kids ethnic set, 2 to 8 yrs", "price": "From ₹690" }
+    ]
+  },
+  "sections": [
+    {
+      "h2": "The daily problem in a garment shop",
+      "blocks": [
+        { "p": "Take a saree shop in Salem as an example. New stock lands every week. The owner photographs each piece and forwards the photos to regular buyers, one chat at a time. By Saturday the Monday photos are buried under 200 messages." },
+        { "pain": [
+          "Every buyer asks the same three questions: price, fabric and colours available.",
+          "Retailers want to see the full new range, not ten photos at a time.",
+          "A buyer who liked a saree last week cannot find the photo, so the sale is lost."
+        ] }
+      ]
+    },
+    {
+      "h2": "How a garment catalogue maker fixes it",
+      "blocks": [
+        { "p": "With a catalogue, every piece has its own page with photos, fabric, colour, size range and price. You send one link. The buyer scrolls through everything and taps Enquire on WhatsApp on the piece they want. The message tells you exactly which saree or set they mean." },
+        { "p": "New stock is added through update requests. Every plan includes 12 update requests a year, each for up to 10 products. A shop that changes most of its range every week will need extra batches, which cost ₹299 for 10 products. Tell us how often your stock changes and we will say honestly whether it suits you." },
+        { "p": "Pieces that sell out can be marked out of stock instead of deleted. The page stays, so a buyer can still ask when it will come back." }
+      ]
+    },
+    {
+      "h2": "Example garment catalogue layout",
+      "blocks": [
+        { "p": "This is how we would set up a catalogue for a saree and dress material shop. Categories follow the way your buyers ask for things." },
+        { "table": {
+          "head": ["Category", "Details shown on each product"],
+          "rows": [
+            ["Silk sarees", "Fabric, colour, border type, blouse included or not, price"],
+            ["Cotton sarees", "Fabric count, colour, weave, price"],
+            ["Dress material", "Top, bottom and dupatta fabric, length in metres, price"],
+            ["Readymade kurtis", "Sizes available, colour, fabric, price"],
+            ["Kids wear", "Age range, colours, price"]
+          ]
+        } },
+        { "p": "Wholesale sellers can add a minimum order quantity and a price per set instead of per piece. If you sell mainly to retailers, the [wholesale catalogue page](/catalogue-maker/wholesale) explains that setup." }
+      ]
+    },
+    {
+      "h2": "Photo tips for sarees and fabric",
+      "blocks": [
+        { "ul": [
+          "Shoot in daylight near a window, not under tube lights. Silk colours look wrong under white light.",
+          "Show the full drape for sarees and a close-up of the border and pallu as a second photo.",
+          "Lay dress material flat on a plain sheet so the print is clear.",
+          "Use the same background for every piece. The catalogue looks tidy and colours are easier to compare.",
+          "Send the photos as documents in WhatsApp if you can. That keeps the full quality."
+        ] },
+        { "p": "We crop every photo square and fix the brightness before it goes into your catalogue." }
+      ]
+    },
+    {
+      "h2": "What it costs for a garment shop",
+      "blocks": [
+        { "p": "Most garment shops start with up to 50 products for ₹3,999 in the first year, including their own domain. Shops with a bigger range choose 150 products for ₹5,999. See every plan on the [pricing page](/pricing), and read how the link works inside WhatsApp on our [WhatsApp catalogue page](/whatsapp-catalogue)." },
+        { "p": "Want to see one first? Open our [sample saree shop catalogue](https://varnamsarees.onecatalog.in/) on your phone. It is an example shop, not a real customer." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Garment catalogue questions",
+    "items": [
+      { "q": "Can I show sizes and colours for each piece?", "a": "Yes. Each product can show sizes, colours, fabric and material. If a kurti comes in five colours, we can list the colours on one product or make each colour a separate product with its own photo." },
+      { "q": "My stock changes every week. Will this work?", "a": "It works if most of your range stays for a few weeks. Every plan includes 12 update requests a year of up to 10 products each. Weekly full-range changes need extra batches at ₹299 for 10 products, so ask us first and we will tell you the real cost." },
+      { "q": "Can I share the catalogue with retailers only?", "a": "The catalogue is a public link. Anyone with the link can open it. If you do not want to show prices publicly, we can show Price on request and you share prices in the chat." },
+      { "q": "Can I sell sarees and readymade clothes in one catalogue?", "a": "Yes. We put them in separate categories, so buyers go straight to what they want." }
+    ]
+  },
+  "cta": {
+    "heading": "Put your whole range in one link",
+    "text": "Send us a few photos of your stock on WhatsApp. We will tell you how your catalogue would look."
+  }
+}

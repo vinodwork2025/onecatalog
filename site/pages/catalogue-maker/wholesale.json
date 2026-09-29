@@ -1,0 +1,93 @@
+{
+  "path": "/catalogue-maker/wholesale",
+  "type": "industry",
+  "crumb": "Wholesale",
+  "keyword": "wholesale catalogue maker",
+  "updated": "2026-09-29",
+  "title": "Wholesale Catalogue Maker for Distributors | OneCatalog",
+  "description": "A wholesale catalogue maker for distributors and B2B sellers. MOQ, bulk prices and product codes on every item, shared with retailers in one link.",
+  "h1": "Wholesale catalogue maker for distributors who sell to hundreds of retailers",
+  "answer": "OneCatalog is a wholesale catalogue maker for distributors, stockists and B2B sellers. We build a catalogue where every product shows its code, MOQ and bulk price, so a retailer can order without asking five questions first. You send one link to every retailer instead of forwarding the same photos to each of them.",
+  "waText": "Hi OneCatalog, I want a catalogue for my wholesale business.",
+  "mockup": {
+    "label": "Sample wholesale catalogue with MOQ and product codes, shown on a phone",
+    "shop": "Sample Traders, Hosur",
+    "tag": "Example layout",
+    "items": [
+      { "name": "LED bulb 9W, box of 50", "price": "MOQ 5 boxes" },
+      { "name": "PVC wire 1.5 sq mm, 90 m", "price": "Price on request" },
+      { "name": "Modular switch, 6A", "price": "MOQ 200 pcs" },
+      { "name": "Ceiling fan, 1200 mm", "price": "Price on request" }
+    ]
+  },
+  "sections": [
+    {
+      "h2": "The problem with selling wholesale on WhatsApp",
+      "blocks": [
+        { "p": "Think of an electrical goods distributor in Hosur with 300 retail shops on WhatsApp. When a new product comes in, someone in the office forwards the photo to each shop, or to a few broadcast lists. The retailers reply with questions the office has answered a hundred times." },
+        { "pain": [
+          "What is the minimum order? What is the price for 10 boxes? Is it in stock?",
+          "Retailers order the wrong item because two products look alike in a photo.",
+          "New staff do not know the full range, so they cannot answer questions."
+        ] }
+      ]
+    },
+    {
+      "h2": "How a wholesale catalogue maker saves your team's time",
+      "blocks": [
+        { "p": "Each product page answers the usual questions before they are asked. Code, pack size, MOQ, price or price slab and stock status are all on the page. The retailer taps Enquire on WhatsApp and the message includes the product code, so your team knows exactly what to bill." },
+        { "p": "Out of stock items get a badge instead of disappearing, so retailers can still ask when they will be back. Your staff can use the same catalogue to learn the range." }
+      ]
+    },
+    {
+      "h2": "Example wholesale catalogue layout",
+      "blocks": [
+        { "table": {
+          "head": ["Field", "Example"],
+          "rows": [
+            ["Product code", "SW-6A-WH"],
+            ["Pack size", "Box of 20"],
+            ["MOQ", "10 boxes"],
+            ["Price", "A single price, a slab written as text, or Price on request"],
+            ["Brand", "The brand name, if you stock several"],
+            ["Stock", "In stock, or an out of stock badge"]
+          ]
+        } },
+        { "p": "Bulk price slabs are shown as text on the product, for example a price for 10 boxes and a lower price for 50 boxes. The catalogue does not calculate totals or take payment. Orders are confirmed in the WhatsApp chat." },
+        { "callout": "One catalogue shows the same prices to everyone who opens it. If different customers get different prices, show Price on request and quote each one in the chat." }
+      ]
+    },
+    {
+      "h2": "Photo tips for wholesale products",
+      "blocks": [
+        { "ul": [
+          "Photograph the product and its box. Retailers recognise products by the packaging.",
+          "Show the label with the model number clearly, or add the model number to the product name.",
+          "Keep every photo on the same plain background so the range looks consistent.",
+          "For items sold in packs, show one piece and the full pack as two photos."
+        ] }
+      ]
+    },
+    {
+      "h2": "Plans for wholesalers",
+      "blocks": [
+        { "p": "Most distributors have a wide range, so they choose up to 150 products for ₹5,999 or up to 300 products for ₹7,999 in the first year. Over 300 products, we quote. Every plan is on the [pricing page](/pricing). To see how retailers open and share the link, read about our [WhatsApp catalogue](/whatsapp-catalogue). Selling garments wholesale? The [garment catalogue page](/catalogue-maker/garments) has trade-specific tips." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Wholesale catalogue questions",
+    "items": [
+      { "q": "Can I show MOQ and bulk price slabs?", "a": "Yes. MOQ has its own field on each product, and price slabs are written as text, such as a price for 10 boxes and another for 50 boxes." },
+      { "q": "Can I show different prices to different customers?", "a": "No. Everyone who opens the catalogue sees the same page. If your prices vary by customer, show Price on request and quote each buyer in the chat." },
+      { "q": "Can retailers place an order in the catalogue?", "a": "They send an enquiry on WhatsApp from the product page. There is no cart or online payment. You confirm the order in the chat." },
+      { "q": "Can my sales staff share the catalogue too?", "a": "Yes. Anyone can forward the link. Enquiries from the Enquire on WhatsApp button come to the one WhatsApp number set for your catalogue, so tell us which number your team uses for orders." },
+      { "q": "Can I show which brands I stock?", "a": "Yes. Each product has a brand field, and we can make a category for each brand if retailers ask for products by brand." },
+      { "q": "I have 1,000 products. Can you handle it?", "a": "Yes. Above 300 products we give you a quote based on the number of products." }
+    ]
+  },
+  "cta": {
+    "heading": "Give every retailer your full range in one link",
+    "text": "Tell us what you distribute and how many products you carry. We reply within 2 hours, 9am to 9pm."
+  }
+}
