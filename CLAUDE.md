@@ -109,6 +109,11 @@ file in `site/pages/` (guides in `site/pages/guides/`, industry pages in
 To add a page, copy a similar JSON file, change `path`, `keyword` and the copy,
 then run `node scripts/og.js` (makes its share image in `site/og/`) and commit.
 
+The logo lives in `site/brand/` (header logo, footer logo with tagline, icon,
+favicons, Apple touch icon), made from the master PNG with
+`node scripts/brand.js <master-logo.png>`. Run it again only when the master
+logo changes, then `node scripts/og.js` so the share images pick it up.
+
 The build checks every page and prints what is wrong:
 
 - any `TODO`, `[CONFIRM]` or `[PLACEHOLDER]` text, em-dash, semicolon or banned word

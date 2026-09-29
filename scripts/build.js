@@ -351,6 +351,9 @@ async function buildHome() {
   if (ogFiles.size) await fsp.cp(ogSrc, path.join(outDir, 'og'), { recursive: true });
   // Self-hosted display font (OFL). Filename is versioned by content, so it caches forever.
   if (fs.existsSync(path.join(SITE, 'fonts'))) await fsp.cp(path.join(SITE, 'fonts'), path.join(outDir, 'fonts'), { recursive: true });
+  // Logo, icons and favicons made by scripts/brand.js from the master logo.
+  if (fs.existsSync(path.join(SITE, 'brand'))) await fsp.cp(path.join(SITE, 'brand'), path.join(outDir, 'brand'), { recursive: true });
+  if (fs.existsSync(path.join(SITE, 'brand', 'favicon-48.png'))) await fsp.copyFile(path.join(SITE, 'brand', 'favicon-48.png'), path.join(outDir, 'favicon.ico'));
 
   const cfgProblems = checkConfig(cfg);
   const live = [];
@@ -373,8 +376,6 @@ async function buildHome() {
   await fsp.writeFile(path.join(outDir, 'llms.txt'), renderLlmsTxt(cfg, live));
   await fsp.writeFile(path.join(outDir, 'robots.txt'), renderRobots(cfg));
   await fsp.writeFile(path.join(outDir, 'sitemap.xml'), renderSitemap(cfg, live));
-  await fsp.writeFile(path.join(outDir, 'favicon.svg'),
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${cfg.accent}"/><text x="32" y="44" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#fff" text-anchor="middle">1C</text></svg>`);
 
   log(`   ${live.length}/${pages.length} pages indexable, 404.html, llms.txt, robots.txt, sitemap.xml`);
   if (bad) warn(`${bad} page(s) published noindex until the problems above are fixed in site/`);
@@ -460,7 +461,7 @@ async function writeRouter() {
 
   await fsp.mkdir(DIST, { recursive: true });
   await fsp.writeFile(path.join(DIST, '_headers'),
-    `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n\n/*/img/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/og/*\n  Cache-Control: public, max-age=604800\n`);
+    `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n\n/*/img/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/og/*\n  Cache-Control: public, max-age=604800\n\n/_home/brand/*\n  Cache-Control: public, max-age=604800\n`);
 
   // Earlier builds wrote the router into dist/, where it would now be
   // uploaded as a public asset. Remove it.

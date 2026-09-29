@@ -297,9 +297,10 @@ h3{font-size:19px;line-height:1.3;letter-spacing:-.01em;font-weight:650}
 @supports (animation-timeline:scroll()){.progress{animation:grow linear both;animation-timeline:scroll(root)}@keyframes grow{to{transform:scaleX(1)}}}
 .site-head{position:relative;z-index:40;background:rgba(251,248,243,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(230,222,210,.7)}
 .head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.wordmark{font-family:var(--display);font-size:22px;font-weight:750;letter-spacing:-.03em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
-.wordmark::before{content:"";width:22px;height:22px;border-radius:7px;margin-right:9px;background:var(--wa);box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
-.wordmark span{color:var(--accent)}
+.wordmark{display:inline-flex;align-items:center;min-height:48px;flex:0 0 auto;border-radius:10px}
+.wordmark img{display:block;height:40px;width:auto}
+.foot-logo{display:block;height:72px;width:auto;margin-bottom:8px}
+@media (min-width:760px){.wordmark img{height:44px}}
 .head-cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s var(--ease),background .2s}
 .head-cta:hover{background:var(--wa-dark);color:#fff;transform:translateY(-1px)}
 .head-cta svg{width:18px;height:18px;fill:currentColor}
@@ -570,7 +571,6 @@ export function renderPage(cfg, page, allPages, problems = []) {
   if (page.parent && byPath[page.parent]) trail.push({ name: byPath[page.parent].crumb, path: page.parent });
   if (page.path !== '/') trail.push({ name: page.crumb, path: page.path });
 
-  const nameHtml = e(cfg.name).replace(/^One/, 'One<span>') + '</span>';
   const nav = cfg.nav.map(n => `<a href="${e(n.href)}"${n.href === page.path || n.href === page.parent ? ' aria-current="page"' : ''}>${e(n.label)}</a>`).join('');
   const secondary = page.secondary || cfg.cta.secondary;
   const eyebrow = { guide: 'Guide', industry: 'For your trade', home: cfg.eyebrow, legal: 'Draft' }[page.type] || '';
@@ -625,7 +625,7 @@ ${page.note ? `<p class="tm" style="margin-top:12px">${inline(page.note)}</p>` :
 
   const footer = `<footer class="foot"><div class="wrap">
 <div class="foot-grid">${cfg.footer.groups.map(g => `<div><h2>${e(g.title)}</h2><ul>${g.links.map(l => `<li><a href="${e(l.href)}">${e(l.label)}</a></li>`).join('')}</ul></div>`).join('')}</div>
-<div class="about"><strong>${nameHtml.replace('<span>', '<span style="color:var(--accent)">')}</strong><span>${e(cfg.footer.line)}</span>
+<div class="about"><img class="foot-logo" src="/brand/logo-tagline.webp" width="278" height="72" alt="${e(cfg.name)}. Your products. One catalog. Everywhere." loading="lazy" decoding="async"><span>${e(cfg.footer.line)}</span>
 <a href="${e(waLink(cfg))}" rel="noopener" data-cta="whatsapp">WhatsApp: ${e(cfg.whatsappDisplay)}</a>
 <a href="mailto:${e(cfg.email)}">Email: ${e(cfg.email)}</a>
 <span class="tm">${e(cfg.footer.trademark)}</span>
@@ -659,7 +659,10 @@ ${cfg.gscToken ? `<meta name="google-site-verification" content="${e(cfg.gscToke
 <meta name="twitter:title" content="${e(page.title)}">
 <meta name="twitter:description" content="${e(page.description)}">
 <meta name="twitter:image" content="${e(abs(cfg, `/og/${ogName(page)}.png`))}">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/brand/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<link rel="preload" href="/brand/logo.webp" as="image" type="image/webp">
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <style>${css(cfg)}</style>
 ${schemaFor(cfg, page, trail).map(ldScript).join('\n')}
@@ -669,7 +672,7 @@ ${ga}
 <div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap head-inner">
-<div class="head-row"><a class="wordmark" href="/">${nameHtml}</a><a class="head-cta" href="${e(wa)}" rel="noopener" data-cta="whatsapp">${WA_ICON}<span>${e(cfg.cta.short)}</span></a></div>
+<div class="head-row"><a class="wordmark" href="/" aria-label="${e(cfg.name)} home"><img src="/brand/logo.webp" width="170" height="44" alt="${e(cfg.name)}"></a><a class="head-cta" href="${e(wa)}" rel="noopener" data-cta="whatsapp">${WA_ICON}<span>${e(cfg.cta.short)}</span></a></div>
 <nav class="nav" aria-label="Main">${nav}</nav>
 </div></header>
 <main id="main">

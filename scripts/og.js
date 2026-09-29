@@ -41,22 +41,27 @@ function wrap(text, max) {
   return lines;
 }
 
+// Same look as the site: ivory background, ink headline, green accent, real logo top-left.
 function card(h1, label) {
-  let size = 72, lines = wrap(h1, 26);
-  if (lines.length > 3) { size = 58; lines = wrap(h1, 33); }
-  const y0 = 300 - ((lines.length - 1) * size * 1.15) / 2;
-  const text = lines.map((l, i) => `<text x="80" y="${y0 + i * size * 1.15}" font-size="${size}" font-weight="800" fill="#fff">${x(l)}</text>`).join('');
+  let size = 68, lines = wrap(h1, 28);
+  if (lines.length > 3) { size = 56; lines = wrap(h1, 34); }
+  const y0 = 330 - ((lines.length - 1) * size * 1.12) / 2;
+  const text = lines.map((l, i) => `<text x="80" y="${y0 + i * size * 1.12}" font-size="${size}" font-weight="800" fill="#132235" letter-spacing="-1.5">${x(l)}</text>`).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-<rect width="1200" height="630" fill="${cfg.accent}"/>
-<rect x="0" y="560" width="1200" height="70" fill="#000" opacity=".18"/>
+<defs><radialGradient id="g" cx="0.9" cy="0.1" r="0.7"><stop offset="0" stop-color="#15803D" stop-opacity=".16"/><stop offset="1" stop-color="#15803D" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="630" fill="#FBF8F3"/>
+<rect width="1200" height="630" fill="url(#g)"/>
+<rect x="0" y="600" width="1200" height="30" fill="#15803D"/>
 <g font-family="Segoe UI, Arial, Helvetica, sans-serif">
-<text x="80" y="110" font-size="44" font-weight="800" fill="#fff">One<tspan fill="#9CC3E6">Catalog</tspan></text>
-${label ? `<text x="80" y="160" font-size="28" fill="#DCE8F3">${x(label)}</text>` : ''}
+${label ? `<rect x="80" y="${y0 - size - 44}" rx="18" width="${label.length * 15 + 40}" height="36" fill="#E3F2E7"/><text x="100" y="${y0 - size - 19}" font-size="22" font-weight="700" fill="#0F6B32">${x(label)}</text>` : ''}
 ${text}
-<text x="80" y="606" font-size="30" fill="#fff">onecatalog.in</text>
-<text x="1120" y="606" font-size="30" fill="#fff" text-anchor="end">Catalogues for WhatsApp</text>
+<text x="80" y="568" font-size="28" fill="#5C5850">onecatalog.in</text>
+<text x="1120" y="568" font-size="28" fill="#5C5850" text-anchor="end">Catalogues for WhatsApp</text>
 </g></svg>`;
 }
+
+const LOGO = path.join(SITE, 'brand', 'logo.png');
+const logo = fs.existsSync(LOGO) ? await sharp(LOGO).resize({ height: 64 }).toBuffer() : null;
 
 const name = p => p.path === '/' ? 'home' : p.path.slice(1).replace(/\//g, '-');
 
@@ -64,10 +69,12 @@ await fsp.mkdir(OUT, { recursive: true });
 const all = await pages();
 for (const p of all) {
   const label = p.type === 'guide' ? 'Guide' : p.type === 'industry' ? 'Industry' : '';
-  await sharp(Buffer.from(card(p.h1, label))).png({ compressionLevel: 9, palette: true }).toFile(path.join(OUT, name(p) + '.png'));
+  const img = sharp(Buffer.from(card(p.h1, label)));
+  if (logo) img.composite([{ input: logo, left: 80, top: 56 }]);
+  await img.png({ compressionLevel: 9, palette: true }).toFile(path.join(OUT, name(p) + '.png'));
 }
-await sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" rx="96" fill="${cfg.accent}"/><text x="256" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="230" font-weight="800" fill="#fff" text-anchor="middle">1C</text></svg>`))
-  .png().toFile(path.join(OUT, 'logo.png'));
+// og/logo.png (schema logo) is the icon made by scripts/brand.js.
+if (fs.existsSync(path.join(SITE, 'brand', 'icon-512.png'))) fs.copyFileSync(path.join(SITE, 'brand', 'icon-512.png'), path.join(OUT, 'logo.png'));
 
 // Remove images of pages that no longer exist.
 const keep = new Set([...all.map(p => name(p) + '.png'), 'logo.png']);
