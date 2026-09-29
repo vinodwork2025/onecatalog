@@ -19,7 +19,7 @@ import { buildCss } from '../template/themes.js';
 import {
   renderIndex, renderCategory, renderProduct, renderAbout, slugify
 } from '../template/render.js';
-import { renderHome, renderLlmsTxt, checkHome } from '../site/render.js';
+import { renderPage, render404, renderLlmsTxt, renderRobots, renderSitemap, checkConfig, checkPage, bodyWords } from '../site/render.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CLIENTS = path.join(ROOT, 'clients');
@@ -315,34 +315,68 @@ async function buildClient(slug, rawCss) {
 
 // ---------------------------------------------------------------- home page
 
-/* onecatalog.in itself. Copy lives in site/config.json, layout in
- * site/render.js. Output goes to dist/_home, which the router serves on the
- * bare platform domain. Built on full runs, or with: build.js _home */
+/* onecatalog.in itself. Shared facts live in site/config.json, one JSON file
+ * per page in site/pages/, layout and checks in site/render.js. Output goes
+ * to dist/_home, which the router serves on the bare platform domain.
+ * Built on full runs, or with: build.js _home */
+async function loadPages(dir = path.join(SITE, 'pages')) {
+  const out = [];
+  for (const d of await fsp.readdir(dir, { withFileTypes: true })) {
+    const p = path.join(dir, d.name);
+    if (d.isDirectory()) out.push(...await loadPages(p));
+    else if (d.name.endsWith('.json')) {
+      try { out.push({ ...JSON.parse(await fsp.readFile(p, 'utf8')), _file: path.relative(SITE, p) }); }
+      catch (e) { throw new Error(`${path.relative(ROOT, p)}: ${e.message}`); }
+    }
+  }
+  return out.sort((a, b) => (a.path === '/' ? -1 : b.path === '/' ? 1 : a.path.localeCompare(b.path)));
+}
+
 async function buildHome() {
   const cfg = JSON.parse(await fsp.readFile(path.join(SITE, 'config.json'), 'utf8'));
+  const pages = await loadPages();
   const outDir = path.join(DIST, '_home');
   await fsp.rm(outDir, { recursive: true, force: true });
   await fsp.mkdir(outDir, { recursive: true });
 
-  const url = cfg.url.replace(/\/$/, '');
-  await fsp.writeFile(path.join(outDir, 'index.html'), renderHome(cfg));
-  await fsp.writeFile(path.join(outDir, 'llms.txt'), renderLlmsTxt(cfg));
-  await fsp.writeFile(path.join(outDir, 'robots.txt'),
-    `User-agent: *\nAllow: /\n\nSitemap: ${url}/sitemap.xml\n`);
-  await fsp.writeFile(path.join(outDir, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>${url}/</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod><priority>1.0</priority></url>
-</urlset>`);
-
-  const bytes = fs.statSync(path.join(outDir, 'index.html')).size;
-  log(`   index ${(bytes / 1024).toFixed(1)}KB, llms.txt, robots.txt, sitemap.xml`);
-  if (bytes > 40 * 1024) warn('home page is over 40KB');
-  const todo = checkHome(cfg);
-  if (todo.length) {
-    warn(`${todo.length} thing(s) to fill in site/config.json before launch (page is noindex until then):`);
-    todo.forEach(t => log('     - ' + t));
+  const seen = new Set();
+  for (const p of pages) {
+    if (seen.has(p.path)) throw new Error(`two pages use the URL ${p.path}`);
+    seen.add(p.path);
   }
-  log(`   live at ${url}/`);
+
+  // OG images are made by scripts/og.js and committed in site/og/.
+  const ogSrc = path.join(SITE, 'og');
+  const ogFiles = new Set(fs.existsSync(ogSrc) ? await fsp.readdir(ogSrc) : []);
+  if (ogFiles.size) await fsp.cp(ogSrc, path.join(outDir, 'og'), { recursive: true });
+
+  const cfgProblems = checkConfig(cfg);
+  const live = [];
+  let bad = 0;
+  for (const page of pages) {
+    const problems = [...cfgProblems, ...checkPage(cfg, page, pages, ogFiles)];
+    const html = renderPage(cfg, page, pages, problems);
+    const file = page.path === '/' ? path.join(outDir, 'index.html') : path.join(outDir, page.path.slice(1), 'index.html');
+    await fsp.mkdir(path.dirname(file), { recursive: true });
+    await fsp.writeFile(file, html);
+    const kb = (Buffer.byteLength(html) / 1024).toFixed(1);
+    const ok = !problems.length && !page.noindex;
+    if (ok) live.push(page);
+    log(`   ${ok ? 'ok     ' : 'NOINDEX'} ${page.path.padEnd(46)} ${String(bodyWords(page)).padStart(5)} words ${kb.padStart(5)}KB`);
+    if (problems.length) { bad++; problems.forEach(t => log('            - ' + t)); }
+    if (Buffer.byteLength(html) > 60 * 1024) warn(`${page.path} is over 60KB`);
+  }
+
+  await fsp.writeFile(path.join(outDir, '404.html'), render404(cfg, pages));
+  await fsp.writeFile(path.join(outDir, 'llms.txt'), renderLlmsTxt(cfg, live));
+  await fsp.writeFile(path.join(outDir, 'robots.txt'), renderRobots(cfg));
+  await fsp.writeFile(path.join(outDir, 'sitemap.xml'), renderSitemap(cfg, live));
+  await fsp.writeFile(path.join(outDir, 'favicon.svg'),
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${cfg.accent}"/><text x="32" y="44" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#fff" text-anchor="middle">1C</text></svg>`);
+
+  log(`   ${live.length}/${pages.length} pages indexable, 404.html, llms.txt, robots.txt, sitemap.xml`);
+  if (bad) warn(`${bad} page(s) published noindex until the problems above are fixed in site/`);
+  log(`   live at ${cfg.url}`);
 }
 
 // ---------------------------------------------------------------- main
@@ -438,8 +472,17 @@ const PLATFORM = ${JSON.stringify(platform)};
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const host = url.hostname.toLowerCase().replace(/^www\\./, '');
+    const rawHost = url.hostname.toLowerCase();
+    const host = rawHost.replace(/^www\\./, '');
     const entry = MAP[host];
+
+    // One URL per page on the platform domain: no www, no trailing slash.
+    if (host === PLATFORM) {
+      const clean = url.pathname.length > 1 && url.pathname.endsWith('/') ? url.pathname.replace(/\\/+$/, '') : url.pathname;
+      if (rawHost !== host || clean !== url.pathname) {
+        return Response.redirect('https://' + PLATFORM + clean + url.search, 301);
+      }
+    }
 
     // Serve url.pathname from dist/<prefix>/, trying clean-URL variants.
     // Only a real hit counts: the asset server answers /x/index.html with a
@@ -460,7 +503,12 @@ export default {
 
     // Bare platform domain: the OneCatalog landing page.
     if (host === PLATFORM) {
-      return (await asset('/_home')) || new Response('Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' } });
+      const hit = await asset('/_home');
+      if (hit) return hit;
+      const u = new URL(url);
+      u.pathname = '/_home/404'; // the asset server drops .html itself
+      const page = await env.ASSETS.fetch(new Request(u, request));
+      return new Response(page.ok ? page.body : 'Not found', { status: 404, headers: { 'content-type': page.ok ? 'text/html; charset=utf-8' : 'text/plain; charset=utf-8' } });
     }
 
     // Any other unmapped hostname: a typo'd subdomain, the workers.dev URL.
