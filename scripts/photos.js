@@ -51,6 +51,20 @@ function cleanName(file) {
     .slice(0, 60) || 'photo';
 }
 
+/** Average colour of a photo's outer border (transparent areas count as white). */
+async function edgeColour(file) {
+  const N = 48;
+  const { data } = await sharp(file).rotate().flatten({ background: '#ffffff' })
+    .resize(N, N, { fit: 'fill' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  let r = 0, g = 0, b = 0, n = 0;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    if (x > 1 && x < N - 2 && y > 1 && y < N - 2) continue;
+    const i = (y * N + x) * 3;
+    r += data[i]; g += data[i + 1]; b += data[i + 2]; n++;
+  }
+  return { r: Math.round(r / n), g: Math.round(g / n), b: Math.round(b / n) };
+}
+
 async function main() {
   if (!fs.existsSync(RAW)) {
     console.log(`Raw folder not found: ${RAW}`);
@@ -82,10 +96,13 @@ async function main() {
       const meta = await img.metadata();
 
       if (PAD) {
-        img = img.resize(SIZE, SIZE, {
+        // Pad with the photo's own edge colour, so a product shot on a grey or
+        // cream backdrop does not get white bands above and below it.
+        const bg = await edgeColour(src);
+        img = img.flatten({ background: bg }).resize(SIZE, SIZE, {
           fit: 'contain',
-          background: { r: 255, g: 255, b: 255, alpha: 1 }
-        }).flatten({ background: '#ffffff' });
+          background: { ...bg, alpha: 1 }
+        });
       } else {
         img = img.resize(SIZE, SIZE, {
           fit: 'cover',

@@ -228,7 +228,7 @@ export function renderIndex(cfg, products, categories, css) {
   const greeting = cfg.waGreeting || `Hi ${cfg.name}, I saw your catalog.`;
   const hero = `<section class="hero"><div class="wrap">
 <h1>${esc(cfg.metaHeadline || cfg.tagline || cfg.name)}</h1>
-${cfg.metaHeadline && cfg.tagline ? `<p class="hero-sub">${esc(cfg.tagline)}</p>` : ''}
+${cfg.metaHeadline && cfg.tagline && cfg.tagline.toLowerCase() !== cfg.metaHeadline.toLowerCase() ? `<p class="hero-sub">${esc(cfg.tagline)}</p>` : ''}
 <ul class="pills">${pills}</ul>
 <div class="hero-actions">
 <a class="btn btn-wa" href="${waLink(cfg, greeting)}" rel="noopener">${ICON.wa}<span>Chat on WhatsApp</span></a>
