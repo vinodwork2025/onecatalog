@@ -1,0 +1,95 @@
+{
+  "path": "/guides/whatsapp-catalog-bulk-upload",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Catalog bulk upload",
+  "keyword": "whatsapp business catalog bulk upload",
+  "published": "2026-09-29",
+  "updated": "2026-09-29",
+  "title": "WhatsApp Business Catalog Bulk Upload: How It Works (2026)",
+  "description": "No WhatsApp Business catalog bulk upload in the app? Build a Meta catalog from a spreadsheet in Commerce Manager, then connect it. Steps and limits.",
+  "h1": "WhatsApp Business catalog bulk upload: the spreadsheet route",
+  "answer": "The WhatsApp Business app has no bulk upload for its catalog. Items are added one at a time. To upload many products at once, create a catalog in Meta Commerce Manager from a spreadsheet, called a data feed, then connect that Meta catalog to your WhatsApp Business app.",
+  "waText": "Hi OneCatalog, I have many products and want a catalogue without adding them one by one.",
+  "sections": [
+    {
+      "h2": "Is there a WhatsApp Business catalog bulk upload in the app?",
+      "blocks": [
+        { "p": "No. WhatsApp's help centre describes adding items one by one from the **Tools** tab: tap **Catalog**, tap **Add new item**, add up to 10 photos or videos, enter a name, pick the country of origin, add optional details and tap **Save**. There is no spreadsheet import in the app." },
+        { "p": "For a shop with 20 products that is fine. For 300 products it is a long weekend. That is why the Commerce Manager route exists." }
+      ]
+    },
+    {
+      "h2": "How the bulk route works",
+      "blocks": [
+        { "steps": [
+          { "title": "Create a catalog in Meta Commerce Manager", "text": "Commerce Manager is Meta's tool for product catalogs used across Facebook, Instagram and WhatsApp." },
+          { "title": "Upload a data feed", "text": "Meta's help centre says a data feed can be an XLSX, CSV, TSV, XML or Google Sheets file with the required fields for each product. You can upload once or set a schedule." },
+          { "title": "Connect the Meta catalog to WhatsApp Business", "text": "WhatsApp says businesses can connect an existing Meta catalog to the WhatsApp Business app. Connecting and disconnecting is done in the app on your phone." }
+        ] }
+      ]
+    },
+    {
+      "h2": "Step 1: Upload products with a data feed",
+      "blocks": [
+        { "p": "Meta's help centre gives these steps for a new data feed in Commerce Manager:" },
+        { "ol": [
+          "Go to Commerce Manager and select your catalog.",
+          "Open the **Catalogue** tab and go to **Products** or **Data sources**.",
+          "Click **+ Add** and choose **Data file**.",
+          "Follow the prompts to upload your file, or paste a Google Sheets link to set up scheduled uploads."
+        ] },
+        { "p": "Not sure what columns to use? Meta offers a template you can download and fill in. When the upload finishes, Commerce Manager shows how many products were added and any errors to fix." }
+      ]
+    },
+    {
+      "h2": "Step 2: Connect the catalog to the WhatsApp Business app",
+      "blocks": [
+        { "p": "WhatsApp's connected catalogs article says you need two things:" },
+        { "ul": [
+          "Your Meta catalog connected to your WhatsApp Business account, using the WhatsApp Business app on iPhone or Android.",
+          "A Facebook Page associated with the Meta catalog and linked to your WhatsApp Business account."
+        ] },
+        { "p": "WhatsApp says updates to a connected catalog should show on WhatsApp Web within 24 hours, and that WhatsApp Web only supports viewing the catalog. Manage it from the app on your phone." }
+      ]
+    },
+    {
+      "h2": "Things to watch for",
+      "blocks": [
+        { "ul": [
+          "Every item still needs a unique title, at least one image and the country of origin, which WhatsApp requires for catalog items.",
+          "Meta's developer documentation says WhatsApp automatically reviews items added to a catalog connected to a WhatsApp Business account, so expect a review after a large upload. See [how catalog approval works](/guides/whatsapp-catalog-approval-time).",
+          "Keep your spreadsheet as the master copy. Change prices there and re-upload, rather than editing in several places.",
+          "Group products into collections after the upload so customers can browse. Our [WhatsApp catalogue categories guide](/guides/whatsapp-catalog-categories) shows how."
+        ] }
+      ]
+    },
+    {
+      "h2": "Still stuck?",
+      "blocks": [
+        { "p": "If Commerce Manager feels like too much, send your product list to us instead. OneCatalog builds your catalogue from a price list and photos you send on WhatsApp, and publishes it as one web link. We keep the product list for you and make the updates when you send changes. See how it works on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Bulk upload questions",
+    "items": [
+      { "q": "Can I import an Excel file into the WhatsApp Business catalog?", "a": "Not directly in the app. Upload the file as a data feed to a catalog in Meta Commerce Manager, then connect that catalog to the WhatsApp Business app." },
+      { "q": "Which file types does Commerce Manager accept?", "a": "Meta's help centre lists XLSX, CSV, TSV, XML (RSS or ATOM) and Google Sheets." },
+      { "q": "How many photos can one catalog item have?", "a": "In the WhatsApp Business app, WhatsApp says you can upload up to 10 images or videos per item. Videos can be up to 50 MB." },
+      { "q": "Do I need a Facebook Page?", "a": "For a connected Meta catalog, yes. WhatsApp says a Facebook Page associated with the catalog must be linked to your WhatsApp Business account." }
+    ]
+  },
+  "sources": [
+    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
+    { "label": "WhatsApp Help: About connected catalogs", "url": "https://faq.whatsapp.com/1057141349534704" },
+    { "label": "Meta Business Help: Upload products with a data feed", "url": "https://www.facebook.com/business/help/125074381480892" },
+    { "label": "Meta Business Help: Create a data feed from a template", "url": "https://www.facebook.com/business/help/1898524300466211" },
+    { "label": "Meta for Developers: Catalogs overview", "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/catalogs/catalogs-overview/" }
+  ],
+  "cta": {
+    "heading": "Have a long product list?",
+    "text": "Send it to us on WhatsApp. We will tell you the plan and how long it takes."
+  },
+  "note": "WhatsApp and Meta are trademarks of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}

@@ -1,0 +1,43 @@
+{
+  "path": "/guides",
+  "type": "page",
+  "hub": true,
+  "crumb": "Guides",
+  "updated": "2026-09-29",
+  "title": "WhatsApp Catalogue Guides and How-Tos | OneCatalog",
+  "description": "WhatsApp catalogue guides for small shops: fix a catalog that is not showing, prices, approval, bulk upload and categories, and make a better catalogue.",
+  "h1": "WhatsApp catalogue guides for shop owners",
+  "answer": "These WhatsApp catalogue guides help shop owners fix common problems with the WhatsApp Business catalog and make a better product catalogue. Every step about WhatsApp's own app is checked against WhatsApp's help centre, and each guide lists its sources.",
+  "waText": "Hi OneCatalog, I have a question about my WhatsApp catalogue.",
+  "secondary": { "label": "How OneCatalog works", "href": "/whatsapp-catalogue" },
+  "sections": [
+    {
+      "h2": "Fix WhatsApp catalog problems",
+      "blocks": [
+        { "cards": [
+          { "title": "WhatsApp Business catalog not showing? 7 fixes", "text": "Pending review, rejected items, hidden items and the known display issue.", "href": "/guides/whatsapp-catalog-not-showing" },
+          { "title": "WhatsApp Business catalog price not showing", "text": "The Price field, country limits and connected catalogs.", "href": "/guides/whatsapp-catalog-price-not-showing" },
+          { "title": "WhatsApp Business catalog approval time", "text": "What WhatsApp reviews, how long it says it takes, and how to appeal.", "href": "/guides/whatsapp-catalog-approval-time" },
+          { "title": "WhatsApp Business catalog bulk upload", "text": "The spreadsheet route through Meta Commerce Manager.", "href": "/guides/whatsapp-catalog-bulk-upload" }
+        ] }
+      ]
+    },
+    {
+      "h2": "Make a better catalogue",
+      "blocks": [
+        { "cards": [
+          { "title": "How to add a catalog to WhatsApp Business", "text": "Step by step for Android and iPhone.", "href": "/guides/add-catalog-to-whatsapp-business" },
+          { "title": "WhatsApp catalogue categories", "text": "Create and manage collections, with example category names.", "href": "/guides/whatsapp-catalog-categories" },
+          { "title": "How to make a product catalogue", "text": "Seven steps from choosing products to sharing the link.", "href": "/guides/how-to-make-a-product-catalogue" }
+        ] }
+      ]
+    },
+    {
+      "h2": "Where OneCatalog fits in",
+      "blocks": [
+        { "p": "OneCatalog builds catalogue websites for small businesses, from photos and prices sent on WhatsApp. It works alongside the WhatsApp Business catalog. Read the comparison on our [WhatsApp catalogue page](/whatsapp-catalogue) or see the [plans and prices](/pricing)." }
+      ]
+    }
+  ],
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}

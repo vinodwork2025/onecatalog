@@ -1,0 +1,102 @@
+{
+  "path": "/guides/how-to-make-a-product-catalogue",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Make a product catalogue",
+  "keyword": "how to make product catalogue",
+  "published": "2026-09-29",
+  "updated": "2026-09-29",
+  "title": "How to Make a Product Catalogue in 7 Steps (2026 Guide)",
+  "description": "How to make a product catalogue for a small shop: pick products, set categories, take photos, write details, choose a format and share it on WhatsApp.",
+  "h1": "How to make a product catalogue your customers will actually use",
+  "answer": "To make a product catalogue, list the products you want to sell, group them into categories, take one clear photo of each, and write a short name, price and key details. Then choose a format, such as a PDF, the WhatsApp Business catalog or a catalogue website, and share one link with customers.",
+  "waText": "Hi OneCatalog, I want to make a product catalogue for my shop.",
+  "sections": [
+    {
+      "h2": "1. Pick the products that sell",
+      "blocks": [
+        { "p": "A catalogue is not your stock register. Start with the products customers ask about most. For a new catalogue, 20 to 50 good products beat 400 average ones. You can add more later." },
+        { "p": "Leave out items you rarely have in stock. A customer who picks something and hears it is not available loses trust in the whole catalogue." }
+      ]
+    },
+    {
+      "h2": "2. Group products into categories",
+      "blocks": [
+        { "p": "Name categories the way customers ask for things. A furniture shop in Hosur, for example, might use Steel almirahs, Cots and beds, and Office furniture. Keep it to 4 to 8 categories." },
+        { "p": "If you use the WhatsApp Business catalog, categories are called collections. Our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories) shows how to set them up." }
+      ]
+    },
+    {
+      "h2": "3. Take clear product photos",
+      "blocks": [
+        { "ul": [
+          "Shoot in daylight near a window. Avoid tube lights and flash.",
+          "Use one plain background for every product.",
+          "Fill the frame with the product. Leave a little space around the edges.",
+          "Take one main photo and one close-up of the detail that matters.",
+          "Hold the phone steady. A blurred photo cannot be fixed later."
+        ] }
+      ]
+    },
+    {
+      "h2": "4. Write names and details that answer questions",
+      "blocks": [
+        { "p": "The product name should say what it is, such as Steel almirah, 4 door, 6.5 ft. Then add the two or three details customers always ask about in your trade." },
+        { "table": {
+          "head": ["Trade", "Details to include"],
+          "rows": [
+            ["Garments and sarees", "Fabric, colours, sizes"],
+            ["Jewellery", "Weight in grams, purity"],
+            ["Furniture", "Size, material, warranty"],
+            ["Wholesale", "Pack size, MOQ, product code"]
+          ]
+        } }
+      ]
+    },
+    {
+      "h2": "5. Decide how to show prices",
+      "blocks": [
+        { "p": "Customers message you when they can see a price. If your prices change often, or differ by customer, show a starting price or write Price on request and quote in the chat. Never show a price you will not honour." }
+      ]
+    },
+    {
+      "h2": "6. Choose a format to make your product catalogue",
+      "blocks": [
+        { "table": {
+          "head": ["Format", "Good for", "Watch out for"],
+          "rows": [
+            ["PDF catalogue", "Printing, email, trade fairs", "Out of date the day a price changes. Heavy to forward on WhatsApp"],
+            ["WhatsApp Business catalog", "Free, built into WhatsApp", "Items added one at a time and reviewed before they show"],
+            ["Catalogue website", "One link that always shows current stock", "Costs money, and someone has to keep it updated"]
+          ]
+        } },
+        { "p": "Many shops use the WhatsApp catalog and a catalogue website together. Our guide to [adding a catalog to WhatsApp Business](/guides/add-catalog-to-whatsapp-business) covers the free option." }
+      ]
+    },
+    {
+      "h2": "7. Share it where customers already are",
+      "blocks": [
+        { "p": "Put the catalogue link in your WhatsApp Business profile, your greeting message and your status. Save it as a quick reply. Add it to your Instagram bio and Google Business Profile, and print a QR code for the counter. Send it once to your regular buyers instead of forwarding photos. Our [WhatsApp catalogue page](/whatsapp-catalogue) lists more places to share it." }
+      ]
+    },
+    {
+      "h2": "Still stuck?",
+      "blocks": [
+        { "p": "If you have the products but not the time, OneCatalog does steps 2 to 6 for you. Send your photos and price list on WhatsApp, and we build a catalogue website with a page for every product and a WhatsApp button on each one. See the plans on our [pricing page](/pricing)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Making a product catalogue: questions",
+    "items": [
+      { "q": "How many products should a catalogue have?", "a": "Start with 20 to 50 of your best sellers. A short catalogue that customers finish browsing works better than a long one they abandon." },
+      { "q": "Should I make a PDF catalogue?", "a": "A PDF is good for printing and trade fairs. For WhatsApp, a link works better, because it always shows current prices and does not need to be downloaded." },
+      { "q": "Do I need professional photos?", "a": "No. Clear phone photos taken in daylight on a plain background are enough for most small shops." },
+      { "q": "Can I make a product catalogue for free?", "a": "Yes. The WhatsApp Business catalog is free. You add each product yourself in the app." }
+    ]
+  },
+  "cta": {
+    "heading": "Want your catalogue made for you?",
+    "text": "Send us your photos and price list on WhatsApp. We reply within 2 hours, 9am to 9pm."
+  }
+}

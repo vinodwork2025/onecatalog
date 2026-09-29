@@ -1,0 +1,104 @@
+{
+  "path": "/guides/whatsapp-catalog-not-showing",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Catalog not showing",
+  "keyword": "whatsapp business catalog not showing",
+  "published": "2026-09-29",
+  "updated": "2026-09-29",
+  "title": "WhatsApp Business Catalog Not Showing? 7 Fixes (2026)",
+  "description": "WhatsApp Business catalog not showing? Items may be under review, rejected, hidden or hit by a known app issue. 7 fixes, checked against WhatsApp help.",
+  "h1": "WhatsApp Business catalog not showing? 7 fixes that work",
+  "answer": "If your WhatsApp Business catalog is not showing, the most common reason is that the items are still under review or were rejected. WhatsApp shows catalog items to customers only after it approves them. Other causes are hidden items, a known temporary display issue in the app, or an old app version on the customer's phone.",
+  "waText": "Hi OneCatalog, my WhatsApp catalog is not showing. Can you help?",
+  "sections": [
+    {
+      "h2": "Why is my WhatsApp Business catalog not showing?",
+      "blocks": [
+        { "p": "Start by checking who cannot see it. If items are missing for your customers but you can see them in your catalog manager, the cause is usually review, rejection or hiding. If the catalog does not load for you either, it is usually a connection or app issue. Work through the fixes below in order." }
+      ]
+    },
+    {
+      "h2": "1. Wait for items that are pending review",
+      "blocks": [
+        { "p": "WhatsApp reviews every image, video and item you add to check it meets its business policy. Its help centre says items are visible to customers only after they have been approved. While an item is pending review, customers cannot see it." },
+        { "p": "There is nothing to do except wait. Our guide on [WhatsApp catalog approval time](/guides/whatsapp-catalog-approval-time) explains what WhatsApp does and does not say about timing." }
+      ]
+    },
+    {
+      "h2": "2. Check for rejected items",
+      "blocks": [
+        { "p": "A rejected item shows a red exclamation icon next to its image in your catalog. Rejected items stay hidden from customers." },
+        { "p": "To appeal on Android, as described in WhatsApp's help centre:" },
+        { "ol": [
+          "Tap the rejected item.",
+          "Tap **Request another review**.",
+          "Enter your reason for the request.",
+          "Tap **Continue**."
+        ] },
+        { "p": "Before you appeal, read WhatsApp's Commerce Policy. Items are rejected for a variety of reasons, and the policy lists what is not allowed." }
+      ]
+    },
+    {
+      "h2": "3. Fix the known display issue",
+      "blocks": [
+        { "p": "WhatsApp lists a known temporary issue where you see messages like Items can't be displayed or Check your device internet connection and try again later. Its suggested fixes are:" },
+        { "ul": [
+          "Check your internet connection and try again.",
+          "Update to the latest version of WhatsApp Business.",
+          "Close and reopen the app."
+        ] },
+        { "p": "WhatsApp says your items are not deleted in this case. They are still saved and come back once the issue is resolved." }
+      ]
+    },
+    {
+      "h2": "4. Unhide items you hid by mistake",
+      "blocks": [
+        { "p": "Hidden items stay in your catalog manager but customers cannot see them. On Android, WhatsApp says to go to the **Tools** tab, tap **Catalog**, open the item, then tap the menu and **Unhide**. On iPhone, open the item, tap **Edit** and turn off **Hide this item**, then tap **Save**. WhatsApp notes that hiding might not be available to everyone yet." }
+      ]
+    },
+    {
+      "h2": "5. Give new collections up to 24 hours",
+      "blocks": [
+        { "p": "If you grouped items into a new collection and the collection is missing, it may still be under review. WhatsApp says collection review should take no more than 24 hours. Our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories) covers collections in detail." }
+      ]
+    },
+    {
+      "h2": "6. Check the customer's phone",
+      "blocks": [
+        { "p": "WhatsApp notes that shared catalog links might not open on phones older than Android 6.0. If one customer cannot open your catalog but others can, ask them to update WhatsApp or try another phone." }
+      ]
+    },
+    {
+      "h2": "7. Save changes one at a time",
+      "blocks": [
+        { "p": "If items will not save, WhatsApp suggests waiting a few minutes, making changes one item at a time instead of in bulk, reducing image file sizes, and clearing the app cache in your phone settings. An item that never saved will not show." }
+      ]
+    },
+    {
+      "h2": "Still stuck?",
+      "blocks": [
+        { "p": "If you are tired of waiting for reviews, a catalogue website avoids the problem. OneCatalog builds your catalogue as a web link that we publish directly, with no review queue on our side. Customers open it in any browser, even without WhatsApp. You keep your WhatsApp catalog as well. See how it works on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Catalog not showing: common questions",
+    "items": [
+      { "q": "Are my catalog items deleted when they stop showing?", "a": "Not during the known display issue. WhatsApp says the items are still saved and reappear once the issue is resolved." },
+      { "q": "Why can I see my catalog but my customer cannot?", "a": "The items are probably pending review, rejected or hidden. You see them in your catalog manager, but customers see only approved, visible items." },
+      { "q": "How long does it take for catalog items to show?", "a": "WhatsApp says items appear after approval. It says collection review should take no more than 24 hours, but it does not give a fixed time for single items in its catalog help article." }
+    ]
+  },
+  "sources": [
+    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
+    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
+    { "label": "WhatsApp Help: Collections in your catalog", "url": "https://faq.whatsapp.com/2929318000711140" },
+    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" }
+  ],
+  "cta": {
+    "heading": "Want a catalogue that shows up every time?",
+    "text": "Message us on WhatsApp and we will explain how a OneCatalog catalogue works alongside yours."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}
