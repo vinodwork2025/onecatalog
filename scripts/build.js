@@ -349,6 +349,8 @@ async function buildHome() {
   const ogSrc = path.join(SITE, 'og');
   const ogFiles = new Set(fs.existsSync(ogSrc) ? await fsp.readdir(ogSrc) : []);
   if (ogFiles.size) await fsp.cp(ogSrc, path.join(outDir, 'og'), { recursive: true });
+  // Self-hosted display font (OFL). Filename is versioned by content, so it caches forever.
+  if (fs.existsSync(path.join(SITE, 'fonts'))) await fsp.cp(path.join(SITE, 'fonts'), path.join(outDir, 'fonts'), { recursive: true });
 
   const cfgProblems = checkConfig(cfg);
   const live = [];
@@ -458,7 +460,7 @@ async function writeRouter() {
 
   await fsp.mkdir(DIST, { recursive: true });
   await fsp.writeFile(path.join(DIST, '_headers'),
-    `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n\n/*/img/*\n  Cache-Control: public, max-age=31536000, immutable\n`);
+    `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n\n/*/img/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/og/*\n  Cache-Control: public, max-age=604800\n`);
 
   // Earlier builds wrote the router into dist/, where it would now be
   // uploaded as a public asset. Remove it.

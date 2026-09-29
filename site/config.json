@@ -11,16 +11,37 @@
   "ga4Id": "",
   "gscToken": "",
   "entity": "OneCatalog makes online product catalogues for Indian small businesses. You send your products with photos and prices on WhatsApp, and we build your catalogue with one shareable link. Send that link on WhatsApp instead of forwarding dozens of photos. Customers see your full catalogue on their phone, and they can message you to order. It costs ₹3,999 for the first year for up to 50 products.",
+  "eyebrow": "Online catalogues for Indian shops",
+  "trust": [
+    "Live in 48 hours",
+    "₹999 to start, refunded if not approved",
+    "Anywhere in India, all on WhatsApp"
+  ],
   "cta": {
     "primary": "Get my catalogue on WhatsApp",
     "short": "WhatsApp us",
-    "secondary": { "label": "See prices", "href": "/pricing" }
+    "secondary": {
+      "label": "See prices",
+      "href": "/pricing"
+    }
   },
   "nav": [
-    { "label": "WhatsApp catalogue", "href": "/whatsapp-catalogue" },
-    { "label": "Pricing", "href": "/pricing" },
-    { "label": "Guides", "href": "/guides" },
-    { "label": "About", "href": "/about" }
+    {
+      "label": "WhatsApp catalogue",
+      "href": "/whatsapp-catalogue"
+    },
+    {
+      "label": "Pricing",
+      "href": "/pricing"
+    },
+    {
+      "label": "Guides",
+      "href": "/guides"
+    },
+    {
+      "label": "About",
+      "href": "/about"
+    }
   ],
   "author": {
     "name": "Vinod Kumar (Hari)",
@@ -48,12 +69,40 @@
   "pricing": {
     "featured": 1,
     "tiers": [
-      { "products": "Up to 20 products", "label": "Lite", "price": 1999, "renewal": 1999, "domain": false, "domainNote": "Link on onecatalog.in, no own domain" },
-      { "products": "Up to 50 products", "price": 3999, "renewal": 2999, "domain": true, "domainNote": "Own domain included" },
-      { "products": "Up to 150 products", "price": 5999, "renewal": 3999, "domain": true, "domainNote": "Own domain included" },
-      { "products": "Up to 300 products", "price": 7999, "renewal": 4999, "domain": true, "domainNote": "Own domain included" }
+      {
+        "products": "Up to 20 products",
+        "label": "Lite",
+        "price": 1999,
+        "renewal": 1999,
+        "domain": false,
+        "domainNote": "Link on onecatalog.in, no own domain"
+      },
+      {
+        "products": "Up to 50 products",
+        "price": 3999,
+        "renewal": 2999,
+        "domain": true,
+        "domainNote": "Own domain included"
+      },
+      {
+        "products": "Up to 150 products",
+        "price": 5999,
+        "renewal": 3999,
+        "domain": true,
+        "domainNote": "Own domain included"
+      },
+      {
+        "products": "Up to 300 products",
+        "price": 7999,
+        "renewal": 4999,
+        "domain": true,
+        "domainNote": "Own domain included"
+      }
     ],
-    "overflow": { "products": "Over 300 products", "text": "We quote" },
+    "overflow": {
+      "products": "Over 300 products",
+      "text": "We quote"
+    },
     "includes": [
       "Up to 50 products, each with its own page",
       "A WhatsApp enquiry button on every product",
@@ -79,36 +128,81 @@
       {
         "title": "Product",
         "links": [
-          { "label": "Home", "href": "/" },
-          { "label": "WhatsApp catalogue", "href": "/whatsapp-catalogue" },
-          { "label": "Pricing", "href": "/pricing" }
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "WhatsApp catalogue",
+            "href": "/whatsapp-catalogue"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing"
+          }
         ]
       },
       {
         "title": "Industries",
         "links": [
-          { "label": "Garments and sarees", "href": "/catalogue-maker/garments" },
-          { "label": "Jewellery", "href": "/catalogue-maker/jewellery" },
-          { "label": "Wholesale", "href": "/catalogue-maker/wholesale" },
-          { "label": "Resellers", "href": "/catalogue-maker/resellers" }
+          {
+            "label": "Garments and sarees",
+            "href": "/catalogue-maker/garments"
+          },
+          {
+            "label": "Jewellery",
+            "href": "/catalogue-maker/jewellery"
+          },
+          {
+            "label": "Wholesale",
+            "href": "/catalogue-maker/wholesale"
+          },
+          {
+            "label": "Resellers",
+            "href": "/catalogue-maker/resellers"
+          }
         ]
       },
       {
         "title": "Guides",
         "links": [
-          { "label": "All guides", "href": "/guides" },
-          { "label": "Catalog not showing", "href": "/guides/whatsapp-catalog-not-showing" },
-          { "label": "Add a catalog", "href": "/guides/add-catalog-to-whatsapp-business" },
-          { "label": "Make a product catalogue", "href": "/guides/how-to-make-a-product-catalogue" }
+          {
+            "label": "All guides",
+            "href": "/guides"
+          },
+          {
+            "label": "Catalog not showing",
+            "href": "/guides/whatsapp-catalog-not-showing"
+          },
+          {
+            "label": "Add a catalog",
+            "href": "/guides/add-catalog-to-whatsapp-business"
+          },
+          {
+            "label": "Make a product catalogue",
+            "href": "/guides/how-to-make-a-product-catalogue"
+          }
         ]
       },
       {
         "title": "Company",
         "links": [
-          { "label": "About", "href": "/about" },
-          { "label": "Contact", "href": "/contact" },
-          { "label": "Privacy", "href": "/privacy" },
-          { "label": "Terms", "href": "/terms" }
+          {
+            "label": "About",
+            "href": "/about"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          },
+          {
+            "label": "Privacy",
+            "href": "/privacy"
+          },
+          {
+            "label": "Terms",
+            "href": "/terms"
+          }
         ]
       }
     ]
