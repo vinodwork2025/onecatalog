@@ -102,19 +102,34 @@ has been shared.
 
 ## The landing page (onecatalog.in)
 
-All copy, prices and FAQ live in `site/config.json`. Change words there, not in
-`site/render.js`. The build checks the config and prints what is wrong:
+A multi-page site. Shared facts (contact, prices, entity statement, nav,
+footer, author, samples) live in `site/config.json`. Each page is one JSON
+file in `site/pages/` (guides in `site/pages/guides/`, industry pages in
+`site/pages/catalogue-maker/`). Change words there, not in `site/render.js`.
+To add a page, copy a similar JSON file, change `path`, `keyword` and the copy,
+then run `node scripts/og.js` (makes its share image in `site/og/`) and commit.
 
-- any field still saying `TODO`
-- WhatsApp not country code + 10 digits
-- title 60 characters or more, meta description outside 150 to 160
-- the lead plan's price missing from the meta description, the definition or
-  the pricing lead
-- any ₹ amount in the copy that is not one of the configured prices
-- the words "in person" anywhere (we serve all of India remotely)
+The build checks every page and prints what is wrong:
 
-While any check fails, the page is published with `noindex`. Fix the config,
-never the check.
+- any `TODO`, `[CONFIRM]` or `[PLACEHOLDER]` text, em-dash, semicolon or banned word
+- title over 60 characters, meta description outside 110 to 155
+- the page's `keyword` missing from title, H1, description, first 100 words,
+  every H2, or the URL, and two pages sharing a keyword
+- any ₹ amount that is not one of the configured prices
+- internal links that go nowhere, fewer than 2 internal links in the body,
+  guides not linking to `/whatsapp-catalogue` and another guide, industry
+  pages not linking to `/pricing` and `/whatsapp-catalogue`
+- a missing OG image
+
+A page that fails is published `noindex` and left out of the sitemap. Fix the
+page, never the check. `privacy` and `terms` are noindex on purpose until a
+legal review (`"noindex": true`). `ga4Id` and `gscToken` in config are empty
+until Hari has them. The router 301s `www.` and trailing slashes on
+onecatalog.in and serves `dist/_home/404.html` for unknown paths.
+
+Guides describe the WhatsApp Business app. Every step must match
+faq.whatsapp.com, with the source listed in the guide's `sources`. Re-check
+them when WhatsApp changes its app.
 
 Current prices (first year / renewal): up to 20 products ₹1,999 / ₹1,999 (Lite,
 no own domain), up to 50 ₹3,999 / ₹2,999, up to 150 ₹5,999 / ₹3,999, up to 300
