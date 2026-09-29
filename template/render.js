@@ -71,10 +71,18 @@ function cardImg(p, name, eager) {
 
 // ---------- shell ----------
 
+// Two-letter badge from the shop name, skipping filler words, so
+// "The Best Wood Handicrafts" gives "BW" and "Ra Sofa and Furniture" gives "RS".
+function initialsOf(name) {
+  const words = String(name || '?').split(/\s+/).filter(w => /[a-z0-9]/i.test(w));
+  const main = words.filter(w => !/^(the|and|of|&)$/i.test(w));
+  return (main.length ? main : words).map(w => w.replace(/[^a-z0-9]/gi, '')[0] || '').join('').slice(0, 2).toUpperCase() || '?';
+}
+
 // No logo yet: an inline initials icon in the client's accent colour, so the
 // browser tab has an icon and never requests a missing /favicon.ico.
 function favicon(cfg) {
-  const initials = (cfg.name || '?').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const initials = initialsOf(cfg.name);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="${cfg.accent || '#C0392B'}"/><text x="32" y="42" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">${initials}</text></svg>`;
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
@@ -107,7 +115,7 @@ ${ld}
 }
 
 function header(cfg, { home = false } = {}) {
-  const initials = (cfg.name || '?').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const initials = initialsOf(cfg.name);
   const logo = cfg.logo
     ? `<img class="site-logo" src="/img/${esc(cfg.logo)}" alt="${esc(cfg.name)} logo" width="44" height="44">`
     : `<div class="site-logo site-logo-fallback" aria-hidden="true">${esc(initials)}</div>`;
