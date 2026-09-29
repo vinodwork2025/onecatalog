@@ -1,0 +1,42 @@
+{
+  "path": "/privacy",
+  "type": "legal",
+  "crumb": "Privacy",
+  "noindex": true,
+  "todo": "TODO(hari): legal review before removing noindex",
+  "updated": "2026-09-29",
+  "title": "Privacy Policy | OneCatalog",
+  "description": "How OneCatalog handles information from shop owners who use our catalogue service and from visitors to onecatalog.in and client catalogues.",
+  "h1": "Privacy policy",
+  "answer": "This is a draft and is being reviewed. It explains in plain words what information OneCatalog collects and what we do with it.",
+  "sections": [
+    {
+      "h2": "Information from shop owners",
+      "blocks": [
+        { "p": "When you use OneCatalog, you send us your business name, WhatsApp number, product photos, product names, prices and any other details you want in your catalogue. We use this only to build, host and update your catalogue. Product details you send are published on your catalogue because that is the service." }
+      ]
+    },
+    {
+      "h2": "Information from visitors",
+      "blocks": [
+        { "p": "Our site and client catalogues are hosted on Cloudflare. Like any website host, Cloudflare processes technical information such as IP address and browser type to deliver pages and protect against abuse." },
+        { "p": "When a visitor taps a WhatsApp button, WhatsApp opens on their device and the conversation happens between the visitor and the business. OneCatalog does not see those messages." }
+      ]
+    },
+    {
+      "h2": "What we do not do",
+      "blocks": [
+        { "ul": [
+          "We do not sell personal information.",
+          "We do not collect payment card details on our sites."
+        ] }
+      ]
+    },
+    {
+      "h2": "Contact",
+      "blocks": [
+        { "p": "Questions about privacy: email [hello@onecatalog.in](mailto:hello@onecatalog.in) or message us on [WhatsApp](https://wa.me/919663088484)." }
+      ]
+    }
+  ]
+}

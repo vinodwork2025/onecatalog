@@ -1,0 +1,50 @@
+{
+  "path": "/about",
+  "type": "about",
+  "hub": true,
+  "crumb": "About",
+  "updated": "2026-09-29",
+  "title": "About OneCatalog | Who Makes Your Catalogue",
+  "description": "OneCatalog makes online product catalogues for Indian small businesses over WhatsApp. Who runs it, how it works, and how to reach us.",
+  "h1": "About OneCatalog",
+  "answer": "OneCatalog makes online product catalogues for Indian small businesses. You send your products with photos and prices on WhatsApp, and we build your catalogue with one shareable link. Send that link on WhatsApp instead of forwarding dozens of photos. Customers see your full catalogue on their phone, and they can message you to order.",
+  "waText": "Hi OneCatalog, I have a question.",
+  "sections": [
+    {
+      "h2": "Who runs OneCatalog?",
+      "blocks": [
+        { "p": "OneCatalog is run by Vinod Kumar, known as Hari. He builds the catalogues from the photos and price lists that shop owners send on WhatsApp, and he answers the WhatsApp messages." }
+      ]
+    },
+    {
+      "h2": "Why OneCatalog exists",
+      "blocks": [
+        { "p": "Small shops in India sell on WhatsApp all day. Most of that day goes into forwarding the same product photos and typing the same prices. A catalogue link does that work once. We make it for the shop owner, so they never have to learn a website tool." },
+        { "p": "Everything happens on WhatsApp. We work with businesses anywhere in India, and there is no need to meet." }
+      ]
+    },
+    {
+      "h2": "What we do and do not do",
+      "blocks": [
+        { "ul": [
+          "We build a mobile catalogue website with a page for every product and a WhatsApp enquiry button on each one.",
+          "We clean up your photos, set up categories and host the catalogue.",
+          "We make updates when you send them, within the updates included in your plan.",
+          "We do not take payments or run a shopping cart. Customers order by messaging you.",
+          "We do not sell your customer data. Enquiries go straight to your WhatsApp."
+        ] },
+        { "p": "See how it compares with the free WhatsApp catalog on our [WhatsApp catalogue page](/whatsapp-catalogue), or read the [plans and prices](/pricing)." }
+      ]
+    },
+    {
+      "h2": "Contact",
+      "blocks": [
+        { "p": "WhatsApp: [96630 88484](https://wa.me/919663088484). Email: [hello@onecatalog.in](mailto:hello@onecatalog.in). We reply within 2 hours, 9am to 9pm. You can also use our [contact page](/contact)." }
+      ]
+    }
+  ],
+  "cta": {
+    "heading": "Talk to us about your catalogue",
+    "text": "Send a message on WhatsApp and tell us what you sell."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "path": "/contact",
+  "type": "contact",
+  "crumb": "Contact",
+  "updated": "2026-09-29",
+  "title": "Contact OneCatalog | WhatsApp 96630 88484",
+  "description": "Contact OneCatalog on WhatsApp at 96630 88484 or email hello@onecatalog.in. We reply within 2 hours, 9am to 9pm, and work with shops across India.",
+  "h1": "Contact OneCatalog",
+  "answer": "The fastest way to reach OneCatalog is WhatsApp on 96630 88484. We reply within 2 hours, 9am to 9pm. You can also email hello@onecatalog.in.",
+  "waText": "Hi OneCatalog, I have a question.",
+  "secondary": { "label": "Email us", "href": "mailto:hello@onecatalog.in" },
+  "sections": [
+    {
+      "h2": "What to send us",
+      "blocks": [
+        { "p": "To get a quick answer about a catalogue, tell us:" },
+        { "ul": [
+          "What you sell.",
+          "Roughly how many products you have.",
+          "Whether you want your own domain name."
+        ] },
+        { "p": "We will reply with the right plan and the next steps. You can read the [plans and prices](/pricing) first, or see [how the WhatsApp catalogue works](/whatsapp-catalogue)." }
+      ]
+    },
+    {
+      "h2": "Where we work",
+      "blocks": [
+        { "p": "We work with businesses anywhere in India. Everything happens on WhatsApp, so your location does not matter. Read more [about OneCatalog](/about)." }
+      ]
+    }
+  ]
+}

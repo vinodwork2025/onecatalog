@@ -1,0 +1,54 @@
+{
+  "path": "/terms",
+  "type": "legal",
+  "crumb": "Terms",
+  "noindex": true,
+  "todo": "TODO(hari): legal review before removing noindex",
+  "updated": "2026-09-29",
+  "title": "Terms of Service | OneCatalog",
+  "description": "The terms for using the OneCatalog catalogue service: plans, payment, the refundable booking amount, updates, renewal and your domain.",
+  "h1": "Terms of service",
+  "answer": "This is a draft and is being reviewed. It sets out the terms of the OneCatalog catalogue service in plain words.",
+  "sections": [
+    {
+      "h2": "The service",
+      "blocks": [
+        { "p": "OneCatalog builds and hosts a mobile product catalogue website for your business, from the photos and details you send us on WhatsApp. The plan you choose sets how many products your catalogue can hold." }
+      ]
+    },
+    {
+      "h2": "Payment and refund",
+      "blocks": [
+        { "ul": [
+          "You pay ₹999 to start. If you do not approve your finished catalogue, the ₹999 is fully refunded.",
+          "You pay the balance of your plan after you approve the catalogue.",
+          "Plan prices are listed on the [pricing page](/pricing)."
+        ] }
+      ]
+    },
+    {
+      "h2": "Updates",
+      "blocks": [
+        { "p": "Every plan includes 12 update requests a year, each for up to 10 products. Extra update batches cost ₹299 for 10 products." }
+      ]
+    },
+    {
+      "h2": "Renewal and your domain",
+      "blocks": [
+        { "p": "Plans renew yearly at the renewal price shown on the pricing page. If you do not renew, your catalogue goes offline after a 15-day grace period. On plans that include a domain, the domain is registered in your business name and stays yours." }
+      ]
+    },
+    {
+      "h2": "Your content",
+      "blocks": [
+        { "p": "You confirm you have the right to use the photos and product details you send us. You remain the owner of your content. We may refuse products that are illegal to sell in India." }
+      ]
+    },
+    {
+      "h2": "Contact",
+      "blocks": [
+        { "p": "Email [hello@onecatalog.in](mailto:hello@onecatalog.in) or message us on [WhatsApp](https://wa.me/919663088484)." }
+      ]
+    }
+  ]
+}
