@@ -35,6 +35,7 @@ const SKIP_IMAGES = FLAGS.has('--no-images');
 
 const GRID_W = 400;
 const FULL_W = 800;
+const THUMB_W = 400;
 const QUALITY = 80;
 
 const log = (...m) => console.log(...m);
@@ -165,29 +166,35 @@ async function loadRows(cfg, clientDir, slug) {
 async function processImages(clientDir, outDir, wanted, cfg) {
   const srcDir = path.join(clientDir, 'images');
   const dstDir = path.join(outDir, 'img');
-  await fsp.mkdir(dstDir, { recursive: true });
+  const smDir = path.join(dstDir, 'sm');
+  await fsp.mkdir(smDir, { recursive: true });
 
   let made = 0, skipped = 0;
   for (const file of wanted) {
     const src = path.join(srcDir, file);
     if (!fs.existsSync(src)) continue;
     const out = path.join(dstDir, file);
-
-    // Reuse an output that is newer than its source. Keeps a 150-client
-    // rebuild at seconds rather than minutes.
-    if (fs.existsSync(out)) {
-      const [a, b] = [fs.statSync(src).mtimeMs, fs.statSync(out).mtimeMs];
-      if (b >= a) { skipped++; continue; }
-    }
-
     const isLogo = file === cfg.logo;
+    // Cards load a 400px thumbnail (img/sm/), about a quarter of the bytes of
+    // the full 800px image, which only the product page needs.
+    const thumb = isLogo || file === cfg.shopPhoto ? null : path.join(smDir, file);
+
+    // Reuse outputs that are newer than their source. Keeps a 150-client
+    // rebuild at seconds rather than minutes.
+    const fresh = f => fs.existsSync(f) && fs.statSync(f).mtimeMs >= fs.statSync(src).mtimeMs;
+    if (fresh(out) && (!thumb || fresh(thumb))) { skipped++; continue; }
+
     const img = sharp(src).rotate();
     if (isLogo) {
       await img.resize(176, 176, { fit: 'inside', withoutEnlargement: true })
         .webp({ quality: 88 }).toFile(out);
     } else {
-      await img.resize(FULL_W, FULL_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
+      await img.clone().resize(FULL_W, FULL_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
         .webp({ quality: QUALITY }).toFile(out);
+      if (thumb) {
+        await img.clone().resize(THUMB_W, THUMB_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
+          .webp({ quality: QUALITY }).toFile(thumb);
+      }
     }
     made++;
   }
@@ -271,14 +278,22 @@ async function buildClient(slug, rawCss) {
 
   let imgStats = { made: 0, skipped: 0, pruned: 0 };
   if (SKIP_IMAGES) {
-    const missing = [...wantedImages].filter(f => !fs.existsSync(path.join(outDir, 'img', f)));
+    const missing = [...wantedImages].filter(f => !fs.existsSync(path.join(outDir, 'img', f))
+      || (f !== cfg.logo && f !== cfg.shopPhoto && !fs.existsSync(path.join(outDir, 'img', 'sm', f))));
     if (missing.length) warn(`--no-images: ${missing.length} image(s) not in dist yet, run a full build`);
   } else {
     imgStats = await processImages(clientDir, outDir, wantedImages, cfg);
     const imgDir = path.join(outDir, 'img');
     if (fs.existsSync(imgDir)) {
       for (const f of await fsp.readdir(imgDir)) {
+        if (f === 'sm') continue;
         if (!wantedImages.has(f)) { await fsp.rm(path.join(imgDir, f), { force: true }); imgStats.pruned++; }
+      }
+      const smDir = path.join(imgDir, 'sm');
+      if (fs.existsSync(smDir)) {
+        for (const f of await fsp.readdir(smDir)) {
+          if (!wantedImages.has(f)) { await fsp.rm(path.join(smDir, f), { force: true }); imgStats.pruned++; }
+        }
       }
     }
   }

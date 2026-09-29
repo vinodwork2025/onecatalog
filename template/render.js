@@ -1,6 +1,7 @@
 /* Page renderer. Pure functions: data in, HTML string out.
    Products are written into the HTML at build time, so the catalog
-   works with JavaScript switched off and Google indexes everything. */
+   works with JavaScript switched off and Google indexes everything.
+   The inline scripts only add polish: filtering, reveals, gallery, share. */
 
 // ---------- helpers ----------
 
@@ -52,18 +53,42 @@ const ICON = {
   star: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></svg>',
   nav: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7.5 3L13.5 21z"/></svg>',
   clock: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11h-4v-2h2V7h2v6z"/></svg>',
-  back: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>'
+  back: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></svg>',
+  search: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>',
+  share: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7c0 .3 0 .6.1.8L8.4 11.2a3 3 0 1 0 0 3.6l6.7 3.4A3 3 0 1 0 18 16z"/></svg>',
+  grid: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z"/></svg>',
+  cal: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H4v17h16V4h-3V2h-2v2H9V2zm-1 7h12v10H6z"/></svg>'
 };
+
+// ---------- images ----------
+
+// Grid and related cards use the 400px thumbnail made by build.js (img/sm/),
+// with the full image as the 2x source. The product page uses the full image.
+function cardImg(p, name, eager) {
+  const f = esc(p.images[0]);
+  return `<img class="card-img" src="/img/sm/${f}" srcset="/img/sm/${f} 400w, /img/${f} 800w" sizes="(min-width:960px) 25vw, (min-width:560px) 33vw, 50vw" alt="${esc(name)}" width="400" height="400" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+}
 
 // ---------- shell ----------
 
-function head(cfg, { title, description, canonical, jsonld, css }) {
-  const ld = (jsonld || []).map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('');
+// No logo yet: an inline initials icon in the client's accent colour, so the
+// browser tab has an icon and never requests a missing /favicon.ico.
+function favicon(cfg) {
+  const initials = (cfg.name || '?').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="${cfg.accent || '#C0392B'}"/><text x="32" y="42" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">${initials}</text></svg>`;
+  return 'data:image/svg+xml,' + encodeURIComponent(svg);
+}
+
+function head(cfg, { title, description, canonical, jsonld, css, image, bodyClass = '' }) {
+  const ld = (jsonld || []).map(o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`).join('');
+  // Share preview: the logo if there is one, otherwise the page's own product photo.
+  const og = image || (cfg.logo ? cfg.logo : '');
   return `<!doctype html>
 <html lang="${esc(cfg.lang || 'en-IN')}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>document.documentElement.className='js'</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
@@ -71,23 +96,24 @@ function head(cfg, { title, description, canonical, jsonld, css }) {
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${esc(canonical)}">
-${cfg.logo ? `<meta property="og:image" content="${esc(cfg.siteUrl)}/img/${esc(cfg.logo)}">` : ''}
+${og ? `<meta property="og:image" content="${esc(cfg.siteUrl)}/img/${esc(og)}"><meta name="twitter:card" content="summary_large_image">` : ''}
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="${esc(cfg.accent)}">
+${cfg.logo ? `<link rel="icon" href="/img/${esc(cfg.logo)}">` : `<link rel="icon" href="${favicon(cfg)}">`}
 <style>${css}</style>
 ${ld}
 </head>
-<body>`;
+<body${bodyClass ? ` class="${bodyClass}"` : ''}>`;
 }
 
 function header(cfg, { home = false } = {}) {
   const initials = (cfg.name || '?').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
   const logo = cfg.logo
     ? `<img class="site-logo" src="/img/${esc(cfg.logo)}" alt="${esc(cfg.name)} logo" width="44" height="44">`
-    : `<div class="site-logo site-logo-fallback">${esc(initials)}</div>`;
+    : `<div class="site-logo site-logo-fallback" aria-hidden="true">${esc(initials)}</div>`;
   const nameEl = home ? esc(cfg.name) : `<a href="/">${esc(cfg.name)}</a>`;
   return `<header class="site-head"><div class="wrap">
-${logo}
+${home ? logo : `<a href="/" aria-label="${esc(cfg.name)} catalog home">${logo}</a>`}
 <div><div class="site-name">${nameEl}</div>${cfg.tagline ? `<div class="site-tag">${esc(cfg.tagline)}</div>` : ''}</div>
 <a class="head-call" href="tel:${esc(cfg.phone || cfg.whatsapp)}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a>
 </div></header>`;
@@ -104,14 +130,24 @@ function announce(cfg) {
 function footer(cfg, categories) {
   const catLinks = categories.slice(0, 8)
     .map(c => `<a href="/category/${c.slug}">${esc(c.name)}</a>`).join('');
+  const buttons = [
+    cfg.mapsUrl ? `<a class="btn btn-ghost" href="${esc(cfg.mapsUrl)}" rel="noopener">${ICON.nav}<span>Get directions</span></a>` : '',
+    cfg.reviewUrl ? `<a class="btn btn-review" href="${esc(cfg.reviewUrl)}" rel="noopener">${ICON.star}<span>Rate us on Google</span></a>` : ''
+  ].join('');
   return `<footer class="site-foot"><div class="wrap">
+<div class="foot-grid">
+<div class="foot-card">
+<div class="foot-name">${esc(cfg.name)}</div>
 <div class="foot-row">${ICON.phone}<div><div class="foot-label">Call or WhatsApp</div><a href="tel:${esc(cfg.phone || cfg.whatsapp)}">${esc(cfg.phoneDisplay || cfg.phone || cfg.whatsapp)}</a></div></div>
 ${cfg.address ? `<div class="foot-row">${ICON.pin}<div><div class="foot-label">Address</div>${esc(cfg.address)}</div></div>` : ''}
 ${cfg.hours ? `<div class="foot-row">${ICON.clock}<div><div class="foot-label">Open</div>${esc(cfg.hours)}</div></div>` : ''}
-${cfg.mapsUrl ? `<a class="btn btn-ghost" href="${esc(cfg.mapsUrl)}" rel="noopener">${ICON.nav}<span>Get directions</span></a>` : ''}
-${cfg.reviewUrl ? `<a class="btn btn-review" href="${esc(cfg.reviewUrl)}" rel="noopener">${ICON.star}<span>Rate us on Google</span></a>` : ''}
-${catLinks ? `<div class="foot-links">${catLinks}</div>` : ''}
-<div class="foot-links"><a href="/">Catalog</a><a href="/about">About us</a></div>
+${buttons ? `<div class="foot-btns">${buttons}</div>` : ''}
+</div>
+<div class="foot-card">
+${catLinks ? `<div><div class="foot-label">Categories</div><div class="foot-links">${catLinks}</div></div>` : ''}
+<div><div class="foot-label">Pages</div><div class="foot-links"><a href="/">Catalog</a><a href="/about">About us</a></div></div>
+</div>
+</div>
 <div class="foot-credit">&copy; ${new Date().getFullYear()} ${esc(cfg.name)}${cfg.address ? ', ' + esc(cfg.city || '') : ''}. All prices subject to change.</div>
 </div></footer>`;
 }
@@ -122,16 +158,15 @@ function fab(cfg, text) {
 
 // ---------- cards ----------
 
-function card(cfg, p) {
+function card(cfg, p, i = 99) {
   const price = money(cfg, p.price);
   const priceEl = price
     ? `<div class="card-price">${esc(price)}</div>`
     : `<div class="card-price on-request">Price on request</div>`;
   return `<a class="card" href="/${p.slug}" data-cat="${esc(p.categorySlug)}" data-name="${esc(p.name.toLowerCase())}">
-<img class="card-img" src="/img/${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy" width="400" height="400">
+<div class="card-media">${cardImg(p, p.name, i < 2)}${p.inStock ? '' : '<span class="badge-out">Out of stock</span>'}</div>
 <div class="card-body">
 <div class="card-name">${esc(p.name)}</div>
-${p.inStock ? '' : '<span class="badge-out">Out of stock</span>'}
 ${priceEl}
 </div></a>`;
 }
@@ -179,20 +214,40 @@ export function renderIndex(cfg, products, categories, css) {
   const description = cfg.metaDescription
     || `Browse the full product catalog of ${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}. ${products.length} products with prices. Enquire directly on WhatsApp.`;
 
-  const chips = [`<button class="chip is-on" data-filter="all" aria-pressed="true">All</button>`]
-    .concat(categories.map(c => `<button class="chip" data-filter="${esc(c.slug)}" aria-pressed="false">${esc(c.name)} <span style="opacity:.6;margin-left:5px">${c.count}</span></button>`))
+  const chips = [`<button class="chip is-on" data-filter="all" aria-pressed="true">All <span class="n">${products.length}</span></button>`]
+    .concat(categories.map(c => `<button class="chip" data-filter="${esc(c.slug)}" aria-pressed="false">${esc(c.name)} <span class="n">${c.count}</span></button>`))
     .join('');
 
-  return head(cfg, { title, description, canonical: cfg.siteUrl + '/', jsonld, css })
+  const pills = [
+    cfg.city ? `<li>${ICON.pin}${esc(cfg.city)}</li>` : '',
+    cfg.since ? `<li>${ICON.cal}Since ${esc(cfg.since)}</li>` : '',
+    `<li>${ICON.grid}${products.length} products</li>`,
+    cfg.hours ? `<li class="wide-only">${ICON.clock}${esc(cfg.hours)}</li>` : ''
+  ].join('');
+
+  const greeting = cfg.waGreeting || `Hi ${cfg.name}, I saw your catalog.`;
+  const hero = `<section class="hero"><div class="wrap">
+<h1>${esc(cfg.metaHeadline || cfg.tagline || cfg.name)}</h1>
+${cfg.metaHeadline && cfg.tagline ? `<p class="hero-sub">${esc(cfg.tagline)}</p>` : ''}
+<ul class="pills">${pills}</ul>
+<div class="hero-actions">
+<a class="btn btn-wa" href="${waLink(cfg, greeting)}" rel="noopener">${ICON.wa}<span>Chat on WhatsApp</span></a>
+<a class="btn btn-ghost" href="tel:${esc(cfg.phone || cfg.whatsapp)}" style="margin-top:0">${ICON.phone}<span>Call</span></a>
+</div>
+</div></section>`;
+
+  return head(cfg, { title, description, canonical: cfg.siteUrl + '/', jsonld, css, image: products[0]?.images[0], bodyClass: 'has-fab' })
     + header(cfg, { home: true })
     + announce(cfg)
+    + hero
     + (categories.length > 1 ? `<nav class="cats" aria-label="Categories"><div class="cats-scroll">${chips}</div></nav>` : '')
-    + (showSearch ? `<div class="search-row"><input id="q" type="search" placeholder="Search products" aria-label="Search products"></div>` : '')
-    + `<main><div class="grid ${cfg.layout === 'grid-large' ? 'layout-large' : ''}" id="grid">${products.map(p => card(cfg, p)).join('')}</div>
+    + (showSearch ? `<div class="search-row">${ICON.search}<input id="q" type="search" placeholder="Search ${products.length} products" aria-label="Search products"></div>` : '')
+    + `<main id="main"><div class="grid ${cfg.layout === 'grid-large' ? 'layout-large' : ''}" id="grid">${products.map((p, i) => card(cfg, p, i)).join('')}</div>
 <p class="empty" id="empty" hidden>No products match that. Try another category.</p></main>`
     + footer(cfg, categories)
-    + fab(cfg, cfg.waGreeting || `Hi ${cfg.name}, I saw your catalog.`)
+    + fab(cfg, greeting)
     + indexScript()
+    + revealScript()
     + `</body></html>`;
 }
 
@@ -207,14 +262,17 @@ export function renderCategory(cfg, cat, products, categories, css) {
       { '@type': 'ListItem', position: 2, name: cat.name, item: `${cfg.siteUrl}/category/${cat.slug}` }
     ]
   }];
-  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/category/${cat.slug}`, jsonld, css })
+  const others = categories.filter(c => c.slug !== cat.slug);
+  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/category/${cat.slug}`, jsonld, css, image: products[0]?.images[0], bodyClass: 'has-fab' })
     + header(cfg)
     + announce(cfg)
-    + `<div class="crumb"><a href="/">Catalog</a> / ${esc(cat.name)}</div>`
-    + `<div class="sec-head"><h2>${esc(cat.name)}</h2><p>${products.length} product${products.length === 1 ? '' : 's'} at ${esc(cfg.name)}</p></div>`
-    + `<main><div class="grid ${cfg.layout === 'grid-large' ? 'layout-large' : ''}">${products.map(p => card(cfg, p)).join('')}</div></main>`
+    + `<nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a> / ${esc(cat.name)}</nav>`
+    + `<div class="sec-head"><h1>${esc(cat.name)}</h1><p>${products.length} product${products.length === 1 ? '' : 's'} at ${esc(cfg.name)}</p></div>`
+    + (others.length ? `<nav class="cats" aria-label="Other categories" style="position:static;background:none;border:0;padding-bottom:0"><div class="cats-scroll"><a class="chip" href="/">All</a>${others.map(c => `<a class="chip" href="/category/${esc(c.slug)}">${esc(c.name)} <span class="n">${c.count}</span></a>`).join('')}</div></nav>` : '')
+    + `<main id="main"><div class="grid ${cfg.layout === 'grid-large' ? 'layout-large' : ''}">${products.map((p, i) => card(cfg, p, i)).join('')}</div></main>`
     + footer(cfg, categories)
     + fab(cfg, `Hi ${cfg.name}, I'm looking at your ${cat.name}.`)
+    + revealScript()
     + `</body></html>`;
 }
 
@@ -258,42 +316,54 @@ export function renderProduct(cfg, p, related, categories, css) {
 
   const specs = Object.entries(p.specs || {}).filter(([, v]) => v);
   const strip = p.images.length > 1
-    ? `<div class="pd-strip">${p.images.map((f, i) => `<img src="/img/${esc(f)}" alt="${esc(p.name)} view ${i + 1}" width="64" height="64" data-full="/img/${esc(f)}"${i === 0 ? ' aria-current="true"' : ''}>`).join('')}</div>`
+    ? `<div class="pd-strip" role="group" aria-label="More photos">${p.images.map((f, i) => `<button type="button" data-full="/img/${esc(f)}" aria-label="Show photo ${i + 1} of ${p.images.length}"${i === 0 ? ' aria-current="true"' : ''}><img src="/img/sm/${esc(f)}" alt="" width="68" height="68" loading="lazy" decoding="async"></button>`).join('')}</div>`
     : '';
 
   const waText = `Hi ${cfg.name}, I'm interested in ${p.name}${p.sku ? ' (' + p.sku + ')' : ''}. Please share details.`;
+  const wa = waLink(cfg, waText);
+  const tel = `tel:${esc(cfg.phone || cfg.whatsapp)}`;
 
-  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/${p.slug}`, jsonld, css })
+  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/${p.slug}`, jsonld, css, image: p.images[0], bodyClass: 'has-bar' })
     + header(cfg)
     + announce(cfg)
-    + `<div class="crumb"><a href="/">Catalog</a>${p.category ? ` / <a href="/category/${esc(p.categorySlug)}">${esc(p.category)}</a>` : ''}</div>`
-    + `<div class="pd-media"><img class="pd-img" id="hero" src="/img/${esc(p.images[0])}" alt="${esc(p.name)}" width="800" height="800">${strip}</div>`
-    + `<main class="pd-body">
+    + `<nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a>${p.category ? ` / <a href="/category/${esc(p.categorySlug)}">${esc(p.category)}</a>` : ''}</nav>`
+    + `<div class="pd">
+<div class="pd-media"><div class="pd-frame"><img class="pd-img" id="hero" src="/img/${esc(p.images[0])}" alt="${esc(p.name)}" width="800" height="800" fetchpriority="high">${p.inStock ? '' : '<span class="badge-out" style="position:absolute;top:14px;left:14px">Out of stock</span>'}</div>${strip}</div>
+<main class="pd-body" id="main">
+${p.category ? `<a class="pd-cat" href="/category/${esc(p.categorySlug)}">${esc(p.category)}</a>` : ''}
 <h1>${esc(p.name)}</h1>
 ${price ? `<div class="pd-price">${esc(price)}</div>` : `<div class="pd-price on-request">Price on request</div>`}
-${p.inStock ? '' : '<p><span class="badge-out">Out of stock</span></p>'}
+${p.inStock ? '<div class="pd-stock">In stock</div>' : ''}
 ${p.description ? `<p class="pd-desc">${esc(p.description)}</p>` : ''}
-${specs.length ? `<table class="spec-table">${specs.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</table>` : ''}
-<a class="btn btn-wa" href="${waLink(cfg, waText)}" rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a>
-<a class="btn btn-ghost" href="/">${ICON.back}<span>Back to catalog</span></a>
-</main>`
-    + (related.length ? `<div class="sec-head"><h2>More in ${esc(p.category || cfg.name)}</h2></div><div class="grid">${related.map(r => card(cfg, r)).join('')}</div>` : '')
+${specs.length ? `<table class="spec-table">${specs.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</table>` : ''}
+<div class="pd-actions">
+<a class="btn btn-wa" href="${wa}" rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a>
+<div class="pd-row">
+<a class="btn btn-ghost" href="${tel}" style="margin-top:0">${ICON.phone}<span>Call</span></a>
+<button class="btn btn-ghost" type="button" id="share" data-title="${esc(p.name)}" style="margin-top:0">${ICON.share}<span>Share</span></button>
+</div>
+<a class="btn btn-soft" href="/">${ICON.back}<span>Back to catalog</span></a>
+</div>
+</main>
+</div>`
+    + (related.length ? `<section class="rel" aria-labelledby="rel-h"><div class="sec-head"><h2 id="rel-h">More in ${esc(p.category || cfg.name)}</h2></div><div class="rel-row">${related.map(r => card(cfg, r)).join('')}</div></section>` : '')
     + footer(cfg, categories)
-    + fab(cfg, waText)
+    + `<div class="pd-bar"><a class="btn btn-ghost btn-icon" href="${tel}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a><a class="btn btn-wa" href="${wa}" rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a></div>`
     + productScript()
+    + revealScript()
     + `</body></html>`;
 }
 
 export function renderAbout(cfg, products, categories, css) {
   const title = `About ${cfg.name}${cfg.city ? ', ' + cfg.city : ''}`;
   const description = (cfg.about || `${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}. ${cfg.tagline || ''}`).slice(0, 300);
-  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/about`, jsonld: [], css })
+  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/about`, jsonld: [], css, image: cfg.shopPhoto, bodyClass: 'has-fab' })
     + header(cfg)
     + announce(cfg)
-    + `<main class="about-body">
+    + `<main class="about-body" id="main">
 <h1>About ${esc(cfg.name)}</h1>
 ${(cfg.about || cfg.tagline || '').split('\n').filter(Boolean).map(t => `<p>${esc(t)}</p>`).join('')}
-${cfg.shopPhoto ? `<img class="about-img" src="/img/${esc(cfg.shopPhoto)}" alt="${esc(cfg.name)} shop" loading="lazy">` : ''}
+${cfg.shopPhoto ? `<img class="about-img" src="/img/${esc(cfg.shopPhoto)}" alt="${esc(cfg.name)} shop" loading="lazy" decoding="async">` : ''}
 <div class="about-facts">
 ${cfg.since ? `<div><span>In business since</span> ${esc(cfg.since)}</div>` : ''}
 ${cfg.areasServed ? `<div><span>Areas served</span> ${esc(cfg.areasServed)}</div>` : ''}
@@ -305,10 +375,24 @@ ${cfg.hours ? `<div><span>Open</span> ${esc(cfg.hours)}</div>` : ''}
 </main>`
     + footer(cfg, categories)
     + fab(cfg, `Hi ${cfg.name}, I have a question.`)
+    + revealScript()
     + `</body></html>`;
 }
 
 // ---------- inline scripts (progressive enhancement only) ----------
+
+// Reveals cards and sections that start below the first screen. Anything
+// visible on load is never hidden, so the first paint and LCP are untouched.
+function revealScript() {
+  return `<script>
+(function(){
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var h=innerHeight,els=[].slice.call(document.querySelectorAll('.grid .card,.rel-row .card,.spec-table,.about-facts div,.sec-head')).filter(function(e){return e.getBoundingClientRect().top>h;});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -6% 0px'});
+els.forEach(function(e,i){e.style.setProperty('--i',i%4);e.classList.add('pre');io.observe(e);});
+})();
+</script>`;
+}
 
 function indexScript() {
   return `<script>
@@ -320,14 +404,15 @@ function apply(){
   var term=q&&q.value?q.value.trim().toLowerCase():'';var shown=0;
   cards.forEach(function(c){
     var ok=(cat==='all'||c.dataset.cat===cat)&&(!term||c.dataset.name.indexOf(term)>-1);
-    c.hidden=!ok;if(ok)shown++;
+    c.hidden=!ok;if(ok){shown++;c.classList.remove('pre');}
   });
   if(empty)empty.hidden=shown>0;
 }
+function run(){if(document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.startViewTransition(apply);else apply();}
 chips.forEach(function(b){b.addEventListener('click',function(){
   chips.forEach(function(x){x.classList.remove('is-on');x.setAttribute('aria-pressed','false');});
-  b.classList.add('is-on');b.setAttribute('aria-pressed','true');cat=b.dataset.filter;apply();
-  window.scrollTo({top:0,behavior:'smooth'});
+  b.classList.add('is-on');b.setAttribute('aria-pressed','true');cat=b.dataset.filter;run();
+  var top=grid.getBoundingClientRect().top+scrollY-140;if(scrollY>top)window.scrollTo({top:top,behavior:'smooth'});
 });});
 if(q)q.addEventListener('input',apply);
 })();
@@ -337,12 +422,18 @@ if(q)q.addEventListener('input',apply);
 function productScript() {
   return `<script>
 (function(){
-var hero=document.getElementById('hero'),thumbs=[].slice.call(document.querySelectorAll('.pd-strip img'));
+var hero=document.getElementById('hero'),thumbs=[].slice.call(document.querySelectorAll('.pd-strip button'));
 thumbs.forEach(function(t){t.addEventListener('click',function(){
-  hero.src=t.dataset.full;
-  thumbs.forEach(function(x){x.removeAttribute('aria-current');});
-  t.setAttribute('aria-current','true');
+  if(t.getAttribute('aria-current')==='true')return;
+  thumbs.forEach(function(x){x.removeAttribute('aria-current');});t.setAttribute('aria-current','true');
+  var next=new Image();next.onload=function(){hero.classList.add('swap');setTimeout(function(){hero.src=t.dataset.full;hero.classList.remove('swap');},180);};next.src=t.dataset.full;
 });});
+var s=document.getElementById('share');
+if(s)s.addEventListener('click',function(){
+  var d={title:s.dataset.title,url:location.href};
+  if(navigator.share){navigator.share(d).catch(function(){});}
+  else{location.href='https://wa.me/?text='+encodeURIComponent(d.title+' '+d.url);}
+});
 })();
 </script>`;
 }

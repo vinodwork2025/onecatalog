@@ -69,6 +69,17 @@ clients. Their shops, addresses and prices are examples, and their photos are
 placeholders. `varnam-sarees` sends WhatsApp enquiries to the OneCatalog number.
 The landing page links to demos from `site/config.json` → `samples`.
 
+## How catalog pages look and load
+
+`template/render.js` + `template/styles.css` + `template/themes.js`. The build
+writes each product photo twice: `dist/<slug>/img/<file>` (800px, product page)
+and `dist/<slug>/img/sm/<file>` (400px, grid cards via `srcset`). Themes only
+set base colours. Readable accent text, text on the accent, the in-stock
+green and shadows are computed per theme, so a light accent (gold) gets dark
+button text and dark themes get a lightened price colour automatically.
+Scroll reveals only touch content below the first screen. Do not add
+`backdrop-filter`: in testing it doubled style/layout time on product pages.
+
 ## products.csv columns
 
 `id, category, name, slug, description, price, image_url, in_stock,
