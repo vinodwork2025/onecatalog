@@ -1,0 +1,64 @@
+{
+  "path": "/pricing",
+  "type": "page",
+  "hub": true,
+  "crumb": "Pricing",
+  "keyword": "onecatalog pricing",
+  "updated": "2026-09-29",
+  "title": "OneCatalog Pricing | Catalogue Maker Plans in India",
+  "description": "OneCatalog pricing: ₹1,999 a year for 20 products, ₹3,999 for 50 products with your own domain. Pay ₹999 to start, refunded if you do not approve.",
+  "h1": "OneCatalog pricing. One price, set by how many products you have.",
+  "answer": "OneCatalog pricing starts at ₹1,999 a year for up to 20 products. Most shops choose ₹3,999 for the first year for up to 50 products, which includes your own domain, then ₹2,999 a year. The price depends only on how many products you have.",
+  "sub": "You pay ₹999 to start. You pay the rest only after you see your catalogue live and approve it.",
+  "waText": "Hi OneCatalog, I want to know which plan fits my shop.",
+  "secondary": { "label": "See a sample catalogue", "href": "/#s6" },
+  "sections": [
+    {
+      "h2": "OneCatalog pricing for every plan",
+      "blocks": [
+        { "pricing": "full" }
+      ]
+    },
+    {
+      "h2": "Which plan should I choose?",
+      "blocks": [
+        { "table": {
+          "head": ["If you are", "Choose"],
+          "rows": [
+            ["A small shop with a short range, happy with a onecatalog.in link", "Lite, up to 20 products, ₹1,999 a year"],
+            ["A shop that wants its own domain name", "Up to 50 products, ₹3,999 first year"],
+            ["A shop or wholesaler with a wide range", "Up to 150 products, ₹5,999 first year"],
+            ["A distributor with several product lines", "Up to 300 products, ₹7,999 first year"]
+          ]
+        } },
+        { "p": "Not sure how many products to include? Start with your best sellers. You can move to a bigger plan later. For trade examples, read how the catalogue works for [wholesalers](/catalogue-maker/wholesale) and [jewellers](/catalogue-maker/jewellery)." }
+      ]
+    },
+    {
+      "h2": "What is not included",
+      "blocks": [
+        { "ul": [
+          "Product photography. We clean up the photos you send, but we do not visit to take them.",
+          "Online payments or a shopping cart. Customers order by messaging you on WhatsApp.",
+          "Changes to the catalogue design beyond the colour and theme options every catalogue has."
+        ] },
+        { "p": "Updates are included: 12 update requests a year, each for up to 10 products. After that, extra batches cost ₹299 for 10 products." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Billing and payment questions",
+    "items": [
+      { "q": "Why is renewal cheaper than the first year?", "a": "The first year includes building your catalogue and setting up your domain. Renewal covers hosting and updates only, so it costs less. On the 50 product plan, renewal is ₹2,999 a year." },
+      { "q": "What if I do not like my catalogue?", "a": "We fix what is wrong first. If you still do not approve it, the ₹999 is fully refunded and you owe nothing more." },
+      { "q": "What happens if I do not renew?", "a": "Your catalogue goes offline after a 15-day grace period. Your domain is registered in your business name, so you keep it either way." },
+      { "q": "Is OneCatalog free to start?", "a": "No. There is no free plan. You pay ₹999 to start, and that is refunded if you do not approve the finished catalogue. If you want something free, the catalog inside the WhatsApp Business app costs nothing. Our [WhatsApp catalogue page](/whatsapp-catalogue) compares the two." },
+      { "q": "What if I have more than 300 products?", "a": "Message us with your product count and we will quote a price." },
+      { "q": "How do I pay, and do I get a GST invoice?", "a": "Message us on WhatsApp and we will share the payment options and invoice details before you pay anything." }
+    ]
+  },
+  "cta": {
+    "heading": "Ask which plan fits your shop",
+    "text": "Tell us what you sell and how many products you have. We reply within 2 hours, 9am to 9pm."
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "path": "/whatsapp-catalogue",
+  "type": "page",
+  "hub": true,
+  "crumb": "WhatsApp catalogue",
+  "keyword": "whatsapp catalogue",
+  "updated": "2026-09-29",
+  "title": "WhatsApp Catalogue Maker for Your Business | OneCatalog",
+  "description": "Get a WhatsApp catalogue customers open in one tap. We build it from your photos, with prices and an order button on each product. From ₹1,999 a year.",
+  "h1": "A WhatsApp catalogue that opens in one tap",
+  "answer": "A WhatsApp catalogue is a list of your products that customers can open from a WhatsApp chat. OneCatalog builds it as one web link, with a page for every product and a button that starts a WhatsApp chat about that product. You share the link anywhere on WhatsApp, and customers open it in one tap.",
+  "sub": "You keep your WhatsApp Business catalog too. This page explains what each one does well.",
+  "waText": "Hi OneCatalog, I want a WhatsApp catalogue for my business.",
+  "mockup": {
+    "label": "Sample WhatsApp catalogue for a saree shop, shown on a phone",
+    "shop": "Varnam Sarees",
+    "tag": "Sample catalogue",
+    "items": [
+      { "name": "Kanchipuram silk saree", "price": "₹12,500" },
+      { "name": "Chettinad cotton saree", "price": "₹1,450" },
+      { "name": "Silk cotton saree", "price": "From ₹2,800" },
+      { "name": "Kids pattu pavadai", "price": "Price on request" }
+    ]
+  },
+  "sections": [
+    {
+      "h2": "Where the WhatsApp Business catalog falls short",
+      "blocks": [
+        { "p": "The catalog inside the WhatsApp Business app is free and useful. Keep it. But shop owners run into the same limits again and again." },
+        { "ul": [
+          "**You add every item by hand.** Each product is added one at a time on your phone, with photos, a name and a country of origin. The app has no spreadsheet upload. Our guide on [bulk upload to a WhatsApp Business catalog](/guides/whatsapp-catalog-bulk-upload) explains the workaround.",
+          "**Every item is reviewed first.** WhatsApp reviews each item before customers can see it. Items that are pending or rejected stay hidden. See [how long catalog approval takes](/guides/whatsapp-catalog-approval-time).",
+          "**Items sometimes vanish.** WhatsApp lists known issues where items do not display. Our [catalog not showing guide](/guides/whatsapp-catalog-not-showing) covers the fixes.",
+          "**Prices are not always available.** WhatsApp says adding prices works only in certain countries. Read [why the catalog price is not showing](/guides/whatsapp-catalog-price-not-showing).",
+          "**Collections wait for review too.** Grouping items into collections is possible, but each new collection is reviewed. See our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories).",
+          "**It lives inside WhatsApp.** Catalog links open the item inside WhatsApp. Google does not list your products as web pages."
+        ] }
+      ]
+    },
+    {
+      "h2": "How does a OneCatalog WhatsApp catalogue work?",
+      "blocks": [
+        { "p": "Your OneCatalog catalogue is a small website made only of your products. It has one address, like yourshop.onecatalog.in, or your own domain on plans from ₹3,999. Anyone with the link can open it in a phone browser. They do not need WhatsApp to look at it." },
+        { "p": "Each product has its own page with photos, price and details such as size, material, colour or MOQ. Products sit in categories, so a customer looking for silk sarees goes straight to silk sarees." },
+        { "p": "When a customer likes something, they tap **Enquire on WhatsApp**. WhatsApp opens with a message to you that already names the product. You reply with stock and delivery details, the way you do today." }
+      ]
+    },
+    {
+      "h2": "How do I share my catalogue on WhatsApp?",
+      "blocks": [
+        { "p": "Share the same link everywhere. Customers learn it and come back to it." },
+        { "cards": [
+          { "title": "In your business profile", "text": "Add the link to the website field of your WhatsApp Business profile. Every customer who opens your profile sees it." },
+          { "title": "In your greeting message", "text": "New customers get your catalogue link the moment they say hello." },
+          { "title": "In quick replies", "text": "Save the link as a quick reply. When someone asks what you have, send it in two taps." },
+          { "title": "On your status", "text": "Post the link on your status when new stock arrives. Everyone who views your status can open it." },
+          { "title": "In broadcast lists", "text": "Send the link to your regular buyers in one broadcast instead of 30 separate photos." },
+          { "title": "Outside WhatsApp", "text": "Put it in your Instagram bio, your Google Business Profile or on a QR code at your counter." }
+        ] },
+        { "p": "We set up your profile, greeting message and quick replies with you on a 15-minute video or WhatsApp call." }
+      ]
+    },
+    {
+      "h2": "The Enquire on WhatsApp button",
+      "blocks": [
+        { "p": "The button is the reason a catalogue sells. A customer who has to type a question often does not bother. A customer who taps one button usually does." },
+        { "p": "The message says which product they want. If you gave the product a code, the code is in the message too. You never have to ask which one they mean." },
+        { "p": "Your WhatsApp number stays the same. Enquiries come into the same chat list you use every day. It works with the normal WhatsApp app and with WhatsApp Business." }
+      ]
+    },
+    {
+      "h2": "How to set up your WhatsApp catalogue",
+      "blocks": [
+        { "steps": [
+          { "title": "Message us on WhatsApp", "text": "Tell us what you sell and roughly how many products you have. We tell you which plan fits." },
+          { "title": "Pay ₹999 to start", "text": "This books your catalogue. It is fully refunded if you do not approve the finished catalogue." },
+          { "title": "Send photos, names and prices", "text": "Phone photos are fine. We crop and brighten them." },
+          { "title": "Check it within 48 hours", "text": "We send you the link. Ask for changes until you are happy, then pay the balance." },
+          { "title": "Share the link", "text": "We add it to your WhatsApp Business profile, greeting message and quick replies with you on a short call." }
+        ] },
+        { "p": "See every plan and what is included on the [pricing page](/pricing)." }
+      ]
+    },
+    {
+      "h2": "WhatsApp Business catalog or a OneCatalog WhatsApp catalogue?",
+      "blocks": [
+        { "table": {
+          "head": ["", "WhatsApp Business catalog", "OneCatalog"],
+          "rows": [
+            ["Who adds products", "You, one at a time in the app", "We build it from what you send"],
+            ["Review before items show", "Yes, every item and collection", "No review step on our side"],
+            ["Opens without WhatsApp", "No", "Yes, in any browser"],
+            ["Product pages on Google", "No", "Yes, one page per product"],
+            ["Your own domain", "No", "On plans from ₹3,999"],
+            ["Cost", "Free", "From ₹1,999 a year"]
+          ]
+        } },
+        { "p": "Most shops use both. The WhatsApp catalog sits in your profile. The OneCatalog link goes everywhere else. For shop-specific examples, see our pages for [garment shops](/catalogue-maker/garments) and [wholesalers](/catalogue-maker/wholesale)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "WhatsApp catalogue questions",
+    "items": [
+      { "q": "Is this the same as the WhatsApp Business catalog?", "a": "No. The WhatsApp Business catalog is a feature inside the WhatsApp Business app. OneCatalog is a separate catalogue website with its own link. It works alongside your WhatsApp catalog and does not replace it." },
+      { "q": "Do I need WhatsApp Business to use OneCatalog?", "a": "No. The Enquire on WhatsApp button works with the normal WhatsApp app and with WhatsApp Business. We recommend WhatsApp Business because of the greeting message and quick replies." },
+      { "q": "Can customers without WhatsApp see my catalogue?", "a": "Yes. The catalogue opens in any browser on a phone or computer. Customers need WhatsApp only to send you a message from it." },
+      { "q": "Will I lose my WhatsApp Business catalog?", "a": "No. Nothing changes in your WhatsApp app. Keep your catalog there and share your OneCatalog link as well." },
+      { "q": "How much does a WhatsApp catalogue cost with OneCatalog?", "a": "₹1,999 a year for up to 20 products. ₹3,999 for the first year for up to 50 products, then ₹2,999 a year. Larger plans are on the [pricing page](/pricing)." }
+    ]
+  },
+  "cta": {
+    "heading": "Get a WhatsApp catalogue that customers actually open",
+    "text": "Tell us what you sell on WhatsApp. We reply within 2 hours, 9am to 9pm."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}

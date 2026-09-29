@@ -1,0 +1,123 @@
+{
+  "path": "/",
+  "type": "home",
+  "crumb": "Home",
+  "keyword": "catalogue maker",
+  "updated": "2026-09-29",
+  "title": "Online Catalogue Maker for WhatsApp | OneCatalog",
+  "description": "OneCatalog is a catalogue maker for Indian shops. We build your product catalogue and you share one link on WhatsApp. ₹3,999 a year for 50 products.",
+  "h1": "Catalogue maker for your shop. Share one link on WhatsApp.",
+  "answer": "OneCatalog is an online catalogue maker for Indian shops and sellers. You send your product photos and prices on WhatsApp, and we build your catalogue in 48 hours. You get one link to share instead of forwarding dozens of photos.",
+  "sub": "Customers open the link on their phone, see every product with its price, and tap to message you about the one they want.",
+  "waText": "Hi OneCatalog, I want a catalogue for my shop.",
+  "mockup": {
+    "label": "Sample product catalogue from the OneCatalog catalogue maker, shown on a phone",
+    "shop": "Sri Lakshmi Furniture",
+    "tag": "Sample catalogue",
+    "items": [
+      { "name": "Steel almirah, 4 door", "price": "₹14,500" },
+      { "name": "Single cot with storage", "price": "₹9,800" },
+      { "name": "Office chair, mesh back", "price": "₹4,200" },
+      { "name": "Study table", "price": "Price on request" }
+    ]
+  },
+  "sections": [
+    {
+      "h2": "Still forwarding 50 photos?",
+      "blocks": [
+        { "pain": [
+          "A customer asks what designs you have. You forward 30 photos. The next customer asks the same thing, and you forward the same 30 photos again.",
+          "Every photo gets the same reply: price? You type the price again and again, all day.",
+          "Old photos get buried in chats. A customer who wanted something last month cannot find it now, so they ask you again or they buy elsewhere."
+        ] },
+        { "p": "A product catalogue fixes this. One link holds every product, with a photo, a price and a button to message you. You send the link once and the customer scrolls through everything on their own." }
+      ]
+    },
+    {
+      "h2": "How our online catalogue maker works",
+      "blocks": [
+        { "p": "Most catalogue apps ask you to type in every product yourself. OneCatalog is an online catalogue maker where we do that work. Everything happens on WhatsApp. There is no app to learn and no meeting." },
+        { "steps": [
+          { "title": "Send your products on WhatsApp", "text": "Send photos, product names and prices. Photos from your phone are fine. We fix the crop and brightness." },
+          { "title": "Get your link in 48 hours", "text": "We build your catalogue with a page for every product and send you the link, like yourshop.onecatalog.in." },
+          { "title": "Share it on WhatsApp", "text": "Put the link in your WhatsApp profile, your status, your greeting message and your broadcast lists. Customers tap it and see everything." }
+        ] }
+      ]
+    },
+    {
+      "h2": "What you get in your digital catalogue",
+      "blocks": [
+        { "cards": [
+          { "title": "A page for every product", "text": "Each product gets its own page with photos, price, size, material and any detail that matters in your trade." },
+          { "title": "An order button on every product", "text": "Customers tap Enquire on WhatsApp. The message they send you already names the product, so you know exactly what they want." },
+          { "title": "Categories", "text": "Products are grouped the way your customers think, such as silk sarees, cotton sarees or kids wear." },
+          { "title": "Prices, or Price on request", "text": "Show a fixed price, a starting price like From ₹1,999, or hide the price and let customers ask." },
+          { "title": "Out of stock badge", "text": "Mark a product as out of stock without deleting it. It stays in the catalogue so you can bring it back later." },
+          { "title": "Your own link", "text": "Every catalogue gets a link on onecatalog.in. Plans from ₹3,999 include your own domain name, registered in your business name." }
+        ] },
+        { "p": "The catalogue is a real website. It opens in any phone browser, and Google can read every product page." }
+      ]
+    },
+    {
+      "h2": "Who is this catalogue maker for?",
+      "blocks": [
+        { "p": "Any business that sends product photos on WhatsApp all day. These pages explain how it works in four common trades." },
+        { "cards": [
+          { "title": "Garment and saree shops", "text": "New stock every week, many sizes and colours.", "href": "/catalogue-maker/garments" },
+          { "title": "Jewellers", "text": "Weight, purity and designs that change with the gold rate.", "href": "/catalogue-maker/jewellery" },
+          { "title": "Wholesalers and distributors", "text": "MOQ, bulk prices and hundreds of retailers to reach.", "href": "/catalogue-maker/wholesale" },
+          { "title": "Resellers", "text": "Share supplier products with your own margin.", "href": "/catalogue-maker/resellers" }
+        ] },
+        { "p": "We also build catalogues for furniture shops, tiles and sanitaryware dealers, hardware and electrical shops, and home decor stores." }
+      ]
+    },
+    {
+      "h2": "OneCatalog vs the WhatsApp Business catalog",
+      "blocks": [
+        { "p": "WhatsApp Business has a free catalog feature, and you should keep using it. OneCatalog does a few things it cannot. Read more on our [WhatsApp catalogue page](/whatsapp-catalogue)." },
+        { "table": {
+          "head": ["", "WhatsApp Business catalog", "OneCatalog"],
+          "rows": [
+            ["Who adds the products", "You, one by one on your phone", "We build it from the photos you send"],
+            ["Opens without WhatsApp", "No", "Yes, in any browser"],
+            ["Each product has a web page Google can find", "No", "Yes"],
+            ["Review before products show", "WhatsApp reviews every item first", "No review step on our side"],
+            ["Cost", "Free", "From ₹1,999 a year"]
+          ]
+        } }
+      ]
+    },
+    {
+      "h2": "What does it cost?",
+      "blocks": [
+        { "p": "The price depends only on how many products you have. Most shops choose the 50 product plan. See every plan on the [pricing page](/pricing)." },
+        { "pricing": "card" }
+      ]
+    },
+    {
+      "h2": "See a sample catalogue",
+      "blocks": [
+        { "p": "These are sample catalogues we built to show how it works. The shops are examples, not real customers. Open one on your phone and tap around." },
+        { "samples": true },
+        { "p": "Want to learn more first? Our [WhatsApp catalogue guides](/guides) explain common problems and how to fix them. You can also read [who runs OneCatalog](/about)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Questions about our catalogue maker",
+    "items": [
+      { "q": "What is a digital catalogue?", "a": "A digital catalogue is a list of your products with photos and prices that people open on their phone or computer. OneCatalog makes it a small website with one link, so you share the link instead of sending photos one by one." },
+      { "q": "Is OneCatalog free?", "a": "No. It costs ₹1,999 a year for up to 20 products and ₹3,999 for the first year for up to 50 products. You pay ₹999 to start, and that is fully refunded if you do not approve your catalogue. The WhatsApp Business catalog is free, and you can keep using it alongside ours." },
+      { "q": "Do my customers need an app?", "a": "No. The catalogue opens in the browser on any phone. Customers do not need to install anything, and they do not need WhatsApp to look at it." },
+      { "q": "Can I use it with WhatsApp Business?", "a": "Yes. Put your catalogue link in your WhatsApp Business profile, greeting message, quick replies and status. We help you set these up on a short call." },
+      { "q": "How do customers order?", "a": "Every product has an Enquire on WhatsApp button. It opens a chat with you and the message already names the product. You confirm price, stock and delivery in the chat, the way you do today." },
+      { "q": "Can I change prices later?", "a": "Yes. Send the new prices on WhatsApp and we update the catalogue. Every plan includes 12 update requests a year of up to 10 products each. Extra batches cost ₹299 for 10 products." },
+      { "q": "How long does it take to make my catalogue?", "a": "48 hours from the day we get your photos, product names and prices." },
+      { "q": "Do you work outside my city?", "a": "Yes. We work with businesses anywhere in India. Everything happens on WhatsApp, so your location does not matter." }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to stop forwarding photos?",
+    "text": "Send us a message on WhatsApp and tell us what you sell. We reply within 2 hours, 9am to 9pm."
+  }
+}
