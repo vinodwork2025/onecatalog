@@ -66,8 +66,12 @@ Do not invent a shortcut. Short version:
 
 `shree-furniture`, `hosur-tiles` and `varnam-sarees` are demos, not paying
 clients. Their shops, addresses and prices are examples, and their photos are
-placeholders. `varnam-sarees` sends WhatsApp enquiries to the OneCatalog number.
-The landing page links to demos from `site/config.json` → `samples`.
+placeholders, so all three have `"noindex": true`. `varnam-sarees` sends WhatsApp enquiries to the OneCatalog number.
+The landing page showcase lists clients from `site/config.json` → `samples`
+as `{ "client": "<slug>", "trade": "<what they sell>" }`. Name, link, product
+count, categories and photos are read from `clients/<slug>/` at build time.
+The home hero phones use `home.json` → `mockup.clients` the same way. Only
+list clients with real product photos there.
 
 ## How catalog pages look and load
 
@@ -103,7 +107,9 @@ sort_order, size, material, colour, brand, moq, warranty, sku, show`
 (`warm` | `cool` | `dark` | `sharp`), `layout` (`grid` | `grid-large`),
 `subdomain`, `customDomain`, `sheetCsvUrl`.
 
-Optional: `mapsUrl` adds a "Get directions" button, `reviewUrl` (their Google
+Optional: `noindex: true` keeps a catalog out of Google (no sitemap, noindex tag
+on every page). Set it on demos with placeholder photos or made-up shop details,
+and remove it once a catalog belongs to a real shop. `mapsUrl` adds a "Get directions" button, `reviewUrl` (their Google
 review link) adds a "Rate us on Google" button, and `announcement` shows a bar
 in the client's accent colour at the top of every page, linked to
 `announcementUrl` if set. Leave any of them blank to hide it.
@@ -204,7 +210,9 @@ their config, and add `{ "pattern": "<domain>", "custom_domain": true }` plus
 the `www.` version to `routes` in `wrangler.jsonc`. Cloudflare makes the DNS
 records. The subdomain then 301s to the domain. Steps in `NEW-CLIENT.md`.
 
-How requests are served: `worker/index.js` reads the hostname.
+How requests are served: `worker/index.js` reads the hostname. Every known
+host 301s to one URL per page: https, no `www.`, no trailing slash, and the
+client's own domain once `customDomain` is set.
 `onecatalog.in` and `www.onecatalog.in` get `dist/_home/`. A client subdomain
 gets `dist/<slug>/`, or a 301 to the client's `customDomain` when one is set.
 Unknown hostnames get a plain "No catalog here" page. It never lists client

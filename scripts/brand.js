@@ -37,7 +37,7 @@ for (let y = TAG_Y; y < H; y++) for (let x = TAG_X0; x < TAG_X1; x++) noTag[(y *
 const raw = { raw: { width: W, height: H, channels: 4 } };
 const header = await sharp(noTag, raw).trim().png().toBuffer();
 
-await sharp(header).resize({ height: 88 }).webp({ quality: 90, alphaQuality: 100 }).toFile(path.join(OUT, 'logo.webp'));
+await sharp(header).resize({ height: 114 }).webp({ quality: 90, alphaQuality: 100 }).toFile(path.join(OUT, 'logo.webp'));
 await sharp(header).resize({ height: 88 }).png({ compressionLevel: 9 }).toFile(path.join(OUT, 'logo.png'));
 // Footer version keeps the tagline.
 await sharp(cleanSrc).trim().resize({ height: 120 }).webp({ quality: 90, alphaQuality: 100 }).toFile(path.join(OUT, 'logo-tagline.webp'));

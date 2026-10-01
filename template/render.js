@@ -40,6 +40,43 @@ export function money(cfg, value) {
   return (cfg.currencySymbol || '₹') + n.toLocaleString('en-IN');
 }
 
+// Search results cut titles at about 60 characters. Use the longest
+// candidate that fits, falling back to the shortest.
+function fitTitle(...candidates) {
+  const list = candidates.filter(Boolean);
+  return list.find(t => t.length <= 60) || list[list.length - 1];
+}
+
+// Whole sentences up to 155 characters. If that leaves the text short
+// (under 110), the next sentence is cut at a word instead.
+function clip(text, max = 155) {
+  const t = String(text || '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  let out = '';
+  for (const sentence of t.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) || []) {
+    if ((out + sentence).trim().length > max) break;
+    out += sentence;
+  }
+  if (out.trim().length >= 110) return out.trim();
+  return t.slice(0, max - 1).replace(/[\s,:;]+\S*$/, '') + '…';
+}
+
+// "Ra Sofa and Furniture, Hyderabad" unless the city is already in the text.
+function withCity(cfg, text) {
+  return cfg.city && !String(text).toLowerCase().includes(cfg.city.toLowerCase()) ? `${text}, ${cfg.city}` : text;
+}
+
+// A plain number is a real price. Text such as "From 1500" is shown on the
+// page but never put in schema.
+function numericPrice(p) {
+  const raw = String(p.price || '').trim();
+  return /^[\d.,\s]+$/.test(raw) && Number(raw.replace(/[^0-9.]/g, '')) > 0 ? String(Number(raw.replace(/[^0-9.]/g, ''))) : '';
+}
+
+const anyPrice = products => products.some(p => money({}, p.price));
+
+function bizId(cfg) { return cfg.siteUrl + '/#business'; }
+
 function waLink(cfg, text) {
   return `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(text)}`;
 }
@@ -103,9 +140,11 @@ function head(cfg, { title, description, canonical, jsonld, css, image, bodyClas
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="${esc(cfg.name)}">
+<meta property="og:locale" content="en_IN">
 <meta property="og:url" content="${esc(canonical)}">
 ${og ? `<meta property="og:image" content="${esc(cfg.siteUrl)}/img/${esc(og)}"><meta name="twitter:card" content="summary_large_image">` : ''}
-<meta name="robots" content="index,follow">
+<meta name="robots" content="${cfg.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'}">
 <meta name="theme-color" content="${esc(cfg.accent)}">
 ${cfg.logo ? `<link rel="icon" href="/img/${esc(cfg.logo)}">` : `<link rel="icon" href="${favicon(cfg)}">`}
 <style>${css}</style>
@@ -187,11 +226,13 @@ export function renderIndex(cfg, products, categories, css) {
     {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
+      '@id': bizId(cfg),
       name: cfg.name,
       description: cfg.tagline || cfg.about || cfg.name,
       url: cfg.siteUrl,
       telephone: '+' + String(cfg.whatsapp),
-      ...(cfg.logo ? { image: `${cfg.siteUrl}/img/${cfg.logo}` } : {}),
+      ...(cfg.logo || products[0] ? { image: `${cfg.siteUrl}/img/${cfg.logo || products[0].images[0]}` } : {}),
+      ...(cfg.mapsUrl ? { hasMap: cfg.mapsUrl } : {}),
       ...(cfg.address ? {
         address: {
           '@type': 'PostalAddress',
@@ -218,9 +259,10 @@ export function renderIndex(cfg, products, categories, css) {
     }
   ];
 
-  const title = `${cfg.name} — ${cfg.metaHeadline || (cfg.tagline || 'Product Catalog')}${cfg.city ? ', ' + cfg.city : ''}`;
-  const description = cfg.metaDescription
-    || `Browse the full product catalog of ${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}. ${products.length} products with prices. Enquire directly on WhatsApp.`;
+  const lead = cfg.metaHeadline || cfg.tagline || 'Product Catalog';
+  const title = fitTitle(withCity(cfg, `${cfg.name} | ${lead}`), `${cfg.name} | ${lead}`, withCity(cfg, `${cfg.name} Catalog`), cfg.name);
+  const description = clip(cfg.metaDescription
+    || `Browse the product catalog of ${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}. ${products.length} products with photos${anyPrice(products) ? ' and prices' : ''}. Enquire directly on WhatsApp.`);
 
   const chips = [`<button class="chip is-on" data-filter="all" aria-pressed="true">All <span class="n">${products.length}</span></button>`]
     .concat(categories.map(c => `<button class="chip" data-filter="${esc(c.slug)}" aria-pressed="false">${esc(c.name)} <span class="n">${c.count}</span></button>`))
@@ -260,9 +302,15 @@ ${cfg.metaHeadline && cfg.tagline && cfg.tagline.toLowerCase() !== cfg.metaHeadl
 }
 
 export function renderCategory(cfg, cat, products, categories, css) {
-  const title = `${cat.name} — ${cfg.name}${cfg.city ? ', ' + cfg.city : ''}`;
-  const description = `${cat.name} available at ${cfg.name}${cfg.city ? ', ' + cfg.city : ''}. ${products.length} options with prices. Enquire on WhatsApp.`;
+  const title = fitTitle(withCity(cfg, `${cat.name} | ${cfg.name}`), `${cat.name} | ${cfg.name}`, cat.name);
+  const description = clip(`${cat.name} at ${withCity(cfg, cfg.name)}. ${products.length} option${products.length === 1 ? '' : 's'} with photos${anyPrice(products) ? ' and prices' : ''}: ${products.slice(0, 3).map(p => p.name).join(', ')}. Enquire on WhatsApp.`);
   const jsonld = [{
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${cat.name} at ${cfg.name}`,
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${cfg.siteUrl}/${p.slug}`, name: p.name }))
+  }, {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -286,30 +334,30 @@ export function renderCategory(cfg, cat, products, categories, css) {
 
 export function renderProduct(cfg, p, related, categories, css) {
   const price = money(cfg, p.price);
-  const title = `${p.name}${p.category ? ' — ' + p.category : ''} | ${cfg.name}${cfg.city ? ', ' + cfg.city : ''}`;
-  const description = (p.description || `${p.name} available at ${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}.${price ? ' Price ' + price + '.' : ''} Enquire on WhatsApp for details.`).slice(0, 300);
+  const title = fitTitle(withCity(cfg, `${p.name} | ${cfg.name}`), `${p.name} | ${cfg.name}`, p.name);
+  const description = clip(`${p.description ? p.description.replace(/([^.!?])$/, '$1.') + ' ' : ''}${price ? 'Price ' + price + '.' : 'Price on request.'} Enquire on WhatsApp with ${withCity(cfg, cfg.name)}.`);
 
   const jsonld = [
     {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: p.name,
+      url: `${cfg.siteUrl}/${p.slug}`,
+      ...(p.category ? { category: p.category } : {}),
+      ...(p.specs?.Colour ? { color: p.specs.Colour } : {}),
+      ...(p.specs?.Material ? { material: p.specs.Material } : {}),
       ...(p.description ? { description: p.description } : {}),
       image: p.images.map(f => `${cfg.siteUrl}/img/${f}`),
       ...(p.sku ? { sku: p.sku } : {}),
       brand: { '@type': 'Brand', name: cfg.name },
-      offers: {
+      ...(numericPrice(p) ? { offers: {
         '@type': 'Offer',
         url: `${cfg.siteUrl}/${p.slug}`,
         priceCurrency: cfg.currency || 'INR',
-        // Only a clean number belongs in schema. "From 1500" or
-        // "Quote after site visit" would produce a meaningless price.
-        ...(/^[\d.,\s]+$/.test(String(p.price || '').trim()) && Number(String(p.price).replace(/[^0-9.]/g, '')) > 0
-          ? { price: String(Number(String(p.price).replace(/[^0-9.]/g, ''))) }
-          : {}),
+        price: numericPrice(p),
         availability: p.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
         seller: { '@type': 'Organization', name: cfg.name }
-      }
+      } } : {})
     },
     {
       '@context': 'https://schema.org',
@@ -363,9 +411,16 @@ ${specs.length ? `<table class="spec-table">${specs.map(([k, v]) => `<tr><th sco
 }
 
 export function renderAbout(cfg, products, categories, css) {
-  const title = `About ${cfg.name}${cfg.city ? ', ' + cfg.city : ''}`;
-  const description = (cfg.about || `${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}. ${cfg.tagline || ''}`).slice(0, 300);
-  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/about`, jsonld: [], css, image: cfg.shopPhoto, bodyClass: 'has-fab' })
+  const title = fitTitle(withCity(cfg, `About ${cfg.name}`), `About ${cfg.name}`);
+  const description = clip(cfg.about || `${withCity(cfg, cfg.name)}. ${cfg.tagline || ''}`);
+  const jsonld = [{
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    url: `${cfg.siteUrl}/about`,
+    name: title,
+    about: { '@id': bizId(cfg) }
+  }];
+  return head(cfg, { title, description, canonical: `${cfg.siteUrl}/about`, jsonld, css, image: cfg.shopPhoto || products[0]?.images[0], bodyClass: 'has-fab' })
     + header(cfg)
     + announce(cfg)
     + `<main class="about-body" id="main">

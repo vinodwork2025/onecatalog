@@ -44,26 +44,19 @@
     }
   ],
   "author": {
-    "name": "Vinod Kumar (Hari)",
+    "name": "Vinod Kumar",
     "initials": "VK",
     "role": "founder of OneCatalog",
-    "bio": "Vinod runs OneCatalog and builds every catalogue himself, from WhatsApp photos and price lists sent by shop owners across India."
+    "bio": "Vinod and his team run OneCatalog. They build every catalogue from the WhatsApp photos and price lists sent by shop owners across India."
   },
   "samples": [
     {
-      "label": "Sample furniture shop catalogue",
-      "detail": "Steel almirahs, cots, office and hostel furniture. 14 products.",
-      "url": "https://shreefurniture.onecatalog.in/"
+      "client": "ra-sofa",
+      "trade": "Sofa and furniture maker"
     },
     {
-      "label": "Sample saree shop catalogue",
-      "detail": "Silk, silk cotton and cotton sarees, with men's and kids wear. 8 products.",
-      "url": "https://varnamsarees.onecatalog.in/"
-    },
-    {
-      "label": "Sample tiles and sanitaryware catalogue",
-      "detail": "Floor tiles, wall tiles, basins and taps. 6 products.",
-      "url": "https://hosurtiles.onecatalog.in/"
+      "client": "best-wood-handicrafts",
+      "trade": "Carved wood furniture and handicrafts"
     }
   ],
   "pricing": {

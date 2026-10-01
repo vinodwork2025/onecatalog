@@ -17,7 +17,7 @@ import sharp from 'sharp';
 import { parseCsvObjects } from './csv.js';
 import { buildCss } from '../template/themes.js';
 import {
-  renderIndex, renderCategory, renderProduct, renderAbout, slugify
+  renderIndex, renderCategory, renderProduct, renderAbout, slugify, money
 } from '../template/render.js';
 import { renderPage, render404, renderLlmsTxt, renderRobots, renderSitemap, checkConfig, checkPage, bodyWords } from '../site/render.js';
 
@@ -209,17 +209,18 @@ async function writePage(outDir, relPath, html) {
   await fsp.writeFile(full, html);
 }
 
+// No lastmod: every build would stamp today on every URL, and Google learns
+// to ignore a lastmod that is always new. No priority: Google ignores it.
 function sitemap(cfg, products, categories) {
-  const now = new Date().toISOString().slice(0, 10);
   const urls = [
-    { loc: cfg.siteUrl + '/', pri: '1.0' },
-    ...categories.map(c => ({ loc: `${cfg.siteUrl}/category/${c.slug}`, pri: '0.8' })),
-    ...products.map(p => ({ loc: `${cfg.siteUrl}/${p.slug}`, pri: '0.7' })),
-    { loc: `${cfg.siteUrl}/about`, pri: '0.4' }
+    cfg.siteUrl + '/',
+    ...categories.map(c => `${cfg.siteUrl}/category/${c.slug}`),
+    ...products.map(p => `${cfg.siteUrl}/${p.slug}`),
+    `${cfg.siteUrl}/about`
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `<url><loc>${u.loc}</loc><lastmod>${now}</lastmod><priority>${u.pri}</priority></url>`).join('\n')}
+${urls.map(u => `<url><loc>${u}</loc></url>`).join('\n')}
 </urlset>`;
 }
 
@@ -313,9 +314,18 @@ async function buildClient(slug, rawCss) {
     await writePage(outDir, `${p.slug}/index.html`, renderProduct(cfg, p, related, categories, css));
   }
 
-  await fsp.writeFile(path.join(outDir, 'sitemap.xml'), sitemap(cfg, products, categories));
-  await fsp.writeFile(path.join(outDir, 'robots.txt'),
-    `User-agent: *\nAllow: /\n\nSitemap: ${cfg.siteUrl}/sitemap.xml\n`);
+  // A demo with placeholder photos sets "noindex": true. Its pages carry a
+  // noindex tag, and it gets no sitemap. Crawling stays allowed, otherwise
+  // Google never sees the noindex tag.
+  if (cfg.noindex) {
+    await fsp.rm(path.join(outDir, 'sitemap.xml'), { force: true });
+    await fsp.writeFile(path.join(outDir, 'robots.txt'), `User-agent: *\nAllow: /\n`);
+    log('   noindex: kept out of search results');
+  } else {
+    await fsp.writeFile(path.join(outDir, 'sitemap.xml'), sitemap(cfg, products, categories));
+    await fsp.writeFile(path.join(outDir, 'robots.txt'),
+      `User-agent: *\nAllow: /\n\nSitemap: ${cfg.siteUrl}/sitemap.xml\n`);
+  }
 
   const bytes = fs.statSync(path.join(outDir, 'index.html')).size;
   log(`   ${products.length} products, ${categories.length} categories, index ${(bytes / 1024).toFixed(0)}KB, images +${imgStats.made} (${imgStats.skipped} reused${imgStats.pruned ? ', ' + imgStats.pruned + ' pruned' : ''})`);
@@ -347,12 +357,59 @@ async function loadPages(dir = path.join(SITE, 'pages')) {
   return out.sort((a, b) => (a.path === '/' ? -1 : b.path === '/' ? 1 : a.path.localeCompare(b.path)));
 }
 
+/* The showcase and the hero phone use real client catalogs. Shop name, link,
+ * product count, categories and photos are read from clients/<slug>/, so the
+ * landing page can never show a number or product the catalog does not have.
+ * Photos are resized into dist/_home/shots/<slug>/ (240px and 480px). */
+const SHOT_W = [240, 480];
+
+async function loadClientSummary(slug, outDir) {
+  const clientDir = path.join(CLIENTS, slug);
+  if (!fs.existsSync(path.join(clientDir, 'config.json'))) throw new Error(`site: client "${slug}" not found in clients/`);
+  const ccfg = JSON.parse(await fsp.readFile(path.join(clientDir, 'config.json'), 'utf8'));
+  const { products, problems } = normaliseProducts(await loadRows(ccfg, clientDir, slug), ccfg, clientDir);
+  if (problems.length) throw new Error(`site: client "${slug}" has catalog problems, build it first: ${problems[0]}`);
+  const host = ccfg.customDomain || `${ccfg.subdomain || slug}.onecatalog.in`;
+  const shotDir = path.join(outDir, 'shots', slug);
+  await fsp.mkdir(shotDir, { recursive: true });
+  const shot = async file => {
+    const base = file.replace(/\.webp$/i, '');
+    const img = sharp(path.join(clientDir, 'images', file)).rotate();
+    for (const w of SHOT_W) {
+      await img.clone().resize(w, w, { fit: 'cover', position: 'centre', withoutEnlargement: true })
+        .webp({ quality: 74 }).toFile(path.join(shotDir, `${base}-${w}.webp`));
+    }
+    return { sm: `/shots/${slug}/${base}-240.webp`, md: `/shots/${slug}/${base}-480.webp` };
+  };
+  const list = [];
+  for (const p of products) {
+    list.push({ name: p.name, category: p.category, price: money(ccfg, p.price), url: `https://${host}/${p.slug}`, img: await shot(p.images[0]) });
+  }
+  return {
+    slug, name: ccfg.name, city: ccfg.city || '', accent: ccfg.accent || '#132235',
+    url: `https://${host}/`, host, count: products.length,
+    categories: buildCategories(products).map(c => c.name), products: list
+  };
+}
+
 async function buildHome() {
   const cfg = JSON.parse(await fsp.readFile(path.join(SITE, 'config.json'), 'utf8'));
   const pages = await loadPages();
   const outDir = path.join(DIST, '_home');
   await fsp.rm(outDir, { recursive: true, force: true });
   await fsp.mkdir(outDir, { recursive: true });
+
+  const clients = new Map();
+  const client = async slug => clients.get(slug) || clients.set(slug, await loadClientSummary(slug, outDir)).get(slug);
+  cfg.samples = await Promise.all(cfg.samples.map(async s => {
+    const c = await client(s.client);
+    return { ...s, ...c, label: `${c.name} catalogue`, detail: `${s.trade}. ${c.categories.join(', ')}. ${c.count} products.` };
+  }));
+  for (const page of pages) {
+    if (!page.mockup?.clients) continue;
+    page.mockup.shops = [];
+    for (const slug of page.mockup.clients) page.mockup.shops.push(await client(slug));
+  }
 
   const seen = new Set();
   for (const p of pages) {
@@ -476,7 +533,7 @@ async function writeRouter() {
 
   await fsp.mkdir(DIST, { recursive: true });
   await fsp.writeFile(path.join(DIST, '_headers'),
-    `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n\n/*/img/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/og/*\n  Cache-Control: public, max-age=604800\n\n/_home/brand/*\n  Cache-Control: public, max-age=604800\n`);
+    `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Strict-Transport-Security: max-age=31536000\n\n/*/img/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/fonts/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/_home/og/*\n  Cache-Control: public, max-age=604800\n\n/_home/brand/*\n  Cache-Control: public, max-age=604800\n\n/_home/shots/*\n  Cache-Control: public, max-age=604800\n`);
 
   // Earlier builds wrote the router into dist/, where it would now be
   // uploaded as a public asset. Remove it.
@@ -494,11 +551,14 @@ export default {
     const host = rawHost.replace(/^www\\./, '');
     const entry = MAP[host];
 
-    // One URL per page on the platform domain: no www, no trailing slash.
-    if (host === PLATFORM) {
+    // One URL per page on every known host: https, no www, no trailing slash,
+    // and a client subdomain moves to the client's own domain once they have one.
+    // Otherwise Google sees http://, www. and /page/ copies of each page.
+    if (host === PLATFORM || entry) {
+      const target = host === PLATFORM ? PLATFORM : (entry.canonical || host).toLowerCase();
       const clean = url.pathname.length > 1 && url.pathname.endsWith('/') ? url.pathname.replace(/\\/+$/, '') : url.pathname;
-      if (rawHost !== host || clean !== url.pathname) {
-        return Response.redirect('https://' + PLATFORM + clean + url.search, 301);
+      if (url.protocol !== 'https:' || rawHost !== target || clean !== url.pathname) {
+        return Response.redirect('https://' + target + clean + url.search, 301);
       }
     }
 
@@ -545,12 +605,16 @@ export default {
       );
     }
 
-    // Subdomain -> custom domain, once the client has bought one.
-    if (entry.canonical && host !== entry.canonical.toLowerCase()) {
-      return Response.redirect('https://' + entry.canonical + url.pathname + url.search, 301);
-    }
-
-    return (await asset('/' + entry.slug)) || new Response('Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' } });
+    return (await asset('/' + entry.slug)) || new Response(
+      '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+      + '<title>Page not found</title><meta name="robots" content="noindex">'
+      + '<style>body{font:16px/1.6 system-ui,sans-serif;max-width:560px;margin:60px auto;padding:0 20px;color:#222}'
+      + 'h1{font-size:20px;margin-bottom:10px}a{color:#06c}</style>'
+      + '<h1>This product is no longer here</h1>'
+      + '<p>It may have been sold out or renamed.</p>'
+      + '<p><a href="/">See the full catalog</a></p>',
+      { status: 404, headers: { 'content-type': 'text/html; charset=utf-8' } }
+    );
   }
 };
 `);

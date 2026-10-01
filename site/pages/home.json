@@ -3,7 +3,7 @@
   "type": "home",
   "crumb": "Home",
   "keyword": "catalogue maker",
-  "updated": "2026-09-29",
+  "updated": "2026-10-01",
   "title": "Online Catalogue Maker for WhatsApp | OneCatalog",
   "description": "OneCatalog is a catalogue maker for Indian shops. We build your product catalogue and you share one link on WhatsApp. ₹3,999 a year for 50 products.",
   "h1": "Catalogue maker for your shop. Share one link on WhatsApp.",
@@ -11,15 +11,8 @@
   "sub": "Customers open the link on their phone, see every product with its price, and tap to message you about the one they want.",
   "waText": "Hi OneCatalog, I want a catalogue for my shop.",
   "mockup": {
-    "label": "Sample product catalogue from the OneCatalog catalogue maker, shown on a phone",
-    "shop": "Sri Lakshmi Furniture",
-    "tag": "Sample catalogue",
-    "items": [
-      { "name": "Steel almirah, 4 door", "price": "₹14,500" },
-      { "name": "Single cot with storage", "price": "₹9,800" },
-      { "name": "Office chair, mesh back", "price": "₹4,200" },
-      { "name": "Study table", "price": "Price on request" }
-    ]
+    "label": "Live catalogues made with the OneCatalog catalogue maker for Ra Sofa and Furniture and The Best Wood Handicrafts, shown on phones",
+    "clients": ["ra-sofa", "best-wood-handicrafts"]
   },
   "sections": [
     {
@@ -95,9 +88,9 @@
       ]
     },
     {
-      "h2": "See a sample catalogue",
+      "h2": "Catalogues we have built",
       "blocks": [
-        { "p": "These are sample catalogues we built to show how it works. The shops are examples, not real customers. Open one on your phone and tap around." },
+        { "p": "These are live catalogues we built for shops from the photos they sent us on WhatsApp. Open one on your phone, scroll through the products and tap one to see its page." },
         { "samples": true },
         { "p": "Want to learn more first? Our [WhatsApp catalogue guides](/guides) explain common problems and how to fix them. You can also read [who runs OneCatalog](/about)." }
       ]

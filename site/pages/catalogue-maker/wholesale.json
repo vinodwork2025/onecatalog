@@ -3,11 +3,12 @@
   "type": "industry",
   "crumb": "Wholesale",
   "keyword": "wholesale catalogue maker",
-  "updated": "2026-09-29",
+  "updated": "2026-10-01",
   "title": "Wholesale Catalogue Maker for Distributors | OneCatalog",
   "description": "A wholesale catalogue maker for distributors and B2B sellers. MOQ, bulk prices and product codes on every item, shared with retailers in one link.",
   "h1": "Wholesale catalogue maker for distributors who sell to hundreds of retailers",
-  "answer": "OneCatalog is a wholesale catalogue maker for distributors, stockists and B2B sellers. We build a catalogue where every product shows its code, MOQ and bulk price, so a retailer can order without asking five questions first. You send one link to every retailer instead of forwarding the same photos to each of them.",
+  "answer": "OneCatalog is a wholesale catalogue maker for distributors, stockists and B2B sellers. We build a catalogue where every product shows its code, minimum order and bulk price. A retailer can order without asking you five questions first. You send one link to every retailer, instead of the same photos to each one.",
+  "sub": "Fewer repeat questions for your office. Fewer wrong orders. One link your whole team can use.",
   "waText": "Hi OneCatalog, I want a catalogue for my wholesale business.",
   "mockup": {
     "label": "Sample wholesale catalogue with MOQ and product codes, shown on a phone",
@@ -24,19 +25,19 @@
     {
       "h2": "The problem with selling wholesale on WhatsApp",
       "blocks": [
-        { "p": "Think of an electrical goods distributor in Hosur with 300 retail shops on WhatsApp. When a new product comes in, someone in the office forwards the photo to each shop, or to a few broadcast lists. The retailers reply with questions the office has answered a hundred times." },
+        { "p": "Think of an electrical goods distributor in Hosur with 300 retail shops on WhatsApp. When a new product comes in, someone in the office sends the photo to each shop, or to a few broadcast lists. Then the replies start, with the same questions the office has answered a hundred times." },
         { "pain": [
           "What is the minimum order? What is the price for 10 boxes? Is it in stock?",
-          "Retailers order the wrong item because two products look alike in a photo.",
-          "New staff do not know the full range, so they cannot answer questions."
+          "A retailer orders the wrong item, because two products look the same in a photo.",
+          "New staff do not know the full range yet, so they cannot answer questions."
         ] }
       ]
     },
     {
       "h2": "How a wholesale catalogue maker saves your team's time",
       "blocks": [
-        { "p": "Each product page answers the usual questions before they are asked. Code, pack size, MOQ, price or price slab and stock status are all on the page. The retailer taps Enquire on WhatsApp and the message includes the product code, so your team knows exactly what to bill." },
-        { "p": "Out of stock items get a badge instead of disappearing, so retailers can still ask when they will be back. Your staff can use the same catalogue to learn the range." }
+        { "p": "Each product page answers the usual questions before anyone asks. The code, pack size, minimum order, price and stock are all on the page. The retailer taps Enquire on WhatsApp. The message already has the product code in it, so your team knows exactly what to bill." },
+        { "p": "When an item runs out, it gets an out of stock badge. It does not vanish. Retailers can still ask when it will be back." }
       ]
     },
     {
@@ -47,43 +48,69 @@
           "rows": [
             ["Product code", "SW-6A-WH"],
             ["Pack size", "Box of 20"],
-            ["MOQ", "10 boxes"],
-            ["Price", "A single price, a slab written as text, or Price on request"],
-            ["Brand", "The brand name, if you stock several"],
+            ["Minimum order", "10 boxes"],
+            ["Price", "One price, a bulk price written as text, or Price on request"],
+            ["Brand", "The brand name, if you stock more than one"],
             ["Stock", "In stock, or an out of stock badge"]
           ]
         } },
-        { "p": "Bulk price slabs are shown as text on the product, for example a price for 10 boxes and a lower price for 50 boxes. The catalogue does not calculate totals or take payment. Orders are confirmed in the WhatsApp chat." },
-        { "callout": "One catalogue shows the same prices to everyone who opens it. If different customers get different prices, show Price on request and quote each one in the chat." }
+        { "p": "Bulk prices are written as text on the product. For example, one price for 10 boxes and a lower price for 50 boxes. The catalogue does not add up totals or take payment. You confirm every order in the WhatsApp chat." },
+        { "callout": "Everyone who opens the catalogue sees the same prices. If different customers pay different rates, show Price on request and quote each one in the chat." }
+      ]
+    },
+    {
+      "h2": "Product codes stop wrong orders",
+      "blocks": [
+        { "p": "Many wholesale products look alike. A 6A switch and a 16A switch. A 1.5 sq mm wire and a 2.5 sq mm wire. In a photo, they can look the same. That is how wrong orders happen." },
+        { "p": "In your catalogue, each product has its own code. When a retailer taps Enquire on WhatsApp, the code is part of the message they send. Your billing staff do not have to guess. If you already use codes in your billing software, send us the same codes. Then the catalogue and your bills match." }
+      ]
+    },
+    {
+      "h2": "A catalogue your sales team can carry",
+      "blocks": [
+        { "p": "Your sales staff visit shops every day. With a catalogue, they do not need a printed price list or a bag of samples for every item. They open the link on their phone and show the retailer the whole range." },
+        { "ul": [
+          "A new salesman can learn your range in an evening by scrolling through the catalogue.",
+          "Staff can send a single product link to a retailer who asks about one item.",
+          "Once you have 40 or more products, the catalogue gets a search box. Staff can type a code or a brand and find it fast.",
+          "Every enquiry from the catalogue comes to the one WhatsApp number you choose for orders."
+        ] }
       ]
     },
     {
       "h2": "Photo tips for wholesale products",
       "blocks": [
         { "ul": [
-          "Photograph the product and its box. Retailers recognise products by the packaging.",
-          "Show the label with the model number clearly, or add the model number to the product name.",
-          "Keep every photo on the same plain background so the range looks consistent.",
+          "Take a photo of the product and of its box. Retailers know products by the packaging.",
+          "Make sure the label with the model number is easy to read. Or put the model number in the product name.",
+          "Use the same plain background for every photo, so the range looks neat.",
           "For items sold in packs, show one piece and the full pack as two photos."
-        ] }
+        ] },
+        { "p": "Got hundreds of products? Our guide to [WhatsApp catalog bulk upload](/guides/whatsapp-catalog-bulk-upload) explains your choices, including the free WhatsApp catalog." }
       ]
     },
     {
       "h2": "Plans for wholesalers",
       "blocks": [
-        { "p": "Most distributors have a wide range, so they choose up to 150 products for ₹5,999 or up to 300 products for ₹7,999 in the first year. Over 300 products, we quote. Every plan is on the [pricing page](/pricing). To see how retailers open and share the link, read about our [WhatsApp catalogue](/whatsapp-catalogue). Selling garments wholesale? The [garment catalogue page](/catalogue-maker/garments) has trade-specific tips." }
+        { "p": "Most distributors have a wide range. They pick up to 150 products for ₹5,999 or up to 300 products for ₹7,999 in the first year. Above 300 products, we give you a quote. See every plan on the [pricing page](/pricing). To see how retailers open and share the link, read about our [WhatsApp catalogue](/whatsapp-catalogue). Selling garments wholesale? The [garment catalogue page](/catalogue-maker/garments) has tips for your trade." }
       ]
     }
   ],
   "faq": {
     "heading": "Wholesale catalogue questions",
     "items": [
-      { "q": "Can I show MOQ and bulk price slabs?", "a": "Yes. MOQ has its own field on each product, and price slabs are written as text, such as a price for 10 boxes and another for 50 boxes." },
-      { "q": "Can I show different prices to different customers?", "a": "No. Everyone who opens the catalogue sees the same page. If your prices vary by customer, show Price on request and quote each buyer in the chat." },
-      { "q": "Can retailers place an order in the catalogue?", "a": "They send an enquiry on WhatsApp from the product page. There is no cart or online payment. You confirm the order in the chat." },
-      { "q": "Can my sales staff share the catalogue too?", "a": "Yes. Anyone can forward the link. Enquiries from the Enquire on WhatsApp button come to the one WhatsApp number set for your catalogue, so tell us which number your team uses for orders." },
-      { "q": "Can I show which brands I stock?", "a": "Yes. Each product has a brand field, and we can make a category for each brand if retailers ask for products by brand." },
-      { "q": "I have 1,000 products. Can you handle it?", "a": "Yes. Above 300 products we give you a quote based on the number of products." }
+      { "q": "Can I show minimum order and bulk prices?", "a": "Yes. Minimum order has its own field on each product. Bulk prices are written as text, such as one price for 10 boxes and another for 50 boxes." },
+      { "q": "Can I show different prices to different customers?", "a": "No. Everyone who opens the catalogue sees the same page. If your prices change from customer to customer, show Price on request and quote each buyer in the chat." },
+      { "q": "Can retailers place an order in the catalogue?", "a": "They send an enquiry on WhatsApp from the product page. There is no cart and no online payment. You confirm the order in the chat." },
+      { "q": "Does the enquiry tell me which product they want?", "a": "Yes. The WhatsApp message names the product and includes its code. Your staff know exactly what to bill." },
+      { "q": "Can my sales staff share the catalogue too?", "a": "Yes. Anyone can forward the link. Enquiries from the Enquire on WhatsApp button go to the one number set for your catalogue, so tell us which number your team uses for orders." },
+      { "q": "Can I show which brands I stock?", "a": "Yes. Each product has a brand field. We can also make a category for each brand if your retailers ask for products by brand." },
+      { "q": "Can retailers search for a product?", "a": "Yes, once you have 40 or more products. The catalogue gets a search box, and retailers can type a name, code or brand." },
+      { "q": "Does the catalogue show how many pieces I have in stock?", "a": "No. It shows if a product is in stock or out of stock. It does not show a count. You confirm quantities in the chat." },
+      { "q": "My prices change often. How do I update them?", "a": "Send the new prices on WhatsApp and we update the catalogue. Every plan includes 12 update requests a year, each for up to 10 products. A full price list change needs extra batches at ₹299 for 10 products, so you may prefer Price on request for items that change a lot." },
+      { "q": "Does the catalogue make GST bills?", "a": "No. The catalogue shows your products. You bill your retailers the way you do today." },
+      { "q": "I have 1,000 products. Can you handle it?", "a": "Yes. Above 300 products, we give you a quote based on how many products you have." },
+      { "q": "Do retailers need to install anything?", "a": "No. The catalogue opens in the browser on any phone or computer. Retailers only need WhatsApp to send you an enquiry." }
     ]
   },
   "cta": {

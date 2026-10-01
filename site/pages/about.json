@@ -3,7 +3,7 @@
   "type": "about",
   "hub": true,
   "crumb": "About",
-  "updated": "2026-09-29",
+  "updated": "2026-10-01",
   "title": "About OneCatalog | Who Makes Your Catalogue",
   "description": "OneCatalog makes online product catalogues for Indian small businesses over WhatsApp. Who runs it, how it works, and how to reach us.",
   "h1": "About OneCatalog",
@@ -13,7 +13,8 @@
     {
       "h2": "Who runs OneCatalog?",
       "blocks": [
-        { "p": "OneCatalog is run by Vinod Kumar, known as Hari. He builds the catalogues from the photos and price lists that shop owners send on WhatsApp, and he answers the WhatsApp messages." }
+        { "p": "OneCatalog is run by Vinod Kumar and his team. The team builds the catalogues from the photos and price lists that shop owners send on WhatsApp, and answers your WhatsApp messages." },
+        { "note": "Vinod is also the founder of [OptiScale Advisors](https://optiscaleadvisors.com)." }
       ]
     },
     {

@@ -297,16 +297,17 @@ h3{font-size:19px;line-height:1.3;letter-spacing:-.01em;font-weight:650}
 @supports (animation-timeline:scroll()){.progress{animation:grow linear both;animation-timeline:scroll(root)}@keyframes grow{to{transform:scaleX(1)}}}
 .site-head{position:relative;z-index:40;background:rgba(251,248,243,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(230,222,210,.7)}
 .head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.wordmark{display:inline-flex;align-items:center;min-height:48px;flex:0 0 auto;border-radius:10px}
-.wordmark img{display:block;height:40px;width:auto}
+.wordmark{display:inline-flex;align-items:center;min-height:48px;flex:none;border-radius:10px}
+.wordmark img{display:block;height:52px;width:auto}
 .foot-logo{display:block;height:72px;width:auto;margin-bottom:8px}
-@media (min-width:760px){.wordmark img{height:44px}}
-.head-cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s var(--ease),background .2s}
+@media (min-width:760px){.wordmark img{height:57px}}
+.head-cta{white-space:nowrap;flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s var(--ease),background .2s}
 .head-cta:hover{background:var(--wa-dark);color:#fff;transform:translateY(-1px)}
 .head-cta svg{width:18px;height:18px;fill:currentColor}
+@media (max-width:419px){.head-cta{width:44px;padding:0;justify-content:center}.head-cta span{position:absolute;clip:rect(0 0 0 0)}.head-cta svg{width:22px;height:22px}}
 .nav{display:flex;gap:2px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none;margin:0 -6px}
 .nav::-webkit-scrollbar{display:none}
-.nav a{flex:0 0 auto;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;font-size:15px;font-weight:550;color:var(--text);text-decoration:none;transition:background .2s,color .2s}
+.nav a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;font-size:15px;font-weight:550;color:var(--text);text-decoration:none;transition:background .2s,color .2s}
 .nav a:hover{background:var(--surface);color:var(--ink)}
 .nav a[aria-current]{background:var(--ink);color:#fff}
 .crumbs{font-size:14px;color:var(--muted);margin-bottom:18px}
@@ -335,29 +336,31 @@ h3{font-size:19px;line-height:1.3;letter-spacing:-.01em;font-weight:650}
 .trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-size:14.5px;color:var(--muted)}
 .trust li{display:inline-flex;align-items:center;gap:7px}
 .trust svg{width:17px;height:17px;fill:var(--wa)}
-.stage{position:relative;justify-self:center;width:min(300px,82vw);padding:10px 0 30px}
-.phone{position:relative;border-radius:40px;background:#101820;padding:11px;box-shadow:var(--shadow-lg);transform:rotate(-2.5deg)}
-.phone .screen{border-radius:30px;background:#fff;padding:16px 12px 18px;overflow:hidden}
-.ph-bar{height:5px;width:64px;border-radius:5px;background:#101820;margin:0 auto 14px;opacity:.9}
-.ph-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
-.ph-logo{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;font:700 12px/30px var(--display);text-align:center}
+.stage{--vh:372px;position:relative;justify-self:center;width:min(290px,80vw);padding:10px 0 40px}
+.phone{position:relative;z-index:2;border-radius:40px;background:#101820;padding:9px;box-shadow:var(--shadow-lg);transform:rotate(-2.5deg)}
+.phone .screen{position:relative;border-radius:32px;background:#fff;overflow:hidden;padding-bottom:12px}
+.ph-static{padding:4px 10px 6px}
+.ph-img{aspect-ratio:1;border-radius:9px;background:linear-gradient(145deg,hsl(var(--h) 45% 78%),hsl(var(--h) 38% 58%));position:relative;overflow:hidden}
+.ph-img::after{content:"";position:absolute;inset:auto -20% -40% auto;width:70%;height:90%;border-radius:50%;background:rgba(255,255,255,.28)}
+.ph-head{display:flex;align-items:center;gap:9px;padding:12px 14px 9px}
+.ph-logo{flex:none;width:32px;height:32px;border-radius:10px;background:var(--c);color:#fff;font:700 12px/32px var(--display);text-align:center}
 .ph-shop{font:700 14px/1.2 var(--display);color:var(--ink)}
 .ph-tag{font-size:10.5px;color:var(--muted)}
-.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ph-item{border-radius:12px;background:#FAF7F2;padding:6px 6px 8px}
-.ph-img{height:70px;border-radius:9px;background:linear-gradient(145deg,hsl(var(--h) 45% 78%),hsl(var(--h) 38% 58%));position:relative;overflow:hidden}
-.ph-img::after{content:"";position:absolute;inset:auto -20% -40% auto;width:70%;height:90%;border-radius:50%;background:rgba(255,255,255,.28)}
-.ph-name{font-size:10.5px;font-weight:600;margin-top:6px;line-height:1.3;color:var(--ink)}
-.ph-price{font-size:10.5px;color:var(--wa-dark);font-weight:700;margin-top:1px}
-.ph-wa{margin-top:5px;font-size:9.5px;font-weight:600;background:var(--wa);color:#fff;border-radius:999px;text-align:center;padding:3px 0}
-.bubble{position:absolute;right:-14px;bottom:0;max-width:210px;background:#DCF8C6;color:#1D2A1F;font-size:12.5px;line-height:1.4;padding:10px 12px 18px;border-radius:14px 14px 4px 14px;box-shadow:var(--shadow);transform:rotate(1.5deg)}
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-bottom:8px}
+.ph-item{border-radius:12px;background:#FAF7F2;padding:5px 5px 7px}
+.ph-name{font-size:10.5px;font-weight:600;margin-top:6px;line-height:1.3;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+.ph-price{font-size:10px;color:var(--muted);font-weight:600;margin-top:2px}
+.ph-wa{margin-top:5px;font-size:9.5px;font-weight:650;background:var(--wa);color:#fff;border-radius:999px;text-align:center;padding:3px 0}
+.bubbles{position:absolute;z-index:3;right:-16px;bottom:0;width:224px;height:96px;pointer-events:none}
+.bubble{position:absolute;right:0;bottom:0;width:100%;background:#DCF8C6;color:#1D2A1F;font-size:12.5px;line-height:1.4;padding:10px 12px 18px;border-radius:14px 14px 4px 14px;box-shadow:var(--shadow)}
+.bubble+.bubble{opacity:0}
 .bubble::after{content:"\\2713\\2713";position:absolute;right:10px;bottom:4px;font-size:10px;color:#34B7F1;letter-spacing:-2px}
-@media (prefers-reduced-motion:no-preference){.phone{animation:float 7s ease-in-out infinite}.bubble{animation:pop .7s var(--ease) .5s both}@keyframes float{50%{transform:rotate(-2.5deg) translateY(-8px)}}@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.94)}}}
+@media (prefers-reduced-motion:no-preference){.phone{animation:float 7s ease-in-out infinite}.phone.back{animation:float-b 8s ease-in-out infinite}.ph-feed{animation:feed var(--t,14s) ease-in-out infinite alternate}.phone.back .ph-feed{animation-delay:-5s}.bubble{animation:say 12s var(--ease) infinite both}.bubble:nth-child(2){animation-delay:4s}.bubble:nth-child(3){animation-delay:8s}@keyframes float{50%{transform:rotate(-2.5deg) translateY(-8px)}}@keyframes float-b{0%,100%{transform:rotate(5deg) scale(.86)}50%{transform:rotate(5deg) scale(.86) translateY(8px)}}@keyframes feed{0%,10%{transform:none}90%,100%{transform:translateY(calc(var(--vh) - 100%))}}@keyframes say{0%{opacity:0;transform:translateY(14px) scale(.94)}5%,30%{opacity:1;transform:none}35%,100%{opacity:0;transform:translateY(-10px)}}}
 section.sec{padding:72px 0;content-visibility:auto;contain-intrinsic-size:auto 900px}
 .foot{content-visibility:auto;contain-intrinsic-size:auto 600px}
 section.sec.tone{background:linear-gradient(180deg,rgba(244,238,229,.0),rgba(244,238,229,.85) 12%,rgba(244,238,229,.85) 88%,rgba(244,238,229,0))}
 .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
-.sec-num{font:600 14px/1 var(--display);color:var(--wa-dark);letter-spacing:.04em;flex:0 0 auto;padding-top:6px}
+.sec-num{font:600 14px/1 var(--display);color:var(--wa-dark);letter-spacing:.04em;flex:none;padding-top:6px}
 .split{display:grid;gap:8px 56px}
 .flow{max-width:var(--read)}
 .flow>*+*{margin-top:18px}
@@ -487,16 +490,72 @@ section.sec{padding:104px 0}
 `.replace(/\n/g, '');
 }
 
+// Live-catalog phones and the showcase cards. Only pages that use them get
+// this CSS, so the other pages stay small.
+const LIVE_CSS = `
+.phone.back{display:none}
+.ph-url{display:flex;align-items:center;justify-content:center;gap:6px;margin:12px 16px 0;padding:5px 10px;border-radius:999px;background:#F2EEE8;font-size:10.5px;color:#5C5850;white-space:nowrap;overflow:hidden}
+.ph-url::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--wa)}
+.ph-chips{display:flex;gap:5px;padding:0 14px 10px;overflow:hidden;white-space:nowrap}
+.ph-chips span{flex:none;font-size:9.5px;font-weight:650;padding:4px 9px;border-radius:999px;background:#F2EEE8;color:var(--ink)}
+.ph-chips span:first-child{background:var(--c);color:#fff}
+.ph-view{position:relative;height:var(--vh);overflow:hidden;padding:0 10px;mask:linear-gradient(#0000,#000 12px,#000 calc(100% - 36px),#0000)}
+.ph-item img{display:block;width:100%;height:auto;aspect-ratio:1;border-radius:9px;background:#fff;object-fit:cover}
+.ph-feed b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em;margin-top:6px;font-size:10.5px;font-weight:600;line-height:1.3;color:var(--ink)}
+.ph-feed i{display:block;margin-top:2px;font-size:10px;font-style:normal;font-weight:600;color:var(--muted)}
+.ph-feed i:empty::before{content:"Price on request"}
+.ph-feed .ph-item::after{content:"Enquire on WhatsApp";display:block;margin-top:5px;padding:3px 0;border-radius:999px;background:var(--wa);color:#fff;font-size:9.5px;font-weight:650;text-align:center}
+@media (min-width:960px){.stage{width:290px;margin-right:110px}.phone.back{display:block;position:absolute;z-index:1;top:-26px;right:-150px;width:100%;transform:rotate(5deg) scale(.86)}}
+.show{display:grid;gap:20px}
+.show-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;color:var(--text);text-decoration:none;box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.show-card:hover{color:var(--text);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.show-pics{display:grid;grid-template-columns:2fr 1fr;gap:6px;padding:6px;background:color-mix(in srgb,var(--c) 16%,#fff)}
+.show-pics span{display:block;overflow:hidden;border-radius:16px;background:#fff}
+.show-pics span:first-child{grid-row:span 2}
+.show-pics img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:cover;transition:transform .6s var(--ease)}
+.show-card:hover .show-pics img{transform:scale(1.04)}
+.show-body{display:flex;flex-direction:column;gap:10px;flex:1;padding:20px 22px 22px}
+.show-body h3{font-size:21px}
+.show-meta{font-size:14.5px;color:var(--muted)}
+.show-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.show-tags li{font-size:13px;line-height:1.4;padding:4px 10px;border-radius:999px;background:var(--surface);color:var(--ink)}
+.show-go{margin-top:auto;padding-top:6px;display:flex;align-items:center;gap:8px;min-height:44px;font-weight:650;color:var(--ink)}
+.show-go svg{width:18px;height:18px;fill:currentColor;transition:transform .25s var(--ease)}
+.show-card:hover .show-go svg{transform:translateX(4px)}
+.show-go small{margin-left:auto;font-size:13px;font-weight:500;color:var(--muted)}
+@media (min-width:760px){.show{grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:24px}}
+`.replace(/\n/g, '');
+const usesLive = page => Boolean(page.mockup?.shops || (page.sections || []).some(s => (s.blocks || []).some(b => b.samples)));
+
 /* ------------------------------------------------------------------ blocks */
 
-// A stable hue per product name, so mockup tiles look like different products.
-// Kept within warm, earthy hues (terracotta to sage) so tiles never look like a neon gradient.
+// Initials for a shop's logo tile. "The Best Wood Handicrafts" gives "BW".
+const initials = name => name.split(/\s+/).filter(w => !/^(the|and|&)$/i.test(w)).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+
+// One phone showing a live client catalog. Products come from clients/<slug>/
+// (see loadClientSummary in scripts/build.js). The grid is written once and
+// the feed glides down and back up.
+function phone(shop, n, back) {
+  const list = shop.products.slice(0, n);
+  const grid = `<div class="ph-grid">${list.map(p => `<div class="ph-item"><img src="${esc(p.img.sm)}" width="120" height="120" alt=""${back ? ' loading="lazy"' : ''}><b>${esc(p.name)}</b><i>${esc(p.price || '')}</i></div>`).join('')}</div>`;
+  const chips = shop.categories.slice(0, 3).map(c => `<span>${esc(c)}</span>`).join('');
+  return `<div class="phone${back ? ' back' : ''}" style="--c:${esc(shop.accent)}" aria-hidden="true"><div class="screen"><div class="ph-url">${esc(shop.host)}</div><div class="ph-head"><div class="ph-logo">${esc(initials(shop.name))}</div><div><div class="ph-shop">${esc(shop.name)}</div><div class="ph-tag">${esc(shop.count)} products${shop.city ? ', ' + esc(shop.city) : ''}</div></div></div><div class="ph-chips">${chips}</div><div class="ph-view"><div class="ph-feed" style="--t:${list.length * 1.6}s">${grid}</div></div></div></div>`;
+}
+
+// Pages without real client photos (industry pages) show drawn example tiles.
+// A stable hue per product name keeps the tiles warm and earthy.
 const hue = s => 12 + [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 9973, 17) % 150;
 
-function mockup(m, cfg) {
+function staticMockup(m) {
   const items = m.items.map(i => `<div class="ph-item"><div class="ph-img" style="--h:${hue(i.name)}"></div><div class="ph-name">${esc(i.name)}</div><div class="ph-price">${esc(i.price)}</div><div class="ph-wa">Enquire on WhatsApp</div></div>`).join('');
-  const initials = m.shop.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  return `<div class="stage" role="img" aria-label="${esc(m.label)}"><div class="phone" aria-hidden="true"><div class="screen"><div class="ph-bar"></div><div class="ph-head"><div class="ph-logo">${esc(initials)}</div><div><div class="ph-shop">${esc(m.shop)}</div><div class="ph-tag">${esc(m.tag || 'Sample catalogue')}</div></div></div><div class="ph-grid">${items}</div></div></div><div class="bubble" aria-hidden="true">Hi ${esc(m.shop)}, I'm interested in ${esc(m.items[0].name)}. Please share details.</div></div>`;
+  return `<div class="stage" role="img" aria-label="${esc(m.label)}"><div class="phone" style="--c:var(--ink)" aria-hidden="true"><div class="screen"><div class="ph-head" style="padding-top:18px"><div class="ph-logo">${esc(initials(m.shop))}</div><div><div class="ph-shop">${esc(m.shop)}</div><div class="ph-tag">${esc(m.tag || 'Sample catalogue')}</div></div></div><div class="ph-grid ph-static">${items}</div></div></div><div class="bubbles" aria-hidden="true"><div class="bubble">Hi ${esc(m.shop)}, I'm interested in ${esc(m.items[0].name)}. Please share details.</div></div></div>`;
+}
+
+function mockup(m) {
+  if (!m.shops) return staticMockup(m);
+  const [front, back] = m.shops;
+  const says = front.products.slice(0, 3).map(p => `<div class="bubble">Hi ${esc(front.name)}, I'm interested in ${esc(p.name)}. Please share details.</div>`).join('');
+  return `<div class="stage" role="img" aria-label="${esc(m.label)}">${back ? phone(back, 6, true) : ''}${phone(front, 8, false)}<div class="bubbles" aria-hidden="true">${says}</div></div>`;
 }
 
 function pricingBlock(cfg, mode, wa) {
@@ -509,8 +568,21 @@ function pricingBlock(cfg, mode, wa) {
   return mode === 'card' ? card : card + table;
 }
 
+// Pick up to 3 photos for a showcase card, one per category where possible.
+function showPics(s) {
+  const seen = new Set(), pick = [];
+  for (const p of s.products) if (!seen.has(p.category)) { seen.add(p.category); pick.push(p); }
+  for (const p of s.products) if (pick.length < 3 && !pick.includes(p)) pick.push(p);
+  return pick.slice(0, 3);
+}
+
 function samplesBlock(cfg) {
-  return `<div class="cards three">${cfg.samples.map((s, i) => `<a class="card" href="${esc(s.url)}" rel="noopener" data-reveal style="--i:${i}"><h3>${esc(s.label)}</h3><p>${esc(s.detail)}</p></a>`).join('')}</div>`;
+  const cards = cfg.samples.map((s, i) => {
+    const pics = showPics(s).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="${esc(p.name)}" loading="lazy" decoding="async"></span>`).join('');
+    const tags = s.categories.slice(0, 4).map(c => `<li>${esc(c)}</li>`).join('');
+    return `<a class="show-card" href="${esc(s.url)}" rel="noopener" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue ${ARROW}<small>${esc(s.host)}</small></span></div></a>`;
+  }).join('');
+  return `<div class="show" style="--n:${cfg.samples.length}">${cards}</div>`;
 }
 
 function cardsBlock(list) {
@@ -588,7 +660,7 @@ ${page.sub ? `<p class="sub">${inline(page.sub)}</p>` : ''}
 ${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>` : ''}
 ${page.type === 'legal' ? '' : `<div class="actions">${waBtn(cfg.cta.primary, wa)}${secondary ? `<a class="link-arrow" href="${e(secondary.href)}" data-cta="secondary"><span>${e(secondary.label)}</span>${ARROW}</a>` : ''}</div>`}
 ${page.mockup ? `<ul class="trust">${cfg.trust.map(t => `<li>${TICK}${e(t)}</li>`).join('')}</ul>` : ''}
-</div>${page.mockup ? mockup(page.mockup, cfg) : ''}</div>
+</div>${page.mockup ? mockup(page.mockup) : ''}</div>
 </div></section>`;
 
   let n = 0;
@@ -664,7 +736,7 @@ ${cfg.gscToken ? `<meta name="google-site-verification" content="${e(cfg.gscToke
 <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="preload" href="/brand/logo.webp" as="image" type="image/webp">
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
-<style>${css(cfg)}</style>
+<style>${css(cfg)}${usesLive(page) ? LIVE_CSS : ''}</style>
 ${schemaFor(cfg, page, trail).map(ldScript).join('\n')}
 ${ga}
 </head>
@@ -672,7 +744,7 @@ ${ga}
 <div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap head-inner">
-<div class="head-row"><a class="wordmark" href="/" aria-label="${e(cfg.name)} home"><img src="/brand/logo.webp" width="170" height="44" alt="${e(cfg.name)}"></a><a class="head-cta" href="${e(wa)}" rel="noopener" data-cta="whatsapp">${WA_ICON}<span>${e(cfg.cta.short)}</span></a></div>
+<div class="head-row"><a class="wordmark" href="/" aria-label="${e(cfg.name)} home"><img src="/brand/logo.webp" width="220" height="57" alt="${e(cfg.name)}"></a><a class="head-cta" href="${e(wa)}" rel="noopener" data-cta="whatsapp">${WA_ICON}<span>${e(cfg.cta.short)}</span></a></div>
 <nav class="nav" aria-label="Main">${nav}</nav>
 </div></header>
 <main id="main">

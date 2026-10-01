@@ -3,11 +3,12 @@
   "type": "industry",
   "crumb": "Jewellery",
   "keyword": "jewellery catalogue maker",
-  "updated": "2026-09-29",
+  "updated": "2026-10-01",
   "title": "Jewellery Catalogue Maker for WhatsApp | OneCatalog",
   "description": "A jewellery catalogue maker for jewellers and wholesalers. Show weight, purity and designs in one link, and let buyers ask price on WhatsApp.",
   "h1": "Jewellery catalogue maker that works when the gold rate changes every day",
-  "answer": "OneCatalog is a jewellery catalogue maker for jewellery shops and wholesalers. We build a catalogue where every design has its own page with photos, weight and purity. Because gold prices move daily, most jewellers show Price on request and quote the day's price in the WhatsApp chat.",
+  "answer": "OneCatalog is a jewellery catalogue maker for jewellery shops and wholesalers. We build a catalogue where every design has its own page with photos, weight and purity. Gold prices move every day, so most jewellers show Price on request. The customer asks on WhatsApp, and you quote that day's price in the chat.",
+  "sub": "Your designs stay with their details. Your prices stay in your hands.",
   "waText": "Hi OneCatalog, I want a catalogue for my jewellery business.",
   "mockup": {
     "label": "Sample jewellery catalogue showing weight and purity, shown on a phone",
@@ -24,26 +25,26 @@
     {
       "h2": "Why jewellers struggle to share designs on WhatsApp",
       "blocks": [
-        { "p": "Picture a jewellery wholesaler in Chennai who supplies 60 retail shops. Every new design goes out as a photo with the weight typed underneath. Retailers ask for the photo again a week later. Some forward old photos with old weights to their own customers." },
+        { "p": "Picture a jewellery wholesaler in Chennai who supplies 60 shops. Each new design goes out as a photo, with the weight typed below it. A week later, a shop asks for the same photo again. Some shops forward old photos, with old weights, to their own customers." },
         { "pain": [
-          "Weight and purity get lost when a photo is forwarded without the caption.",
-          "A price typed on a photo is wrong the next day when the gold rate moves.",
-          "Customers ask to see all the designs in a range, and you send them in batches of ten."
+          "The weight and purity get lost when someone forwards the photo without the message under it.",
+          "A price written on a photo is wrong the next day, because the gold rate has moved.",
+          "A customer wants to see every design in a range, and you send them ten at a time."
         ] }
       ]
     },
     {
       "h2": "How a jewellery catalogue maker helps",
       "blocks": [
-        { "p": "In a catalogue, the weight and purity sit on the product page with the photos. They never get separated. A retailer or customer opens one link and sees every design in the range." },
-        { "p": "Price stays in your hands. Most jewellers use Price on request for gold, so the catalogue never shows an out-of-date price. The customer taps Enquire on WhatsApp, the message names the exact design, and you quote today's rate in the chat. Fixed-price items like silver or imitation jewellery can show a price." }
+        { "p": "In a catalogue, the weight and purity sit on the product page, right next to the photos. They never get separated. A shop or a customer opens one link and sees every design in the range." },
+        { "p": "You stay in charge of the price. Most jewellers use Price on request for gold, so the catalogue never shows an old price. The customer taps Enquire on WhatsApp. The message names the exact design, and you quote today's rate in the chat. Items with a fixed price, like silver or imitation jewellery, can show their price." }
       ]
     },
     {
       "h2": "Example jewellery catalogue layout",
       "blocks": [
         { "table": {
-          "head": ["Category", "Details shown on each design"],
+          "head": ["Category", "Details on each design"],
           "rows": [
             ["Necklaces", "Weight in grams, purity such as 22K, stone type, design code"],
             ["Earrings and jhumkas", "Weight, purity, pair or single, design code"],
@@ -52,32 +53,41 @@
             ["Kids jewellery", "Weight, purity, age range"]
           ]
         } },
-        { "p": "Give every design a code. The code appears in the customer's WhatsApp message, so you know which piece they mean even if two designs look alike." }
+        { "p": "Give every design a code. The code goes into the customer's WhatsApp message, so you know which piece they mean, even when two designs look almost the same." }
+      ]
+    },
+    {
+      "h2": "Made for the way families buy jewellery",
+      "blocks": [
+        { "p": "Jewellery is rarely bought by one person alone. For a wedding, the bride, her mother and an aunt in another city may all want a say. Today that means screenshots, forwarded photos and a lot of confusion about which piece is which." },
+        { "p": "With a catalogue, the customer forwards one link to the family group. Everyone sees the same designs, with the same weights and codes. When they decide, one person taps Enquire on WhatsApp, and you get a message with the exact design code. Nobody has to describe a necklace in words." },
+        { "callout": "Tip: make a Bridal category. Families planning a wedding can open it and see every bridal set in one place." }
       ]
     },
     {
       "h2": "Are my designs private?",
       "blocks": [
-        { "p": "No. A OneCatalog catalogue is a public web page. Anyone with the link can see it, and Google can list it. That is what helps new customers find you." },
-        { "p": "If some designs are exclusive to certain buyers, keep those out of the catalogue and share them directly in chat. Put your standard range in the catalogue." }
+        { "p": "No. A OneCatalog catalogue is a public web page. Anyone with the link can see it, and Google can show it in search results. That is how new customers find you." },
+        { "p": "If some designs are only for certain buyers, keep them out of the catalogue. Share those in private chats. Put your regular range in the catalogue." }
       ]
     },
     {
       "h2": "Photo tips for jewellery",
       "blocks": [
         { "ul": [
-          "Use a plain dark or white cloth as the background. Busy backgrounds hide the detail.",
-          "Shoot in soft daylight. Direct sun makes gold look white and flat.",
-          "Take one full photo and one close-up of the work, such as stone setting or filigree.",
-          "Keep a small ruler or coin out of the photo and write the size in the details instead.",
-          "Hold the phone steady or rest it on a box. Blurred jewellery photos cannot be fixed later."
-        ] }
+          "Use a plain dark or white cloth behind the piece. A busy background hides the detail.",
+          "Take photos in soft daylight. Strong sun makes gold look pale and flat.",
+          "Take one full photo, then one close photo of the work, like the stone setting.",
+          "Do not put a ruler or coin in the photo. Write the size in the details instead.",
+          "Rest the phone on a box to keep it still. A blurry jewellery photo cannot be fixed later."
+        ] },
+        { "p": "Our guide on [how to make a product catalogue](/guides/how-to-make-a-product-catalogue) has more help with photos and product names." }
       ]
     },
     {
       "h2": "Plans for jewellers",
       "blocks": [
-        { "p": "Jewellers with a focused range start with up to 50 designs for ₹3,999 in the first year. Wholesalers with more designs choose 150 or 300 products. Compare them on the [pricing page](/pricing), and see how sharing works on our [WhatsApp catalogue page](/whatsapp-catalogue). If you supply other shops, the [wholesale catalogue page](/catalogue-maker/wholesale) covers MOQ and bulk orders." }
+        { "p": "Jewellers with a small range start with up to 50 designs for ₹3,999 in the first year. Wholesalers with more designs pick 150 or 300 products. Compare them on the [pricing page](/pricing). See how sharing works on our [WhatsApp catalogue page](/whatsapp-catalogue). If you supply other shops, the [wholesale catalogue page](/catalogue-maker/wholesale) covers minimum orders and bulk buying." }
       ]
     }
   ],
@@ -85,10 +95,17 @@
     "heading": "Jewellery catalogue questions",
     "items": [
       { "q": "Can I show the weight and purity of each design?", "a": "Yes. Weight in grams, purity and stone details go on each product page, right next to the photos." },
-      { "q": "How do I handle prices that change with the gold rate?", "a": "Show Price on request for gold items. Customers tap Enquire on WhatsApp and you quote the day's price in the chat. Items with a fixed price, like silver, can show it." },
-      { "q": "Can I hide designs from the public?", "a": "No. The catalogue is a public link. Keep exclusive designs out of it and share them in private chats." },
-      { "q": "Can I list making charges or wastage?", "a": "Yes. Write them in the product details, for example making charges as a percentage. They appear on the product page with the weight and purity, so customers see them before they ask." },
-      { "q": "Can retailers share my catalogue with their customers?", "a": "Yes. They can forward your link. Every enquiry from it comes to your WhatsApp number, whoever forwarded it." }
+      { "q": "How do I handle prices that change with the gold rate?", "a": "Show Price on request for gold items. Customers tap Enquire on WhatsApp, and you quote that day's price in the chat. Items with a fixed price, like silver, can show it." },
+      { "q": "Can I hide some designs from the public?", "a": "No. The catalogue is a public link. Keep special designs out of it and share them in private chats." },
+      { "q": "Can I list making charges or wastage?", "a": "Yes. Write them in the product details, for example making charges as a percent. Customers see them on the product page with the weight and purity." },
+      { "q": "Can I mention that a piece is hallmarked?", "a": "Yes. Write it in the product details, along with the purity. Customers like to see this before they ask." },
+      { "q": "Can shops that buy from me share my catalogue?", "a": "Yes. They can forward your link to their customers. Every enquiry from it comes to your WhatsApp number, no matter who forwarded it." },
+      { "q": "I sell one gram gold and imitation jewellery. Does this work for me?", "a": "Yes. These items have fixed prices, so you can show the price on every product. Customers can see the price and ask on WhatsApp in one tap." },
+      { "q": "Can customers pay or book a piece in the catalogue?", "a": "No. There is no cart and no online payment. The customer messages you on WhatsApp and you confirm the order in the chat, the way you do today." },
+      { "q": "How many photos can one design have?", "a": "More than one. Most jewellers use a full photo and a close photo of the work for each design." },
+      { "q": "I add new designs often. How do updates work?", "a": "Send the new designs on WhatsApp and we add them. Every plan includes 12 update requests a year, each for up to 10 products. Extra batches cost ₹299 for 10 products." },
+      { "q": "What happens when a design is sold?", "a": "We can mark it out of stock or hide it. Out of stock keeps the page with a badge, so a customer can ask you to make the same design again." },
+      { "q": "Will my catalogue show up on Google?", "a": "It can. Every design has its own web page that Google can read. A clear name, like 22K temple necklace with ruby stones, gives it the best chance." }
     ]
   },
   "cta": {
