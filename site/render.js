@@ -495,7 +495,6 @@ section.sec{padding:104px 0}
 const LIVE_CSS = `
 .phone.back{display:none}
 .ph-url{display:flex;align-items:center;justify-content:center;gap:6px;margin:12px 16px 0;padding:5px 10px;border-radius:999px;background:#F2EEE8;font-size:10.5px;color:#5C5850;white-space:nowrap;overflow:hidden}
-.ph-url::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--wa)}
 .ph-chips{display:flex;gap:5px;padding:0 14px 10px;overflow:hidden;white-space:nowrap}
 .ph-chips span{flex:none;font-size:9.5px;font-weight:650;padding:4px 9px;border-radius:999px;background:#F2EEE8;color:var(--ink)}
 .ph-chips span:first-child{background:var(--c);color:#fff}
@@ -519,10 +518,10 @@ const LIVE_CSS = `
 .show-meta{font-size:14.5px;color:var(--muted)}
 .show-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 .show-tags li{font-size:13px;line-height:1.4;padding:4px 10px;border-radius:999px;background:var(--surface);color:var(--ink)}
-.show-go{margin-top:auto;padding-top:6px;display:flex;align-items:center;gap:8px;min-height:44px;font-weight:650;color:var(--ink)}
+.show-go{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;font-weight:650;color:var(--ink)}
 .show-go svg{width:18px;height:18px;fill:currentColor;transition:transform .25s var(--ease)}
 .show-card:hover .show-go svg{transform:translateX(4px)}
-.show-go small{margin-left:auto;font-size:13px;font-weight:500;color:var(--muted)}
+.show-go small{flex-basis:100%;font-size:13px;font-weight:500;color:var(--muted)}
 @media (min-width:760px){.show{grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:24px}}
 `.replace(/\n/g, '');
 const usesLive = page => Boolean(page.mockup?.shops || (page.sections || []).some(s => (s.blocks || []).some(b => b.samples)));
@@ -555,7 +554,7 @@ function mockup(m) {
   if (!m.shops) return staticMockup(m);
   const [front, back] = m.shops;
   const says = front.products.slice(0, 3).map(p => `<div class="bubble">Hi ${esc(front.name)}, I'm interested in ${esc(p.name)}. Please share details.</div>`).join('');
-  return `<div class="stage" role="img" aria-label="${esc(m.label)}">${back ? phone(back, 6, true) : ''}${phone(front, 8, false)}<div class="bubbles" aria-hidden="true">${says}</div></div>`;
+  return `<div class="stage" role="img" aria-label="${esc(m.label)}">${back ? phone(back, 4, true) : ''}${phone(front, 6, false)}<div class="bubbles" aria-hidden="true">${says}</div></div>`;
 }
 
 function pricingBlock(cfg, mode, wa) {
@@ -578,9 +577,9 @@ function showPics(s) {
 
 function samplesBlock(cfg) {
   const cards = cfg.samples.map((s, i) => {
-    const pics = showPics(s).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="${esc(p.name)}" loading="lazy" decoding="async"></span>`).join('');
-    const tags = s.categories.slice(0, 4).map(c => `<li>${esc(c)}</li>`).join('');
-    return `<a class="show-card" href="${esc(s.url)}" rel="noopener" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue ${ARROW}<small>${esc(s.host)}</small></span></div></a>`;
+    const pics = showPics(s).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="${esc(p.name)}" loading="lazy"></span>`).join('');
+    const tags = s.categories.slice(0, 3).map(c => `<li>${esc(c)}</li>`).join('');
+    return `<a class="show-card" href="${esc(s.url)}" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue ${ARROW}<small>${esc(s.host)}</small></span></div></a>`;
   }).join('');
   return `<div class="show" style="--n:${cfg.samples.length}">${cards}</div>`;
 }

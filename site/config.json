@@ -57,6 +57,10 @@
     {
       "client": "best-wood-handicrafts",
       "trade": "Carved wood furniture and handicrafts"
+    },
+    {
+      "client": "sofasquare",
+      "trade": "Sofa makers"
     }
   ],
   "pricing": {
