@@ -98,7 +98,9 @@ async function main() {
       if (PAD) {
         // Pad with the photo's own edge colour, so a product shot on a grey or
         // cream backdrop does not get white bands above and below it.
-        const bg = await edgeColour(src);
+        // A transparent cut-out has no backdrop: its edges are the product
+        // itself, so it gets white.
+        const bg = meta.hasAlpha ? { r: 255, g: 255, b: 255 } : await edgeColour(src);
         img = img.flatten({ background: bg }).resize(SIZE, SIZE, {
           fit: 'contain',
           background: { ...bg, alpha: 1 }
