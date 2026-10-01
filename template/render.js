@@ -77,6 +77,12 @@ const anyPrice = products => products.some(p => money({}, p.price));
 
 function bizId(cfg) { return cfg.siteUrl + '/#business'; }
 
+// Phone link in international form. Without the + a phone may dial
+// 919876543210 as a local number and the call fails.
+function telHref(cfg) {
+  return 'tel:+' + String(cfg.phone || cfg.whatsapp).replace(/\D/g, '');
+}
+
 function waLink(cfg, text) {
   return `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(text)}`;
 }
@@ -162,7 +168,7 @@ function header(cfg, { home = false } = {}) {
   return `<header class="site-head"><div class="wrap">
 ${home ? logo : `<a href="/" aria-label="${esc(cfg.name)} catalog home">${logo}</a>`}
 <div><div class="site-name">${nameEl}</div>${cfg.tagline ? `<div class="site-tag">${esc(cfg.tagline)}</div>` : ''}</div>
-<a class="head-call" href="tel:${esc(cfg.phone || cfg.whatsapp)}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a>
+<a class="head-call" href="${telHref(cfg)}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a>
 </div></header>`;
 }
 
@@ -185,7 +191,7 @@ function footer(cfg, categories) {
 <div class="foot-grid">
 <div class="foot-card">
 <div class="foot-name">${esc(cfg.name)}</div>
-<div class="foot-row">${ICON.phone}<div><div class="foot-label">Call or WhatsApp</div><a href="tel:${esc(cfg.phone || cfg.whatsapp)}">${esc(cfg.phoneDisplay || cfg.phone || cfg.whatsapp)}</a></div></div>
+<div class="foot-row">${ICON.phone}<div><div class="foot-label">Call or WhatsApp</div><a href="${telHref(cfg)}">${esc(cfg.phoneDisplay || cfg.phone || cfg.whatsapp)}</a></div></div>
 ${cfg.address ? `<div class="foot-row">${ICON.pin}<div><div class="foot-label">Address</div>${esc(cfg.address)}</div></div>` : ''}
 ${cfg.hours ? `<div class="foot-row">${ICON.clock}<div><div class="foot-label">Open</div>${esc(cfg.hours)}</div></div>` : ''}
 ${buttons ? `<div class="foot-btns">${buttons}</div>` : ''}
@@ -282,7 +288,7 @@ ${cfg.metaHeadline && cfg.tagline && cfg.tagline.toLowerCase() !== cfg.metaHeadl
 <ul class="pills">${pills}</ul>
 <div class="hero-actions">
 <a class="btn btn-wa" href="${waLink(cfg, greeting)}" rel="noopener">${ICON.wa}<span>Chat on WhatsApp</span></a>
-<a class="btn btn-ghost" href="tel:${esc(cfg.phone || cfg.whatsapp)}" style="margin-top:0">${ICON.phone}<span>Call</span></a>
+<a class="btn btn-ghost" href="${telHref(cfg)}" style="margin-top:0">${ICON.phone}<span>Call</span></a>
 </div>
 </div></section>`;
 
@@ -377,7 +383,7 @@ export function renderProduct(cfg, p, related, categories, css) {
 
   const waText = `Hi ${cfg.name}, I'm interested in ${p.name}${p.sku ? ' (' + p.sku + ')' : ''}. Please share details.`;
   const wa = waLink(cfg, waText);
-  const tel = `tel:${esc(cfg.phone || cfg.whatsapp)}`;
+  const tel = `${telHref(cfg)}`;
 
   return head(cfg, { title, description, canonical: `${cfg.siteUrl}/${p.slug}`, jsonld, css, image: p.images[0], bodyClass: 'has-bar' })
     + header(cfg)
