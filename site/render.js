@@ -505,6 +505,10 @@ const LIVE_CSS = `
 .ph-feed i:empty::before{content:"Price on request"}
 .ph-feed .ph-item::after{content:"Enquire on WhatsApp";display:block;margin-top:5px;padding:3px 0;border-radius:999px;background:var(--wa);color:#fff;font-size:9.5px;font-weight:650;text-align:center}
 @media (min-width:960px){.stage{width:290px;margin-right:110px}.phone.back{display:block;position:absolute;z-index:1;top:-26px;right:-150px;width:100%;transform:rotate(5deg) scale(.86)}}
+`.replace(/\n/g, '');
+// Below-the-fold styles: the showcase cards. Written to
+// /later.css by build.js and loaded without blocking the first paint.
+export const LATER_CSS = `
 .show{display:grid;gap:20px}
 .show-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;color:var(--text);text-decoration:none;box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
 .show-card:hover{color:var(--text);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
@@ -524,6 +528,10 @@ const LIVE_CSS = `
 .show-go small{flex-basis:100%;font-size:13px;font-weight:500;color:var(--muted)}
 @media (min-width:760px){.show{grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:24px}}
 `.replace(/\n/g, '');
+const blocksOf = page => (page.sections || []).flatMap(s => s.blocks || []);
+const usesLater = page => blocksOf(page).some(b => b.samples);
+const IMG_CARD_CSS = '.card.has-img{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:380px}.card-pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top}.card.has-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(19,34,53,.94) 80%)}.card.has-img>h3,.card.has-img>p{position:relative;z-index:1}';
+const usesImgCard = page => blocksOf(page).some(b => b.cards?.some(c => c.img));
 const usesLive = page => Boolean(page.mockup?.shops || (page.sections || []).some(s => (s.blocks || []).some(b => b.samples)));
 
 /* ------------------------------------------------------------------ blocks */
@@ -584,12 +592,16 @@ function samplesBlock(cfg) {
   return `<div class="show" style="--n:${cfg.samples.length}">${cards}</div>`;
 }
 
+function cardImg(g) {
+  return `<img class="card-pic" src="${esc(g.src)}-720.webp" srcset="${esc(g.src)}-720.webp 720w, ${esc(g.src)}-1400.webp 1400w" sizes="(min-width:760px) 720px, 100vw" width="${g.width}" height="${g.height}" alt="${esc(g.alt)}" loading="lazy" decoding="async">`;
+}
+
 function cardsBlock(list) {
   const linked = list.every(c => c.href);
   const cls = !linked && list.length >= 5 ? 'bento' : list.length === 3 ? 'three' : list.length > 1 ? 'two' : '';
   return `<div class="cards ${cls}">${list.map((c, i) => c.href
     ? `<a class="card" href="${esc(c.href)}" data-reveal style="--i:${i % 3}"><h3>${esc(c.title)}</h3>${c.text ? `<p>${esc(plain(c.text))}</p>` : ''}</a>`
-    : `<div class="card" data-reveal style="--i:${i % 3}"><h3>${inline(c.title)}</h3>${c.text ? `<p>${inline(c.text)}</p>` : ''}</div>`).join('')}</div>`;
+    : `<div class="card${c.img ? ' has-img' : ''}" data-reveal style="--i:${i % 3}">${c.img ? cardImg(c.img) : ''}<h3>${inline(c.title)}</h3>${c.text ? `<p>${inline(c.text)}</p>` : ''}</div>`).join('')}</div>`;
 }
 
 function block(cfg, b, wa) {
@@ -735,7 +747,7 @@ ${cfg.gscToken ? `<meta name="google-site-verification" content="${e(cfg.gscToke
 <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="preload" href="/brand/logo.webp" as="image" type="image/webp">
 <link rel="preload" href="/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
-<style>${css(cfg)}${usesLive(page) ? LIVE_CSS : ''}</style>
+<style>${css(cfg)}${usesLive(page) ? LIVE_CSS : ''}${usesImgCard(page) ? IMG_CARD_CSS : ''}</style>${usesLater(page) ? '<link rel="stylesheet" href="/later.css" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="/later.css"></noscript>' : ''}
 ${schemaFor(cfg, page, trail).map(ldScript).join('\n')}
 ${ga}
 </head>

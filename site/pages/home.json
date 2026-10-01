@@ -41,7 +41,7 @@
       "h2": "What you get in your digital catalogue",
       "blocks": [
         { "cards": [
-          { "title": "A page for every product", "text": "Each product gets its own page with photos, price, size, material and any detail that matters in your trade." },
+          { "title": "A page for every product", "text": "Each product gets its own page with photos, price, size, material and any detail that matters in your trade.", "img": { "src": "/img/product-page-v1", "width": 1400, "height": 908, "alt": "Product page for a Chesterfield sofa in emerald velvet in the Sofa Square Furniture catalogue, with price on request, size, material, colour and an Enquire on WhatsApp button" } },
           { "title": "An order button on every product", "text": "Customers tap Enquire on WhatsApp. The message they send you already names the product, so you know exactly what they want." },
           { "title": "Categories", "text": "Products are grouped the way your customers think, such as silk sarees, cotton sarees or kids wear." },
           { "title": "Prices, or Price on request", "text": "Show a fixed price, a starting price like From ₹1,999, or hide the price and let customers ask." },

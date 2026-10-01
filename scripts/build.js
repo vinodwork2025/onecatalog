@@ -19,7 +19,7 @@ import { buildCss } from '../template/themes.js';
 import {
   renderIndex, renderCategory, renderProduct, renderAbout, slugify, money
 } from '../template/render.js';
-import { renderPage, render404, renderLlmsTxt, renderRobots, renderSitemap, checkConfig, checkPage, bodyWords } from '../site/render.js';
+import { renderPage, render404, renderLlmsTxt, renderRobots, renderSitemap, checkConfig, checkPage, bodyWords, LATER_CSS } from '../site/render.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CLIENTS = path.join(ROOT, 'clients');
@@ -425,6 +425,11 @@ async function buildHome() {
   if (fs.existsSync(path.join(SITE, 'fonts'))) await fsp.cp(path.join(SITE, 'fonts'), path.join(outDir, 'fonts'), { recursive: true });
   // Logo, icons and favicons made by scripts/brand.js from the master logo.
   if (fs.existsSync(path.join(SITE, 'brand'))) await fsp.cp(path.join(SITE, 'brand'), path.join(outDir, 'brand'), { recursive: true });
+  // Page images such as screenshots. Names carry a version (-v1-) because
+  // /img/ is cached for a year: a changed image needs a new name.
+  if (fs.existsSync(path.join(SITE, 'img'))) await fsp.cp(path.join(SITE, 'img'), path.join(outDir, 'img'), { recursive: true });
+  // Below-the-fold styles, loaded without blocking the first paint.
+  await fsp.writeFile(path.join(outDir, 'later.css'), LATER_CSS);
   if (fs.existsSync(path.join(SITE, 'brand', 'favicon-48.png'))) await fsp.copyFile(path.join(SITE, 'brand', 'favicon-48.png'), path.join(outDir, 'favicon.ico'));
 
   const cfgProblems = checkConfig(cfg);
