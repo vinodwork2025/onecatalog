@@ -88,6 +88,7 @@ function normaliseProducts(rows, cfg, clientDir) {
       categorySlug: category ? slugify(category) : '',
       images,
       sku: r.sku || '',
+      enquiry: r.enquiry || '',
       inStock: !['no', 'false', '0', 'out'].includes((r.in_stock ?? 'yes').toLowerCase()),
       sortOrder: Number(r.sort_order || 9999),
       specs: {
@@ -190,10 +191,10 @@ async function processImages(clientDir, outDir, wanted, cfg) {
         .webp({ quality: 88 }).toFile(out);
     } else {
       await img.clone().resize(FULL_W, FULL_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
-        .webp({ quality: QUALITY }).toFile(out);
+        .webp({ quality: cfg.imageQuality || QUALITY }).toFile(out);
       if (thumb) {
         await img.clone().resize(THUMB_W, THUMB_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
-          .webp({ quality: QUALITY }).toFile(thumb);
+          .webp({ quality: cfg.imageQuality || QUALITY }).toFile(thumb);
       }
     }
     made++;

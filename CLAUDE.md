@@ -107,6 +107,14 @@ sort_order, size, material, colour, brand, moq, warranty, sku, show`
 (`warm` | `cool` | `dark` | `sharp`), `layout` (`grid` | `grid-large`),
 `subdomain`, `customDomain`, `sheetCsvUrl`.
 
+For service businesses (rentals, events): `hidePrices: true` removes every price
+line, `hideStock: true` removes "In stock", `cardWhatsApp: true` puts an Enquire
+button on each grid card, and `enquiryTemplate` sets the pre-filled WhatsApp
+message (`{item}` becomes the product name). A product's `enquiry` CSV column
+overrides it. `footerNote` (+ `footerNoteUrl`) adds a line under the footer, e.g.
+"Demo catalog by OneCatalog". `imageQuality` (default 80) lowers WebP quality
+for heavy photos. Every catalog has a sticky Call button next to WhatsApp on mobile.
+
 Optional: `noindex: true` keeps a catalog out of Google (no sitemap, noindex tag
 on every page). Set it on demos with placeholder photos or made-up shop details,
 and remove it once a catalog belongs to a real shop. `mapsUrl` adds a "Get directions" button, `reviewUrl` (their Google

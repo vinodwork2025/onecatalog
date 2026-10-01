@@ -83,6 +83,15 @@ function telHref(cfg) {
   return 'tel:+' + String(cfg.phone || cfg.whatsapp).replace(/\D/g, '');
 }
 
+// The WhatsApp message a product's Enquire button pre-fills. A product's own
+// "enquiry" column wins, then the client's enquiryTemplate ({item} becomes the
+// product name), then the standard message with the product code.
+function enquiryText(cfg, p) {
+  if (p.enquiry) return p.enquiry;
+  if (cfg.enquiryTemplate) return cfg.enquiryTemplate.replace(/\{item\}/g, p.name);
+  return `Hi ${cfg.name}, I'm interested in ${p.name}${p.sku ? ' (' + p.sku + ')' : ''}. Please share details.`;
+}
+
 function waLink(cfg, text) {
   return `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(text)}`;
 }
@@ -201,27 +210,34 @@ ${catLinks ? `<div><div class="foot-label">Categories</div><div class="foot-link
 <div><div class="foot-label">Pages</div><div class="foot-links"><a href="/">Catalog</a><a href="/about">About us</a></div></div>
 </div>
 </div>
-<div class="foot-credit">&copy; ${new Date().getFullYear()} ${esc(cfg.name)}${cfg.address ? ', ' + esc(cfg.city || '') : ''}. All prices subject to change.</div>
+<div class="foot-credit">&copy; ${new Date().getFullYear()} ${esc(cfg.name)}${cfg.address ? ', ' + esc(cfg.city || '') : ''}.${cfg.hidePrices ? '' : ' All prices subject to change.'}${cfg.footerNote ? `<br>${cfg.footerNoteUrl ? `<a href="${esc(cfg.footerNoteUrl)}" rel="noopener">${esc(cfg.footerNote)}</a>` : esc(cfg.footerNote)}` : ''}</div>
 </div></footer>`;
 }
 
 function fab(cfg, text) {
-  return `<a class="fab" href="${waLink(cfg, text)}" rel="noopener">${ICON.wa}<span>WhatsApp</span></a>`;
+  return `<div class="fab-row"><a class="fab-call" href="${telHref(cfg)}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a><a class="fab" href="${waLink(cfg, text)}" rel="noopener">${ICON.wa}<span>WhatsApp</span></a></div>`;
 }
 
 // ---------- cards ----------
 
 function card(cfg, p, i = 99) {
   const price = money(cfg, p.price);
-  const priceEl = price
+  const priceEl = cfg.hidePrices ? '' : price
     ? `<div class="card-price">${esc(price)}</div>`
     : `<div class="card-price on-request">Price on request</div>`;
-  return `<a class="card" href="/${p.slug}" data-cat="${esc(p.categorySlug)}" data-name="${esc(p.name.toLowerCase())}">
-<div class="card-media">${cardImg(p, p.name, i < 2)}${p.inStock ? '' : '<span class="badge-out">Out of stock</span>'}</div>
+  const inner = `<div class="card-media">${cardImg(p, p.name, i < 2)}${p.inStock ? '' : '<span class="badge-out">Out of stock</span>'}</div>
 <div class="card-body">
 <div class="card-name">${esc(p.name)}</div>
 ${priceEl}
-</div></a>`;
+</div>`;
+  const data = `data-cat="${esc(p.categorySlug)}" data-name="${esc(p.name.toLowerCase())}"`;
+  // With cardWhatsApp, every card also gets its own Enquire button. Links
+  // cannot nest, so the card becomes a box holding two links.
+  if (cfg.cardWhatsApp) {
+    return `<div class="card card-has-wa" ${data}><a class="card-main" href="/${p.slug}">${inner}</a><a class="card-wa" href="${waLink(cfg, enquiryText(cfg, p))}" rel="noopener" aria-label="Enquire on WhatsApp about ${esc(p.name)}">${ICON.wa}<span>Enquire</span></a></div>`;
+  }
+  return `<a class="card" href="/${p.slug}" ${data}>
+${inner}</a>`;
 }
 
 // ---------- pages ----------
@@ -381,7 +397,7 @@ export function renderProduct(cfg, p, related, categories, css) {
     ? `<div class="pd-strip" role="group" aria-label="More photos">${p.images.map((f, i) => `<button type="button" data-full="/img/${esc(f)}" aria-label="Show photo ${i + 1} of ${p.images.length}"${i === 0 ? ' aria-current="true"' : ''}><img src="/img/sm/${esc(f)}" alt="" width="68" height="68" loading="lazy" decoding="async"></button>`).join('')}</div>`
     : '';
 
-  const waText = `Hi ${cfg.name}, I'm interested in ${p.name}${p.sku ? ' (' + p.sku + ')' : ''}. Please share details.`;
+  const waText = enquiryText(cfg, p);
   const wa = waLink(cfg, waText);
   const tel = `${telHref(cfg)}`;
 
@@ -394,8 +410,8 @@ export function renderProduct(cfg, p, related, categories, css) {
 <main class="pd-body" id="main">
 ${p.category ? `<a class="pd-cat" href="/category/${esc(p.categorySlug)}">${esc(p.category)}</a>` : ''}
 <h1>${esc(p.name)}</h1>
-${price ? `<div class="pd-price">${esc(price)}</div>` : `<div class="pd-price on-request">Price on request</div>`}
-${p.inStock ? '<div class="pd-stock">In stock</div>' : ''}
+${cfg.hidePrices ? '' : price ? `<div class="pd-price">${esc(price)}</div>` : `<div class="pd-price on-request">Price on request</div>`}
+${p.inStock && !cfg.hideStock ? '<div class="pd-stock">In stock</div>' : ''}
 ${p.description ? `<p class="pd-desc">${esc(p.description)}</p>` : ''}
 ${specs.length ? `<table class="spec-table">${specs.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</table>` : ''}
 <div class="pd-actions">

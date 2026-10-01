@@ -16,7 +16,7 @@
   "hours": "",
   "since": "2016",
   "areasServed": "",
-  "about": "Venkateshwara Tent House rents tents, chairs, sofas and decoration for events across Bengaluru. Vikram has run the business since 2016.\nEvery rental includes delivery, setup and pickup. We also rent mattresses, lights, sound systems, projectors, camping tents, and catering utensils and serving dishes.\nWe plan and manage full events, with stage, flower and mandap decoration, for weddings, engagements, birthdays, corporate events, seminars, political rallies and cultural functions. We also do catering.\nEmail: venkateshwaratenthouse07@gmail.com. Rated 4.8 on Justdial from 579 ratings.",
+  "about": "Venkateshwara Tent House rents tents, chairs, sofas and decoration for events across Bengaluru. Vikram has run it since 2016.\nEvery rental includes delivery, setup and pickup. We also rent mattresses, lights, sound systems, projectors, camping tents, and catering utensils and serving dishes.\nWe plan and run full events, with stage, flower and mandap decoration, for weddings, engagements, birthdays, corporate events, seminars, political rallies and cultural functions. We also do catering.\nEmail: venkateshwaratenthouse07@gmail.com. Rated 4.8 on Justdial from 579 ratings.",
   "logo": "logo.webp",
   "shopPhoto": "",
   "theme": "warm",
@@ -31,6 +31,13 @@
   "metaHeadline": "Tents, Chairs and Decor on Rent",
   "metaDescription": "Venkateshwara Tent House, Chikkalasandra, Bengaluru. German tents, shamiyana, wedding chairs, decoration and portable toilets on rent. Since 2016.",
   "waGreeting": "",
+  "hidePrices": true,
+  "cardWhatsApp": true,
+  "hideStock": true,
+  "enquiryTemplate": "Hi, I need {item} on rent. Event date: ___ Location: ___",
+  "footerNote": "Demo catalog by OneCatalog",
+  "footerNoteUrl": "https://onecatalog.in/",
+  "imageQuality": 64,
   "plan": "annual",
   "startedOn": "2026-10-01"
 }
