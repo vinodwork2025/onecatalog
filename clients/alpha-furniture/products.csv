@@ -1,0 +1,8 @@
+id,category,name,slug,description,price,image_url,in_stock,sort_order,size,material,colour,sku,show
+1,Sofas,"3-Seater Sofa, Wood Frame",3-seater-sofa-wood-frame,"Three-seater sofa with soft beige cushions on a solid wood frame and tapered legs. Come to the showroom to sit on it.",,alpha-sofa-wood-frame.webp,yes,10,3-seater,Wood and fabric,Beige and walnut,,yes
+2,Sofas,"2-Seater Sofa, Light Grey",2-seater-sofa-light-grey,"Two-seater sofa in light grey fabric with wide arms and slim wood legs. Good for a small living room.",,alpha-sofa-grey.webp,yes,20,2-seater,Fabric,Light grey,,yes
+3,Beds,"Queen Size Bed with Storage",queen-size-bed-with-storage,"Queen size wooden bed with a padded headboard, side tables and storage drawers under the bed.",,alpha-bed-storage.webp,yes,30,Queen,Wood,Dark walnut,,yes
+4,Dining,"Sheesham Wood Dining Chairs, Set of 2",sheesham-wood-dining-chairs,"Pair of sheesham wood dining chairs with cushioned seats. Ask us for a matching dining table.",,alpha-dining-chairs-sheesham.webp,yes,40,Set of 2,Sheesham wood,Honey brown,,yes
+5,Wardrobes,"3-Door Wardrobe with Drawer",3-door-wardrobe-with-drawer,"Three-door wardrobe in a dark wood finish with locks on the doors and a drawer at the bottom.",,alpha-wardrobe-3-door.webp,yes,50,3-door,Engineered wood,Dark walnut,,yes
+6,Chairs,"Office Chairs",office-chairs,"Office chairs for home and work. Mesh back, soft cushioned and high back styles. See them all at the showroom.",,alpha-office-chairs.webp,yes,60,,,Black and yellow,,yes
+7,Chairs,"Plastic Chair with Arms, Green",plastic-chair-with-arms-green,"Strong plastic chair with arms in bright green. Good for the balcony, garden or extra guests.",,alpha-plastic-chair-green.webp,yes,70,,Plastic,Green,,yes
