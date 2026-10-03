@@ -140,6 +140,8 @@ overrides it. `footerNote` (+ `footerNoteUrl`) adds a line under the footer, e.g
 "Demo catalog by OneCatalog". `imageQuality` (default 80) lowers WebP quality
 for heavy photos. Every catalog has a sticky Call button next to WhatsApp on mobile.
 
+No logo: the header shows initials from the name in the accent colour. `initials` (up to 3 characters, e.g. `"A-Z"`) sets them by hand.
+
 Optional: `noindex: true` keeps a catalog out of Google (no sitemap, noindex tag
 on every page). Set it on demos with placeholder photos or made-up shop details,
 and remove it once a catalog belongs to a real shop. `mapsUrl` adds a "Get directions" button, `reviewUrl` (their Google

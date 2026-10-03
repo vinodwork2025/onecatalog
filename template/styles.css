@@ -82,6 +82,7 @@ img { display: block; max-width: 100%; }
   color: var(--on-accent);
   background: var(--accent);
 }
+.site-logo-fallback.is-long { font-size: 13.5px; letter-spacing: -.03em; }
 
 .site-name { font-size: 17px; font-weight: 750; line-height: 1.2; letter-spacing: -.01em; }
 .site-name a { color: var(--text); }

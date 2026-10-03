@@ -138,11 +138,17 @@ function initialsOf(name) {
   return (main.length ? main : words).map(w => w.replace(/[^a-z0-9]/gi, '')[0] || '').join('').slice(0, 2).toUpperCase() || '?';
 }
 
+// The badge shown when there is no logo. "initials" in config (up to 3
+// characters, e.g. "A-Z") overrides the letters taken from the name.
+function badgeOf(cfg) {
+  return String(cfg.initials || '').trim().slice(0, 3) || initialsOf(cfg.name);
+}
+
 // No logo yet: an inline initials icon in the client's accent colour, so the
 // browser tab has an icon and never requests a missing /favicon.ico.
 function favicon(cfg) {
-  const initials = initialsOf(cfg.name);
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="${cfg.accent || '#C0392B'}"/><text x="32" y="42" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">${initials}</text></svg>`;
+  const initials = badgeOf(cfg);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="${cfg.accent || '#C0392B'}"/><text x="32" y="${initials.length > 2 ? 40 : 42}" font-family="Arial,sans-serif" font-size="${initials.length > 2 ? 20 : 26}" font-weight="700" fill="#fff" text-anchor="middle">${esc(initials)}</text></svg>`;
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
@@ -176,10 +182,10 @@ ${ld}
 }
 
 function header(cfg, { home = false } = {}) {
-  const initials = initialsOf(cfg.name);
+  const initials = badgeOf(cfg);
   const logo = cfg.logo
     ? `<img class="site-logo" src="/img/${esc(cfg.logo)}" alt="${esc(cfg.name)} logo" width="44" height="44">`
-    : `<div class="site-logo site-logo-fallback" aria-hidden="true">${esc(initials)}</div>`;
+    : `<div class="site-logo site-logo-fallback${initials.length > 2 ? ' is-long' : ''}" aria-hidden="true">${esc(initials)}</div>`;
   const nameEl = home ? esc(cfg.name) : `<a href="/">${esc(cfg.name)}</a>`;
   return `<header class="site-head"><div class="wrap">
 ${home ? logo : `<a href="/" aria-label="${esc(cfg.name)} catalog home">${logo}</a>`}
