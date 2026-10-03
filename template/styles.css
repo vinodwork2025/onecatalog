@@ -256,7 +256,7 @@ a.announce { text-decoration: underline; text-underline-offset: 3px; color: var(
 .card-wa { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; margin: 0 10px 10px; border-radius: 999px; background: var(--wa); color: #fff; font-size: 13.5px; font-weight: 700; text-decoration: none; }
 .card-wa svg { width: 16px; height: 16px; fill: #fff; }
 .foot-credit a { color: inherit; }
-.card-media { position: relative; overflow: hidden; background: var(--bg); aspect-ratio: 1 / 1; }
+.card-media { position: relative; overflow: hidden; background: var(--bg); aspect-ratio: {{RATIO}}; }
 .card-img {
   width: 100%;
   height: 100%; /* must beat the width/height attributes, or aspect-ratio is ignored */
@@ -312,15 +312,51 @@ a.announce { text-decoration: underline; text-underline-offset: 3px; color: var(
 
 .pd { max-width: var(--max); margin: 0 auto; padding: 12px 16px 0; display: grid; gap: 22px; }
 .pd-media { position: relative; }
-.pd-frame { position: relative; border-radius: calc(var(--radius) + 4px); overflow: hidden; background: var(--card); box-shadow: var(--shadow); aspect-ratio: 1 / 1; }
+.pd-frame { position: relative; border-radius: calc(var(--radius) + 4px); overflow: hidden; background: var(--card); box-shadow: var(--shadow); aspect-ratio: {{RATIO}}; }
 .pd-img { width: 100%; height: 100%; object-fit: cover; transition: opacity .25s ease; }
 .pd-img.swap { opacity: 0; }
 .pd-strip { display: flex; gap: 8px; overflow-x: auto; margin-top: 10px; scrollbar-width: none; scroll-snap-type: x proximity; }
 .pd-strip::-webkit-scrollbar { display: none; }
-.pd-strip button { flex: 0 0 68px; height: 68px; padding: 0; border: 2px solid transparent; border-radius: 12px; overflow: hidden; background: var(--card); cursor: pointer; scroll-snap-align: start; transition: border-color .2s, transform .15s var(--ease); }
+.pd-strip button { flex: 0 0 68px; aspect-ratio: {{RATIO}}; padding: 0; border: 2px solid transparent; border-radius: 12px; overflow: hidden; background: var(--card); cursor: pointer; scroll-snap-align: start; transition: border-color .2s, transform .15s var(--ease); }
 .pd-strip button:active { transform: scale(.95); }
 .pd-strip img { width: 100%; height: 100%; object-fit: cover; }
 .pd-strip button[aria-current="true"] { border-color: var(--accent); }
+.pd-track { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.pd-track::-webkit-scrollbar { display: none; }
+.pd-track .pd-img { flex: 0 0 100%; scroll-snap-align: start; }
+
+/* ---------- Clothes: colours, sizes, size chart ---------- */
+
+.card-sizes { font-size: 12px; font-weight: 650; color: var(--muted); letter-spacing: .02em; word-spacing: 3px; }
+.card-sizes s { opacity: .55; }
+.card-more { font-size: 12px; font-weight: 650; color: var(--accent-ink); }
+.pd-opt { margin-top: 18px; }
+.pd-label { display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700; margin-bottom: 9px; }
+.pd-label b { font-weight: 600; color: var(--muted); }
+.pd-chart-link { margin-left: auto; font-size: 13.5px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+.sizes { display: flex; flex-wrap: wrap; gap: 8px; }
+.size { min-width: 48px; min-height: 44px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); font: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer; transition: border-color .15s, background .15s, transform .15s var(--ease); }
+.size:active { transform: scale(.95); }
+.size[aria-checked="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.size[disabled] { cursor: not-allowed; color: var(--muted); opacity: .55; background: transparent; }
+.size-hint { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.swatches { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.swatches::-webkit-scrollbar { display: none; }
+.swatch { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 5px; width: 64px; font-size: 12px; font-weight: 600; color: var(--text); text-align: center; line-height: 1.25; }
+.swatch img { width: 52px; height: auto; aspect-ratio: {{RATIO}}; object-fit: cover; border-radius: 10px; border: 2px solid transparent; background: var(--card); box-shadow: var(--shadow); }
+.swatch[aria-current="page"] img { border-color: var(--accent); }
+.pd-chart { margin-top: 16px; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.pd-chart summary { cursor: pointer; padding: 14px 16px; font-size: 14.5px; font-weight: 700; }
+.pd-chart img { display: block; width: 100%; height: auto; border-top: 1px solid var(--line); }
+
+/* ---------- Product details and how to order ---------- */
+
+.pd-details { margin: 14px 0 0; padding-left: 20px; font-size: 15px; display: grid; gap: 6px; max-width: 40em; }
+.pd-how { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.pd-how h2 { font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+.pd-how ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14.5px; color: var(--text); max-width: 40em; }
+.pd-how a { font-weight: 650; }
 
 .pd-body h1 { font-size: clamp(23px, 5.4vw, 34px); font-weight: 800; line-height: 1.18; letter-spacing: -.025em; }
 .pd-cat { display: inline-block; font-size: 13px; font-weight: 700; color: var(--accent-ink); background: var(--accent-soft); border-radius: 999px; padding: 4px 11px; margin-bottom: 10px; }

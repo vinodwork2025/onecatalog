@@ -1,2 +1,2 @@
-id,category,name,slug,description,price,image_url,in_stock,sort_order,size,material,colour,brand,moq,warranty,sku,show
-1,Category Name,Product Name,product-name,"One or two short lines. No line breaks inside the cell.",4500,photo-file.webp,yes,10,,,,,,,,yes
+id,category,name,slug,description,details,price,image_url,in_stock,sort_order,size,material,colour,brand,moq,warranty,sku,show,sizes,sizes_out,group,size_chart
+1,Category Name,Product Name,product-name,"Two or three short sentences. No line breaks inside the cell.",Point one|Point two|Point three,4500,photo-file.webp,yes,10,,,,,,,,yes,,,,

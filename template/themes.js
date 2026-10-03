@@ -81,7 +81,9 @@ export function buildCss(rawCss, cfg) {
     // "In stock" green that passes contrast on light and dark cards.
     OK: dark ? '#4ADE80' : '#15803D',
     SHADOW: dark ? 'rgba(0,0,0,.45)' : rgba(darken(theme.bg, 0.6), 0.16),
-    SCHEME: dark ? 'dark' : 'light'
+    SCHEME: dark ? 'dark' : 'light',
+    // Photo frame shape. Clothes ("imageShape": "portrait") are 3:4.
+    RATIO: cfg.imageShape === 'portrait' ? '3 / 4' : '1 / 1'
   };
   return minify(rawCss.replace(/\{\{(\w+)\}\}/g, (_, k) => map[k] ?? ''));
 }

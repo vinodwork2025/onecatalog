@@ -62,6 +62,9 @@ node scripts/photos.js <slug>
 Add `--pad` instead of the default crop when products must not be cut:
 tall almirahs, full-length mirrors, banners, anything long and thin.
 
+Clothes shop: use `--portrait` and set `"imageShape": "portrait"` in config
+(step 5). Photos come out 3:4, so kurtis and lehengas keep their full length.
+
 Look at the output. Re-request anything that comes out blurry or badly cut.
 
 ## Step 4: products
@@ -75,6 +78,12 @@ Required: `name`, `image_url`, and a `slug` you will never change.
 Blank `price` renders as "Price on request". That is fine. Text prices work
 too: `From 1500`, `50 per sq ft`, `Quote after site visit`.
 Categories must be spelled identically across every row.
+
+Write `description` as 2 or 3 short sentences and `details` as 3 or 4 points
+separated by `|`. A one-line description makes a thin page.
+
+Clothes shop: fill `sizes` (`S|M|L|XL`), `sizes_out` for sold-out sizes,
+and one row per colour with the same `group`. See `CLAUDE.md`.
 
 **Demo client: stop here, use the local CSV.**
 **Paying client: also set up the Google Sheet (see below).**
@@ -91,6 +100,8 @@ Open `clients/<slug>/config.json` and fill in:
 Optional: `reviewUrl` (their Google review link) adds a "Rate us on Google"
 button. `announcement` shows a coloured bar at the top of every page, for an
 offer or a holiday closure, linked to `announcementUrl` if set.
+
+Clothes shop: `imageShape` (`portrait`) and `sizeChart` (an image in `images/`).
 
 `theme` is `warm`, `cool`, `dark` or `sharp`. `layout` is `grid` or
 `grid-large`.

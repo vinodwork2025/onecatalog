@@ -5,6 +5,8 @@
  *   node scripts/photos.js shree-furniture --from ~/catalog-raw/shree-furniture
  *   node scripts/photos.js shree-furniture --pad          white padding, no crop
  *   node scripts/photos.js shree-furniture --no-levels    skip auto brightness
+ *   node scripts/photos.js boutique --portrait            3:4 tall photos (clothes),
+ *                                                          for clients with "imageShape": "portrait"
  *
  * Reads raw photos, writes clean square WebP files into
  * clients/<slug>/images/ and prints a CSV block you can paste into the Sheet.
@@ -25,7 +27,7 @@ const POS = args.filter(a => !a.startsWith('--'));
 
 const slug = POS[0];
 if (!slug) {
-  console.log('Usage: node scripts/photos.js <client-slug> [--from <raw folder>] [--pad] [--no-levels]');
+  console.log('Usage: node scripts/photos.js <client-slug> [--from <raw folder>] [--pad] [--portrait] [--no-levels]');
   process.exit(1);
 }
 
@@ -35,7 +37,11 @@ const RAW = fromIdx > -1 && args[fromIdx + 1]
   : path.join(ROOT, 'raw', slug);
 
 const OUT = path.join(ROOT, 'clients', slug, 'images');
-const SIZE = 800;
+// Square 800x800 by default. --portrait makes 3:4 (900x1200) for clothes, so a
+// kurti or lehenga shot standing up keeps its neckline and hem.
+const PORTRAIT = FLAGS.has('--portrait');
+const W = PORTRAIT ? 900 : 800;
+const H = PORTRAIT ? 1200 : 800;
 const QUALITY = 80;
 const PAD = FLAGS.has('--pad');
 const LEVELS = !FLAGS.has('--no-levels');
@@ -101,14 +107,14 @@ async function main() {
         // A transparent cut-out has no backdrop: its edges are the product
         // itself, so it gets white.
         const bg = meta.hasAlpha ? { r: 255, g: 255, b: 255 } : await edgeColour(src);
-        img = img.flatten({ background: bg }).resize(SIZE, SIZE, {
+        img = img.flatten({ background: bg }).resize(W, H, {
           fit: 'contain',
           background: { ...bg, alpha: 1 }
         });
       } else {
-        img = img.resize(SIZE, SIZE, {
+        img = img.resize(W, H, {
           fit: 'cover',
-          position: 'centre',
+          position: PORTRAIT ? 'top' : 'centre',
           withoutEnlargement: false
         });
       }
@@ -132,9 +138,9 @@ async function main() {
 
   const csvPath = path.join(ROOT, 'raw', `${slug}-paste-into-sheet.csv`);
   await fsp.mkdir(path.dirname(csvPath), { recursive: true });
-  const header = 'id,category,name,slug,description,price,image_url,in_stock,sort_order,size,material,colour,sku,show';
+  const header = 'id,category,name,slug,description,details,price,image_url,in_stock,sort_order,size,material,colour,sku,show';
   const body = done.map((n, i) =>
-    `${i + 1},,,${n},,,${n}.webp,yes,${(i + 1) * 10},,,,,yes`
+    `${i + 1},,,${n},,,,${n}.webp,yes,${(i + 1) * 10},,,,,yes`
   ).join('\n');
   await fsp.writeFile(csvPath, header + '\n' + body + '\n');
 

@@ -36,6 +36,12 @@ const SKIP_IMAGES = FLAGS.has('--no-images');
 const GRID_W = 400;
 const FULL_W = 800;
 const THUMB_W = 400;
+// "imageShape": "portrait" (clothes) makes photos 3:4 instead of square.
+const shapeOf = cfg => cfg.imageShape === 'portrait'
+  ? { name: 'portrait', full: [600, 800], thumb: [300, 400] }
+  : { name: 'square', full: [FULL_W, FULL_W], thumb: [THUMB_W, THUMB_W] };
+// "S|M|L" or "S, M, L" into a clean list.
+const list = v => String(v || '').split(/[|,]/).map(x => x.trim()).filter(Boolean);
 const QUALITY = 80;
 
 const log = (...m) => console.log(...m);
@@ -47,6 +53,7 @@ function normaliseProducts(rows, cfg, clientDir) {
   const seenSlug = new Set();
   const seenId = new Set();
   const problems = [];
+  const warnings = [];
   const products = [];
 
   rows.forEach((r, idx) => {
@@ -77,6 +84,17 @@ function normaliseProducts(rows, cfg, clientDir) {
       }
     });
 
+    // Sizes the customer can pick (clothes). sizes_out greys some of them out.
+    const sizes = list(r.sizes);
+    const sizesOut = list(r.sizes_out);
+    sizesOut.forEach(x => {
+      if (!sizes.includes(x)) problems.push(`row ${line}: sizes_out "${x}" is not in sizes (${sizes.join(', ') || 'blank'})`);
+    });
+    const sizeChart = r.size_chart || cfg.sizeChart || '';
+    if (r.size_chart && !fs.existsSync(path.join(clientDir, 'images', r.size_chart))) {
+      problems.push(`row ${line}: size chart not found — clients/${path.basename(clientDir)}/images/${r.size_chart}`);
+    }
+
     const category = r.category || '';
     products.push({
       id,
@@ -89,6 +107,12 @@ function normaliseProducts(rows, cfg, clientDir) {
       images,
       sku: r.sku || '',
       enquiry: r.enquiry || '',
+      sizes,
+      sizesOut,
+      sizeChart: sizes.length ? sizeChart : '',
+      group: (r.group || '').trim(),
+      colour: r.colour || r.color || '',
+      details: String(r.details || '').split('|').map(x => x.trim()).filter(Boolean),
       inStock: !['no', 'false', '0', 'out'].includes((r.in_stock ?? 'yes').toLowerCase()),
       sortOrder: Number(r.sort_order || 9999),
       specs: {
@@ -114,8 +138,18 @@ function normaliseProducts(rows, cfg, clientDir) {
     if (set.size > 1) problems.push(`category "${k}" is spelled ${set.size} ways: ${[...set].join(' / ')}`);
   });
 
+  // Colours of one design share a "group". Each colour needs its colour filled
+  // in, or the "Colours" links on the product page would have no label.
+  const groups = new Map();
+  products.forEach(p => { if (p.group) groups.set(p.group, [...(groups.get(p.group) || []), p]); });
+  groups.forEach((items, g) => {
+    items.forEach(p => { p.groupSize = items.length; });
+    if (items.length < 2) warnings.push(`group "${g}" has only one product, so no colour links show`);
+    items.filter(p => !p.colour).forEach(p => problems.push(`"${p.name}" is in group "${g}" but has no colour`));
+  });
+
   products.sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name));
-  return { products, problems };
+  return { products, problems, warnings };
 }
 
 function buildCategories(products) {
@@ -164,11 +198,18 @@ async function loadRows(cfg, clientDir, slug) {
 
 // ---------------------------------------------------------------- images
 
-async function processImages(clientDir, outDir, wanted, cfg) {
+async function processImages(clientDir, outDir, wanted, cfg, wantedCharts = []) {
   const srcDir = path.join(clientDir, 'images');
   const dstDir = path.join(outDir, 'img');
   const smDir = path.join(dstDir, 'sm');
   await fsp.mkdir(smDir, { recursive: true });
+
+  // A switch between square and portrait must remake every photo, even the
+  // ones whose files look fresh. The last shape used is kept in img/.shape.
+  const shape = shapeOf(cfg);
+  const shapeFile = path.join(dstDir, '.shape');
+  const shapeChanged = (fs.existsSync(shapeFile) ? fs.readFileSync(shapeFile, 'utf8') : 'square') !== shape.name;
+  const charts = new Set([cfg.sizeChart, ...wantedCharts].filter(Boolean));
 
   let made = 0, skipped = 0;
   for (const file of wanted) {
@@ -176,29 +217,35 @@ async function processImages(clientDir, outDir, wanted, cfg) {
     if (!fs.existsSync(src)) continue;
     const out = path.join(dstDir, file);
     const isLogo = file === cfg.logo;
+    const isChart = charts.has(file);
     // Cards load a 400px thumbnail (img/sm/), about a quarter of the bytes of
     // the full 800px image, which only the product page needs.
-    const thumb = isLogo || file === cfg.shopPhoto ? null : path.join(smDir, file);
+    const thumb = isLogo || isChart || file === cfg.shopPhoto ? null : path.join(smDir, file);
 
     // Reuse outputs that are newer than their source. Keeps a 150-client
     // rebuild at seconds rather than minutes.
     const fresh = f => fs.existsSync(f) && fs.statSync(f).mtimeMs >= fs.statSync(src).mtimeMs;
-    if (fresh(out) && (!thumb || fresh(thumb))) { skipped++; continue; }
+    if (!shapeChanged && fresh(out) && (!thumb || fresh(thumb))) { skipped++; continue; }
 
     const img = sharp(src).rotate();
     if (isLogo) {
       await img.resize(176, 176, { fit: 'inside', withoutEnlargement: true })
         .webp({ quality: 88 }).toFile(out);
+    } else if (isChart) {
+      // A size chart is a table of numbers: never crop it.
+      await img.resize(1000, 1400, { fit: 'inside', withoutEnlargement: true })
+        .webp({ quality: 85 }).toFile(out);
     } else {
-      await img.clone().resize(FULL_W, FULL_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
+      await img.clone().resize(...shape.full, { fit: 'cover', position: 'centre', withoutEnlargement: true })
         .webp({ quality: cfg.imageQuality || QUALITY }).toFile(out);
       if (thumb) {
-        await img.clone().resize(THUMB_W, THUMB_W, { fit: 'cover', position: 'centre', withoutEnlargement: true })
+        await img.clone().resize(...shape.thumb, { fit: 'cover', position: 'centre', withoutEnlargement: true })
           .webp({ quality: cfg.imageQuality || QUALITY }).toFile(thumb);
       }
     }
     made++;
   }
+  await fsp.writeFile(shapeFile, shape.name);
   return { made, skipped, pruned: 0 };
 }
 
@@ -248,9 +295,12 @@ async function buildClient(slug, rawCss) {
   if (!/^\d{12}$/.test(wa)) cfgProblems.push(`config: whatsapp must be country code + 10 digits, e.g. 919876543210 (got "${cfg.whatsapp}")`);
   cfg.whatsapp = wa;
   if (cfg.logo && !fs.existsSync(path.join(clientDir, 'images', cfg.logo))) cfgProblems.push(`config: logo not found — images/${cfg.logo}`);
+  if (cfg.sizeChart && !fs.existsSync(path.join(clientDir, 'images', cfg.sizeChart))) cfgProblems.push(`config: sizeChart not found — images/${cfg.sizeChart}`);
+  if (cfg.imageShape && !['square', 'portrait'].includes(cfg.imageShape)) cfgProblems.push(`config: imageShape must be "square" or "portrait" (got "${cfg.imageShape}")`);
 
   const rows = await loadRows(cfg, clientDir, slug);
-  const { products, problems } = normaliseProducts(rows, cfg, clientDir);
+  const { products, problems, warnings } = normaliseProducts(rows, cfg, clientDir);
+  warnings.forEach(w => warn(w));
   const all = [...cfgProblems, ...problems];
 
   if (all.length) {
@@ -276,19 +326,20 @@ async function buildClient(slug, rawCss) {
   }
 
   const wantedImages = new Set(products.flatMap(p => p.images));
-  [cfg.logo, cfg.shopPhoto].filter(Boolean).forEach(f => wantedImages.add(f));
+  const wantedCharts = [...new Set(products.map(p => p.sizeChart).filter(Boolean))];
+  [cfg.logo, cfg.shopPhoto, ...wantedCharts].filter(Boolean).forEach(f => wantedImages.add(f));
 
   let imgStats = { made: 0, skipped: 0, pruned: 0 };
   if (SKIP_IMAGES) {
     const missing = [...wantedImages].filter(f => !fs.existsSync(path.join(outDir, 'img', f))
-      || (f !== cfg.logo && f !== cfg.shopPhoto && !fs.existsSync(path.join(outDir, 'img', 'sm', f))));
+      || (f !== cfg.logo && f !== cfg.shopPhoto && !wantedCharts.includes(f) && !fs.existsSync(path.join(outDir, 'img', 'sm', f))));
     if (missing.length) warn(`--no-images: ${missing.length} image(s) not in dist yet, run a full build`);
   } else {
-    imgStats = await processImages(clientDir, outDir, wantedImages, cfg);
+    imgStats = await processImages(clientDir, outDir, wantedImages, cfg, wantedCharts);
     const imgDir = path.join(outDir, 'img');
     if (fs.existsSync(imgDir)) {
       for (const f of await fsp.readdir(imgDir)) {
-        if (f === 'sm') continue;
+        if (f === 'sm' || f === '.shape') continue;
         if (!wantedImages.has(f)) { await fsp.rm(path.join(imgDir, f), { force: true }); imgStats.pruned++; }
       }
       const smDir = path.join(imgDir, 'sm');
@@ -311,8 +362,11 @@ async function buildClient(slug, rawCss) {
   for (const p of products) {
     const related = products
       .filter(r => r.slug !== p.slug && (p.categorySlug ? r.categorySlug === p.categorySlug : true))
+      .filter(r => !p.group || r.group !== p.group) // those show as colour links instead
       .slice(0, 4);
-    await writePage(outDir, `${p.slug}/index.html`, renderProduct(cfg, p, related, categories, css));
+    // Other colours of the same design, for the "Colours" links.
+    const colours = p.group ? products.filter(r => r.group === p.group) : [];
+    await writePage(outDir, `${p.slug}/index.html`, renderProduct(cfg, p, related, categories, css, colours));
   }
 
   // A demo with placeholder photos sets "noindex": true. Its pages carry a

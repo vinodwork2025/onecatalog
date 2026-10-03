@@ -114,11 +114,18 @@ const ICON = {
 
 // ---------- images ----------
 
-// Grid and related cards use the 400px thumbnail made by build.js (img/sm/),
-// with the full image as the 2x source. The product page uses the full image.
-function cardImg(p, name, eager) {
+// Photo sizes written by build.js. Square by default; "imageShape": "portrait"
+// (clothes) gives 3:4. Thumbnails in img/sm/, full photos in img/.
+function shape(cfg) {
+  return cfg.imageShape === 'portrait' ? { w: 300, h: 400, W: 600, H: 800 } : { w: 400, h: 400, W: 800, H: 800 };
+}
+
+// Grid and related cards use the thumbnail, with the full image as the 2x
+// source. The product page uses the full image.
+function cardImg(cfg, p, name, eager) {
   const f = esc(p.images[0]);
-  return `<img class="card-img" src="/img/sm/${f}" srcset="/img/sm/${f} 400w, /img/${f} 800w" sizes="(min-width:960px) 25vw, (min-width:560px) 33vw, 50vw" alt="${esc(name)}" width="400" height="400" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  const s = shape(cfg);
+  return `<img class="card-img" src="/img/sm/${f}" srcset="/img/sm/${f} ${s.w}w, /img/${f} ${s.W}w" sizes="(min-width:960px) 25vw, (min-width:560px) 33vw, 50vw" alt="${esc(name)}" width="${s.w}" height="${s.h}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 
 // ---------- shell ----------
@@ -225,10 +232,15 @@ function card(cfg, p, i = 99) {
   const priceEl = cfg.hidePrices ? '' : price
     ? `<div class="card-price">${esc(price)}</div>`
     : `<div class="card-price on-request">Price on request</div>`;
-  const inner = `<div class="card-media">${cardImg(p, p.name, i < 2)}${p.inStock ? '' : '<span class="badge-out">Out of stock</span>'}</div>
+  // Clothes: the sizes (sold-out ones struck through) and how many colours.
+  const sizesEl = p.sizes?.length
+    ? `<div class="card-sizes">${p.sizes.map(x => p.sizesOut.includes(x) ? `<s>${esc(x)}</s>` : esc(x)).join(' ')}</div>`
+    : '';
+  const moreEl = p.groupSize > 1 ? `<div class="card-more">${p.groupSize} colours</div>` : '';
+  const inner = `<div class="card-media">${cardImg(cfg, p, p.name, i < 2)}${p.inStock ? '' : '<span class="badge-out">Out of stock</span>'}</div>
 <div class="card-body">
 <div class="card-name">${esc(p.name)}</div>
-${priceEl}
+${sizesEl}${moreEl}${priceEl}
 </div>`;
   const data = `data-cat="${esc(p.categorySlug)}" data-name="${esc(p.name.toLowerCase())}"`;
   // With cardWhatsApp, every card also gets its own Enquire button. Links
@@ -354,7 +366,7 @@ export function renderCategory(cfg, cat, products, categories, css) {
     + `</body></html>`;
 }
 
-export function renderProduct(cfg, p, related, categories, css) {
+export function renderProduct(cfg, p, related, categories, css, colours = []) {
   const price = money(cfg, p.price);
   const title = fitTitle(withCity(cfg, `${p.name} | ${cfg.name}`), `${p.name} | ${cfg.name}`, p.name);
   const description = clip(`${p.description ? p.description.replace(/([^.!?])$/, '$1.') + ' ' : ''}${price ? 'Price ' + price + '.' : 'Price on request.'} Enquire on WhatsApp with ${withCity(cfg, cfg.name)}.`);
@@ -368,6 +380,7 @@ export function renderProduct(cfg, p, related, categories, css) {
       ...(p.category ? { category: p.category } : {}),
       ...(p.specs?.Colour ? { color: p.specs.Colour } : {}),
       ...(p.specs?.Material ? { material: p.specs.Material } : {}),
+      ...(p.sizes?.length ? { size: p.sizes.filter(x => !p.sizesOut.includes(x)).join(', ') } : {}),
       ...(p.description ? { description: p.description } : {}),
       image: p.images.map(f => `${cfg.siteUrl}/img/${f}`),
       ...(p.sku ? { sku: p.sku } : {}),
@@ -393,40 +406,74 @@ export function renderProduct(cfg, p, related, categories, css) {
   ];
 
   const specs = Object.entries(p.specs || {}).filter(([, v]) => v);
-  const strip = p.images.length > 1
-    ? `<div class="pd-strip" role="group" aria-label="More photos">${p.images.map((f, i) => `<button type="button" data-full="/img/${esc(f)}" aria-label="Show photo ${i + 1} of ${p.images.length}"${i === 0 ? ' aria-current="true"' : ''}><img src="/img/sm/${esc(f)}" alt="" width="68" height="68" loading="lazy" decoding="async"></button>`).join('')}</div>`
+  const s = shape(cfg);
+  const out = p.inStock ? '' : '<span class="badge-out" style="position:absolute;top:14px;left:14px">Out of stock</span>';
+  // One photo: a plain image. Several: a swipe track, with small photos
+  // underneath that jump to each one.
+  const media = p.images.length > 1
+    ? `<div class="pd-frame"><div class="pd-track" id="track" tabindex="0" aria-label="Photos of ${esc(p.name)}, swipe for more">${p.images.map((f, i) => `<img class="pd-img" src="/img/${esc(f)}" alt="${esc(p.name)}${i ? ', photo ' + (i + 1) : ''}" width="${s.W}" height="${s.H}" ${i ? 'loading="lazy" decoding="async"' : 'fetchpriority="high"'}>`).join('')}</div>${out}</div>`
+      + `<div class="pd-strip" role="group" aria-label="More photos">${p.images.map((f, i) => `<button type="button" aria-label="Show photo ${i + 1} of ${p.images.length}"${i === 0 ? ' aria-current="true"' : ''}><img src="/img/sm/${esc(f)}" alt="" width="68" height="${Math.round(68 * s.h / s.w)}" loading="lazy" decoding="async"></button>`).join('')}</div>`
+    : `<div class="pd-frame"><img class="pd-img" id="hero" src="/img/${esc(p.images[0])}" alt="${esc(p.name)}" width="${s.W}" height="${s.H}" fetchpriority="high">${out}</div>`;
+
+  // Colours of the same design (rows sharing a "group"), each its own page.
+  const colourEl = colours.length > 1
+    ? `<div class="pd-opt"><div class="pd-label">Colour: <b>${esc(p.colour)}</b></div><div class="swatches">${colours.map(c => `<a class="swatch" href="/${esc(c.slug)}"${c.slug === p.slug ? ' aria-current="page"' : ''}><img src="/img/sm/${esc(c.images[0])}" alt="" width="44" height="${Math.round(44 * s.h / s.w)}" loading="lazy" decoding="async"><span>${esc(c.colour)}</span></a>`).join('')}</div></div>`
     : '';
+
+  // Sizes: tap one and the WhatsApp message says which. Sold-out sizes are
+  // crossed out and cannot be picked.
+  const sizesEl = p.sizes?.length
+    ? `<div class="pd-opt"><div class="pd-label">Size<span id="size-picked"></span>${p.sizeChart ? '<a class="pd-chart-link" href="#size-chart">Size chart</a>' : ''}</div><div class="sizes" role="radiogroup" aria-label="Size">${p.sizes.map(x => p.sizesOut.includes(x)
+        ? `<button type="button" class="size" role="radio" aria-checked="false" disabled title="Sold out"><s>${esc(x)}</s><span class="sr"> sold out</span></button>`
+        : `<button type="button" class="size" role="radio" aria-checked="false" data-size="${esc(x)}">${esc(x)}</button>`).join('')}</div><p class="size-hint">Pick your size and it goes into your WhatsApp message.${p.sizesOut.length ? ' Crossed out sizes are sold out.' : ''}</p></div>`
+    : '';
+  const chartEl = p.sizeChart
+    ? `<details class="pd-chart" id="size-chart"><summary>Size chart</summary><img src="/img/${esc(p.sizeChart)}" alt="Size chart" loading="lazy" decoding="async"></details>`
+    : '';
+  const detailsEl = p.details?.length ? `<ul class="pd-details">${p.details.map(d => `<li>${esc(d)}</li>`).join('')}</ul>` : '';
 
   const waText = enquiryText(cfg, p);
   const wa = waLink(cfg, waText);
   const tel = `${telHref(cfg)}`;
+  const waData = p.sizes?.length ? ` data-wa="${esc(waText)}"` : '';
+
+  // How to order, from the shop's own details. Off with "howToOrder": false.
+  const steps = [
+    `Tap <b>Enquire on WhatsApp</b>. The message already has the product name${p.sizes?.length ? ' and your size' : ''}.`,
+    cfg.phoneDisplay ? `Or call us on <a href="${tel}">${esc(cfg.phoneDisplay)}</a>.` : '',
+    cfg.address ? `Or visit us at ${esc(cfg.address)}${cfg.city ? ', ' + esc(cfg.city) : ''}.${cfg.hours ? ' Open ' + esc(cfg.hours.replace(/\.$/, '')) + '.' : ''}` : '',
+    cfg.areasServed ? `We serve ${esc(cfg.areasServed)}.` : ''
+  ].filter(Boolean);
+  const howEl = cfg.howToOrder === false ? '' : `<section class="pd-how" aria-labelledby="how-h"><h2 id="how-h">How to order</h2><ol>${steps.map(x => `<li>${x}</li>`).join('')}</ol></section>`;
 
   return head(cfg, { title, description, canonical: `${cfg.siteUrl}/${p.slug}`, jsonld, css, image: p.images[0], bodyClass: 'has-bar' })
     + header(cfg)
     + announce(cfg)
     + `<nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a>${p.category ? ` / <a href="/category/${esc(p.categorySlug)}">${esc(p.category)}</a>` : ''}</nav>`
     + `<div class="pd">
-<div class="pd-media"><div class="pd-frame"><img class="pd-img" id="hero" src="/img/${esc(p.images[0])}" alt="${esc(p.name)}" width="800" height="800" fetchpriority="high">${p.inStock ? '' : '<span class="badge-out" style="position:absolute;top:14px;left:14px">Out of stock</span>'}</div>${strip}</div>
+<div class="pd-media">${media}</div>
 <main class="pd-body" id="main">
 ${p.category ? `<a class="pd-cat" href="/category/${esc(p.categorySlug)}">${esc(p.category)}</a>` : ''}
 <h1>${esc(p.name)}</h1>
 ${cfg.hidePrices ? '' : price ? `<div class="pd-price">${esc(price)}</div>` : `<div class="pd-price on-request">Price on request</div>`}
 ${p.inStock && !cfg.hideStock ? '<div class="pd-stock">In stock</div>' : ''}
 ${p.description ? `<p class="pd-desc">${esc(p.description)}</p>` : ''}
+${colourEl}${sizesEl}${detailsEl}
 ${specs.length ? `<table class="spec-table">${specs.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</table>` : ''}
-<div class="pd-actions">
-<a class="btn btn-wa" href="${wa}" rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a>
+${chartEl}<div class="pd-actions">
+<a class="btn btn-wa" href="${wa}"${waData} rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a>
 <div class="pd-row">
 <a class="btn btn-ghost" href="${tel}" style="margin-top:0">${ICON.phone}<span>Call</span></a>
 <button class="btn btn-ghost" type="button" id="share" data-title="${esc(p.name)}" style="margin-top:0">${ICON.share}<span>Share</span></button>
 </div>
 <a class="btn btn-soft" href="/">${ICON.back}<span>Back to catalog</span></a>
 </div>
+${howEl}
 </main>
 </div>`
     + (related.length ? `<section class="rel" aria-labelledby="rel-h"><div class="sec-head"><h2 id="rel-h">More in ${esc(p.category || cfg.name)}</h2></div><div class="rel-row">${related.map(r => card(cfg, r)).join('')}</div></section>` : '')
     + footer(cfg, categories)
-    + `<div class="pd-bar"><a class="btn btn-ghost btn-icon" href="${tel}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a><a class="btn btn-wa" href="${wa}" rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a></div>`
+    + `<div class="pd-bar"><a class="btn btn-ghost btn-icon" href="${tel}" aria-label="Call ${esc(cfg.name)}">${ICON.phone}</a><a class="btn btn-wa" href="${wa}"${waData} rel="noopener">${ICON.wa}<span>Enquire on WhatsApp</span></a></div>`
     + productScript()
     + revealScript()
     + `</body></html>`;
@@ -507,12 +554,23 @@ if(q)q.addEventListener('input',apply);
 function productScript() {
   return `<script>
 (function(){
-var hero=document.getElementById('hero'),thumbs=[].slice.call(document.querySelectorAll('.pd-strip button'));
-thumbs.forEach(function(t){t.addEventListener('click',function(){
-  if(t.getAttribute('aria-current')==='true')return;
-  thumbs.forEach(function(x){x.removeAttribute('aria-current');});t.setAttribute('aria-current','true');
-  var next=new Image();next.onload=function(){hero.classList.add('swap');setTimeout(function(){hero.src=t.dataset.full;hero.classList.remove('swap');},180);};next.src=t.dataset.full;
+var track=document.getElementById('track'),thumbs=[].slice.call(document.querySelectorAll('.pd-strip button'));
+if(track){
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches,raf;
+  thumbs.forEach(function(t,i){t.addEventListener('click',function(){track.scrollTo({left:i*track.clientWidth,behavior:still?'auto':'smooth'});});});
+  track.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){
+    var n=Math.round(track.scrollLeft/track.clientWidth);
+    thumbs.forEach(function(x,j){if(j===n)x.setAttribute('aria-current','true');else x.removeAttribute('aria-current');});
+  });},{passive:true});
+}
+var sizes=[].slice.call(document.querySelectorAll('.size[data-size]')),was=[].slice.call(document.querySelectorAll('[data-wa]')),picked=document.getElementById('size-picked');
+sizes.forEach(function(b){b.addEventListener('click',function(){
+  sizes.forEach(function(x){x.setAttribute('aria-checked','false');});b.setAttribute('aria-checked','true');
+  if(picked)picked.textContent=': '+b.dataset.size;
+  was.forEach(function(a){a.href=a.href.split('?')[0]+'?text='+encodeURIComponent(a.dataset.wa+'\\nSize: '+b.dataset.size);});
 });});
+var cl=document.querySelector('.pd-chart-link'),ch=document.getElementById('size-chart');
+if(cl&&ch)cl.addEventListener('click',function(){ch.open=true;});
 var s=document.getElementById('share');
 if(s)s.addEventListener('click',function(){
   var d={title:s.dataset.title,url:location.href};

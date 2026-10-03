@@ -32,6 +32,7 @@ CSV. Paying clients use the Sheet.
 node scripts/new-client.js <slug> "<Business Name>" 91XXXXXXXXXX
 node scripts/photos.js <slug>              # clean raw photos into images/
 node scripts/photos.js <slug> --pad        # no crop, white padding
+node scripts/photos.js <slug> --portrait   # 3:4 tall photos, for clothes
 node scripts/make-placeholders.js <slug> <name> ...   # labelled test photos into raw/<slug>/
 node scripts/build.js                      # landing page + all clients
 node scripts/build.js <slug>               # one client
@@ -86,8 +87,10 @@ Scroll reveals only touch content below the first screen. Do not add
 
 ## products.csv columns
 
-`id, category, name, slug, description, price, image_url, in_stock,
+`id, category, name, slug, description, details, price, image_url, in_stock,
 sort_order, size, material, colour, brand, moq, warranty, sku, show`
+
+Clothes shops also use `sizes, sizes_out, group, size_chart` (see below).
 
 - `image_url` must exactly match a file in `clients/<slug>/images/`, ending `.webp`.
   Several photos: separate with `|`.
@@ -99,6 +102,28 @@ sort_order, size, material, colour, brand, moq, warranty, sku, show`
 - `in_stock` = `no` shows an out-of-stock badge. `show` = `no` hides the row.
 - Categories must be spelled identically across rows. The build refuses
   "Almirah" and "almirah" in the same file.
+- `description`: 2 or 3 short sentences. What it is, what it looks like,
+  where it fits. `details`: 3 or 4 short points separated by `|`, shown as a
+  bullet list. Only facts from the photo or the shop. Never invent sizes,
+  warranties or delivery times.
+- Every product page also gets a "How to order" block built from config
+  (WhatsApp, phone, address, hours, areas served). `"howToOrder": false` turns it off.
+
+### Clothes and boutiques
+
+- `sizes`: the sizes a customer can pick, e.g. `S|M|L|XL|XXL`, `32|34|36`
+  or `2-3Y|4-5Y`. Tapping one adds "Size: M" to the WhatsApp message.
+- `sizes_out`: sizes that are sold out, e.g. `XL`. Shown crossed out and
+  cannot be picked. Each one must also be in `sizes`.
+- `group`: one row per colour, with the same `group` on every colour of a
+  design (e.g. `anarkali-kurti`) and `colour` filled in. Each colour keeps its
+  own page and link. The page shows the other colours as photo links, and the
+  grid card says "3 colours".
+- `size_chart`: an image in `images/` for this product. Without it, the
+  client's `sizeChart` from config is used. Only shown when `sizes` is set.
+- Config `"imageShape": "portrait"` makes photos 3:4 instead of square, so
+  clothes are not cut. Clean the photos with `photos.js <slug> --portrait`.
+  `boutique-demo` (meeraboutique.onecatalog.in) shows all of this.
 
 ## config.json fields that matter
 
