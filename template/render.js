@@ -343,7 +343,10 @@ ${cfg.metaHeadline && cfg.tagline && cfg.tagline.toLowerCase() !== cfg.metaHeadl
 
 export function renderCategory(cfg, cat, products, categories, css) {
   const title = fitTitle(withCity(cfg, `${cat.name} | ${cfg.name}`), `${cat.name} | ${cfg.name}`, cat.name);
-  const description = clip(`${cat.name} at ${withCity(cfg, cfg.name)}. ${products.length} option${products.length === 1 ? '' : 's'} with photos${anyPrice(products) ? ' and prices' : ''}: ${products.slice(0, 3).map(p => p.name).join(', ')}. Enquire on WhatsApp.`);
+  // Optional intro paragraph per category ("categoryIntros" in config, keyed by
+  // category name). It also becomes the page's meta description.
+  const intro = (cfg.categoryIntros || {})[cat.name] || '';
+  const description = clip(intro || `${cat.name} at ${withCity(cfg, cfg.name)}. ${products.length} option${products.length === 1 ? '' : 's'} with photos${anyPrice(products) ? ' and prices' : ''}: ${products.slice(0, 3).map(p => p.name).join(', ')}. Enquire on WhatsApp.`);
   const jsonld = [{
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -363,7 +366,7 @@ export function renderCategory(cfg, cat, products, categories, css) {
     + header(cfg)
     + announce(cfg)
     + `<nav class="crumb" aria-label="Breadcrumb"><a href="/">Catalog</a> / ${esc(cat.name)}</nav>`
-    + `<div class="sec-head"><h1>${esc(cat.name)}</h1><p>${products.length} product${products.length === 1 ? '' : 's'} at ${esc(cfg.name)}</p></div>`
+    + `<div class="sec-head"><h1>${esc(cat.name)}</h1><p>${products.length} product${products.length === 1 ? '' : 's'} at ${esc(cfg.name)}</p>${intro ? `<p class="cat-intro">${esc(intro)}</p>` : ''}</div>`
     + (others.length ? `<nav class="cats" aria-label="Other categories" style="position:static;background:none;border:0;padding-bottom:0"><div class="cats-scroll"><a class="chip" href="/">All</a>${others.map(c => `<a class="chip" href="/category/${esc(c.slug)}">${esc(c.name)} <span class="n">${c.count}</span></a>`).join('')}</div></nav>` : '')
     + `<main id="main"><div class="grid ${cfg.layout === 'grid-large' ? 'layout-large' : ''}">${products.map((p, i) => card(cfg, p, i)).join('')}</div></main>`
     + footer(cfg, categories)
