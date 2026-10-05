@@ -283,7 +283,9 @@ export function renderIndex(cfg, products, categories, css) {
           addressCountry: cfg.country || 'IN'
         }
       } : {}),
-      ...(cfg.hours ? { openingHours: cfg.hours } : {})
+      // Schema wants "Mo-Su 10:30-21:30". "openingHours" in config gives that;
+      // the free-text "hours" is only the fallback.
+      ...(cfg.openingHours || cfg.hours ? { openingHours: cfg.openingHours || cfg.hours } : {})
     },
     {
       '@context': 'https://schema.org',

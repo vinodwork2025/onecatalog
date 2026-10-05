@@ -140,6 +140,8 @@ overrides it. `footerNote` (+ `footerNoteUrl`) adds a line under the footer, e.g
 "Demo catalog by OneCatalog". `imageQuality` (default 80) lowers WebP quality
 for heavy photos. Every catalog has a sticky Call button next to WhatsApp on mobile.
 
+`openingHours` (e.g. `"Mo-Su 10:30-21:30"` or `"Mo-Sa 10:00-20:00"`) is the machine format for Google. `hours` stays the plain text shown on the page.
+
 `categoryIntros` (`{ "Sofa Sets": "..." }`, keyed by the exact category name) adds a short paragraph under that category heading and uses it as the category page meta description. Write 1 or 2 plain sentences, 110 to 155 characters.
 
 No logo: the header shows initials from the name in the accent colour. `initials` (up to 3 characters, e.g. `"A-Z"`) sets them by hand.
