@@ -1,0 +1,106 @@
+{
+  "path": "/guides/whatsapp-catalog-vs-website-catalog",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "WhatsApp catalog vs website",
+  "keyword": "whatsapp catalog vs website catalog",
+  "published": "2026-10-06",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "WhatsApp Catalog vs Website Catalog: An Honest Comparison",
+  "description": "WhatsApp catalog vs website catalog for a small shop: cost, setup, reviews, links, Google and updates side by side. Where each one is the better pick.",
+  "h1": "WhatsApp Catalog vs Website Catalog: Which One Does Your Shop Need?",
+  "answer": "The WhatsApp catalogue is free and works well for a small range sold to people who already chat with you. A website catalogue costs money, but opens in any browser, carries your shop name, skips WhatsApp's review and lets Google find your products. Many shops use both: the WhatsApp catalogue for chats, and a website catalogue for everything else.",
+  "waText": "Hi OneCatalog, I am comparing a WhatsApp catalog with a website catalog. Can you help me choose?",
+  "sections": [
+    {
+      "h2": "WhatsApp catalog vs website catalog side by side",
+      "blocks": [
+        { "p": "Here is how the two compare for a small Indian shop. The WhatsApp facts come from the WhatsApp Help Center. The website facts are for a OneCatalog catalogue, since that is what we build. Other website builders will differ." },
+        { "table": {
+          "caption": "WhatsApp Business catalogue compared with a OneCatalog website catalogue",
+          "head": ["", "WhatsApp Business catalogue", "Website catalogue (OneCatalog)"],
+          "rows": [
+            ["Cost", "Free", "From ₹1,999 a year"],
+            ["Who sets it up", "You, one item at a time in the app", "We do, from photos and prices you send"],
+            ["Review before customers see it", "Yes. WhatsApp checks every item.", "No review queue on our side"],
+            ["Where it opens", "Inside WhatsApp", "Any phone browser, with or without WhatsApp"],
+            ["Your shop name in the link", "No. WhatsApp makes the link and it can't be changed.", "Yes, like yourshop.onecatalog.in, or your own domain on bigger plans"],
+            ["Found on Google", "Made for browsing inside WhatsApp", "Every product has its own web page that Google can find"],
+            ["Photos per product", "Up to 10 photos or videos", "Several photos per product, from the ones you send"],
+            ["Orders and enquiries", "In your WhatsApp chat", "A WhatsApp button on every product opens a chat with you"],
+            ["Updates", "You edit in the app, any time", "12 update requests a year, up to 10 products each"]
+          ]
+        } }
+      ]
+    },
+    {
+      "h2": "When the WhatsApp catalogue is enough",
+      "blocks": [
+        { "p": "Stick with the free WhatsApp catalogue if most of these are true:" },
+        { "ul": [
+          "You sell fewer than about 30 products.",
+          "Your customers already have your number and chat with you on WhatsApp.",
+          "You have time to add and update items yourself.",
+          "Your products don't change much from month to month."
+        ] },
+        { "p": "Our guide on [how to add a catalog to WhatsApp Business](/guides/add-catalog-to-whatsapp-business) walks you through it on Android and iPhone." }
+      ]
+    },
+    {
+      "h2": "When a website catalogue does better",
+      "blocks": [
+        { "ul": [
+          "**New customers find you on Google.** A customer searching \"sofa shop in Koramangala\" can land on your product page.",
+          "**Customers without your number.** You can put the link on Instagram, Google Maps, a visiting card or a QR code at the shop counter.",
+          "**A big range.** Hundreds of products are hard to add one by one. Our guide to the [WhatsApp catalog product limit](/guides/whatsapp-catalog-product-limit) covers this.",
+          "**No waiting.** If review waits or rejected items cost you sales, a website catalogue has no review queue.",
+          "**Your name on the link.** A link like sofasquare.onecatalog.in looks like a real shop, and customers remember it."
+        ] },
+        { "callout": "**What we see with real shops:** a common setup is to keep the WhatsApp catalogue for regular customers, and to use the website catalogue link for new enquiries, Google and Instagram. Both send the customer back to the same WhatsApp chat." }
+      ]
+    },
+    {
+      "h2": "See both kinds of catalogue",
+      "blocks": [
+        { "p": "These are live website catalogues we built for real shops. Open one on your phone and compare it with your WhatsApp catalogue." },
+        { "samples": [
+          { "client": "sofasquare", "trade": "Sofa makers" },
+          { "client": "luxury-homes-furniture", "trade": "Furniture showroom" },
+          { "client": "rs-furniture", "trade": "Furniture factory outlet" }
+        ] }
+      ]
+    },
+    {
+      "h2": "Can I use a WhatsApp catalog and a website catalog together?",
+      "faq": true,
+      "blocks": [
+        { "p": "Yes. They don't clash. WhatsApp even lets you add a website link to each catalogue item. Keep the WhatsApp catalogue for quick chats, and share the website link everywhere else. Every enquiry still lands in your WhatsApp chat." }
+      ]
+    },
+    {
+      "h2": "Is a website catalog hard to update?",
+      "faq": true,
+      "blocks": [
+        { "p": "Not with OneCatalog. You send new photos and prices on WhatsApp, and we make the change. Every plan includes 12 update requests a year, of up to 10 products each. Extra batches are ₹299 for 10 products. See every plan on the [pricing page](/pricing)." }
+      ]
+    },
+    {
+      "h2": "Which one should I start with?",
+      "faq": true,
+      "blocks": [
+        { "p": "If you have never had a catalogue, start with the free WhatsApp one. It costs nothing and teaches you which products customers ask about. When you outgrow it, or want customers to find you on Google, add a website catalogue. Read how ours works on the [WhatsApp catalogue page](/whatsapp-catalogue). If your WhatsApp catalogue has problems today, see our guide to a [WhatsApp catalogue not showing](/guides/whatsapp-catalog-not-showing)." }
+      ]
+    }
+  ],
+  "sources": [
+    { "label": "WhatsApp Help: About catalog", "url": "https://faq.whatsapp.com/405903568419894" },
+    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
+    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" }
+  ],
+  "cta": {
+    "heading": "Want a catalogue customers can find on Google? Share one link that always works.",
+    "text": "See [Sofa Square Furniture](https://sofasquare.onecatalog.in) for a real example. Message us on WhatsApp and we will tell you which plan fits your shop."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}

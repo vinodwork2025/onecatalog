@@ -1,0 +1,116 @@
+{
+  "path": "/guides/how-to-share-whatsapp-catalog-link",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Share your catalog link",
+  "keyword": "share whatsapp catalog link",
+  "published": "2026-10-06",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "How to Share Your WhatsApp Catalog Link (Android and iPhone)",
+  "description": "How to share your WhatsApp catalog link in a chat, on status or outside WhatsApp, on Android and iPhone. Plus what to send when a customer asks for it.",
+  "h1": "How to Share Your WhatsApp Catalog Link on Android and iPhone",
+  "answer": "To share your WhatsApp catalog link, open your catalogue in WhatsApp Business and tap Share. You can send the link in a chat, post it on your status, copy it or share it to another app. Inside a customer's chat, you can also tap the attach icon, then Catalog and Send catalog.",
+  "waText": "Hi OneCatalog, I want a catalogue link I can share with my customers.",
+  "sections": [
+    {
+      "h2": "Share your whole WhatsApp catalog link on Android",
+      "blocks": [
+        { "p": "**From the customer's chat (quickest):**" },
+        { "ol": [
+          "Open the customer's chat in WhatsApp Business.",
+          "Tap the attach icon, then **Catalog**.",
+          "Tap **Send catalog**, then send."
+        ] },
+        { "p": "**From your catalogue:**" },
+        { "ol": [
+          "Open the **Tools** tab and tap **Catalog**. Some versions show this under **Settings** and **Business tools**.",
+          "Tap the menu, then **Share**, or tap **Share link**.",
+          "Choose one: **Send link via WhatsApp Business**, **Share to my status**, **Copy link**, or **Share link** to send it through another app."
+        ] },
+        { "shot": "share-link-options-android.png", "alt": "WhatsApp Business share options for a catalogue link on Android", "capture": "Android. Catalog manager after tapping Share, showing Send link via WhatsApp Business, Share to my status, Copy link and Share link." },
+        { "p": "**How to check it worked:** the link shows a preview with your business name in the chat. Tap it to make sure it opens your catalogue." }
+      ]
+    },
+    {
+      "h2": "Share your whole WhatsApp catalog link on iPhone",
+      "blocks": [
+        { "p": "**From the customer's chat (quickest):** open the chat, tap the attach icon, then **Send catalog**, and send." },
+        { "p": "**From your catalogue:**" },
+        { "ol": [
+          "Open **Settings**, tap **Business tools**, then **Catalog**.",
+          "Tap the share icon.",
+          "Choose one: **Forward** to send it to a chat, **Share to my status**, or **Share** to use another app.",
+          "To copy the link, tap **Share link**, then **Copy**."
+        ] },
+        { "shot": "share-link-options-iphone.png", "alt": "WhatsApp Business share options for a catalogue link on iPhone", "capture": "iPhone. Settings > Business tools > Catalog after tapping the share icon, showing Forward, Share to my status and Share." },
+        { "p": "With **Forward**, you can change the message before you tap **Send**. Add a short line like \"Here is our full range\"." }
+      ]
+    },
+    {
+      "h2": "Share one product instead of the whole catalogue",
+      "blocks": [
+        { "p": "When a customer asks about one sofa or one saree, send that item, not the full catalogue." },
+        { "p": "**In the chat:** tap the attach icon, then **Catalog**. Tap the item you want, then send. You can pick more than one item." },
+        { "p": "**From your catalogue:** open the item and tap **Share link**, or the share icon. Then pick a chat, your status, copy, or another app." }
+      ]
+    },
+    {
+      "h2": "Put your catalog link on your WhatsApp status",
+      "blocks": [
+        { "p": "Your status reaches every customer who has saved your number. WhatsApp says status updates are shared with all your contacts by default." },
+        { "ol": [
+          "Open your catalogue from **Tools**, then **Catalog**.",
+          "Tap **Share**.",
+          "Tap **Add to status**, or **Share to my status**, and send."
+        ] },
+        { "p": "Post it again when you add new stock. A status disappears after a day." }
+      ]
+    },
+    {
+      "h2": "What to send when a customer says \"please share your catalogue\"",
+      "faq": true,
+      "blocks": [
+        { "p": "Send the link with one short line that tells them what to do next. Copy one of these and change the words in brackets." },
+        { "ul": [
+          "\"Here is our full catalogue with photos and prices: [link]. Tap any product and send me a message to order.\"",
+          "\"Our new [Diwali] stock is in this catalogue: [link]. Reply with the product name and I will share the price.\"",
+          "\"Here are all our [sofas]: [link]. Tell me your room size and I will suggest the right one.\""
+        ] },
+        { "callout": "**What we see with real shops:** owners often answer \"please share your catalogue\" with 20 photos, one after another. The customer's chat fills up and the first photos get lost. One link keeps everything in one place, and the customer can open it again tomorrow." }
+      ]
+    },
+    {
+      "h2": "Why won't my catalog link open for a customer?",
+      "faq": true,
+      "blocks": [
+        { "p": "WhatsApp says catalogue links might not open on Android phones older than version 6.0. It also says the link can't be customised and may break if you change it. Our guide to a [WhatsApp catalog link not working](/guides/whatsapp-catalog-link-not-working) has 6 fixes. If the link opens but looks empty, see why a [WhatsApp catalogue is not showing](/guides/whatsapp-catalog-not-showing)." }
+      ]
+    },
+    {
+      "h2": "Can customers share my catalogue with their friends?",
+      "faq": true,
+      "blocks": [
+        { "p": "Yes. WhatsApp says customers can share a business's catalogue and its products with their friends. A customer opens your catalogue from your business profile, taps the share icon and sends it on. That is free word of mouth for your shop." }
+      ]
+    },
+    {
+      "h2": "A catalogue link with your shop's name",
+      "blocks": [
+        { "p": "The WhatsApp catalogue link is made by WhatsApp and can't carry your name. A catalogue website can. Links like [luxuryhomesfurniture.onecatalog.in](https://luxuryhomesfurniture.onecatalog.in) open in any phone browser, even for customers without WhatsApp, and every product has its own link to share. We build it from the photos and prices you send us on WhatsApp. See how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), or see the [plans and prices](/pricing)." }
+      ]
+    }
+  ],
+  "sources": [
+    { "label": "WhatsApp Help: How to share products or services with customers", "url": "https://faq.whatsapp.com/501451005213099" },
+    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" },
+    { "label": "WhatsApp Help: About sharing your catalog to your status", "url": "https://faq.whatsapp.com/1102208814952682" },
+    { "label": "WhatsApp Help: How to view a catalog", "url": "https://faq.whatsapp.com/494713302702908" },
+    { "label": "WhatsApp Help: About catalog", "url": "https://faq.whatsapp.com/405903568419894" }
+  ],
+  "cta": {
+    "heading": "Tired of sending photos one by one? Share one link that always works.",
+    "text": "Shops like [Luxury Homes Furniture and Mattress](https://luxuryhomesfurniture.onecatalog.in) answer \"please share your catalogue\" with one link. Message us on WhatsApp and we will tell you how it works for your shop."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}

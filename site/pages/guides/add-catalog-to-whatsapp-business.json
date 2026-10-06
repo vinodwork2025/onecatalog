@@ -5,97 +5,120 @@
   "crumb": "Add a catalog",
   "keyword": "add catalog to whatsapp business",
   "published": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
   "title": "How to Add a Catalog to WhatsApp Business (2026 Steps)",
-  "description": "How to add a catalog to WhatsApp Business on Android and iPhone: add items, required fields, sharing, hiding and deleting. Checked against WhatsApp help.",
-  "h1": "How to add a catalog to WhatsApp Business, step by step",
-  "answer": "To add a catalog to WhatsApp Business, open the Tools tab, tap Catalog, then tap Add new item. Add photos, a product name and the country of origin, then tap Save. WhatsApp reviews each item and shows it to customers once it is approved.",
-  "waText": "Hi OneCatalog, I want help with a product catalogue.",
+  "description": "How to add a catalog to WhatsApp Business on Android and iPhone, step by step. What every product needs, what happens after you save, and how to share it.",
+  "h1": "How to Add a Catalog to WhatsApp Business: Step by Step for Android and iPhone",
+  "answer": "To add a catalog to WhatsApp Business, open the Tools tab, tap Catalog, then Add new item. Add photos, a product name and the country of origin, then tap Save. WhatsApp checks each item first. Customers see it on your business profile once it is approved. The catalogue is only in the WhatsApp Business app, not the normal WhatsApp app.",
+  "waText": "Hi OneCatalog, I want help adding a catalog to WhatsApp Business.",
   "sections": [
     {
       "h2": "Before you add a catalog to WhatsApp Business",
       "blocks": [
-        { "p": "The catalog is a feature of the WhatsApp Business app, not the normal WhatsApp app. Your catalog shows on your business profile. For each product, have these ready:" },
-        { "ul": [
-          "A unique product name. WhatsApp requires every item to have a unique title.",
-          "At least one clear photo. You can add up to 10 photos or videos per item.",
-          "The country of origin. WhatsApp requires this for every item.",
-          "Optional: price, sale price, description, website link and product code."
-        ] }
+        { "p": "The catalogue is a feature of the WhatsApp Business app. It shows on your business profile, where customers can browse it. Get these ready for each product before you start:" },
+        { "table": {
+          "caption": "What each WhatsApp catalogue item needs",
+          "head": ["Detail", "Required?", "Tip"],
+          "rows": [
+            ["Name", "Yes, and it must be unique", "Add the colour or size, like \"Teak sofa, 3-seater\""],
+            ["Photo", "Yes, at least one", "You can add up to 10 photos or videos. Videos up to 50 MB."],
+            ["Country of origin", "Yes", "Where the product was made. WhatsApp asks on every item."],
+            ["Price and sale price", "No", "WhatsApp says prices are only available in some countries"],
+            ["Description", "No", "Size, material and what is included"],
+            ["Website link", "No", "A link to the product on your website, if you have one"],
+            ["Product code", "No", "Your own code, so you know the item when a customer asks"]
+          ]
+        } }
       ]
     },
     {
-      "h2": "Add an item on Android",
+      "h2": "How to add a product on Android",
       "blocks": [
         { "ol": [
-          "From the **Tools** tab, tap **Catalog**.",
+          "Open the **Tools** tab and tap **Catalog**.",
           "Tap **Add new item**.",
-          "Tap **Add photos and videos**.",
-          "Tap **Gallery** to choose photos or videos, or **Camera** to take new ones.",
-          "Enter the product or service name.",
+          "Tap **Add photos and videos**. Tap **Gallery** to pick photos, or **Camera** to take new ones.",
+          "Type the product name.",
           "Tap **Country of origin**, choose the country and tap **Save**.",
-          "Add any optional details, such as price or description.",
+          "Add any optional details, like price or description.",
           "Tap **Save**."
-        ] }
+        ] },
+        { "shot": "add-catalog-new-item-android.png", "alt": "Add new item screen in the WhatsApp Business catalogue on Android", "capture": "Android. Tools > Catalog > Add new item, with photos added and the name, country of origin and price fields visible." }
       ]
     },
     {
-      "h2": "Add an item on iPhone",
+      "h2": "How to add a product on iPhone",
       "blocks": [
-        { "p": "The steps are the same as Android, except the photo step. After **Add photos and videos**, tap **Photo & video library**, select your media and tap **Next**, or tap **Camera** to take new ones." }
+        { "ol": [
+          "Open the **Tools** tab and tap **Catalog**.",
+          "Tap **Add new item**, then **Add photos and videos**.",
+          "Tap **Photo & video library**, pick your photos and tap **Next**. Or tap **Camera** to take new ones.",
+          "Type the product name.",
+          "Tap **Country of origin**, choose the country and tap **Save**.",
+          "Add any optional details.",
+          "Tap **Save**."
+        ] },
+        { "shot": "add-catalog-new-item-iphone.png", "alt": "Add new item screen in the WhatsApp Business catalogue on iPhone", "capture": "iPhone. Tools > Catalog > Add new item, with photos added and the name and country of origin fields visible." }
       ]
     },
     {
       "h2": "What happens after you save",
       "blocks": [
-        { "p": "WhatsApp reviews every image, video and item to check it meets its business policy. Items appear to customers only after approval. If an item is rejected, a red exclamation icon shows next to it, and you can tap it and choose **Request another review**. Our [catalog approval time guide](/guides/whatsapp-catalog-approval-time) explains the review in detail." }
+        { "p": "WhatsApp checks every photo, video and item against its rules. Customers see the item only after it is approved, and WhatsApp adds it to your catalogue on its own. If WhatsApp rejects it, you see a red exclamation mark next to the photo." },
+        { "p": "**How to check it worked:** open your catalogue from a family member's phone. Approved items show. Items still waiting or rejected don't. Our [catalog approval time guide](/guides/whatsapp-catalog-approval-time) explains the review, and our guide on [why WhatsApp rejects catalog items](/guides/whatsapp-catalog-rejected) shows how to appeal." },
+        { "callout": "**What we see with real shops:** the first catalogue most owners make is 5 or 6 items, added on the day they install WhatsApp Business, then left alone. Customers notice old stock fast. Add a few new items every week, and hide sold-out ones instead of deleting them." }
       ]
     },
     {
-      "h2": "Share your catalog",
+      "h2": "Group products into collections",
       "blocks": [
-        { "p": "To share one product on Android, WhatsApp says to go to **Tools**, then **Catalog**, select the item and tap **Share**. You can then:" },
-        { "ul": [
-          "Send the link in a WhatsApp chat.",
-          "Add it to your status.",
-          "Copy the link.",
-          "Share it over email or another messaging app."
-        ] },
-        { "p": "WhatsApp notes that the auto-generated catalog link cannot be customised, and may break if you try to change it." }
+        { "p": "Once you have more than 10 or 15 products, group them, like \"Sofas\" and \"Beds\". WhatsApp calls these collections. Our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories) shows how to make them." }
       ]
     },
     {
-      "h2": "Hide or delete items",
+      "h2": "Share your catalog with customers",
       "blocks": [
-        { "p": "To hide an item on Android, open it from **Tools**, then **Catalog**, tap the menu and choose **Hide**. On iPhone, open the item, tap **Edit**, turn on **Hide this item** and tap **Save**. WhatsApp says hiding might not be available to everyone yet." },
-        { "p": "To delete on Android, long press the product image, tap the delete icon, then **Delete**. On iPhone, swipe left on the product and tap **Delete**." },
-        { "p": "To group items, create collections. See our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories)." }
+        { "p": "The quickest way is from a customer's chat: tap the attach icon, then **Catalog**, then **Send catalog**. You can also share the link to your status, or copy it. Our guide on [how to share your WhatsApp catalog link](/guides/how-to-share-whatsapp-catalog-link) has every option for Android and iPhone." }
       ]
     },
     {
-      "h2": "Still stuck?",
+      "h2": "Hide or delete a product",
       "blocks": [
-        { "p": "Adding 50 products one by one takes time. If you would rather send your photos and price list and get a finished catalogue back, OneCatalog builds it for you as one web link that works alongside your WhatsApp catalog. See our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+        { "p": "**Hide** an item when it is out of stock. It stays in your catalogue, but customers don't see it. On Android, open the item, tap the menu and **Hide**. On iPhone, open the item, tap **Edit**, turn on **Hide this item** and tap **Save**. WhatsApp says hiding may not be on every phone yet." },
+        { "p": "**Delete** an item you will never sell again. On Android, open the item, tap the menu and **Delete**. On iPhone, swipe left on the item in your catalogue and tap **Delete**." }
+      ]
+    },
+    {
+      "h2": "Can I add a catalog in the normal WhatsApp app?",
+      "faq": true,
+      "blocks": [
+        { "p": "No. The catalogue is only in the WhatsApp Business app. It is free to download from the Play Store or App Store. Customers can view your catalogue from the normal WhatsApp app." }
+      ]
+    },
+    {
+      "h2": "Can I add many products at once?",
+      "faq": true,
+      "blocks": [
+        { "p": "Not in the app. It adds products one at a time. To upload a spreadsheet of products, use Meta Commerce Manager and connect that catalogue to WhatsApp. Our [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains how." }
+      ]
+    },
+    {
+      "h2": "Let us build it instead",
+      "blocks": [
+        { "p": "Adding 50 products one by one takes a long evening. You can send us your photos and price list on WhatsApp instead. We build your catalogue as one web link in 48 hours, and it works alongside your WhatsApp catalogue. See a real one: [Sofa Square Furniture](https://sofasquare.onecatalog.in) in Koramangala, Bengaluru. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), or see the [plans and prices](/pricing)." }
       ]
     }
   ],
-  "faq": {
-    "heading": "Adding a catalog: common questions",
-    "items": [
-      { "q": "Can I add a catalog in the normal WhatsApp app?", "a": "No. The catalog is a feature of the WhatsApp Business app. It shows on your business profile." },
-      { "q": "What details are required for each item?", "a": "WhatsApp requires a unique title, at least one image and the country of origin. Price and description are optional." },
-      { "q": "How many photos can one item have?", "a": "Up to 10 images or videos. WhatsApp says a video can be up to 50 MB." },
-      { "q": "Can I add many products at once?", "a": "Not in the app. For bulk uploads, see our [bulk upload guide](/guides/whatsapp-catalog-bulk-upload)." }
-    ]
-  },
   "sources": [
     { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
     { "label": "WhatsApp Help: About catalog", "url": "https://faq.whatsapp.com/405903568419894" },
-    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" }
+    { "label": "WhatsApp Help: How to share products or services with customers", "url": "https://faq.whatsapp.com/501451005213099" },
+    { "label": "WhatsApp Help: How to view a catalog", "url": "https://faq.whatsapp.com/494713302702908" }
   ],
   "cta": {
-    "heading": "Rather not add products one by one?",
-    "text": "Send us your photos and prices on WhatsApp. We build the catalogue and send you the link."
+    "heading": "Too busy to add products one by one? Share one link that always works.",
+    "text": "Shops like [Sofa Square Furniture](https://sofasquare.onecatalog.in) send us photos and get back a finished catalogue. Message us on WhatsApp and we will tell you how it works for your shop."
   },
   "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
 }

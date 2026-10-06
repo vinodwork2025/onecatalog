@@ -1,0 +1,122 @@
+{
+  "path": "/guides/whatsapp-catalog-rejected",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Catalog item rejected",
+  "keyword": "whatsapp catalog rejected",
+  "published": "2026-10-06",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "WhatsApp Catalog Item Rejected? Why and How to Appeal",
+  "description": "WhatsApp catalog item rejected? Learn what the red mark means, which goods WhatsApp bans, the photo mistakes to avoid and how to ask for another review.",
+  "h1": "WhatsApp Catalog Item Rejected? Why It Happens and How to Appeal",
+  "answer": "WhatsApp rejects a catalog item when it decides the item breaks its Commerce Policy. A rejected item shows a red exclamation mark and customers can't see it. Common reasons are banned goods, such as alcohol or medicines, and photos that look like adverts. If you think WhatsApp is wrong, tap the item and choose Request another review.",
+  "waText": "Hi OneCatalog, WhatsApp rejected my catalog items. Can you help?",
+  "sections": [
+    {
+      "h2": "How to know your WhatsApp catalog item was rejected",
+      "blocks": [
+        { "p": "Open the **Tools** tab and tap **Catalog**. A rejected item has a **red exclamation mark** next to its photo. Customers can't see rejected items. You can still see them in your own catalogue." },
+        { "shot": "rejected-red-mark-android.png", "alt": "WhatsApp catalog list with a red exclamation mark on a rejected item", "capture": "Android. Tools > Catalog list showing a rejected item with the red exclamation mark next to a normal item." },
+        { "p": "WhatsApp also says that if an item won't save, it may have been rejected. So a save error can point to a rejection too. Our guide to the [item wasn't saved error](/guides/whatsapp-item-wasnt-saved-error) covers the other causes." }
+      ]
+    },
+    {
+      "h2": "Why does WhatsApp reject catalog items?",
+      "faq": true,
+      "blocks": [
+        { "p": "WhatsApp says items are rejected for many reasons. It points sellers to its [Commerce Policy](https://www.whatsapp.com/policies/commerce-policy/). Catalogues must also follow the [Meta Commerce Policy](https://www.facebook.com/policies_center/commerce). WhatsApp does not tell you the exact reason for each rejection. These are the reasons the policies name." },
+        { "p": "**1. The product is on the banned list.** WhatsApp does not allow these goods to be sold through its catalogue:" },
+        { "ul": [
+          "Alcohol and tobacco",
+          "Drugs of any kind",
+          "Medicines and health products",
+          "Firearms",
+          "Dangerous goods",
+          "Rare wild animals and plants",
+          "Live pets and other animals, but not farm animals",
+          "Money, crypto coins or fake notes",
+          "Adult products and services",
+          "Betting and gambling for money",
+          "Quick cash loans and debt collection",
+          "Dating services and chain selling schemes"
+        ] },
+        { "p": "WhatsApp says these rules apply even if your business holds a licence for the product." },
+        { "p": "**2. The item is misleading.** The policy also bans items that WhatsApp thinks are fake or misleading. A price that looks too good to be true, or a photo that doesn't match the name, can fall here." },
+        { "p": "**3. It is an advert, not a product.** WhatsApp says the catalogue is for your products, not for ads. A poster full of offer text, a \"Diwali sale\" banner or a photo of your shop front is not a product." }
+      ]
+    },
+    {
+      "h2": "Photo and text mistakes that lead to rejection",
+      "blocks": [
+        { "p": "Your product may be allowed but the way you list it may not be. Before you appeal, check each item against this list." },
+        { "table": {
+          "caption": "Common listing mistakes and the fix",
+          "head": ["Mistake", "Fix"],
+          "rows": [
+            ["Photo with big offer text or a price banner", "Use a plain photo of the product. Put the price in the Price field."],
+            ["Shop banner or poster as the photo", "Use one photo of the actual item you are selling."],
+            ["Same name on many items, like \"Sofa\"", "Give each item its own name, like \"Teak 3-seater sofa, grey\"."],
+            ["Name or description that promises cures or health benefits", "Describe what the product is, its size and material. Leave out health claims."],
+            ["Photo that shows a different product to the name", "Match the photo, name and description."]
+          ]
+        } },
+        { "callout": "**What we see with real shops:** often the rejected items are not banned goods at all. They are festival offer posters. The owner added them because the poster was already on the phone. Use the poster in your WhatsApp status instead, and keep the catalogue for clean product photos." }
+      ]
+    },
+    {
+      "h2": "How to appeal a rejected WhatsApp catalog item",
+      "blocks": [
+        { "p": "If your item follows the rules and you think WhatsApp made a mistake, ask for another review. WhatsApp's steps are the same on Android and iPhone:" },
+        { "ol": [
+          "Open the **Tools** tab and tap **Catalog**.",
+          "Tap the rejected item.",
+          "Tap **Request another review**.",
+          "Type why the item is allowed. Keep it short, like \"This is a wooden sofa, a normal furniture product.\"",
+          "Tap **Continue**."
+        ] },
+        { "shot": "rejected-request-review-android.png", "alt": "Request another review button on a rejected WhatsApp catalog item", "capture": "Android. A rejected item opened, with the 'Request another review' button visible." },
+        { "p": "**How to check it worked:** when WhatsApp approves the item, the red mark goes away and customers can see it. If WhatsApp says no again, its help page says you can reply to ask for a third review." }
+      ]
+    },
+    {
+      "h2": "Should I delete a rejected item and add it again?",
+      "faq": true,
+      "blocks": [
+        { "p": "Only if you change what was wrong. Adding the same photo and text again means WhatsApp checks the same thing again. If the product itself is allowed, fix the photo or the text first. If you think WhatsApp got it wrong, appeal instead. WhatsApp's help pages give steps to appeal, not to upload again." }
+      ]
+    },
+    {
+      "h2": "How long does WhatsApp take to review an appeal?",
+      "faq": true,
+      "blocks": [
+        { "p": "WhatsApp does not publish a time for appeals, or for single items. It says only that items show to customers after they are approved. Our guide on [WhatsApp catalog approval time](/guides/whatsapp-catalog-approval-time) has everything WhatsApp says about timing." }
+      ]
+    },
+    {
+      "h2": "Can my whole account be blocked for rejected items?",
+      "faq": true,
+      "blocks": [
+        { "p": "It can happen in serious cases. WhatsApp says it may stop a shop from using its business tools if the shop sells banned goods in its catalogue. A single rejected photo of a normal product is not the same thing. Remove any banned goods from your catalogue, and fix or appeal the rest." }
+      ]
+    },
+    {
+      "h2": "A catalogue you control",
+      "blocks": [
+        { "p": "Your WhatsApp catalogue stays useful for many shops. Are rejections holding back your products? You can also share a catalogue as a web link. We build it for you. You send photos and prices on WhatsApp, and we publish the catalogue within 48 hours. Customers open it in any phone browser." },
+        { "p": "See a real one: [Sofa Square Furniture](https://sofasquare.onecatalog.in) in Koramangala, Bengaluru. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), or see the [plans and prices](/pricing). Your catalogue still has to follow the law, and we only list goods that are legal to sell." }
+      ]
+    }
+  ],
+  "sources": [
+    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
+    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
+    { "label": "WhatsApp Business Messaging and Commerce Policy", "url": "https://www.whatsapp.com/policies/commerce-policy/" },
+    { "label": "Meta Commerce Policy", "url": "https://www.facebook.com/policies_center/commerce" }
+  ],
+  "cta": {
+    "heading": "Tired of rejected catalog items? Share one link that always works.",
+    "text": "Shops like [Sofa Square Furniture](https://sofasquare.onecatalog.in) share one link with every product on it. Message us on WhatsApp and we will tell you how it works for your shop."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}

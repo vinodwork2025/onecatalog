@@ -5,88 +5,132 @@
   "crumb": "Catalogue categories",
   "keyword": "whatsapp catalogue categories",
   "published": "2026-09-29",
-  "updated": "2026-09-29",
-  "title": "WhatsApp Catalogue Categories: How to Use Collections",
-  "description": "WhatsApp catalogue categories are called collections. How to create, reorder, rename and delete them, and why new ones take up to 24 hours to show.",
-  "h1": "WhatsApp catalogue categories: set them up with collections",
-  "answer": "WhatsApp catalogue categories are called collections in the WhatsApp Business app. You create a collection from your catalog, name it and pick the items that go in it. WhatsApp reviews each new collection, which it says should take no more than 24 hours, and then customers see it in your catalog.",
-  "waText": "Hi OneCatalog, I want categories in my catalogue.",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "WhatsApp Catalogue Categories and Your Business Category",
+  "description": "WhatsApp catalogue categories explained: make collections for your products, and set the right business category on your WhatsApp Business profile.",
+  "h1": "WhatsApp Catalogue Categories: How to Group Products and Pick a Business Category",
+  "answer": "WhatsApp has two kinds of category. Catalogue categories are called collections. You make one from your catalogue, name it and pick its items, and WhatsApp says it reviews it within 24 hours. Your business category is different. It sits on your business profile, and you can pick up to three from WhatsApp's list.",
+  "waText": "Hi OneCatalog, I need help with categories in my WhatsApp catalogue.",
   "sections": [
     {
-      "h2": "How to create WhatsApp catalogue categories",
+      "h2": "What are WhatsApp catalogue categories?",
+      "faq": true,
       "blocks": [
-        { "p": "You need items in your catalog before you can make a collection. Our guide on [adding a catalog to WhatsApp Business](/guides/add-catalog-to-whatsapp-business) covers that first step. Then, on Android, WhatsApp's steps are:" },
-        { "ol": [
-          "Tap **Tools**, then **Catalog**.",
-          "Tap the menu, then **Collections**, then the add icon.",
-          "Enter a name for your collection.",
-          "Tap **Next**.",
-          "Select the catalog items to include.",
-          "Tap **Done**."
-        ] },
-        { "p": "WhatsApp then reviews the collection against its Commerce Policy. It says this should take no more than 24 hours. After approval, customers see the collection in your catalog." }
-      ]
-    },
-    {
-      "h2": "How to manage collections",
-      "blocks": [
-        { "p": "All of these start from the Collections menu: **Tools**, then **Catalog**, then the menu, then **Collections**." },
+        { "p": "When people say \"WhatsApp category\", they mean one of two things." },
         { "table": {
-          "head": ["To do this", "WhatsApp's steps"],
+          "caption": "The two kinds of WhatsApp category",
+          "head": ["", "Catalogue collections", "Business profile category"],
           "rows": [
-            ["Add or remove items", "Tap the collection, open its item picker, select or unselect items, tap **Done**"],
-            ["Reorder items inside a collection", "Tap the collection, tap the menu, then **Reorder**. Drag items, then tap **Save**"],
-            ["Reorder the list of collections", "Tap the menu, then **Reorder**. Drag collections, then tap **Save**"],
-            ["Rename a collection", "Tap the collection, tap the menu, then **Rename**. Enter the name and tap **Save**"],
-            ["Delete a collection", "Tap and hold the collection, tap the menu, then **Delete**"]
-          ]
-        } },
-        { "p": "If a collection will not delete, WhatsApp suggests removing all items from it first and then deleting the empty collection." }
-      ]
-    },
-    {
-      "h2": "How to choose good categories",
-      "blocks": [
-        { "p": "Name categories the way customers ask for things, not the way your stock register lists them. A customer asks for silk sarees, not SKU group 14." },
-        { "ul": [
-          "**Keep it short.** 4 to 8 categories is easier to browse than 20.",
-          "**Use one rule.** Split by product type, such as sarees, dress material and kids wear. Do not mix type and price in the same list.",
-          "**Put best sellers first.** Reorder so the most asked-for category is at the top.",
-          "**Avoid a Misc category.** Customers never open it."
-        ] },
-        { "table": {
-          "head": ["Trade", "Example categories"],
-          "rows": [
-            ["Saree shop", "Silk sarees, Silk cotton sarees, Cotton sarees, Kids wear"],
-            ["Furniture shop", "Steel almirahs, Cots and beds, Office furniture"],
-            ["Electrical wholesaler", "Wires, Switches, Lighting, Fans"]
+            ["What it does", "Groups your products, like \"Sofas\" or \"Silk sarees\"", "Tells customers what kind of business you are, like a furniture store"],
+            ["Where you set it", "**Tools**, **Catalog**, then **Collections**", "**Tools**, **Profile**, then the **Category** field"],
+            ["How many", "WhatsApp doesn't publish a limit", "Up to three"],
+            ["Can you name it yourself?", "Yes", "No. You pick from WhatsApp's list."],
+            ["Review", "Yes. WhatsApp says within 24 hours.", "Not mentioned by WhatsApp"]
           ]
         } }
       ]
     },
     {
-      "h2": "Still stuck?",
+      "h2": "How to create WhatsApp catalogue categories (collections)",
       "blocks": [
-        { "p": "In a OneCatalog catalogue, categories are part of the build. We group your products when we make the catalogue, and there is no separate review for categories. Each category also gets its own web page that customers and Google can open. See how it compares on our [WhatsApp catalogue page](/whatsapp-catalogue). If a new collection is missing after a day, check our guide to a [WhatsApp Business catalog not showing](/guides/whatsapp-catalog-not-showing)." }
+        { "p": "You need products in your catalogue first. Our guide on [how to add a catalog to WhatsApp Business](/guides/add-catalog-to-whatsapp-business) covers that step. Then:" },
+        { "ol": [
+          "Open the **Tools** tab and tap **Catalog**.",
+          "Tap the menu, then **Collections**, then the add icon.",
+          "Type a name for the collection, like \"Dining sets\".",
+          "Tap **Next**.",
+          "Pick the products that belong in it.",
+          "Tap **Done**."
+        ] },
+        { "shot": "categories-new-collection-android.png", "alt": "Creating a new collection in the WhatsApp Business catalogue", "capture": "Android. Tools > Catalog > menu > Collections > add icon, on the screen where you type the collection name." },
+        { "p": "**How to check it worked:** WhatsApp reviews each new collection against its Commerce Policy and says this should take no more than 24 hours. After that, open your catalogue on another phone. The collection name should show with its products." }
+      ]
+    },
+    {
+      "h2": "How to manage your collections",
+      "blocks": [
+        { "p": "All of these start from the Collections screen: **Tools**, then **Catalog**, the menu, then **Collections**." },
+        { "table": {
+          "caption": "Managing collections in WhatsApp Business",
+          "head": ["To do this", "What to tap"],
+          "rows": [
+            ["Add or remove products", "Tap the collection, open its product list, tick or untick products, then **Done**"],
+            ["Reorder products in a collection", "Tap the collection, tap the menu, then **Reorder**. Drag products, then **Save**"],
+            ["Reorder the collections", "Tap the menu, then **Reorder**. Drag collections, then **Save**"],
+            ["Rename a collection", "Tap the collection, tap the menu, then **Rename**. Type the new name and tap **Save**"],
+            ["Delete a collection", "Press and hold the collection, tap the menu, then **Delete**"]
+          ]
+        } },
+        { "p": "If a collection won't delete, WhatsApp suggests removing all its products first, then deleting the empty collection." }
+      ]
+    },
+    {
+      "h2": "How to choose good catalogue categories",
+      "blocks": [
+        { "p": "Name categories the way customers ask for things, not the way your stock register lists them. A customer asks for \"silk sarees\", not \"Group 14\"." },
+        { "ul": [
+          "**Keep it short.** 4 to 8 categories are easier to browse than 20.",
+          "**Use one rule.** Split by product type, like sofas, beds and dining sets. Don't mix type and price in one list.",
+          "**Put best sellers first.** Reorder so the most asked-for category is at the top.",
+          "**Skip \"Misc\".** Customers never open it."
+        ] },
+        { "table": {
+          "caption": "Example categories by trade",
+          "head": ["Trade", "Example categories"],
+          "rows": [
+            ["Furniture shop", "Sofas, Sofa sets, Beds, Dining sets, Wardrobes, Office chairs"],
+            ["Saree shop", "Silk sarees, Cotton sarees, Dress material, Kids wear"],
+            ["Tiles and sanitaryware dealer", "Floor tiles, Wall tiles, Sanitaryware, CP fittings"],
+            ["Electrical wholesaler", "Wires, Switches, Lighting, Fans"]
+          ]
+        } },
+        { "callout": "**What we see with real shops:** owners often make one collection per supplier, because that is how stock arrives. Customers don't know your suppliers. Group by what the product is, because that is what customers look for." }
+      ]
+    },
+    {
+      "h2": "How to set your WhatsApp business category",
+      "blocks": [
+        { "p": "Your business category shows on your business profile. It tells a new customer what you sell before they read anything else." },
+        { "ol": [
+          "Open the **Tools** tab and tap **Profile**.",
+          "Tap the **Category** field. On iPhone it is called **Categories**.",
+          "Pick up to three categories that fit your business. Tap a category again to remove it.",
+          "Tap **Save**."
+        ] },
+        { "shot": "categories-business-category-android.png", "alt": "Business category field on a WhatsApp Business profile", "capture": "Android. Tools > Profile, with the Category field open and a few categories ticked." },
+        { "p": "WhatsApp says you can't make a custom category. If yours isn't in the list, pick a more general one, or **Other Business**." }
+      ]
+    },
+    {
+      "h2": "Can one product be in more than one collection?",
+      "faq": true,
+      "blocks": [
+        { "p": "WhatsApp's help page doesn't say either way. Try adding the product to a second collection from the Collections screen. If it lets you, it works." }
+      ]
+    },
+    {
+      "h2": "Why is my new collection missing?",
+      "faq": true,
+      "blocks": [
+        { "p": "It is probably still in review. WhatsApp says collection review should take no more than 24 hours. Also check that the collection has products in it, and that those products are approved and not hidden. Our guide to a [WhatsApp catalogue not showing](/guides/whatsapp-catalog-not-showing) covers each case." }
+      ]
+    },
+    {
+      "h2": "Categories in a website catalogue",
+      "blocks": [
+        { "p": "In a OneCatalog catalogue, we set up the categories for you when we build it, and there is no review wait. Each category also gets its own web page that customers and Google can open. See [Luxury Homes Furniture and Mattress](https://luxuryhomesfurniture.onecatalog.in) for a real catalogue with 8 categories. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), or see the [plans and prices](/pricing)." }
       ]
     }
   ],
-  "faq": {
-    "heading": "Collections and categories questions",
-    "items": [
-      { "q": "Does WhatsApp Business have categories?", "a": "Yes. They are called collections. You group catalog items into named collections so customers can find them." },
-      { "q": "How long does a new collection take to appear?", "a": "WhatsApp says collection review should take no more than 24 hours." },
-      { "q": "Can one item be in more than one collection?", "a": "WhatsApp's help article does not say either way. Try adding the item to a second collection in the app." },
-      { "q": "Why can I not delete a collection?", "a": "WhatsApp suggests removing all items from the collection first, then deleting it." }
-    ]
-  },
   "sources": [
     { "label": "WhatsApp Help: Collections in your catalog", "url": "https://faq.whatsapp.com/2929318000711140" },
-    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" }
+    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
+    { "label": "WhatsApp Help: How to edit your business profile", "url": "https://faq.whatsapp.com/665179381840568" }
   ],
   "cta": {
-    "heading": "Want your categories done for you?",
-    "text": "Send us your product list on WhatsApp. We group it into categories when we build your catalogue."
+    "heading": "Want your products sorted for you? Share one link that always works.",
+    "text": "Shops like [Luxury Homes Furniture and Mattress](https://luxuryhomesfurniture.onecatalog.in) get their categories set up by us. Message us on WhatsApp and we will tell you how it works for your shop."
   },
   "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
 }

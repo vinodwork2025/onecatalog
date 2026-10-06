@@ -1,0 +1,98 @@
+{
+  "path": "/guides/whatsapp-catalog-link-not-working",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Catalog link not working",
+  "keyword": "whatsapp catalog link not working",
+  "published": "2026-10-06",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "WhatsApp Catalog Link Not Working? 6 Fixes That Help",
+  "description": "WhatsApp catalog link not working or not opening for customers? Find the cause in 2 minutes with 6 simple fixes, from old phones to a changed link.",
+  "h1": "WhatsApp Catalog Link Not Working? Here's Why and How to Fix It",
+  "answer": "A WhatsApp catalog link not working is usually down to one of four reasons. The customer's phone is too old. The link was edited and broke. The items in it are hidden or still in review. Or the customer opened it outside WhatsApp and picked the wrong app. Send a fresh link from the Share button and test it on another phone.",
+  "waText": "Hi OneCatalog, my WhatsApp catalog link is not working. Can you help?",
+  "sections": [
+    {
+      "h2": "1. Send a fresh link, and don't edit it",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp makes the catalogue link for you. It says this link can't be customised, and may break if you try to change it. Even one changed letter, or a link that got cut in half when copied, will not open." },
+        { "p": "**What to tap on Android:** open the **Tools** tab and tap **Catalog**. Tap **Share**, or the share icon. Tap **Send link via WhatsApp Business** and pick the customer's chat." },
+        { "p": "**What to tap on iPhone:** open **Settings**, tap **Business tools**, then **Catalog**. Tap the share icon, then **Forward**. Pick the customer and tap **Send**." },
+        { "shot": "link-not-working-share-android.png", "alt": "WhatsApp Business catalog share options, including Send link via WhatsApp Business and Copy link", "capture": "Android. Catalog manager after tapping Share, showing the four share options." },
+        { "p": "**How to check it worked:** the link shows a preview card in the chat. Tap it yourself. It should open your catalogue." }
+      ]
+    },
+    {
+      "h2": "2. Check the customer's phone and app",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp says shared catalogue links might not open on Android phones older than version 6.0. An old WhatsApp version can also cause trouble." },
+        { "p": "**What to do:** ask the customer to update WhatsApp from the Play Store or App Store. If their phone is very old, ask them to open the link on a family member's phone, or send them product photos in the chat." },
+        { "p": "**How to check it worked:** ask the customer to send a reply once the catalogue opens." }
+      ]
+    },
+    {
+      "h2": "3. Open the link inside WhatsApp",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp says the link opens the catalogue directly when it is tapped inside WhatsApp or WhatsApp Business. When it is opened from email or a web browser, the phone asks which app to use. If the customer doesn't have WhatsApp on that device, or picks a browser, the catalogue may not show." },
+        { "p": "**What to do:** send the link in a WhatsApp chat rather than by email or SMS. If you post it on Instagram or Facebook, tell customers to choose WhatsApp when their phone asks." },
+        { "p": "**How to check it worked:** tap the link from your own chat on a second phone." }
+      ]
+    },
+    {
+      "h2": "4. Make sure there is something to show",
+      "blocks": [
+        { "p": "**Why it happens:** the link works, but the catalogue looks empty. Customers only see items that WhatsApp approved and that you didn't hide. New items still in review, rejected items and hidden items don't show." },
+        { "p": "**What to do:** open your catalogue and look for red exclamation marks and hidden items. Our guide to a [WhatsApp catalogue not showing](/guides/whatsapp-catalog-not-showing) has the fix for each one." },
+        { "p": "**How to check it worked:** open the link on a family member's phone. Count the items. That is what your customers see." }
+      ]
+    },
+    {
+      "h2": "5. Check if you connected a Meta catalogue",
+      "blocks": [
+        { "p": "**Why it happens:** if you connected a catalogue from Meta Commerce Manager, WhatsApp archives the catalogue you made in the app. WhatsApp says archived catalogues are not visible to customers. Old links to items in the archived catalogue may then show nothing." },
+        { "p": "**What to do:** share a new link from the connected catalogue. To go back to your old catalogue, open **Tools**, then **Catalog**, tap the menu, then **Catalog settings** and **Disconnect**. Our [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains connected catalogues." }
+      ]
+    },
+    {
+      "h2": "6. Update WhatsApp Business and restart it",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp lists a known short-term problem where the catalogue shows \"Items can't be displayed\". It says the items are not deleted." },
+        { "p": "**What to do:** check your internet, update WhatsApp Business, then close and reopen the app. If the problem stays, contact WhatsApp support from the app: **Settings**, **Help and feedback**, **Help Center**, then **Contact Us**." }
+      ]
+    },
+    {
+      "h2": "Why is my WhatsApp catalog link not working outside WhatsApp?",
+      "faq": true,
+      "blocks": [
+        { "p": "When someone opens a catalogue link outside WhatsApp, for example from email or a browser, their phone shows a choice of apps. WhatsApp says this is how it works. Tell them to choose WhatsApp from the list." }
+      ]
+    },
+    {
+      "h2": "Can I change my WhatsApp catalog link to my shop name?",
+      "faq": true,
+      "blocks": [
+        { "p": "No. WhatsApp says the catalogue link is made for you and can't be customised. Changing it may break it. If you want a link with your shop name in it, you need a catalogue website. Our comparison of a [WhatsApp catalog vs a website catalog](/guides/whatsapp-catalog-vs-website-catalog) explains the difference." },
+        { "callout": "**What we see with real shops:** a catalogue link pasted into the middle of a long sale message sometimes gets cut or edited by mistake. Customers then tap half a link. Send the link on its own line, or use the Share button so WhatsApp sends it whole." }
+      ]
+    },
+    {
+      "h2": "A link that opens anywhere",
+      "blocks": [
+        { "p": "A catalogue website opens in any phone browser, even for customers without WhatsApp. The link carries your shop name, like [sofasquare.onecatalog.in](https://sofasquare.onecatalog.in), and every product has its own page. We build it from the photos and prices you send us on WhatsApp. See how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), and our guide on [how to share your WhatsApp catalog link](/guides/how-to-share-whatsapp-catalog-link)." }
+      ]
+    }
+  ],
+  "sources": [
+    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" },
+    { "label": "WhatsApp Help: How to share products or services with customers", "url": "https://faq.whatsapp.com/501451005213099" },
+    { "label": "WhatsApp Help: About connected catalogs", "url": "https://faq.whatsapp.com/1057141349534704" },
+    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
+    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" }
+  ],
+  "cta": {
+    "heading": "Tired of catalogue links that won't open? Share one link that always works.",
+    "text": "Shops like [Sofa Square Furniture](https://sofasquare.onecatalog.in) share a link with their own name in it. It opens on any phone. Message us on WhatsApp and we will tell you how it works for your shop."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}
