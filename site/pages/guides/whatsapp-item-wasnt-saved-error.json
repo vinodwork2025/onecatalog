@@ -1,0 +1,128 @@
+{
+  "path": "/guides/whatsapp-item-wasnt-saved-error",
+  "type": "guide",
+  "parent": "/guides",
+  "crumb": "Item wasn't saved error",
+  "keyword": "item wasn't saved whatsapp business",
+  "published": "2026-10-06",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "\"Item Wasn't Saved\" in WhatsApp Business: Causes and Fixes",
+  "description": "Item wasn't saved in WhatsApp Business? See what the error means, the 6 real causes and the fix for each. Steps for Android and iPhone, checked today.",
+  "h1": "\"Item Wasn't Saved\" Error in WhatsApp Business: Causes and Fixes",
+  "answer": "\"Item wasn't saved\" in WhatsApp Business means your new catalogue item, or your change to one, did not go through. WhatsApp's own wording is \"Item couldn't be saved\". The usual causes are a weak internet connection, too many changes at once, a large photo, a missing detail like country of origin, or an item WhatsApp rejected.",
+  "waText": "Hi OneCatalog, WhatsApp Business says my item wasn't saved. Can you help?",
+  "sections": [
+    {
+      "h2": "What the item wasn't saved error in WhatsApp Business means",
+      "blocks": [
+        { "p": "You tap **Save** on a catalogue item and WhatsApp shows an error instead. Your item is not added, or your change is lost. People describe it in different ways. WhatsApp's help page lists these messages together:" },
+        { "ul": [
+          "\"Item couldn't be saved\"",
+          "\"Your catalog couldn't be created\"",
+          "\"Product couldn't be deleted\"",
+          "\"Collection not deleted\"",
+          "\"Changes not saved\" or \"Something went wrong\", or the screen keeps loading"
+        ] },
+        { "shot": "item-wasnt-saved-error-android.png", "alt": "WhatsApp Business showing the Item couldn't be saved error on a catalogue item", "capture": "Android. The 'Item couldn't be saved' message on screen, only if it really happens to you." },
+        { "p": "This is not the same as a rejection. A rejected item did save, but WhatsApp won't show it. An item that wasn't saved never made it into your catalogue at all. Work through the causes below, quickest fix first." }
+      ]
+    },
+    {
+      "h2": "Cause 1: a weak or broken internet connection",
+      "blocks": [
+        { "p": "**Why it happens:** saving an item uploads your photos to WhatsApp. If the connection drops halfway, the save fails." },
+        { "p": "**Fix:** wait a few minutes and try again. Switch from Wi-Fi to mobile data, or the other way round. Then close WhatsApp Business fully and open it again. These are the first steps WhatsApp suggests." }
+      ]
+    },
+    {
+      "h2": "Cause 2: too many changes at once",
+      "blocks": [
+        { "p": "**Why it happens:** editing many items in one go is where saves fail most. WhatsApp's own advice is to make changes one item at a time instead of bulk edits." },
+        { "p": "**Fix:** open one item, make your change, tap **Save**, and wait until it is done. Then move to the next item. It feels slower, but you don't lose your work." }
+      ]
+    },
+    {
+      "h2": "Cause 3: photos that are too large",
+      "blocks": [
+        { "p": "**Why it happens:** photos from a new phone camera can be very large files. WhatsApp suggests reducing image file sizes when changes won't save. Each item can have up to 10 photos or videos, and WhatsApp says a video can be up to 50 MB." },
+        { "p": "**Fix:** on most phones, send the photo to yourself on WhatsApp first and save that copy. It comes back much smaller. Or take a screenshot of the photo and crop it. Then add the smaller copy to the item." }
+      ]
+    },
+    {
+      "h2": "Cause 4: a missing required detail",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp needs three things on every item, and won't save it without them." },
+        { "table": {
+          "caption": "What every WhatsApp catalogue item must have",
+          "head": ["Detail", "What WhatsApp asks for"],
+          "rows": [
+            ["Name", "A unique title. Two items can't have the same name."],
+            ["Photo", "At least one image of the product."],
+            ["Country of origin", "Where the product was made. WhatsApp asks for it every time you add or edit an item."]
+          ]
+        } },
+        { "p": "**Fix:** check all three. The country of origin is the one people miss most, because it is newer. Tap **Country of origin**, choose a country and tap **Save**. If two items have the same name, add the colour or size to one, like \"Teak sofa, 3-seater\" and \"Teak sofa, 2-seater\"." },
+        { "shot": "item-wasnt-saved-country-of-origin-android.png", "alt": "Country of origin field on a WhatsApp Business catalogue item", "capture": "Android. Add new item screen scrolled to show the 'Country of origin' field." }
+      ]
+    },
+    {
+      "h2": "Cause 5: the item was rejected",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp says that if you can't add, upload or save an item, it may be because the item was rejected. A rejected item shows a red exclamation mark next to its photo." },
+        { "p": "**Fix:** read the rules in the [Commerce Policy](https://www.whatsapp.com/policies/commerce-policy/). If you think the item is allowed, tap it, tap **Request another review**, type a short reason and tap **Continue**. Our guide on [why WhatsApp rejects catalog items](/guides/whatsapp-catalog-rejected) explains the common reasons." }
+      ]
+    },
+    {
+      "h2": "Cause 6: your catalogue is connected to a Meta catalogue",
+      "blocks": [
+        { "p": "**Why it happens:** some shops connect a catalogue from Meta Commerce Manager to WhatsApp Business, often to upload many products at once. WhatsApp says a connected catalogue can't be changed from the WhatsApp Business app." },
+        { "p": "**Fix:** make your changes in Meta Commerce Manager instead. WhatsApp says updates should reach the app within 24 hours. Our [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains how connected catalogues work." }
+      ]
+    },
+    {
+      "h2": "Still getting the error?",
+      "blocks": [
+        { "p": "Try these last two steps from WhatsApp's help page:" },
+        { "ul": [
+          "Update WhatsApp Business from the Play Store or App Store.",
+          "Clear the app cache. On most Android phones, go to **Settings**, **Apps**, **WhatsApp Business**, **Storage**, then **Clear cache**. Clearing the cache does not delete your chats."
+        ] },
+        { "p": "If the error still shows, contact WhatsApp support from inside the app. Tap **Settings**, then **Help and feedback**, **Help Center** and **Contact Us**. Attach a screenshot of the error. WhatsApp no longer answers support emails." },
+        { "callout": "**What we see with real shops:** a common pattern is an owner adding a whole new collection in one go, on weak shop Wi-Fi, with photos straight from the camera. Adding the same products one by one, with smaller photos, usually gets them saved." }
+      ]
+    },
+    {
+      "h2": "Do I lose my item if it wasn't saved?",
+      "faq": true,
+      "blocks": [
+        { "p": "Yes, the new item or the change is lost, so you need to add it again. Your other items are safe. This is different from the \"Items can't be displayed\" message, where WhatsApp says your items are still saved. Our guide to a [WhatsApp catalogue not showing](/guides/whatsapp-catalog-not-showing) covers that message." }
+      ]
+    },
+    {
+      "h2": "Is \"item wasn't saved\" a ban on my account?",
+      "faq": true,
+      "blocks": [
+        { "p": "WhatsApp lists it with other save errors on its catalogue help page, not with account problems. It means one save failed. If WhatsApp rejects an item, you see a red exclamation mark on the item instead." }
+      ]
+    },
+    {
+      "h2": "Skip the one-by-one saving",
+      "blocks": [
+        { "p": "Adding products one at a time on a phone takes a long evening. We build your catalogue as a web link from the photos and price list you send us on WhatsApp. You don't save anything yourself. See a real one: [R.S Furniture (Factory Outlet)](https://rsfurniture.onecatalog.in) in Koramangala, Bengaluru, with 30 products. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), or see the [plans and prices](/pricing)." }
+      ]
+    }
+  ],
+  "sources": [
+    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
+    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
+    { "label": "WhatsApp Help: About catalog", "url": "https://faq.whatsapp.com/405903568419894" },
+    { "label": "WhatsApp Help: About connected catalogs", "url": "https://faq.whatsapp.com/1057141349534704" },
+    { "label": "WhatsApp Help: How to contact WhatsApp Support", "url": "https://faq.whatsapp.com/1336994774516288" }
+  ],
+  "cta": {
+    "heading": "Tired of WhatsApp catalogue errors? Share one link that always works.",
+    "text": "Shops like [R.S Furniture (Factory Outlet)](https://rsfurniture.onecatalog.in) send us their photos and get back one catalogue link. Message us on WhatsApp and we will tell you how it works for your shop."
+  },
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+}
