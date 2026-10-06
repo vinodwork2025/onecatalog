@@ -257,6 +257,7 @@ a.announce { text-decoration: underline; text-underline-offset: 3px; color: var(
 .card-wa { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; margin: 0 10px 10px; border-radius: 999px; background: var(--wa); color: #fff; font-size: 13.5px; font-weight: 700; text-decoration: none; }
 .card-wa svg { width: 16px; height: 16px; fill: #fff; }
 .foot-credit a { color: inherit; }
+.foot-map { display: block; width: 100%; height: 260px; border: 0; border-radius: var(--radius); margin-top: 16px; background: var(--card); }
 .card-media { position: relative; overflow: hidden; background: var(--bg); aspect-ratio: {{RATIO}}; }
 .card-img {
   width: 100%;

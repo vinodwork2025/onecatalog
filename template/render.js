@@ -223,7 +223,8 @@ ${catLinks ? `<div><div class="foot-label">Categories</div><div class="foot-link
 <div><div class="foot-label">Pages</div><div class="foot-links"><a href="/">Catalog</a><a href="/about">About us</a></div></div>
 </div>
 </div>
-<div class="foot-credit">&copy; ${new Date().getFullYear()} ${esc(cfg.name)}${cfg.address ? ', ' + esc(cfg.city || '') : ''}.${cfg.hidePrices ? '' : ' All prices subject to change.'}${cfg.footerNote ? `<br>${cfg.footerNoteUrl ? `<a href="${esc(cfg.footerNoteUrl)}" rel="noopener">${esc(cfg.footerNote)}</a>` : esc(cfg.footerNote)}` : ''}</div>
+<div class="foot-credit">&copy; ${new Date().getFullYear()} ${esc(cfg.name)}${cfg.address ? ', ' + esc(cfg.city || '') : ''}.${cfg.hidePrices ? '' : ' All prices subject to change.'}${cfg.footerNote ? `<br>${cfg.footerNoteUrl ? `<a href="${esc(cfg.footerNoteUrl)}" rel="noopener">${esc(cfg.footerNote)}</a>` : esc(cfg.footerNote)}` : `<br><a href="https://${esc(cfg.platformDomain || 'onecatalog.in')}/">Catalogue made with OneCatalog</a>`}</div>
+${cfg.mapEmbed && cfg.address ? `<iframe class="foot-map" title="Map to ${esc(cfg.name)}" src="https://www.google.com/maps?q=${encodeURIComponent([cfg.name, cfg.address, cfg.city, cfg.pincode].filter(Boolean).join(', '))}&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>` : ''}
 </div></footer>`;
 }
 
@@ -265,7 +266,9 @@ export function renderIndex(cfg, products, categories, css) {
   const jsonld = [
     {
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
+      // A more exact subtype when the client has one (FurnitureStore,
+      // HomeGoodsStore, ClothingStore...). LocalBusiness otherwise.
+      '@type': cfg.businessType || 'LocalBusiness',
       '@id': bizId(cfg),
       name: cfg.name,
       description: cfg.tagline || cfg.about || cfg.name,
@@ -285,7 +288,8 @@ export function renderIndex(cfg, products, categories, css) {
       } : {}),
       // Schema wants "Mo-Su 10:30-21:30". "openingHours" in config gives that;
       // the free-text "hours" is only the fallback.
-      ...(cfg.openingHours || cfg.hours ? { openingHours: cfg.openingHours || cfg.hours } : {})
+      ...(cfg.openingHours || cfg.hours ? { openingHours: cfg.openingHours || cfg.hours } : {}),
+      ...(cfg.areasServed ? { areaServed: cfg.areasServed.split(',').map(s => s.trim()).filter(Boolean) } : {})
     },
     {
       '@context': 'https://schema.org',
@@ -301,8 +305,17 @@ export function renderIndex(cfg, products, categories, css) {
     }
   ];
 
+  // With mainCategory set: "[Shop] | [Main category] in [Area, City]", shortened
+  // to fit 60 characters. Without it, the older pattern from metaHeadline.
   const lead = cfg.metaHeadline || cfg.tagline || 'Product Catalog';
-  const title = fitTitle(withCity(cfg, `${cfg.name} | ${lead}`), `${cfg.name} | ${lead}`, withCity(cfg, `${cfg.name} Catalog`), cfg.name);
+  const place = [cfg.area, cfg.city].filter(Boolean);
+  const title = cfg.mainCategory
+    ? fitTitle(
+      place.length ? `${cfg.name} | ${cfg.mainCategory} in ${place.join(', ')}` : '',
+      place.length ? `${cfg.name} | ${cfg.mainCategory} in ${place[0]}` : '',
+      `${cfg.name} | ${cfg.mainCategory}`,
+      withCity(cfg, `${cfg.name} Catalog`), cfg.name)
+    : fitTitle(withCity(cfg, `${cfg.name} | ${lead}`), `${cfg.name} | ${lead}`, withCity(cfg, `${cfg.name} Catalog`), cfg.name);
   const description = clip(cfg.metaDescription
     || `Browse the product catalog of ${cfg.name}${cfg.city ? ' in ' + cfg.city : ''}. ${products.length} products with photos${anyPrice(products) ? ' and prices' : ''}. Enquire directly on WhatsApp.`);
 
@@ -319,7 +332,7 @@ export function renderIndex(cfg, products, categories, css) {
 
   const greeting = cfg.waGreeting || `Hi ${cfg.name}, I saw your catalog.`;
   const hero = `<section class="hero"><div class="wrap">
-<h1>${esc(cfg.metaHeadline || cfg.tagline || cfg.name)}</h1>
+<h1>${esc(cfg.h1 || cfg.metaHeadline || cfg.tagline || cfg.name)}</h1>
 ${cfg.metaHeadline && cfg.tagline && cfg.tagline.toLowerCase() !== cfg.metaHeadline.toLowerCase() ? `<p class="hero-sub">${esc(cfg.tagline)}</p>` : ''}
 <ul class="pills">${pills}</ul>
 <div class="hero-actions">
@@ -344,7 +357,14 @@ ${cfg.metaHeadline && cfg.tagline && cfg.tagline.toLowerCase() !== cfg.metaHeadl
 }
 
 export function renderCategory(cfg, cat, products, categories, css) {
-  const title = fitTitle(withCity(cfg, `${cat.name} | ${cfg.name}`), `${cat.name} | ${cfg.name}`, cat.name);
+  // "[Category] in [Area or City] | [Shop]", shortened to fit 60 characters.
+  const where = cfg.area || cfg.city;
+  const title = fitTitle(
+    where ? `${cat.name} in ${where} | ${cfg.name}` : '',
+    cfg.area && cfg.city ? `${cat.name} in ${cfg.city} | ${cfg.name}` : '',
+    `${cat.name} | ${cfg.name}`,
+    where ? `${cat.name} in ${where}` : '',
+    cat.name);
   // Optional intro paragraph per category ("categoryIntros" in config, keyed by
   // category name). It also becomes the page's meta description.
   const intro = (cfg.categoryIntros || {})[cat.name] || '';
