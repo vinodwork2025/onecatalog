@@ -1,12 +1,15 @@
 {
   "noindex": true,
   "name": "Hosur Tiles & Sanitary",
-  "tagline": "Tiles, sanitaryware and CP fittings",
+  "tagline": "Tiles, sanitaryware, bathware and CP fittings for homes and builders",
   "whatsapp": "919000011111",
   "phone": "+919000011111",
   "phoneDisplay": "90000 11111",
   "address": "45 Krishnagiri Road, Near Bus Stand, Hosur",
   "city": "Hosur",
+  "mainCategory": "Sanitaryware & Bathware Showroom",
+  "businessType": "HomeGoodsStore",
+  "h1": "Sanitaryware and Bathware Showroom in Hosur",
   "state": "Tamil Nadu",
   "pincode": "635109",
   "country": "IN",
@@ -30,5 +33,12 @@
   "metaDescription": "Hosur Tiles & Sanitary. Vitrified floor tiles, kitchen wall tiles, wash basins, WCs and Jaquar CP fittings with prices. Builder rates. WhatsApp for a quote.",
   "waGreeting": "Hi Hosur Tiles, I saw your catalog.",
   "plan": "annual",
-  "startedOn": "2026-09-26"
+  "startedOn": "2026-09-26",
+  "mapEmbed": true,
+  "categoryIntros": {
+    "Sanitaryware": "Wash basins, wall-hung WCs and floor-mounted WCs for homes and builder projects in Hosur. Each product shows its size, colour and what is included. Send us your bathroom size on WhatsApp and we will suggest what fits.",
+    "CP Fittings": "Bathroom taps, mixers, health faucets and shower panels. Each product shows the finish and what comes in the set. Ask us on WhatsApp for the rate on a full bathroom set.",
+    "Floor Tiles": "Floor tiles for living rooms, bedrooms and builder flats. Each tile shows its size, type and finish, with the rate per square foot where we show it.",
+    "Wall Tiles": "Wall tiles for kitchens and bathrooms. Each tile shows its size and finish. Send us the wall size on WhatsApp and we will work out how many boxes you need."
+  }
 }
