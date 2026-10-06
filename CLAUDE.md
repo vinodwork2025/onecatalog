@@ -140,6 +140,8 @@ overrides it. `footerNote` (+ `footerNoteUrl`) adds a line under the footer, e.g
 "Demo catalog by OneCatalog". `imageQuality` (default 80) lowers WebP quality
 for heavy photos. Every catalog has a sticky Call button next to WhatsApp on mobile.
 
+`redirects` in a client config maps an old path to a new one (like `{"/category/coffee-tables": "/category/centre-tables"}`). The router answers it with a 301, so a renamed category or product keeps its Google links.
+
 SEO fields (6 Oct 2026): `area` (neighbourhood, like `"Koramangala"`) and `mainCategory` (like `"Sofa Makers"`) make the home title `[Shop] | [Main category] in [Area, City]` and category titles `[Category] in [Area] | [Shop]`, shortened to 60 characters. `businessType` sets the schema subtype (`FurnitureStore`, `HomeGoodsStore`, `ClothingStore`...). `h1` overrides the home H1. `mapEmbed: true` adds a lazy Google Maps embed in the footer. Every catalog footer says "Catalogue made with OneCatalog" unless `footerNote` is set.
 
 `openingHours` (e.g. `"Mo-Su 10:30-21:30"` or `"Mo-Sa 10:00-20:00"`) is the machine format for Google. `hours` stays the plain text shown on the page.

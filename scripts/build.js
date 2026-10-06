@@ -611,8 +611,11 @@ async function writeRouter() {
     const cfg = JSON.parse(await fsp.readFile(p, 'utf8'));
     const sub = cfg.subdomain || slug;
     platform = cfg.platformDomain || platform;
-    map[`${sub}.${platform}`] = { slug, canonical: cfg.customDomain || '' };
-    if (cfg.customDomain) map[cfg.customDomain.toLowerCase()] = { slug, canonical: '' };
+    // "redirects" in config: old path to new path, for a renamed product or
+    // category, so links Google already has get a 301 instead of a 404.
+    const redirects = cfg.redirects && Object.keys(cfg.redirects).length ? { redirects: cfg.redirects } : {};
+    map[`${sub}.${platform}`] = { slug, canonical: cfg.customDomain || '', ...redirects };
+    if (cfg.customDomain) map[cfg.customDomain.toLowerCase()] = { slug, canonical: '', ...redirects };
   }
 
   // The bare platform domain serves the OneCatalog landing page.
@@ -644,6 +647,8 @@ export default {
     if (host === PLATFORM || entry) {
       const target = host === PLATFORM ? PLATFORM : (entry.canonical || host).toLowerCase();
       const clean = url.pathname.length > 1 && url.pathname.endsWith('/') ? url.pathname.replace(/\\/+$/, '') : url.pathname;
+      const moved = entry && entry.redirects && entry.redirects[clean];
+      if (moved) return Response.redirect('https://' + target + moved + url.search, 301);
       if (url.protocol !== 'https:' || rawHost !== target || clean !== url.pathname) {
         return Response.redirect('https://' + target + clean + url.search, 301);
       }

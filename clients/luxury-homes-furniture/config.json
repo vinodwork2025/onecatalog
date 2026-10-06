@@ -19,7 +19,7 @@
   "openingHours": "Mo-Su 10:30-21:30",
   "since": "",
   "areasServed": "",
-  "about": "Luxury Homes Furniture and Mattress is a home furniture showroom on Kothanur Main Road, at B.K Circle in J. P. Nagar 8th Phase, Bengaluru.\nWe sell sofas, sofa sets, corner and L-shape sofas, recliners, beds, dining sets, coffee tables, office chairs and mattresses. Come and sit on the sofas and try the chairs before you buy. Rashid and the team help you pick what fits your home and budget.\nRated 4.7 on Google from 143 reviews. Send us a WhatsApp message with the product you like and we will share the price.",
+  "about": "Luxury Homes Furniture and Mattress is a home furniture showroom on Kothanur Main Road, at B.K Circle in J. P. Nagar 8th Phase, Bengaluru.\nWe sell sofas, sofa sets, corner and L-shape sofas, recliners, beds, dining sets, centre tables, office chairs, office desks and mattresses. Come and sit on the sofas and try the chairs before you buy. Rashid and the team help you pick what fits your home and budget.\nRated 4.7 on Google from 143 reviews. Send us a WhatsApp message with the product you like and we will share the price.",
   "logo": "logo.webp",
   "shopPhoto": "",
   "theme": "warm",
@@ -44,6 +44,10 @@
     "Beds": "Double and queen beds with padded, tufted and wingback headboards, plus a wooden bed in a wenge finish. Ask us about mattresses to go with your bed.",
     "Dining Sets": "Dining sets for 2, 4 and 6 people. Marble top, glossy white and solid wood tables with fabric, velvet and wooden chairs, plus a space saving round table.",
     "Office Chairs": "Office chairs for your cabin, home office or study table. Executive high-back chairs, mesh chairs and modern chairs with headrests.",
-    "Coffee Tables": "Coffee tables with marble finish tops for the living room. Nesting tables that save space and a table with drawers for storage."
+    "Office Desks": "Office desks for a cabin or home office. An L-shape executive desk with a walnut finish top, with room for a computer and your files.",
+    "Centre Tables": "Centre tables for the living room. Marble finish tops on gold bases, wooden tables with slatted sides, nesting tables that save space, and tables with drawers and shelves for storage."
+  },
+  "redirects": {
+    "/category/coffee-tables": "/category/centre-tables"
   }
 }
