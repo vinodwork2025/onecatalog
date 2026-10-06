@@ -76,7 +76,7 @@ function pageStrings(page) {
   return out.filter(Boolean);
 }
 function collectBlock(b, out) {
-  if (b.shot) return; // a screenshot slot is an image, not copy
+  if (b.shot || b.samples) return; // images and live client data, not page copy
   const walk = v => typeof v === 'string' ? out.push(v) : Array.isArray(v) ? v.forEach(walk)
     : v && typeof v === 'object' ? Object.entries(v).forEach(([k, x]) => k !== 'href' && walk(x)) : null;
   walk(b);
@@ -606,13 +606,16 @@ function showPics(s) {
   return pick.slice(0, 3);
 }
 
-function samplesBlock(cfg) {
-  const cards = cfg.samples.map((s, i) => {
+// Live client catalogues with real product photos. The home page uses the
+// shared list (samples: true). Other pages pass their own client list, which
+// build.js resolves to the same shape.
+function samplesBlock(cfg, list = cfg.samples) {
+  const cards = list.map((s, i) => {
     const pics = showPics(s).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="${esc(p.name)}" loading="lazy"></span>`).join('');
     const tags = s.categories.slice(0, 3).map(c => `<li>${esc(c)}</li>`).join('');
     return `<a class="show-card" href="${esc(s.url)}" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue ${ARROW}<small>${esc(s.host)}</small></span></div></a>`;
   }).join('');
-  return `<div class="show" style="--n:${cfg.samples.length}">${cards}</div>`;
+  return `<div class="show" style="--n:${list.length}">${cards}</div>`;
 }
 
 function cardImg(g) {
@@ -641,7 +644,7 @@ function block(cfg, b, wa) {
   }
   if (b.callout) return `<div class="callout"${R}><p>${inline(b.callout)}</p></div>`;
   if (b.pricing) return pricingBlock(cfg, b.pricing, wa);
-  if (b.samples) return samplesBlock(cfg);
+  if (b.samples) return samplesBlock(cfg, Array.isArray(b.samples) ? b.samples : cfg.samples);
   if (b.note) return `<p class="tm">${inline(b.note)}</p>`;
   // Screenshot slot. Renders only once the file is in site/img/guides/, so a
   // live page never shows a broken image. Missing ones go to SCREENSHOTS_NEEDED.md.
@@ -697,7 +700,7 @@ ${eyebrow ? `<p class="eyebrow">${e(eyebrow)}</p>` : ''}
 <h1>${e(page.h1)}</h1>
 ${answerHtml}
 ${page.sub ? `<p class="sub">${inline(page.sub)}</p>` : ''}
-${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>${page.checked ? `<p class="meta">Last checked: <time datetime="${e(page.checked.date)}">${e(fmtDate(page.checked.date))}</time>, against the WhatsApp Help Center${page.checked.appVersion ? ` and WhatsApp Business app version ${e(page.checked.appVersion)}` : ''}.</p>` : ''}` : ''}
+${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>${page.checked ? `<p class="meta">Last checked: <time datetime="${e(page.checked.date)}">${e(fmtDate(page.checked.date))}</time>, against the WhatsApp Help Center${(page.checked.appVersion || cfg.whatsappAppVersion) ? ` and WhatsApp Business app version ${e(page.checked.appVersion || cfg.whatsappAppVersion)}` : ''}.</p>` : ''}` : ''}
 ${page.type === 'legal' ? '' : `<div class="actions">${waBtn(cfg.cta.primary, wa)}${secondary ? `<a class="link-arrow" href="${e(secondary.href)}" data-cta="secondary"><span>${e(secondary.label)}</span>${ARROW}</a>` : ''}</div>`}
 ${page.mockup ? `<ul class="trust">${cfg.trust.map(t => `<li>${TICK}${e(t)}</li>`).join('')}</ul>` : ''}
 </div>${page.mockup ? mockup(page.mockup) : ''}</div>

@@ -460,6 +460,11 @@ async function buildHome() {
     const c = await client(s.client);
     return { ...s, ...c, label: `${c.name} catalogue`, detail: `${s.trade}. ${c.categories.join(', ')}. ${c.count} products.` };
   }));
+  // Pages can show their own list of live catalogues: { "samples": [{ "client", "trade" }] }.
+  for (const page of pages) for (const sec of page.sections || []) for (const b of sec.blocks || []) {
+    if (!Array.isArray(b.samples)) continue;
+    b.samples = await Promise.all(b.samples.map(async s => ({ ...s, ...(await client(s.client)) })));
+  }
   for (const page of pages) {
     if (!page.mockup?.clients) continue;
     page.mockup.shops = [];
