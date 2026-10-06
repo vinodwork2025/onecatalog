@@ -45,3 +45,12 @@ Guide pages get named screenshot slots (`/img/guides/<name>.png`). A slot render
 ## Process
 
 Work on branch `seo-phase1`. Commit after each task. Nothing goes live until it is merged to `main`. Stop after Task 1 for a voice check.
+
+## Decisions made (6 Oct 2026)
+
+1. hosurtiles is a real shop. Its catalogue still holds placeholder data, so it stays noindex until the real details arrive (see `SEO_CHANGES.md`). shreefurniture stays a demo and is not used as an example.
+2. Author is "Vinod Kumar". "Hari" is not used.
+3. App version tested: WhatsApp Business 2.26.39.72, shown on every guide's "Last checked" line.
+4. GA4 ID to follow.
+5. Task 1 title shortened to 59 characters.
+6. The Task 3 guide exists, and Task 1 links to it.
