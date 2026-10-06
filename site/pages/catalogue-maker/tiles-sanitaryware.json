@@ -1,0 +1,100 @@
+{
+  "path": "/catalogue-maker/tiles-sanitaryware",
+  "type": "industry",
+  "crumb": "Tiles and sanitaryware",
+  "keyword": "tiles sanitaryware catalogue maker",
+  "updated": "2026-10-06",
+  "title": "Online Tiles and Sanitaryware Catalogue Maker for India",
+  "description": "An online tiles and sanitaryware catalogue maker for dealers and showrooms. Sizes, finishes and price per box on one link. Built from your WhatsApp photos.",
+  "h1": "Online tiles and sanitaryware catalogue maker for dealers and showrooms",
+  "answer": "OneCatalog is a tiles and sanitaryware catalogue maker for showrooms and dealers in India. You send photos and your price list on WhatsApp. We build a catalogue where every tile, basin, WC and tap has its own page with size, finish and price. Builders and home owners see your full range from one link.",
+  "sub": "No brand PDFs that take a minute to open. No typing products into your phone. You keep selling, and we do the setup.",
+  "waText": "Hi OneCatalog, I want a catalogue for my tiles and sanitaryware shop.",
+  "sections": [
+    {
+      "h2": "What a tiles and sanitaryware dealer deals with every day",
+      "blocks": [
+        { "p": "Think about a tiles dealer in Hosur. A builder messages at 8pm: \"Send 600 by 600 vitrified tiles, light colours, with rate per box.\" The dealer scrolls through the phone, forwards 30 photos and types out prices. The next morning a home owner asks the same thing. Then a contractor. Every day starts with the same photos." },
+        { "pain": [
+          "You forward the same tile photos to every builder and contractor, again and again.",
+          "Every customer asks the size, the finish and the rate per box or per square foot.",
+          "Brand catalogues are heavy PDFs. Customers don't open them on a phone, and they don't show your rates.",
+          "A shade went out of stock last month, but its photo still gets forwarded and the customer wants it."
+        ] },
+        { "p": "This is not your fault. WhatsApp chats were made for talking, not for showing hundreds of tiles and fittings." }
+      ]
+    },
+    {
+      "h2": "How a tiles and sanitaryware catalogue maker fixes it",
+      "blocks": [
+        { "p": "A catalogue gives every product its own page, with photos, size, finish, brand and rate. You send one link. The builder filters by floor tiles or CP fittings and sees only those. When they like something, they tap one button and WhatsApp opens with the product name already typed." },
+        { "steps": [
+          { "title": "Send your photos and rate list", "text": "Send product photos on WhatsApp with your rate list. A photo of the printed rate list is fine." },
+          { "title": "We build it in 48 hours", "text": "We sort products into categories like floor tiles, wall tiles, sanitaryware and CP fittings, and write each product page." },
+          { "title": "Share one link", "text": "Send it to builders and contractors, put it on your Google listing, and print it as a QR code at the counter." }
+        ] },
+        { "p": "Once your catalogue has 40 or more products, it also gets a search box. A builder can type \"600\" or \"matt\" and see only those. When a shade runs out, we mark it out of stock instead of deleting it." }
+      ]
+    },
+    {
+      "h2": "What to put in a good tiles and sanitaryware catalogue",
+      "blocks": [
+        { "p": "Tiles and fittings are bought by size, finish and rate. Give buyers these details on every product." },
+        { "table": {
+          "caption": "Details that matter for tiles, sanitaryware and CP fittings",
+          "head": ["Product", "Details to show"],
+          "rows": [
+            ["Floor and wall tiles", "Size in mm, type (vitrified, ceramic), finish (glossy, matt), shade, pieces and coverage per box, rate per box or per sq ft"],
+            ["Sanitaryware", "Type (wall-hung WC, floor-mounted WC, basin), size, colour, brand, what is included, like a seat cover or cistern"],
+            ["CP fittings", "Brand, finish (chrome, matt black), what is in the set, warranty if the brand gives one"],
+            ["Kitchen sinks", "Size, bowl type, material, thickness"]
+          ]
+        } },
+        { "p": "A rate like \"68 per sq ft\" or \"From 1,500\" shows as written. Leave the rate blank for builder-only pricing, and the page shows \"Price on request\"." }
+      ]
+    },
+    {
+      "h2": "Photo tips for tiles and fittings",
+      "blocks": [
+        { "ul": [
+          "Photograph a tile laid flat in daylight, not under the showroom tube lights. Colours change under tube lights.",
+          "Add a second photo of the tile laid in a room or on a display board, if you have one.",
+          "Shoot sanitaryware against a plain wall, from the front and from one side.",
+          "For CP fittings, take one photo of the full set and one close-up of the finish."
+        ] },
+        { "p": "Don't worry if your photos aren't perfect. We crop and brighten every photo before it goes in." }
+      ]
+    },
+    {
+      "h2": "See a live catalogue",
+      "blocks": [
+        { "p": "We are setting up our first tiles and sanitaryware catalogue now. Until it is live, open one of our furniture catalogues on your phone to see how product pages, categories and the WhatsApp button work. Your catalogue will use the same layout, with your own categories." },
+        { "samples": [
+          { "client": "luxury-homes-furniture", "trade": "Furniture showroom" },
+          { "client": "rs-furniture", "trade": "Furniture factory outlet" }
+        ] }
+      ]
+    },
+    {
+      "h2": "What it costs for a tiles and sanitaryware shop",
+      "blocks": [
+        { "p": "Tiles and sanitaryware dealers often carry a big range. Most start with up to 150 products for ₹5,999 in the first year, then ₹3,999 a year. A bigger showroom picks up to 300 products for ₹7,999, then ₹4,999 a year. Both include your own domain name. For more than 300 products, we quote." },
+        { "p": "You pay ₹999 to start, and the balance only after you see your catalogue live and approve it. If you don't approve it, the ₹999 is refunded. See every plan on the [pricing page](/pricing), and how the link works inside WhatsApp on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Tiles and sanitaryware catalogue questions",
+    "items": [
+      { "q": "Can I show a rate per square foot or per box?", "a": "Yes. A price can be text, like 68 per sq ft or 1,450 per box, and it shows as written." },
+      { "q": "Can I keep builder rates private?", "a": "Yes. Leave the price blank and the page shows Price on request. Builders then ask you on WhatsApp, and you quote." },
+      { "q": "I stock 400 products. Can you handle that?", "a": "Yes. Plans go up to 300 products, and we quote for more. Products are sorted into categories, and a search box helps buyers find a size or finish fast." },
+      { "q": "Can I list brands like Kajaria or Jaquar?", "a": "You can list the brands you sell in the product name or details, as long as you really stock them." },
+      { "q": "How do I update rates when they change?", "a": "Send the new rate list on WhatsApp. Your plan includes 12 update requests a year, of up to 10 products each. Extra batches are ₹299 for 10 products." }
+    ]
+  },
+  "cta": {
+    "heading": "Tired of forwarding tile photos and rates every day? Share one link that always works.",
+    "text": "Send us a few product photos and your rate list, and we will show you how your catalogue would look."
+  }
+}

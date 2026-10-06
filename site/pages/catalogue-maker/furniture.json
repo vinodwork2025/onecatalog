@@ -1,0 +1,202 @@
+{
+  "path": "/catalogue-maker/furniture",
+  "type": "industry",
+  "crumb": "Furniture shops",
+  "keyword": "furniture catalogue maker",
+  "updated": "2026-10-06",
+  "title": "Online Furniture Catalogue Maker for Shops in India",
+  "description": "An online furniture catalogue maker for sofa, bed and dining shops in India. We build it from your WhatsApp photos. One link for your whole showroom.",
+  "h1": "Online furniture catalogue maker for showrooms and furniture makers",
+  "answer": "OneCatalog is a furniture catalogue maker for sofa makers, furniture showrooms and factory outlets in India. You send us photos and prices on WhatsApp. We build a catalogue where every sofa, bed and dining set has its own page with size, material and finish. Customers see your whole showroom from one link and enquire on WhatsApp.",
+  "sub": "No app to learn. No typing products into your phone. You keep selling, and we do the setup.",
+  "waText": "Hi OneCatalog, I want a catalogue for my furniture shop.",
+  "sections": [
+    {
+      "h2": "What a furniture shop deals with every day",
+      "blocks": [
+        {
+          "p": "Think about a sofa showroom in Koramangala. A customer messages, \"Send photos of your L-shape sofas.\" The owner forwards 40 photos, one by one. The customer asks, \"What is the size of the third one?\" Then, \"Do you have it in grey?\" Then, \"Price?\" By the time the owner answers, the customer has messaged two other shops."
+        },
+        {
+          "pain": [
+            "You forward the same 40 photos to every new customer. Your phone gallery is full of them.",
+            "Customers ask the size, the wood and the price again and again, for every piece.",
+            "Last year's sofa photo still gets forwarded, and the customer wants a model you no longer make.",
+            "A customer liked a dining set two weeks ago. Now they can't find the photo in the chat, and neither can you."
+          ]
+        },
+        {
+          "p": "This is not your fault. WhatsApp chats were made for talking, not for showing a showroom full of furniture."
+        }
+      ]
+    },
+    {
+      "h2": "How a furniture catalogue maker fixes it",
+      "blocks": [
+        {
+          "p": "A catalogue gives every piece its own page, with photos, size, material, finish and price. You send one link. The customer scrolls through everything on their own phone, at home, with their family. When they like something, they tap one button and WhatsApp opens with the product name already typed."
+        },
+        {
+          "steps": [
+            {
+              "title": "Send your photos",
+              "text": "Send photos of your furniture on WhatsApp with the name, size and price of each piece. Showroom photos are fine."
+            },
+            {
+              "title": "We build it in 48 hours",
+              "text": "We clean the photos, sort them into categories like sofas, beds and dining sets, and write each product page."
+            },
+            {
+              "title": "Share one link",
+              "text": "Send the link to customers, put it on your Google listing and Instagram, and print it as a QR code at the counter."
+            }
+          ]
+        },
+        {
+          "p": "When a model is discontinued, we mark it out of stock or hide it. The link stays the same, so customers who saved it still reach your shop."
+        }
+      ]
+    },
+    {
+      "h2": "Real furniture catalogues we built",
+      "blocks": [
+        {
+          "p": "These are live catalogues for real furniture shops. Open one on your phone and see what your customers would see."
+        },
+        {
+          "samples": [
+            {
+              "client": "sofasquare",
+              "trade": "Sofa makers"
+            },
+            {
+              "client": "luxury-homes-furniture",
+              "trade": "Furniture showroom"
+            },
+            {
+              "client": "ra-sofa",
+              "trade": "Sofa and furniture maker"
+            }
+          ]
+        },
+        {
+          "p": "We also built catalogues for [Alpha Furniture](https://alphafurniture.onecatalog.in) in J. P. Nagar and [R.S Furniture (Factory Outlet)](https://rsfurniture.onecatalog.in) in Koramangala."
+        }
+      ]
+    },
+    {
+      "h2": "What to put in a good furniture catalogue",
+      "blocks": [
+        {
+          "p": "Furniture buyers want to know if a piece will fit their room and how long it will last. Give them these details on every product."
+        },
+        {
+          "table": {
+            "caption": "Details that matter for each furniture product",
+            "head": [
+              "Detail",
+              "Why it matters",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Size",
+                "The first question for sofas, beds and wardrobes",
+                "3-seater, 84 x 34 x 32 inches"
+              ],
+              [
+                "Material",
+                "Tells the buyer how long it lasts",
+                "Sheesham wood, engineered wood, metal"
+              ],
+              [
+                "Finish or colour",
+                "Customers match it to their room",
+                "Walnut finish, teak, grey fabric"
+              ],
+              [
+                "Fabric or upholstery",
+                "For sofas, chairs and beds",
+                "Velvet, leatherette, cotton blend"
+              ],
+              [
+                "Price",
+                "Saves the \"price?\" message",
+                "A fixed price, a From price, or Price on request"
+              ],
+              [
+                "Made to order",
+                "Many buyers want their own size",
+                "Made to your size"
+              ],
+              [
+                "Product code",
+                "So you know which piece they mean",
+                "LH-SF-01"
+              ]
+            ]
+          }
+        },
+        {
+          "p": "Prices are your choice. Some shops show every price. Others show \"Price on request\" and quote on WhatsApp. Both work, and you can mix them."
+        }
+      ]
+    },
+    {
+      "h2": "Photo tips for furniture",
+      "blocks": [
+        {
+          "ul": [
+            "Take the photo from a corner, at sitting height. It shows the depth and the front together.",
+            "Clear the clutter around the piece. A plain wall behind it is best.",
+            "Add one close photo of the fabric or wood grain. Buyers zoom in on it.",
+            "Show a sofa set in one photo, then each piece on its own."
+          ]
+        },
+        {
+          "p": "Don't worry if your photos aren't perfect. We crop and brighten every photo before it goes in."
+        }
+      ]
+    },
+    {
+      "h2": "What it costs for a furniture shop",
+      "blocks": [
+        {
+          "p": "Most furniture shops start with up to 50 products for ₹3,999 in the first year, then ₹2,999 a year. That plan includes your own domain name. A showroom with a bigger range picks up to 150 products for ₹5,999, then ₹3,999 a year. A small shop with up to 20 products can start on Lite at ₹1,999 a year."
+        },
+        {
+          "p": "You pay ₹999 to start, and the balance only after you see your catalogue live and approve it. If you don't approve it, the ₹999 is refunded. See every plan on the [pricing page](/pricing), and how the link works inside WhatsApp on our [WhatsApp catalogue page](/whatsapp-catalogue)."
+        }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Furniture catalogue maker questions",
+    "items": [
+      {
+        "q": "Can I show made-to-order furniture?",
+        "a": "Yes. Some of our furniture clients make to order. We write \"made to your size\" on those products, and the customer sends their room size on WhatsApp."
+      },
+      {
+        "q": "Do I have to show prices?",
+        "a": "No. You can show a fixed price, a starting price, or Price on request. Many furniture shops quote on WhatsApp."
+      },
+      {
+        "q": "Can customers see my showroom address?",
+        "a": "Yes. Every catalogue shows your address, opening hours and a Get directions button that opens Google Maps."
+      },
+      {
+        "q": "What if a model is discontinued?",
+        "a": "Tell us on WhatsApp and we mark it out of stock or hide it. Updates are part of your plan: 12 update requests a year, of up to 10 products each."
+      },
+      {
+        "q": "Can I use my WhatsApp catalogue too?",
+        "a": "Yes. You can keep the WhatsApp catalogue for regular customers and use the OneCatalog link for new enquiries, Google and Instagram. See our [WhatsApp catalog vs website catalog](/guides/whatsapp-catalog-vs-website-catalog) guide."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Tired of forwarding furniture photos one by one? Share one link that always works.",
+    "text": "Shops like [Sofa Square Furniture](https://sofasquare.onecatalog.in) send one link for their whole showroom. Send us a few photos and we will show you how yours would look."
+  }
+}

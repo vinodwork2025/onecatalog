@@ -1,0 +1,99 @@
+{
+  "path": "/catalogue-maker/handicrafts",
+  "type": "industry",
+  "crumb": "Handicrafts",
+  "keyword": "handicrafts catalogue maker",
+  "updated": "2026-10-06",
+  "title": "Online Handicrafts Catalogue Maker for Shops in India",
+  "description": "An online handicrafts catalogue maker for wood carving, brass and craft shops in India. Every piece gets its own page. Built from your WhatsApp photos.",
+  "h1": "Online handicrafts catalogue maker for carving, craft and decor shops",
+  "answer": "OneCatalog is a handicrafts catalogue maker for wood carving, brass, stone and decor shops in India. You send photos of your pieces on WhatsApp. We build a catalogue where every carving, mandir and showpiece has its own page with size, material and finish. Buyers see your whole collection from one link, from anywhere in India.",
+  "sub": "No app to learn. No typing products into your phone. You keep making, and we do the setup.",
+  "waText": "Hi OneCatalog, I want a catalogue for my handicrafts shop.",
+  "sections": [
+    {
+      "h2": "What a handicrafts shop deals with every day",
+      "blocks": [
+        { "p": "Think about a wood carving workshop. Every piece is a little different. A buyer in another city messages, \"Send photos of your carved mandirs.\" The owner sends 25 photos. The buyer asks, \"How tall is the second one? Which wood? Can you make it smaller?\" Each answer takes a photo, a measuring tape and ten minutes." },
+        { "pain": [
+          "Every piece needs its own explanation: size, wood, finish, how long it took to carve.",
+          "Buyers from other cities can't visit the shop, so they ask for photo after photo.",
+          "A one-of-a-kind piece sold last week, but its photo is still being forwarded.",
+          "Your best work is buried in old chats, where new buyers never see it."
+        ] },
+        { "p": "This is not your fault. WhatsApp chats were made for talking, not for showing a workshop full of hand-made pieces." }
+      ]
+    },
+    {
+      "h2": "How a handicrafts catalogue maker fixes it",
+      "blocks": [
+        { "p": "A catalogue gives every piece its own page, with several photos, the size, the material and the finish. Buyers in other cities scroll through your work on their phone, then tap one button to ask you on WhatsApp. The product name is already typed in." },
+        { "steps": [
+          { "title": "Send your photos", "text": "Send photos of each piece on WhatsApp, with its size, material and price if you show prices." },
+          { "title": "We build it in 48 hours", "text": "We clean the photos, group pieces into categories like mandirs, carvings and furniture, and write each product page." },
+          { "title": "Share one link", "text": "Send it to buyers, put it on Instagram and your Google listing, and print it on your visiting card." }
+        ] },
+        { "p": "When a one-of-a-kind piece sells, we mark it out of stock. Buyers can still see it and ask if you can make another." }
+      ]
+    },
+    {
+      "h2": "A handicrafts catalogue we built",
+      "blocks": [
+        { "p": "Open this catalogue on your phone to see carved furniture, chairs and carvings laid out by category, with a page for every piece." },
+        { "samples": [
+          { "client": "best-wood-handicrafts", "trade": "Carved wood furniture and handicrafts" }
+        ] }
+      ]
+    },
+    {
+      "h2": "What to put in a good handicrafts catalogue",
+      "blocks": [
+        { "p": "Handicraft buyers pay for the material and the work. Show them both on every piece." },
+        { "table": {
+          "caption": "Details that matter for each handicraft piece",
+          "head": ["Detail", "Why it matters", "Example"],
+          "rows": [
+            ["Size", "Buyers need to know if it fits their shelf or pooja room", "Height 24 inches, width 18 inches"],
+            ["Material", "The first thing a buyer asks", "Teak wood, rosewood, brass, marble"],
+            ["Finish", "Natural, polished or painted", "Natural teak, antique finish"],
+            ["Hand-made or not", "Hand carving is why the price is higher", "Hand carved"],
+            ["Made to order", "Many buyers want a size or design change", "Can be made in other sizes"],
+            ["Price", "Saves the first question", "A fixed price, a From price, or Price on request"]
+          ]
+        } }
+      ]
+    },
+    {
+      "h2": "Photo tips for handicrafts",
+      "blocks": [
+        { "ul": [
+          "Use daylight from the side. It shows the depth of the carving better than flat light from the front.",
+          "Take one full photo, one close-up of the carving, and one with a hand or a ruler for size.",
+          "Use a plain cloth or wall behind the piece.",
+          "For brass and polished pieces, avoid the flash. It leaves white spots."
+        ] },
+        { "p": "Don't worry if your photos aren't perfect. We crop and brighten every photo before it goes in." }
+      ]
+    },
+    {
+      "h2": "What it costs for a handicrafts shop",
+      "blocks": [
+        { "p": "A workshop with up to 20 pieces can start on Lite at ₹1,999 a year. Most handicraft shops pick up to 50 products for ₹3,999 in the first year, then ₹2,999 a year, with your own domain name included. A bigger collection picks up to 150 products for ₹5,999." },
+        { "p": "You pay ₹999 to start, and the balance only after you see your catalogue live and approve it. If you don't approve it, the ₹999 is refunded. See every plan on the [pricing page](/pricing), and how the link works inside WhatsApp on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+      ]
+    }
+  ],
+  "faq": {
+    "heading": "Handicrafts catalogue questions",
+    "items": [
+      { "q": "Every piece I make is different. Does a catalogue still work?", "a": "Yes. Each piece gets its own page. When it sells, we mark it out of stock, and buyers can ask you to make a similar one." },
+      { "q": "Can buyers from other cities see my catalogue?", "a": "Yes. The link opens in any phone browser, anywhere. Buyers tap the WhatsApp button on a piece to ask you about it." },
+      { "q": "Can I show more than one photo of a piece?", "a": "Yes. Each product can have several photos, like the full piece, a close-up of the carving and a size photo." },
+      { "q": "Can I sell on Instagram with this link?", "a": "Yes. Put the link in your Instagram bio and posts. Every enquiry still comes to your WhatsApp." }
+    ]
+  },
+  "cta": {
+    "heading": "Tired of sending photo after photo of your work? Share one link that always works.",
+    "text": "Send us a few photos of your pieces and we will show you how your catalogue would look."
+  }
+}
