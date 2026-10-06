@@ -205,5 +205,10 @@
         ]
       }
     ]
+  },
+  "ctaProof": "See a real catalogue: [Sofa Square Furniture](https://sofasquare.onecatalog.in), sofa makers in Koramangala, Bengaluru.",
+  "ctaDefault": {
+    "heading": "Tired of WhatsApp catalogue problems? Share one link that always works.",
+    "text": "Send us a few photos of your products on WhatsApp, and we will show you how your catalogue would look."
   }
 }

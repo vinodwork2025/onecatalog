@@ -453,6 +453,7 @@ tr.is-lead th,tr.is-lead td{color:#0F4F27;font-weight:700}
 .sources{font-size:14.5px;color:var(--muted);margin-top:16px;max-width:var(--read)}
 .tm{font-size:13.5px;color:var(--muted)}
 .final{padding:24px 0 80px}
+.final-proof{font-size:15px;margin-top:6px;opacity:.9}.final-proof a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .final-box{position:relative;overflow:hidden;border-radius:28px;background:var(--ink);color:#fff;padding:52px 26px;text-align:center;isolation:isolate}
 .final-box::before{content:"";position:absolute;inset:-40% -20% auto;height:120%;z-index:-1;background:radial-gradient(closest-side,rgba(21,128,61,.55),transparent 70%)}
 .final-box::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background:radial-gradient(circle at 1px 1px,rgba(255,255,255,.14) 1px,transparent 0) 0 0/22px 22px;-webkit-mask:linear-gradient(transparent,#000 40%,#000 60%,transparent);mask:linear-gradient(transparent,#000 40%,#000 60%,transparent)}
@@ -731,11 +732,16 @@ ${page.sources ? `<p class="sources">Sources: ${page.sources.map(s => `<a href="
 ${page.note ? `<p class="tm" style="margin-top:12px">${inline(page.note)}</p>` : ''}
 </div></section>` : page.note ? `<section class="sec" style="padding:0 0 32px"><div class="wrap"><p class="tm">${inline(page.note)}</p></div></section>` : '';
 
-  const final = page.cta ? `
+  // Shared closing CTA: headline, text, one line of proof (a real client
+  // catalogue) unless the text already links one, and one WhatsApp button.
+  // The button is tagged so analytics can tell it from the hero button.
+  const cta = page.cta || (page.type !== 'legal' && cfg.ctaDefault) || null;
+  const proof = cta && page.path !== '/' && !/onecatalog\.in\)/.test(cta.text || '') && cfg.ctaProof ? `<p class="final-proof">${inline(cfg.ctaProof)}</p>` : '';
+  const final = cta ? `
 <section class="final" aria-labelledby="h-final"><div class="wrap"><div class="final-box" data-reveal>
-<h2 id="h-final">${inline(page.cta.heading)}</h2>
-<p>${inline(page.cta.text)}</p>
-<div class="actions">${waBtn(cfg.cta.primary, wa)}</div>
+<h2 id="h-final">${inline(cta.heading)}</h2>
+<p>${inline(cta.text)}</p>${proof}
+<div class="actions" data-cta-pos="final">${waBtn(cfg.cta.primary, wa)}</div>
 </div></div></section>` : '';
 
   const footer = `<footer class="foot"><div class="wrap">
@@ -807,7 +813,7 @@ var els=[].slice.call(d.querySelectorAll('[data-reveal]'));
 if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(el){el.classList.add('in')});}
 else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});els.forEach(function(el){io.observe(el)});}
 var s=d.querySelector('.sticky');if(s){var f=function(){if((h.scrollTop||d.body.scrollTop)/Math.max(1,h.scrollHeight-h.clientHeight)>0.3){h.classList.add('show-sticky');removeEventListener('scroll',f);}};addEventListener('scroll',f,{passive:true});}
-d.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-cta]');if(a&&window.gtag)gtag('event',a.getAttribute('data-cta')==='whatsapp'?'whatsapp_click':'cta_click',{page_path:location.pathname});});
+d.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-cta]');if(a&&window.gtag)var w=a.closest('[data-cta-pos]');gtag('event',a.getAttribute('data-cta')==='whatsapp'?'whatsapp_click':'cta_click',{page_path:location.pathname,cta_position:w?w.getAttribute('data-cta-pos'):(a.closest('.hero')?'hero':a.closest('.sticky')?'sticky':a.closest('header')?'header':'other')});});
 })();
 </script>
 </body>
