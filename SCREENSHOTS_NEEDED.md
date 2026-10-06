@@ -7,6 +7,8 @@ Crop to the phone screen only. Hide your own contacts, chats and phone number.
 
 | File | Page | What to capture | Alt text |
 |---|---|---|---|
+| `approval-rejected-mark-android.png` | /guides/whatsapp-catalog-approval-time | Android. Tools > Catalog list with at least one rejected item (red exclamation mark) and one normal item. | WhatsApp Business catalogue list with one item showing a red exclamation mark |
+| `approval-request-review-android.png` | /guides/whatsapp-catalog-approval-time | Android. A rejected catalogue item opened, with the 'Request another review' button visible. | Request another review button on a rejected WhatsApp catalog item |
 | `not-showing-items-cant-be-displayed-android.png` | /guides/whatsapp-catalog-not-showing | Android. Tools > Catalog while the 'Items can't be displayed' message shows. Only if it really happens, do not fake it. | WhatsApp Business catalogue screen showing the message Items can't be displayed |
 | `not-showing-unhide-android.png` | /guides/whatsapp-catalog-not-showing | Android. Open a hidden catalogue item and tap the three-dot menu so the Unhide option shows. | Android WhatsApp Business item menu with the Unhide option |
 | `not-showing-unhide-iphone.png` | /guides/whatsapp-catalog-not-showing | iPhone. Edit screen of a catalogue item with the 'Hide this item' switch visible. | iPhone WhatsApp Business edit item screen with the Hide this item switch |

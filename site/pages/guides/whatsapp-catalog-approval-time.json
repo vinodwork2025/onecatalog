@@ -3,96 +3,124 @@
   "type": "guide",
   "parent": "/guides",
   "crumb": "Catalog approval time",
-  "keyword": "whatsapp business catalog approval time",
+  "keyword": "whatsapp catalog approval time",
   "published": "2026-09-29",
-  "updated": "2026-09-29",
-  "title": "WhatsApp Business Catalog Approval Time: What to Expect",
-  "description": "WhatsApp Business catalog approval time explained. Items show only after review, collections take up to 24 hours, and rejected items can be appealed.",
-  "h1": "WhatsApp Business catalog approval time: how the review works",
-  "answer": "WhatsApp does not publish a fixed approval time for single catalog items. Its help centre says every item is reviewed and appears to customers only after it is approved. For collections, WhatsApp says the review should take no more than 24 hours.",
-  "waText": "Hi OneCatalog, my WhatsApp catalog items are stuck in review.",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "WhatsApp Catalog Approval Time and How to Speed It Up",
+  "description": "WhatsApp catalog approval time: what WhatsApp says, why some items wait longer, what to check if one is stuck and how to avoid getting items rejected.",
+  "h1": "WhatsApp Catalog Approval Time: How Long It Takes and How to Speed It Up",
+  "answer": "WhatsApp does not publish a fixed approval time for single catalog items. It says every item is checked first and shows to customers only after approval. For a new collection, WhatsApp says the check should take no more than 24 hours. Clear photos and complete details give an item the best chance of passing the first time.",
+  "waText": "Hi OneCatalog, my WhatsApp catalog items are stuck in review. Can you help?",
   "sections": [
     {
-      "h2": "What is the WhatsApp Business catalog approval time?",
+      "h2": "What is the normal WhatsApp catalog approval time?",
+      "faq": true,
       "blocks": [
+        { "p": "Here is everything WhatsApp's own help pages say about timing. We checked them on 6 October 2026." },
         { "table": {
+          "caption": "WhatsApp catalog approval time, by what you add",
           "head": ["What you add", "What WhatsApp says"],
           "rows": [
-            ["A single item, its photos or videos", "Reviewed before customers can see it. No fixed time given in the catalog help article."],
-            ["A collection", "Reviewed, and should take no more than 24 hours"],
-            ["An appeal of a rejected item", "You can request another review, and a third review by replying if the appeal is rejected"]
+            ["A new item, with its photos or videos", "Checked before customers can see it. No fixed time is given."],
+            ["A new collection", "Checked, and should take no more than 24 hours."],
+            ["A rejected item you appeal", "You can ask for another review. If that fails, you can reply to ask for a third."],
+            ["Changes to a connected Meta catalog", "Should show in the WhatsApp Business app within 24 hours."]
           ]
         } },
-        { "p": "Be careful with blogs that promise an exact number of minutes or hours for items. We could not find that in WhatsApp's own help centre when we checked in September 2026." }
+        { "p": "Be careful with websites that promise an exact number of minutes or hours for items. WhatsApp's help pages don't give one. When you see a short time quoted, it is someone's guess." }
       ]
     },
     {
-      "h2": "What WhatsApp reviews",
+      "h2": "Why does approval take longer for some items?",
+      "faq": true,
       "blocks": [
-        { "p": "WhatsApp says every image and video uploaded to the catalog is subject to a review. The review confirms that the image, video, product or service meets the WhatsApp Business Messaging Policy. Collections are checked against the WhatsApp Commerce Policy." },
-        { "p": "Once an item is approved, WhatsApp adds it to your catalog automatically. You do not need to publish it again." }
-      ]
-    },
-    {
-      "h2": "How to tell if an item is pending or rejected",
-      "blocks": [
+        { "p": "WhatsApp checks every photo, video and item against its rules, the [Commerce Policy](https://www.whatsapp.com/policies/commerce-policy/). WhatsApp does not explain how long each check takes or why one item waits longer than another. These are the things you control:" },
         { "ul": [
-          "**Pending review:** the item is in your catalog manager but customers cannot see it yet.",
-          "**Rejected:** a red exclamation icon appears next to the image. Customers cannot see it.",
-          "**Approved:** the item shows in your catalog for customers."
+          "**Photos that look like adverts.** WhatsApp says the catalogue is for listing products, not for showing advertisements. A photo full of offer text or a price banner is more likely to get a closer look.",
+          "**Missing details.** Every item needs a unique title, at least one photo and a country of origin. An item without them will not save at all.",
+          "**Goods on the banned list.** Alcohol, tobacco, medicines and some other goods are not allowed in a WhatsApp catalogue at all. Our guide on [why WhatsApp rejects catalog items](/guides/whatsapp-catalog-rejected) lists them."
+        ] },
+        { "callout": "**What we see with real shops:** owners often add a big batch of products the night before a sale and expect them all to show the next morning. Some are still waiting, and the sale post goes out with half a catalogue. Add new stock a few days before you plan to share it." }
+      ]
+    },
+    {
+      "h2": "How to tell if an item is waiting, rejected or approved",
+      "blocks": [
+        { "p": "Open the **Tools** tab and tap **Catalog**. Look at each item's photo." },
+        { "table": {
+          "caption": "What each item status looks like",
+          "head": ["Status", "What you see", "Can customers see it?"],
+          "rows": [
+            ["Waiting for review", "The item is in your catalogue with no mark", "No"],
+            ["Rejected", "A red exclamation mark next to the photo", "No"],
+            ["Approved", "The item shows normally", "Yes"]
+          ]
+        } },
+        { "shot": "approval-rejected-mark-android.png", "alt": "WhatsApp Business catalogue list with one item showing a red exclamation mark", "capture": "Android. Tools > Catalog list with at least one rejected item (red exclamation mark) and one normal item." },
+        { "p": "Waiting and approved items look the same to you. The only sure test is to open your catalogue from someone else's phone. If they can see the item, it is approved." }
+      ]
+    },
+    {
+      "h2": "What to check if an item is stuck in review",
+      "faq": true,
+      "blocks": [
+        { "p": "If an item still isn't showing to customers after a day or two, work through this list." },
+        { "ol": [
+          "Open your catalogue on a family member's phone. Make sure the item really is missing for customers.",
+          "Look for a red exclamation mark. If you see one, the item was rejected, not stuck. Go to the next section.",
+          "Check that the item isn't hidden. Our guide to a [WhatsApp catalogue not showing](/guides/whatsapp-catalog-not-showing) shows how to unhide items on Android and iPhone.",
+          "Update WhatsApp Business from the Play Store or App Store, then close and reopen the app.",
+          "If nothing works, contact WhatsApp support from the app. Tap **Settings**, then **Help and feedback**, **Help Center** and **Contact Us**."
         ] }
       ]
     },
     {
-      "h2": "How to appeal a rejected item",
+      "h2": "What gets catalog items rejected",
       "blocks": [
-        { "p": "First read the Commerce Policy. WhatsApp says items are rejected for a variety of reasons, and the policy explains what is not allowed. If you still think the rejection was wrong, WhatsApp's steps are:" },
+        { "p": "WhatsApp says items are rejected for a variety of reasons, and points sellers to its Commerce Policy. The policy bans some goods outright, such as alcohol, tobacco, drugs and medical products, weapons and adult products. It also bans items that are misleading. Our guide on [why WhatsApp rejects catalog items](/guides/whatsapp-catalog-rejected) covers each reason and what to do about it." },
+        { "p": "If you think WhatsApp got it wrong, you can appeal:" },
         { "ol": [
           "Tap the rejected item.",
           "Tap **Request another review**.",
-          "Enter your reason for the request.",
+          "Type a short reason why the item is allowed.",
           "Tap **Continue**."
         ] },
-        { "p": "If that appeal is rejected and you have reviewed the policy, WhatsApp says you can reply explaining your request for a third review." }
+        { "shot": "approval-request-review-android.png", "alt": "Request another review button on a rejected WhatsApp catalog item", "capture": "Android. A rejected catalogue item opened, with the 'Request another review' button visible." }
       ]
     },
     {
-      "h2": "How to avoid long waits and rejections",
+      "h2": "How to speed up WhatsApp catalog approval",
       "blocks": [
+        { "p": "You can't make WhatsApp review faster. You can make sure each item passes the first time, so you don't lose days to a rejection and an appeal." },
         { "ul": [
-          "Use clear photos of the actual product. Avoid photos that are mostly text or adverts. WhatsApp says the catalog is for listing products and services, not for displaying advertisements.",
-          "Give every item a unique title. WhatsApp requires it.",
-          "Always fill in the country of origin. WhatsApp requires it when adding or editing an item.",
-          "Add items one at a time if saving fails. WhatsApp suggests this for save errors."
-        ] },
-        { "p": "If items are approved but still not visible, see our guide to a [WhatsApp Business catalog not showing](/guides/whatsapp-catalog-not-showing)." }
+          "Use a clear photo of the real product on a plain background. Leave out offer text, logos and price banners.",
+          "Give every item a unique name, like \"Teak wood 3-seater sofa\". Don't name ten items \"Sofa\".",
+          "Pick the country of origin every time. WhatsApp asks for it on every new or edited item.",
+          "Add items one at a time if saving fails. WhatsApp suggests this when changes don't save.",
+          "Add new stock a few days before you need to share it."
+        ] }
       ]
     },
     {
-      "h2": "Still stuck?",
+      "h2": "A catalogue with no review queue",
       "blocks": [
-        { "p": "If reviews keep holding you back, a catalogue website is another route. OneCatalog builds your catalogue from the photos you send us and publishes it as a web link, with no review queue on our side. You keep your WhatsApp catalog too. See the comparison on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+        { "p": "If review waits keep slowing you down, there is another way to share your products. We build your catalogue as a web link from the photos and prices you send us on WhatsApp. It goes live in 48 hours, and new stock goes up when you send it. There is no review queue on our side." },
+        { "p": "See a real one: [Luxury Homes Furniture and Mattress](https://luxuryhomesfurniture.onecatalog.in), a furniture showroom in J. P. Nagar, Bengaluru. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), or see the [plans and prices](/pricing). You keep your WhatsApp catalogue too." }
       ]
     }
   ],
-  "faq": {
-    "heading": "Catalog approval questions",
-    "items": [
-      { "q": "How long does WhatsApp take to approve catalog items?", "a": "WhatsApp does not give a fixed time for single items in its catalog help article. Items appear once approved. Collections should take no more than 24 hours." },
-      { "q": "Why was my catalog item rejected?", "a": "WhatsApp says items are rejected for a variety of reasons and points to its Commerce Policy. Check the policy, then appeal if you think the rejection was wrong." },
-      { "q": "Do I need to submit the item again after approval?", "a": "No. WhatsApp adds approved items to your catalog automatically." },
-      { "q": "Can I appeal more than once?", "a": "Yes. After a rejected appeal, WhatsApp says you can reply explaining your request for a third review." }
-    ]
-  },
   "sources": [
     { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
     { "label": "WhatsApp Help: Collections in your catalog", "url": "https://faq.whatsapp.com/2929318000711140" },
     { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
+    { "label": "WhatsApp Help: About connected catalogs", "url": "https://faq.whatsapp.com/1057141349534704" },
+    { "label": "WhatsApp Help: About catalog", "url": "https://faq.whatsapp.com/405903568419894" },
     { "label": "WhatsApp Commerce Policy", "url": "https://www.whatsapp.com/policies/commerce-policy/" }
   ],
   "cta": {
-    "heading": "Skip the review queue",
-    "text": "Message us on WhatsApp and we will show you a OneCatalog catalogue for your trade."
+    "heading": "Tired of waiting for WhatsApp to approve your catalogue? Share one link that always works.",
+    "text": "Shops like [Luxury Homes Furniture and Mattress](https://luxuryhomesfurniture.onecatalog.in) share one link with every product on it. Message us on WhatsApp and we will tell you how it works for your shop."
   },
   "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
 }
