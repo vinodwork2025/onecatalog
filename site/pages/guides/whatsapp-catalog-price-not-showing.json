@@ -5,7 +5,7 @@
   "crumb": "Catalog price not showing",
   "keyword": "whatsapp business catalog price not showing",
   "published": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-10-06",
   "title": "WhatsApp Business Catalog Price Not Showing? (2026 Fix)",
   "description": "WhatsApp Business catalog price not showing? Price is optional, only works in some countries, and needs a saved edit. Here is how to check each one.",
   "h1": "WhatsApp Business catalog price not showing: what to check",
@@ -15,71 +15,115 @@
     {
       "h2": "Why is my WhatsApp Business catalog price not showing?",
       "blocks": [
-        { "p": "WhatsApp treats price as an extra detail, not a required one. Its help centre says every item needs a unique title, at least one image and a country of origin. Price, sale price, description, website link and product code are optional. So an item can be approved and live with no price at all." },
-        { "p": "Go through the checks below in order. Most price problems are fixed by the first two." }
+        {
+          "p": "WhatsApp treats price as an extra detail, not a required one. Its help centre says every item needs a unique title, at least one image and a country of origin. Price, sale price, description, website link and product code are optional. So an item can be approved and live with no price at all."
+        },
+        {
+          "p": "Go through the checks below in order. Most price problems are fixed by the first two."
+        }
       ]
     },
     {
       "h2": "1. Check the Price field and save",
       "blocks": [
-        { "p": "On Android, WhatsApp's steps to edit an item start from the **Tools** tab. Tap **Catalog**, open the item and check the optional details. Price and Sale price are separate fields. Enter the price, then tap **Save**." },
-        { "p": "If the save fails, WhatsApp suggests saving after each change instead of making many edits at once, and checking your internet connection." }
+        {
+          "p": "On Android, WhatsApp's steps to edit an item start from the **Tools** tab. Tap **Catalog**, open the item and check the optional details. Price and Sale price are separate fields. Enter the price, then tap **Save**."
+        },
+        {
+          "p": "If the save fails, WhatsApp suggests saving after each change instead of making many edits at once, and checking your internet connection."
+        }
       ]
     },
     {
       "h2": "2. Check that prices are available where you are",
       "blocks": [
-        { "p": "WhatsApp's About catalog article says the ability to add prices to a catalog is only available in certain countries. If you do not see a price field at all, this may be the reason. Update the app to the latest version and check again." }
+        {
+          "p": "WhatsApp's About catalog article says the ability to add prices to a catalog is only available in certain countries. If you do not see a price field at all, this may be the reason. Update the app to the latest version and check again."
+        }
       ]
     },
     {
       "h2": "3. Wait for the review to finish",
       "blocks": [
-        { "p": "Every image, video and item uploaded to the catalog is reviewed against WhatsApp's business policy, and items that are pending review are not visible to customers. If the item itself is missing, not just the price, give the review time to finish. Our [catalog approval time guide](/guides/whatsapp-catalog-approval-time) explains the review." }
+        {
+          "p": "Every image, video and item uploaded to the catalog is reviewed against WhatsApp's business policy, and items that are pending review are not visible to customers. If the item itself is missing, not just the price, give the review time to finish. Our [catalog approval time guide](/guides/whatsapp-catalog-approval-time) explains the review."
+        }
       ]
     },
     {
       "h2": "4. Check where the catalog comes from",
       "blocks": [
-        { "p": "WhatsApp lets businesses connect an existing Meta catalog to the WhatsApp Business app instead of building one in the app. If you did that, your products come from the Meta catalog. Check the price there, in Commerce Manager, rather than in the app. The [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains connected catalogs." }
+        {
+          "p": "WhatsApp lets businesses connect an existing Meta catalog to the WhatsApp Business app instead of building one in the app. If you did that, your products come from the Meta catalog. Check the price there, in Commerce Manager, rather than in the app. The [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains connected catalogs."
+        }
       ]
     },
     {
       "h2": "5. Ask the customer to update WhatsApp",
       "blocks": [
-        { "p": "If you can see the price but one customer cannot, their app may be out of date. WhatsApp notes that shared catalog links might not open on phones older than Android 6.0. Ask them to update WhatsApp." }
+        {
+          "p": "If you can see the price but one customer cannot, their app may be out of date. WhatsApp notes that shared catalog links might not open on phones older than Android 6.0. Ask them to update WhatsApp."
+        }
       ]
     },
     {
       "h2": "What if you do not want to show a price?",
       "blocks": [
-        { "p": "Some trades never show prices publicly. Jewellers quote by the day's gold rate and wholesalers give different prices to different buyers. In the WhatsApp catalog you can simply leave the price field empty. In a OneCatalog catalogue, a product without a price shows Price on request, and customers tap to ask you on WhatsApp." }
+        {
+          "p": "Some trades never show prices publicly. Jewellers quote by the day's gold rate and wholesalers give different prices to different buyers. In the WhatsApp catalog you can simply leave the price field empty. In a OneCatalog catalogue, a product without a price shows Price on request, and customers tap to ask you on WhatsApp."
+        }
       ]
     },
     {
       "h2": "Still stuck?",
       "blocks": [
-        { "p": "A OneCatalog catalogue shows the exact price text you give us, such as a fixed price, a starting price or Price on request. There is no review step on our side before it goes live. Read how it compares on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+        {
+          "p": "A OneCatalog catalogue shows the exact price text you give us, such as a fixed price, a starting price or Price on request. There is no review step on our side before it goes live. Read how it compares on our [WhatsApp catalogue page](/whatsapp-catalogue)."
+        }
       ]
     }
   ],
   "faq": {
     "heading": "Catalog price questions",
     "items": [
-      { "q": "Is price required in a WhatsApp Business catalog?", "a": "No. WhatsApp requires a unique title, at least one image and the country of origin. Price is optional." },
-      { "q": "Can I show a sale price?", "a": "Yes. WhatsApp's item form has a separate Sale price field next to Price." },
-      { "q": "Why can I not find the price field?", "a": "WhatsApp says adding prices is only available in certain countries. Update the app first, then check again." }
+      {
+        "q": "Is price required in a WhatsApp Business catalog?",
+        "a": "No. WhatsApp requires a unique title, at least one image and the country of origin. Price is optional."
+      },
+      {
+        "q": "Can I show a sale price?",
+        "a": "Yes. WhatsApp's item form has a separate Sale price field next to Price."
+      },
+      {
+        "q": "Why can I not find the price field?",
+        "a": "WhatsApp says adding prices is only available in certain countries. Update the app first, then check again."
+      }
     ]
   },
   "sources": [
-    { "label": "WhatsApp Help: About catalog", "url": "https://faq.whatsapp.com/405903568419894" },
-    { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
-    { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
-    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" }
+    {
+      "label": "WhatsApp Help: About catalog",
+      "url": "https://faq.whatsapp.com/405903568419894"
+    },
+    {
+      "label": "WhatsApp Help: How to create and maintain a catalog",
+      "url": "https://faq.whatsapp.com/833697274483076"
+    },
+    {
+      "label": "WhatsApp Help: Issues using catalog",
+      "url": "https://faq.whatsapp.com/780175293074108"
+    },
+    {
+      "label": "WhatsApp Help: Sharing catalog links",
+      "url": "https://faq.whatsapp.com/487917009931629"
+    }
   ],
   "cta": {
     "heading": "Show your prices the way you want",
     "text": "Tell us how you price your products and we will show you how it looks in a OneCatalog catalogue."
   },
-  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
+  "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp.",
+  "checked": {
+    "date": "2026-10-06"
+  }
 }

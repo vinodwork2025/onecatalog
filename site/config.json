@@ -145,7 +145,11 @@
         "title": "Industries",
         "links": [
           {
-            "label": "Garments and sarees",
+            "label": "Furniture",
+            "href": "/catalogue-maker/furniture"
+          },
+          {
+            "label": "Garments",
             "href": "/catalogue-maker/garments"
           },
           {
@@ -159,6 +163,14 @@
           {
             "label": "Resellers",
             "href": "/catalogue-maker/resellers"
+          },
+          {
+            "label": "Tiles",
+            "href": "/catalogue-maker/tiles-sanitaryware"
+          },
+          {
+            "label": "Handicrafts",
+            "href": "/catalogue-maker/handicrafts"
           }
         ]
       },

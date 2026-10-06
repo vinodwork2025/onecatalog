@@ -195,6 +195,7 @@ function orgSchema(cfg) {
     areaServed: { '@type': 'Country', name: cfg.serviceArea },
     telephone: '+' + waDigits(cfg),
     email: cfg.email,
+    contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', telephone: '+' + waDigits(cfg) },
     founder: { '@type': 'Person', name: cfg.author.name }
   };
 }
@@ -701,7 +702,7 @@ ${eyebrow ? `<p class="eyebrow">${e(eyebrow)}</p>` : ''}
 <h1>${e(page.h1)}</h1>
 ${answerHtml}
 ${page.sub ? `<p class="sub">${inline(page.sub)}</p>` : ''}
-${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>${page.checked ? `<p class="meta">Last checked: <time datetime="${e(page.checked.date)}">${e(fmtDate(page.checked.date))}</time>, against the WhatsApp Help Center${(page.checked.appVersion ?? cfg.whatsappAppVersion) ? ` and WhatsApp Business app version ${e(page.checked.appVersion ?? cfg.whatsappAppVersion)}` : ''}.</p>` : ''}` : ''}
+${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>${page.checked ? `<p class="meta">Last checked: <time datetime="${e(page.checked.date)}">${e(fmtDate(page.checked.date))}</time>${page.checked.against === '' ? '' : `, against ${e(page.checked.against || 'the WhatsApp Help Center')}${(page.checked.appVersion ?? cfg.whatsappAppVersion) ? ` and WhatsApp Business app version ${e(page.checked.appVersion ?? cfg.whatsappAppVersion)}` : ''}`}.</p>` : ''}` : ''}
 ${page.type === 'legal' ? '' : `<div class="actions">${waBtn(cfg.cta.primary, wa)}${secondary ? `<a class="link-arrow" href="${e(secondary.href)}" data-cta="secondary"><span>${e(secondary.label)}</span>${ARROW}</a>` : ''}</div>`}
 ${page.mockup ? `<ul class="trust">${cfg.trust.map(t => `<li>${TICK}${e(t)}</li>`).join('')}</ul>` : ''}
 </div>${page.mockup ? mockup(page.mockup) : ''}</div>
@@ -863,7 +864,7 @@ export function renderLlmsTxt(cfg, pages) {
 }
 
 export function renderRobots(cfg) {
-  const bots = ['Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended'];
+  const bots = ['Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Applebot', 'Applebot-Extended'];
   return ['User-agent: *', 'Allow: /', '', ...bots.flatMap(b => [`User-agent: ${b}`, 'Allow: /', '']),
     `Sitemap: ${abs(cfg, '/sitemap.xml')}`, ''].join('\n');
 }
