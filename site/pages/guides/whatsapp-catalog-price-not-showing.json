@@ -9,14 +9,14 @@
   "title": "WhatsApp Business Catalog Price Not Showing? (2026 Fix)",
   "description": "WhatsApp Business catalog price not showing? Price is optional, only works in some countries, and needs a saved edit. Here is how to check each one.",
   "h1": "WhatsApp Business catalog price not showing: what to check",
-  "answer": "If the price in your WhatsApp Business catalog is not showing, first check that you typed it in the Price field and saved the item. Price is an optional field, and WhatsApp says adding prices is only available in certain countries. New items and new photos are reviewed before customers see them.",
+  "answer": "If the price in your WhatsApp Business catalog is not showing, first check that you typed it in the Price field and saved the item. Price is not a required field. WhatsApp also says prices work only in some countries. New items and new photos are reviewed before customers see them.",
   "waText": "Hi OneCatalog, my WhatsApp catalog price is not showing.",
   "sections": [
     {
       "h2": "Why is my WhatsApp Business catalog price not showing?",
       "blocks": [
         {
-          "p": "WhatsApp treats price as an extra detail, not a required one. Its help centre says every item needs a unique title, at least one image and a country of origin. Price, sale price, description, website link and product code are optional. So an item can be approved and live with no price at all."
+          "p": "WhatsApp treats price as an extra detail, not a required one. WhatsApp says every item needs its own name, a photo and a country of origin. Price, sale price, description, website link and product code are optional. So an item can be approved and live with no price at all."
         },
         {
           "p": "Go through the checks below in order. Most price problems are fixed by the first two."
@@ -30,7 +30,7 @@
           "p": "On Android, WhatsApp's steps to edit an item start from the **Tools** tab. Tap **Catalog**, open the item and check the optional details. Price and Sale price are separate fields. Enter the price, then tap **Save**."
         },
         {
-          "p": "If the save fails, WhatsApp suggests saving after each change instead of making many edits at once, and checking your internet connection."
+          "p": "If the save fails, WhatsApp says to save after each change, not many at once. Also check your internet."
         }
       ]
     },
@@ -38,7 +38,7 @@
       "h2": "2. Check that prices are available where you are",
       "blocks": [
         {
-          "p": "WhatsApp's About catalog article says the ability to add prices to a catalog is only available in certain countries. If you do not see a price field at all, this may be the reason. Update the app to the latest version and check again."
+          "p": "WhatsApp says you can add prices only in some countries. If you do not see a price field at all, this may be the reason. Update the app to the latest version and check again."
         }
       ]
     },
@@ -46,7 +46,7 @@
       "h2": "3. Wait for the review to finish",
       "blocks": [
         {
-          "p": "Every image, video and item uploaded to the catalog is reviewed against WhatsApp's business policy, and items that are pending review are not visible to customers. If the item itself is missing, not just the price, give the review time to finish. Our [catalog approval time guide](/guides/whatsapp-catalog-approval-time) explains the review."
+          "p": "WhatsApp checks every photo, video and item you add. Items that are still waiting are not shown to customers. If the item itself is missing, not just the price, give the review time to finish. Our [catalog approval time guide](/guides/whatsapp-catalog-approval-time) explains the review."
         }
       ]
     },
@@ -54,7 +54,7 @@
       "h2": "4. Check where the catalog comes from",
       "blocks": [
         {
-          "p": "WhatsApp lets businesses connect an existing Meta catalog to the WhatsApp Business app instead of building one in the app. If you did that, your products come from the Meta catalog. Check the price there, in Commerce Manager, rather than in the app. The [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains connected catalogs."
+          "p": "Some shops connect a Meta catalogue to WhatsApp Business instead of making one in the app. If you did that, your products come from the Meta catalog. Check the price there, in Commerce Manager, rather than in the app. The [bulk upload guide](/guides/whatsapp-catalog-bulk-upload) explains connected catalogs."
         }
       ]
     },
@@ -70,7 +70,7 @@
       "h2": "What if you do not want to show a price?",
       "blocks": [
         {
-          "p": "Some trades never show prices publicly. Jewellers quote by the day's gold rate and wholesalers give different prices to different buyers. In the WhatsApp catalog you can simply leave the price field empty. In a OneCatalog catalogue, a product without a price shows Price on request, and customers tap to ask you on WhatsApp."
+          "p": "Some trades never show prices publicly. Jewellers quote by the day's gold rate. Wholesalers give each buyer a different price. In the WhatsApp catalog you can simply leave the price field empty. In a OneCatalog catalogue, a product with no price shows Price on request. Customers tap to ask you on WhatsApp."
         }
       ]
     },
@@ -96,7 +96,7 @@
       },
       {
         "q": "Why can I not find the price field?",
-        "a": "WhatsApp says adding prices is only available in certain countries. Update the app first, then check again."
+        "a": "WhatsApp says prices work only in some countries. Update the app first, then check again."
       }
     ]
   },

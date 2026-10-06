@@ -7,7 +7,7 @@
   "title": "WhatsApp Catalogue Guides and How-Tos | OneCatalog",
   "description": "WhatsApp catalogue guides for small shops: fix a catalogue that is not showing, rejected items and save errors, set up your catalogue and share the link.",
   "h1": "WhatsApp catalogue guides for shop owners",
-  "answer": "These WhatsApp catalogue guides help shop owners fix common problems, set up a catalogue and share it with customers. Every step about WhatsApp's own app is checked against the WhatsApp Help Center, and each guide lists its sources and the date we last checked it.",
+  "answer": "These WhatsApp catalogue guides help you fix common problems, set up a catalogue and share it with customers. We check every step against the WhatsApp Help Center. Each guide lists its sources and the date we last checked it.",
   "waText": "Hi OneCatalog, I have a question about my WhatsApp catalogue.",
   "secondary": { "label": "How OneCatalog works", "href": "/whatsapp-catalogue" },
   "sections": [
@@ -15,12 +15,12 @@
       "h2": "Fix a problem",
       "blocks": [
         { "cards": [
-          { "title": "WhatsApp catalogue not showing? 7 fixes", "text": "Items in review, rejected or hidden, and the known display problem.", "href": "/guides/whatsapp-catalog-not-showing" },
+          { "title": "WhatsApp catalogue not showing? 7 fixes", "text": "Items in review, rejected or hidden, and an app glitch.", "href": "/guides/whatsapp-catalog-not-showing" },
           { "title": "\"Item wasn't saved\" error", "text": "The 6 real causes of the save error and the fix for each.", "href": "/guides/whatsapp-item-wasnt-saved-error" },
           { "title": "Catalog item rejected", "text": "What WhatsApp bans, the photo mistakes to avoid and how to appeal.", "href": "/guides/whatsapp-catalog-rejected" },
-          { "title": "Catalog approval time", "text": "What WhatsApp says about timing, and what to check if an item is stuck.", "href": "/guides/whatsapp-catalog-approval-time" },
-          { "title": "Catalog price not showing", "text": "The Price field, country limits and connected catalogues.", "href": "/guides/whatsapp-catalog-price-not-showing" },
-          { "title": "Catalog link not working", "text": "Old phones, edited links, empty catalogues and other fixes.", "href": "/guides/whatsapp-catalog-link-not-working" }
+          { "title": "Catalog approval time", "text": "How long it takes, and what to check if an item is stuck.", "href": "/guides/whatsapp-catalog-approval-time" },
+          { "title": "Catalog price not showing", "text": "Where the price goes, and why it may not show.", "href": "/guides/whatsapp-catalog-price-not-showing" },
+          { "title": "Catalog link not working", "text": "Old phones, broken links, empty catalogues and more.", "href": "/guides/whatsapp-catalog-link-not-working" }
         ] }
       ]
     },
@@ -29,8 +29,8 @@
       "blocks": [
         { "cards": [
           { "title": "How to add a catalog to WhatsApp Business", "text": "Step by step for Android and iPhone.", "href": "/guides/add-catalog-to-whatsapp-business" },
-          { "title": "WhatsApp catalogue categories", "text": "Collections for your products, and your business profile category.", "href": "/guides/whatsapp-catalog-categories" },
-          { "title": "Catalog bulk upload", "text": "The spreadsheet route through Meta Commerce Manager, and its catch.", "href": "/guides/whatsapp-catalog-bulk-upload" },
+          { "title": "WhatsApp catalogue categories", "text": "Group your products, and pick your business type.", "href": "/guides/whatsapp-catalog-categories" },
+          { "title": "Catalog bulk upload", "text": "Add many products at once with a spreadsheet.", "href": "/guides/whatsapp-catalog-bulk-upload" },
           { "title": "Catalog product limit", "text": "What WhatsApp says about how many items you can add.", "href": "/guides/whatsapp-catalog-product-limit" },
           { "title": "How to make a product catalogue", "text": "Seven steps from choosing products to sharing the link.", "href": "/guides/how-to-make-a-product-catalogue" }
         ] }
@@ -41,14 +41,14 @@
       "blocks": [
         { "cards": [
           { "title": "How to share your WhatsApp catalog link", "text": "In a chat, on status or in another app, plus what to send when a customer asks.", "href": "/guides/how-to-share-whatsapp-catalog-link" },
-          { "title": "WhatsApp catalog vs website catalog", "text": "An honest side by side comparison, and when each one fits.", "href": "/guides/whatsapp-catalog-vs-website-catalog" }
+          { "title": "WhatsApp catalog vs website catalog", "text": "The two side by side, and when each one fits.", "href": "/guides/whatsapp-catalog-vs-website-catalog" }
         ] }
       ]
     },
     {
       "h2": "Where OneCatalog fits in",
       "blocks": [
-        { "p": "OneCatalog builds catalogue websites for small businesses, from photos and prices sent on WhatsApp. It works alongside the WhatsApp Business catalogue. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue), see the [plans and prices](/pricing), or find the page for your trade, like [furniture](/catalogue-maker/furniture), [tiles and sanitaryware](/catalogue-maker/tiles-sanitaryware) or [handicrafts](/catalogue-maker/handicrafts)." }
+        { "p": "We build catalogue websites for small shops from the photos and prices you send on WhatsApp. It works next to your WhatsApp catalogue. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue). See the [plans and prices](/pricing). Or find the page for your trade, like [furniture](/catalogue-maker/furniture), [tiles and sanitaryware](/catalogue-maker/tiles-sanitaryware) or [handicrafts](/catalogue-maker/handicrafts)." }
       ]
     }
   ],
