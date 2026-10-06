@@ -15,7 +15,14 @@ const PLACEHOLDER = /\bTODO\b|\[CONFIRM\]|\[[A-Z0-9_]{3,}\]/;
 // Words the copy rules ban. Matched as whole words, case-insensitive.
 const BANNED = ['leverage', 'synergy', 'cutting-edge', 'revolutionary', 'seamless', 'seamlessly',
   'robust', 'empower', 'empowers', 'unlock', 'unlocks', 'game-changer', 'game changer', 'next-level',
-  'elevate', 'supercharge', 'in person'];
+  'elevate', 'supercharge', 'in person',
+  // SEO brief, 6 Oct 2026
+  'delve', 'dive into', 'navigate', 'landscape', 'realm', 'crucial', 'vital', 'comprehensive',
+  'ultimate guide', 'look no further', "whether you're", "it's important to note", "it's worth noting",
+  'furthermore', 'moreover', 'additionally', 'in conclusion', 'harness', 'streamline', 'effortless',
+  'effortlessly', 'hassle-free', 'tapestry', 'journey', 'transform', 'one-stop', 'boost your',
+  'take it to the next level', 'rest assured', 'at the end of the day', 'game changing', 'game-changing',
+  "in today's world", "in today's digital age"];
 
 // Keyword matching ignores these, and treats catalog/catalogue as one word.
 const STOP = new Set(['a', 'an', 'the', 'to', 'for', 'in', 'of', 'on', 'my', 'your', 'how', 'and', 'is', 'do', 'i']);
@@ -69,6 +76,7 @@ function pageStrings(page) {
   return out.filter(Boolean);
 }
 function collectBlock(b, out) {
+  if (b.shot) return; // a screenshot slot is an image, not copy
   const walk = v => typeof v === 'string' ? out.push(v) : Array.isArray(v) ? v.forEach(walk)
     : v && typeof v === 'object' ? Object.entries(v).forEach(([k, x]) => k !== 'href' && walk(x)) : null;
   walk(b);
@@ -114,7 +122,14 @@ export function checkPage(cfg, page, allPages, ogFiles = new Set()) {
     if (PLACEHOLDER.test(s)) out.push(`placeholder left: "${s.slice(0, 60)}"`);
     if (/—/.test(s)) out.push(`em-dash in: "${s.slice(0, 60)}"`);
     if (/;/.test(plain(s))) out.push(`semicolon in: "${s.slice(0, 60)}"`);
-    for (const w of BANNED) if (new RegExp(`\\b${w}\\b`, 'i').test(plain(s))) out.push(`banned word "${w}" in: "${s.slice(0, 60)}"`);
+    if (/\s–\s/.test(s)) out.push(`en-dash used as a dash in: "${s.slice(0, 60)}"`);
+    const flat = plain(s).replace(/[‘’]/g, "'");
+    for (const w of BANNED) if (new RegExp(`\\b${w}\\b`, 'i').test(flat)) out.push(`banned word "${w}" in: "${s.slice(0, 60)}"`);
+  }
+  const bangs = strings.join(' ').split('!').length - 1;
+  if (bangs > 1) out.push(`${bangs} exclamation marks, max 1 per page`);
+  for (const h of (page.sections || []).map(x => x.h2)) {
+    if (/^(introduction|conclusion|summary)\b/i.test(plain(h))) out.push(`heading "${h}" is not allowed`);
   }
 
   // Same prices everywhere: every ₹ amount must be a configured price.
@@ -217,11 +232,19 @@ function crumbList(cfg, trail) {
   };
 }
 
+// FAQ schema from the FAQ block and from any section marked "faq": true, whose
+// H2 is a question and whose text is the answer. Both are visible on the page.
 function faqSchema(page) {
+  const fromSections = (page.sections || []).filter(s => s.faq).map(s => {
+    const text = [];
+    (s.blocks || []).forEach(b => collectBlock(b, text));
+    return { q: s.h2, a: text.map(plain).join(' ') };
+  });
+  const items = [...fromSections, ...(page.faq?.items || [])];
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: page.faq.items.map(f => ({ '@type': 'Question', name: plain(f.q), acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } }))
+    mainEntity: items.map(f => ({ '@type': 'Question', name: plain(f.q), acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } }))
   };
 }
 
@@ -245,7 +268,7 @@ function schemaFor(cfg, page, trail) {
       image: abs(cfg, `/og/${ogName(page)}.png`),
       datePublished: page.published,
       dateModified: page.updated,
-      author: { '@type': 'Person', name: cfg.author.name, url: abs(cfg, '/about') },
+      author: { '@type': 'Person', name: cfg.author.name, url: abs(cfg, '/about'), ...(cfg.author.jobTitle ? { jobTitle: cfg.author.jobTitle } : {}), ...(cfg.author.bio ? { description: plain(cfg.author.bio) } : {}) },
       publisher: { '@id': cfg.url + '#org', '@type': 'Organization', name: cfg.name, url: cfg.url }
     });
   } else {
@@ -257,7 +280,7 @@ function schemaFor(cfg, page, trail) {
     if (page.type === 'about') out.push(orgSchema(cfg));
     if (page.path === '/pricing') out.push(serviceSchema(cfg, url));
   }
-  if (page.faq) out.push(faqSchema(page));
+  if (page.faq || (page.sections || []).some(s => s.faq)) out.push(faqSchema(page));
   if (trail.length > 1) out.push(crumbList(cfg, trail));
   return out;
 }
@@ -620,6 +643,12 @@ function block(cfg, b, wa) {
   if (b.pricing) return pricingBlock(cfg, b.pricing, wa);
   if (b.samples) return samplesBlock(cfg);
   if (b.note) return `<p class="tm">${inline(b.note)}</p>`;
+  // Screenshot slot. Renders only once the file is in site/img/guides/, so a
+  // live page never shows a broken image. Missing ones go to SCREENSHOTS_NEEDED.md.
+  if (b.shot) {
+    const s = cfg.shots?.get(b.shot);
+    return s ? `<figure class="shot"${R}><img src="/img/guides/${esc(b.shot)}" width="${s.w}" height="${s.h}" alt="${esc(b.alt)}" loading="lazy" decoding="async">${b.caption ? `<figcaption>${inline(b.caption)}</figcaption>` : ''}</figure>` : '';
+  }
   if (b.cta) return `<div class="actions"${R}>${waBtn(cfg.cta.primary, wa)}</div>`;
   throw new Error('unknown block: ' + JSON.stringify(b).slice(0, 80));
 }
@@ -668,7 +697,7 @@ ${eyebrow ? `<p class="eyebrow">${e(eyebrow)}</p>` : ''}
 <h1>${e(page.h1)}</h1>
 ${answerHtml}
 ${page.sub ? `<p class="sub">${inline(page.sub)}</p>` : ''}
-${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>` : ''}
+${page.type === 'guide' ? `<p class="meta">By ${e(cfg.author.name)}. Published <time datetime="${e(page.published)}">${e(fmtDate(page.published))}</time>. Updated <time datetime="${e(page.updated)}">${e(fmtDate(page.updated))}</time>.</p>${page.checked ? `<p class="meta">Last checked: <time datetime="${e(page.checked.date)}">${e(fmtDate(page.checked.date))}</time>, against the WhatsApp Help Center${page.checked.appVersion ? ` and WhatsApp Business app version ${e(page.checked.appVersion)}` : ''}.</p>` : ''}` : ''}
 ${page.type === 'legal' ? '' : `<div class="actions">${waBtn(cfg.cta.primary, wa)}${secondary ? `<a class="link-arrow" href="${e(secondary.href)}" data-cta="secondary"><span>${e(secondary.label)}</span>${ARROW}</a>` : ''}</div>`}
 ${page.mockup ? `<ul class="trust">${cfg.trust.map(t => `<li>${TICK}${e(t)}</li>`).join('')}</ul>` : ''}
 </div>${page.mockup ? mockup(page.mockup) : ''}</div>

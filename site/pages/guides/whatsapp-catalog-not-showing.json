@@ -2,103 +2,168 @@
   "path": "/guides/whatsapp-catalog-not-showing",
   "type": "guide",
   "parent": "/guides",
-  "crumb": "Catalog not showing",
-  "keyword": "whatsapp business catalog not showing",
+  "crumb": "Catalogue not showing",
+  "keyword": "whatsapp catalogue not showing",
   "published": "2026-09-29",
-  "updated": "2026-09-29",
-  "title": "WhatsApp Business Catalog Not Showing? 7 Fixes (2026)",
-  "description": "WhatsApp Business catalog not showing? Items may be under review, rejected, hidden or hit by a known app issue. 7 fixes, checked against WhatsApp help.",
-  "h1": "WhatsApp Business catalog not showing? 7 fixes that work",
-  "answer": "If your WhatsApp Business catalog is not showing, the most common reason is that the items are still under review or were rejected. WhatsApp shows catalog items to customers only after it approves them. Other causes are hidden items, a known temporary display issue in the app, or an old app version on the customer's phone.",
-  "waText": "Hi OneCatalog, my WhatsApp catalog is not showing. Can you help?",
+  "updated": "2026-10-06",
+  "checked": { "date": "2026-10-06" },
+  "title": "WhatsApp Catalogue Not Showing or Not Working? 7 Fixes 2026",
+  "description": "WhatsApp catalogue not showing or not working? Find out why and fix it in a few minutes. 7 simple fixes for shop owners, checked against WhatsApp help.",
+  "h1": "WhatsApp Catalogue Not Showing? Here's How to Fix It",
+  "answer": "Your WhatsApp catalogue is usually not showing for one of three reasons. The items are still waiting for WhatsApp to check them. WhatsApp rejected them. Or they are hidden. Customers only see items that WhatsApp approved and that are not hidden. If you can't see the catalogue either, close the app, update it and open it again.",
+  "waText": "Hi OneCatalog, my WhatsApp catalogue is not showing. Can you help?",
   "sections": [
     {
-      "h2": "Why is my WhatsApp Business catalog not showing?",
+      "h2": "1. Close, update and reopen WhatsApp Business",
       "blocks": [
-        { "p": "Start by checking who cannot see it. If items are missing for your customers but you can see them in your catalog manager, the cause is usually review, rejection or hiding. If the catalog does not load for you either, it is usually a connection or app issue. Work through the fixes below in order." }
+        { "p": "**Why it happens:** WhatsApp has a known short-term problem. Your catalogue screen says \"Items can't be displayed\" or \"Check your device internet connection and try again later\". WhatsApp says your items are not deleted. They are still saved and come back once the problem clears." },
+        { "p": "**What to do:**" },
+        { "ol": [
+          "Check your internet. Switch from Wi-Fi to mobile data, or the other way round.",
+          "Update WhatsApp Business. On Android, open the Play Store. On iPhone, open the App Store. Search for WhatsApp Business and tap **Update** if you see it.",
+          "Close the app fully, then open it again."
+        ] },
+        { "shot": "not-showing-items-cant-be-displayed-android.png", "alt": "WhatsApp Business catalogue screen showing the message Items can't be displayed", "capture": "Android. Tools > Catalog while the 'Items can't be displayed' message shows. Only if it really happens, do not fake it." },
+        { "p": "**How to check it worked:** go to the **Tools** tab and tap **Catalog**. Your items should load again. If the message stays for a day or more, go to the [Still not working?](#s11) section below." }
       ]
     },
     {
-      "h2": "1. Wait for items that are pending review",
+      "h2": "2. Unhide items you hid by mistake",
       "blocks": [
-        { "p": "WhatsApp reviews every image, video and item you add to check it meets its business policy. Its help centre says items are visible to customers only after they have been approved. While an item is pending review, customers cannot see it." },
-        { "p": "There is nothing to do except wait. Our guide on [WhatsApp catalog approval time](/guides/whatsapp-catalog-approval-time) explains what WhatsApp does and does not say about timing." }
+        { "p": "**Why it happens:** a hidden item stays in your catalogue, so you still see it. But your customers don't. Many shop owners hide an item when it runs out of stock and then forget to show it again." },
+        { "p": "**What to tap on Android:** go to the **Tools** tab and tap **Catalog**. Tap the item. Tap the three-dot menu, then **Unhide**, then **Unhide** again. To unhide many items at once, press and hold one item. Then tap the others, tap the menu and tap **Unhide**." },
+        { "p": "**What to tap on iPhone:** go to the **Tools** tab and tap **Catalog**. Tap the hidden item, then **Edit**. Turn off **Hide this item** and tap **Save**. You can also swipe left on the item and tap **Unhide**." },
+        { "shot": "not-showing-unhide-android.png", "alt": "Android WhatsApp Business item menu with the Unhide option", "capture": "Android. Open a hidden catalogue item and tap the three-dot menu so the Unhide option shows." },
+        { "shot": "not-showing-unhide-iphone.png", "alt": "iPhone WhatsApp Business edit item screen with the Hide this item switch", "capture": "iPhone. Edit screen of a catalogue item with the 'Hide this item' switch visible." },
+        { "p": "**How to check it worked:** a hidden item has a small icon on its photo. Its page also says you hid it. Once that is gone, customers can see the item. WhatsApp says hiding may not be on every phone yet, so you may not see these options at all." }
       ]
     },
     {
-      "h2": "2. Check for rejected items",
+      "h2": "3. Wait for items that are still in review",
       "blocks": [
-        { "p": "A rejected item shows a red exclamation icon next to its image in your catalog. Rejected items stay hidden from customers." },
-        { "p": "To appeal on Android, as described in WhatsApp's help centre:" },
+        { "p": "**Why it happens:** WhatsApp checks every photo, video and item you add. It makes sure they follow its rules, the [WhatsApp Commerce Policy](https://www.whatsapp.com/policies/commerce-policy/). Until an item is approved, customers can't see it. You can still see it in your own catalogue, which is why this one confuses so many sellers." },
+        { "p": "**What to do:** nothing. Wait for the review to finish. WhatsApp adds the item to your catalogue on its own once it is approved. Our guide on [WhatsApp catalog approval time](/guides/whatsapp-catalog-approval-time) explains what WhatsApp says about timing." },
+        { "p": "**How to check it worked:** ask a friend or family member to open your catalogue from their phone. If they see the item, it was approved." }
+      ]
+    },
+    {
+      "h2": "4. Fix or appeal rejected items",
+      "blocks": [
+        { "p": "**Why it happens:** WhatsApp rejects items that break its rules. A rejected item has a **red exclamation mark** next to its photo. Customers never see it." },
+        { "p": "**What to tap:** first read the [Commerce Policy](https://www.whatsapp.com/policies/commerce-policy/). If your item follows the rules and you think WhatsApp made a mistake, ask for another review:" },
         { "ol": [
           "Tap the rejected item.",
           "Tap **Request another review**.",
-          "Enter your reason for the request.",
+          "Type why you think the item is allowed. Keep it short and clear.",
           "Tap **Continue**."
         ] },
-        { "p": "Before you appeal, read WhatsApp's Commerce Policy. Items are rejected for a variety of reasons, and the policy lists what is not allowed." }
-      ]
-    },
-    {
-      "h2": "3. Fix the known display issue",
-      "blocks": [
-        { "p": "WhatsApp lists a known temporary issue where you see messages like Items can't be displayed or Check your device internet connection and try again later. Its suggested fixes are:" },
-        { "ul": [
-          "Check your internet connection and try again.",
-          "Update to the latest version of WhatsApp Business.",
-          "Close and reopen the app."
-        ] },
-        { "p": "WhatsApp says your items are not deleted in this case. They are still saved and come back once the issue is resolved." }
-      ]
-    },
-    {
-      "h2": "4. Unhide items you hid by mistake",
-      "blocks": [
-        { "p": "Hidden items stay in your catalog manager but customers cannot see them. On Android, WhatsApp says to go to the **Tools** tab, tap **Catalog**, open the item, then tap the menu and **Unhide**. On iPhone, open the item, tap **Edit** and turn off **Hide this item**, then tap **Save**. WhatsApp notes that hiding might not be available to everyone yet." }
+        { "shot": "not-showing-rejected-icon-android.png", "alt": "WhatsApp Business catalogue with a red exclamation mark on a rejected item", "capture": "Android. Catalogue list where one item shows the red exclamation mark. Use a real rejected item if you have one." },
+        { "shot": "not-showing-request-review-android.png", "alt": "Request another review button on a rejected WhatsApp catalogue item", "capture": "Android. A rejected item opened, with the 'Request another review' button visible." },
+        { "p": "**How to check it worked:** the red mark goes away when the item is approved. If WhatsApp turns down your appeal, its help page says you can reply to ask for a third review." }
       ]
     },
     {
       "h2": "5. Give new collections up to 24 hours",
       "blocks": [
-        { "p": "If you grouped items into a new collection and the collection is missing, it may still be under review. WhatsApp says collection review should take no more than 24 hours. Our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories) covers collections in detail." }
+        { "p": "**Why it happens:** a collection is a group of items, like \"Sofas\" or \"Silk sarees\". WhatsApp reviews each new collection before customers see it. WhatsApp says this should take no more than 24 hours." },
+        { "p": "**What to tap:** go to the **Tools** tab, tap **Catalog**, then tap the menu and **Collections**. Check that your collection is there and has items in it. An empty collection has nothing to show. Our guide to [WhatsApp catalogue categories](/guides/whatsapp-catalog-categories) shows how to set collections up." },
+        { "p": "**How to check it worked:** after 24 hours, open your catalogue from another phone and look for the collection name." }
       ]
     },
     {
-      "h2": "6. Check the customer's phone",
+      "h2": "6. Save changes one item at a time",
       "blocks": [
-        { "p": "WhatsApp notes that shared catalog links might not open on phones older than Android 6.0. If one customer cannot open your catalog but others can, ask them to update WhatsApp or try another phone." }
+        { "p": "**Why it happens:** sometimes a change does not go through. You see \"Item couldn't be saved\", \"Changes not saved\" or \"Something went wrong\". An item that never saved can't show to anyone." },
+        { "p": "**What to do:** these are WhatsApp's own suggestions." },
+        { "ul": [
+          "Wait a few minutes and try again.",
+          "Change one item, tap **Save**, then move to the next. Don't edit many items at once.",
+          "Use smaller photos. A photo straight from a new phone camera can be very large.",
+          "Check your internet, then close and reopen the app.",
+          "Clear the app cache in your phone settings. On most Android phones, go to **Settings**, **Apps**, **WhatsApp Business**, **Storage**, then **Clear cache**. The names change a little from brand to brand."
+        ] },
+        { "p": "Also check that you picked a **Country of origin** for the item. WhatsApp now asks for it every time you add or edit an item." },
+        { "p": "**How to check it worked:** close the item and open it again. Your change should still be there." }
       ]
     },
     {
-      "h2": "7. Save changes one at a time",
+      "h2": "7. Check the customer's phone",
       "blocks": [
-        { "p": "If items will not save, WhatsApp suggests waiting a few minutes, making changes one item at a time instead of in bulk, reducing image file sizes, and clearing the app cache in your phone settings. An item that never saved will not show." }
+        { "p": "**Why it happens:** if only one customer can't open your catalogue, the problem may be their phone. WhatsApp says shared catalogue links might not open on Android phones older than version 6.0." },
+        { "p": "**What to do:** ask the customer to update WhatsApp, or to try on another phone. A catalogue link opens straight inside WhatsApp. If they open it from email or a browser, their phone asks which app to use. Tell them to pick WhatsApp." },
+        { "p": "**How to check it worked:** send the link to your own second phone or to a family member. If it opens there, your catalogue is fine and the problem is on the customer's side." }
       ]
     },
     {
-      "h2": "Still stuck?",
+      "h2": "Why is my WhatsApp Business catalogue not working?",
+      "faq": true,
       "blocks": [
-        { "p": "If you are tired of waiting for reviews, a catalogue website avoids the problem. OneCatalog builds your catalogue as a web link that we publish directly, with no review queue on our side. Customers open it in any browser, even without WhatsApp. You keep your WhatsApp catalog as well. See how it works on our [WhatsApp catalogue page](/whatsapp-catalogue)." }
+        { "p": "Look at what the app tells you. Each message points to a different fix." },
+        { "table": {
+          "caption": "What WhatsApp shows and what to do",
+          "head": ["What you see", "What it means", "Fix"],
+          "rows": [
+            ["\"Items can't be displayed\"", "A short-term WhatsApp problem. Your items are safe.", "Fix 1"],
+            ["\"Item couldn't be saved\" or \"Changes not saved\"", "Your change did not go through.", "Fix 6"],
+            ["A red exclamation mark on a photo", "WhatsApp rejected the item.", "Fix 4"],
+            ["A note that you hid the item", "The item is hidden.", "Fix 2"],
+            ["No mark, but customers can't see it", "It is still in review.", "Fix 3"]
+          ]
+        } }
+      ]
+    },
+    {
+      "h2": "Why is my WhatsApp catalogue not showing to customers?",
+      "faq": true,
+      "blocks": [
+        { "p": "You see every item in your catalogue, even the ones that are waiting, rejected or hidden. Your customers see only items that WhatsApp approved and that are not hidden. So your catalogue can look full to you and almost empty to a customer." },
+        { "callout": "**What we see with real shops:** an owner adds 40 new products in one evening. The next morning, they send the catalogue link to customers. Customers reply that they can see only a few items. The rest are still in review, or one or two photos were rejected. Before you share your catalogue link, open it on a family member's phone. You will see exactly what your customers see." }
+      ]
+    },
+    {
+      "h2": "What does \"Item wasn't saved\" mean in WhatsApp Business?",
+      "faq": true,
+      "blocks": [
+        { "p": "It means your new item or your change did not save. WhatsApp's own wording is \"Item couldn't be saved\". It is not the same as a rejection. Try the steps in fix 6: wait a few minutes, save one item at a time and use smaller photos. WhatsApp also says that if you can't add or save an item, the item may have been rejected. Look for a red exclamation mark, then follow fix 4." }
+      ]
+    },
+    {
+      "h2": "How long until my catalogue shows after I fix it?",
+      "faq": true,
+      "blocks": [
+        { "p": "It depends on the fix. After an app problem clears, your items come back on their own. Unhidden items show again once you save. WhatsApp says new collections should be reviewed within 24 hours. For single items, WhatsApp does not publish a fixed review time. Read our guide on [WhatsApp catalog approval time](/guides/whatsapp-catalog-approval-time) for what to expect." }
+      ]
+    },
+    {
+      "h2": "Still not working? Contact WhatsApp support",
+      "blocks": [
+        { "p": "WhatsApp gives you only two ways to reach its support team. Use the chat inside the app, or the form on its website." },
+        { "p": "**On Android:** tap the three-dot menu, then **Settings**. Tap **Help and feedback**, then **Help Center**, then **Contact Us**." },
+        { "p": "**On iPhone:** tap **Settings** or your profile picture. Tap **Help and feedback**, then **Help Center**, then **Contact Us**." },
+        { "shot": "not-showing-contact-support-android.png", "alt": "WhatsApp Business Help Center screen with the Contact Us option", "capture": "Android. Settings > Help and feedback > Help Center, with Contact Us visible." },
+        { "p": "Describe the problem clearly and attach screenshots. If you can't use the app, fill in the form on the [Contact WhatsApp](https://www.whatsapp.com/contact/) page. WhatsApp replies by email from an address ending in @support.whatsapp.com." },
+        { "callout": "WhatsApp does not answer support emails any more. Many websites still list an email address for WhatsApp support. WhatsApp says those addresses are not checked. Use the in-app chat or the website form." }
+      ]
+    },
+    {
+      "h2": "Another way to share your products",
+      "blocks": [
+        { "p": "Your WhatsApp catalogue is free and works well for many shops. Are review waits or missing items costing you sales? Then you can also share a catalogue as a web link. We build it for you from the photos and prices you send. It opens in any phone browser, with no review queue on our side." },
+        { "p": "See a real one: [Sofa Square Furniture](https://sofasquare.onecatalog.in), a sofa maker in Koramangala, Bengaluru. Read how it works on our [WhatsApp catalogue page](/whatsapp-catalogue). You keep your WhatsApp catalogue too." }
       ]
     }
   ],
-  "faq": {
-    "heading": "Catalog not showing: common questions",
-    "items": [
-      { "q": "Are my catalog items deleted when they stop showing?", "a": "Not during the known display issue. WhatsApp says the items are still saved and reappear once the issue is resolved." },
-      { "q": "Why can I see my catalog but my customer cannot?", "a": "The items are probably pending review, rejected or hidden. You see them in your catalog manager, but customers see only approved, visible items." },
-      { "q": "How long does it take for catalog items to show?", "a": "WhatsApp says items appear after approval. It says collection review should take no more than 24 hours, but it does not give a fixed time for single items in its catalog help article." }
-    ]
-  },
   "sources": [
     { "label": "WhatsApp Help: How to create and maintain a catalog", "url": "https://faq.whatsapp.com/833697274483076" },
     { "label": "WhatsApp Help: Issues using catalog", "url": "https://faq.whatsapp.com/780175293074108" },
     { "label": "WhatsApp Help: Collections in your catalog", "url": "https://faq.whatsapp.com/2929318000711140" },
-    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" }
+    { "label": "WhatsApp Help: Sharing catalog links", "url": "https://faq.whatsapp.com/487917009931629" },
+    { "label": "WhatsApp Help: How to contact WhatsApp Support", "url": "https://faq.whatsapp.com/1336994774516288" },
+    { "label": "WhatsApp Commerce Policy", "url": "https://www.whatsapp.com/policies/commerce-policy/" }
   ],
   "cta": {
-    "heading": "Want a catalogue that shows up every time?",
-    "text": "Message us on WhatsApp and we will explain how a OneCatalog catalogue works alongside yours."
+    "heading": "Tired of WhatsApp catalogue problems? Share one link that always works.",
+    "text": "Shops like [Sofa Square Furniture](https://sofasquare.onecatalog.in) send one link, and customers see every product with photos and details. Message us on WhatsApp and we will tell you how it works for your shop."
   },
   "note": "WhatsApp is a trademark of Meta Platforms, Inc. OneCatalog is not affiliated with or endorsed by Meta or WhatsApp."
 }
