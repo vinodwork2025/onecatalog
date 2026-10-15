@@ -288,10 +288,10 @@ function schemaFor(cfg, page, trail) {
 
 /* ------------------------------------------------------------------ icons */
 
-const WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 1.9 3 4.7 4.1 2.3.9 2.8.8 3.3.7.5-.1 1.6-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.2-.2-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.2-1.3c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.9-1.4-1.3-2.9-1.3-4.5 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.4-7.9 8.4z"/></svg>';
-const TICK = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
+const WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 1.9 3 4.7 4.1 2.3.9 2.8.8 3.3.7.5-.1 1.6-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.2-.2-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.2-1.3c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.9-1.4-1.3-2.9-1.3-4.5 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.4-7.9 8.4z"/></svg>';
+const TICK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
 
-const ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.2 5.3 19.9 12l-6.7 6.7-1.4-1.4 4.3-4.3H4v-2h12.1l-4.3-4.3z"/></svg>';
+const ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.3 19.9 12l-6.7 6.7-1.4-1.4 4.3-4.3H4v-2h12.1l-4.3-4.3z"/></svg>';
 
 /* ------------------------------------------------------------------ css
    Design system. One display face (self-hosted, headlines only) over the system
@@ -548,9 +548,10 @@ export const LATER_CSS = `
 .show-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 .show-tags li{font-size:13px;line-height:1.4;padding:4px 10px;border-radius:999px;background:var(--surface);color:var(--ink)}
 .show-go{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:44px;font-weight:650;color:var(--ink)}
-.show-go svg{width:18px;height:18px;fill:currentColor;transition:transform .25s var(--ease)}
-.show-card:hover .show-go svg{transform:translateX(4px)}
-.show-go small{flex-basis:100%;font-size:13px;font-weight:500;color:var(--muted)}
+.show-go::after{content:"";order:1;width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13.2 5.3 19.9 12l-6.7 6.7-1.4-1.4 4.3-4.3H4v-2h12.1l-4.3-4.3z'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .25s var(--ease)}
+.show-card:hover .show-go::after{transform:translateX(4px)}
+.show-pics span:nth-child(2):last-child{grid-row:span 2}
+.show-go small{order:2;flex-basis:100%;font-size:13px;font-weight:500;color:var(--muted)}
 @media (min-width:760px){.show{grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:24px}}
 `.replace(/\n/g, '');
 const blocksOf = page => (page.sections || []).flatMap(s => s.blocks || []);
@@ -601,11 +602,11 @@ function pricingBlock(cfg, mode, wa) {
 }
 
 // Pick up to 3 photos for a showcase card, one per category where possible.
-function showPics(s) {
+function showPics(s, n = 3) {
   const seen = new Set(), pick = [];
   for (const p of s.products) if (!seen.has(p.category)) { seen.add(p.category); pick.push(p); }
-  for (const p of s.products) if (pick.length < 3 && !pick.includes(p)) pick.push(p);
-  return pick.slice(0, 3);
+  for (const p of s.products) if (pick.length < n && !pick.includes(p)) pick.push(p);
+  return pick.slice(0, n);
 }
 
 // Live client catalogues with real product photos. The home page uses the
@@ -613,11 +614,11 @@ function showPics(s) {
 // build.js resolves to the same shape.
 function samplesBlock(cfg, list = cfg.samples) {
   const cards = list.map((s, i) => {
-    const pics = showPics(s).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="${esc(p.name)}" loading="lazy"></span>`).join('');
-    const tags = s.categories.slice(0, 3).map(c => `<li>${esc(c)}</li>`).join('');
-    return `<a class="show-card" href="${esc(s.url)}" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue ${ARROW}<small>${esc(s.host)}</small></span></div></a>`;
+    const pics = showPics(s, list.length > 4 ? 2 : 3).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="" loading="lazy"></span>`).join('');
+    const tags = s.categories.slice(0, 2).map(c => `<li>${esc(c)}</li>`).join('');
+    return `<a class="show-card" href="${esc(s.url)}" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue<small>${esc(s.host)}</small></span></div></a>`;
   }).join('');
-  return `<div class="show" style="--n:${list.length}">${cards}</div>`;
+  return `<div class="show" style="--n:${Math.min(list.length, 3)}">${cards}</div>`;
 }
 
 function cardImg(g) {

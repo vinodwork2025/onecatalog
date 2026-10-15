@@ -63,6 +63,14 @@
     {
       "client": "sofasquare",
       "trade": "Sofa makers"
+    },
+    {
+      "client": "kushi-jewellery",
+      "trade": "Jewellery"
+    },
+    {
+      "client": "pastels-boutique",
+      "trade": "Boutique"
     }
   ],
   "pricing": {
