@@ -71,6 +71,10 @@
     {
       "client": "pastels-boutique",
       "trade": "Boutique"
+    },
+    {
+      "client": "sarisha-designer-sarees",
+      "trade": "Sarees"
     }
   ],
   "pricing": {

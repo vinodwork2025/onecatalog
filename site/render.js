@@ -614,9 +614,9 @@ function showPics(s, n = 3) {
 // build.js resolves to the same shape.
 function samplesBlock(cfg, list = cfg.samples) {
   const cards = list.map((s, i) => {
-    const pics = showPics(s, list.length > 4 ? 2 : 3).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" width="${j ? 240 : 480}" height="${j ? 240 : 480}" alt="" loading="lazy"></span>`).join('');
+    const pics = showPics(s, list.length > 4 ? 2 : 3).map((p, j) => `<span><img src="${esc(j ? p.img.sm : p.img.md)}" alt="" loading="lazy"></span>`).join('');
     const tags = s.categories.slice(0, 2).map(c => `<li>${esc(c)}</li>`).join('');
-    return `<a class="show-card" href="${esc(s.url)}" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p><ul class="show-tags">${tags}</ul><span class="show-go">Open catalogue<small>${esc(s.host)}</small></span></div></a>`;
+    return `<a class="show-card" href="${esc(s.url)}" data-reveal style="--i:${i};--c:${esc(s.accent)}"><div class="show-pics">${pics}</div><div class="show-body"><h3>${esc(s.name)}</h3><p class="show-meta">${esc(s.trade)}${s.city ? ', ' + esc(s.city) : ''}. ${esc(s.count)} products.</p>${list.length > 5 ? "" : `<ul class="show-tags">${tags}</ul>`}<span class="show-go">Open catalogue<small>${esc(s.host)}</small></span></div></a>`;
   }).join('');
   return `<div class="show" style="--n:${Math.min(list.length, 3)}">${cards}</div>`;
 }
